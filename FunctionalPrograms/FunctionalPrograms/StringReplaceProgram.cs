@@ -20,8 +20,15 @@ namespace FunctionalPrograms
             Console.WriteLine("Hello Enter your name!");
             //take the input from keyboard and replace with standard string
             String Name = Console.ReadLine();
-            Wish = Wish.Replace("<<UserName>>", Name);
-            Console.WriteLine(Wish);
+            if (Name.Length > 2)
+            {
+                Wish = Wish.Replace("<<UserName>>", Name);
+                Console.WriteLine(Wish);
+            }
+            else
+            {
+                Console.WriteLine("You Should enter atleast 3 characters");
+            }
         }
 
     }

@@ -233,5 +233,151 @@ namespace FunctionalPrograms
             else
                 return -1;
         }
+
+        //Tic Tac Toe Play Control
+        public void TicTakToeControl()
+        {
+            Random random = new Random();
+            int turns = 9;
+            char[] a = new char[9] { '-', '-', '-', '-', '-', '-', '-', '-', '-' };
+
+            
+                if (random.Next(10) > 5)
+                {
+                    User1Playing();
+                }
+                else
+                    User2Playing();
+            
+
+            void User1Playing()
+            {
+                Console.WriteLine("Enter a position user 1 (0 to 8)");
+                goto User1Home;
+            US1:
+                Console.WriteLine("Enter a Correct/Anethor position user 1 (0 to 8)");
+            User1Home: try
+                {
+                    int i = int.Parse(Console.ReadLine());
+
+                    if (turns > 0)
+                    {
+                        if (a[i] == '-')
+                        {
+                            a[i] = 'O';
+                            turns--;
+                            if (GameCheck('O'))
+                            {
+                                Console.WriteLine("User 1 Wins");
+                                Displaying();
+                                Ending();
+                            }
+                            Displaying();
+                            if (turns > 0)
+                            {
+                                User2Playing();
+                            }
+                            else
+                            {
+                                Displaying();
+                                Console.WriteLine("No one wins");
+                                Ending();
+                            }
+
+                        }
+                        else
+                        {
+                            goto US1;
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+                    goto US1;
+                }
+            }
+
+            void User2Playing()
+            {
+                Console.WriteLine("Enter a position user 2 (0 to 8)");
+                goto User2Home;
+            US2:
+                Console.WriteLine("Enter a Correct/Anethor position User 2 (0 to 8)");
+            User2Home: try
+                {
+                    int i = int.Parse(Console.ReadLine());
+                    if (turns > 0)
+                    {
+                        if (a[i] == '-')
+                        {
+                            a[i] = 'X';
+                            turns--;
+                            if (GameCheck('X'))
+                            {
+                                Console.WriteLine("User 2 Wins");
+                                Displaying();
+                                Ending();
+                            }
+                            Displaying();
+                            if (turns > 0)
+                            {
+                                User1Playing();
+                            }
+                            else
+                            {
+                                Displaying();
+                                Console.WriteLine("No one wins");
+                                Ending();
+                            }
+                        }
+                        else
+                        {
+                            goto US2;
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+                    goto US2;
+                }
+            }
+            bool GameCheck(char s)
+            {
+                if (((a[0] == a[1]) && (a[1] == a[2]) && (a[2] == s)) || (a[3] == a[4]) && (a[4] == a[5]) && (a[5] == s) || (a[6] == a[7]) && (a[7] == a[8]) && (a[8] == s)
+                        || (a[0] == a[3]) && (a[3] == a[6]) && (a[6] == s) || (a[1] == a[4]) && (a[4] == a[7]) && (a[7] == s) || (a[2] == a[5]) && (a[5] == a[8]) && (a[8] == s) ||
+                        (a[0] == a[4]) && (a[4] == a[8]) && (a[8] == s) || (a[2] == a[4]) && (a[4] == a[6]) && (a[6] == s))
+                {
+                    return true;
+                }
+                else
+                    return false;
+            }
+            void Displaying()
+            {
+
+                Console.WriteLine("{0} {1} {2}", a[0], a[1], a[2]);
+                Console.WriteLine("{0} {1} {2}", a[3], a[4], a[5]);
+                Console.WriteLine("{0} {1} {2}", a[6], a[7], a[8]);
+            }
+            void Ending()
+            {
+                Console.WriteLine("Thank you for playing\nDo you want to play again press 1 else any Number");
+                try
+                {
+                    if (int.Parse(Console.ReadLine()) == 1)
+                    {
+                        TicTakToeControl();
+                    }
+                    else
+                    {
+                        Environment.Exit(0);
+                    }
+                }
+                catch (Exception)
+                {
+                    Environment.Exit(0);
+                }
+            }
+        }
     }
 }
