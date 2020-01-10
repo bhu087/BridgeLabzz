@@ -168,5 +168,31 @@ namespace FunctionalPrograms
                 Console.WriteLine("No Factors are available for {0}",Number);
             }
         }
+
+        //Two D Array Utility
+        public void TwoDArrayUtility(int m, int n)
+        {
+            //a[][] is a two dimensional array
+            int[,] a = new int[m, n];
+            //stores the m X n elements
+            for (int i = 0; i < m; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    Console.WriteLine("Enter " + i + "th row " + j + "th column value");
+                    a[i, j] = Int32.Parse(Console.ReadLine());
+                }
+            }
+            //print it Here
+            Console.WriteLine("Your 2D array is");
+            for (int i = 0; i < m; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    Console.Write(a[i, j] + "  ");
+                }
+                Console.WriteLine();
+            }
+        }
     }
 }
