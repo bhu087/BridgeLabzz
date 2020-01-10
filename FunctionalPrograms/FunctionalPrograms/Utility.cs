@@ -134,5 +134,39 @@ namespace FunctionalPrograms
             else
                 return false;
         }
+
+        //Hormonic Number Utility
+        //Hormonic Number Utility
+        public float HormonicUtility(int Num)
+        {
+            float Ans = 0F;
+            float Temp;
+            for (int i = 1; i <= Num; i++)
+            {
+                Temp = i;
+                Ans += (1 / Temp);
+            }
+            return Ans;
+        }
+
+        //Utility for Finding Factors
+        public void FactrosUtility(int Number)
+        {
+            int Count=0;
+            //it checks the factors for a give number is any factors available between
+            //(2 to Number/2)
+            for (int i = 2; i <= Number / 2; i++)
+            {
+                if (Number % i == 0)
+                {
+                    Console.WriteLine(i);
+                    Count++;
+                }
+            }
+            if (Count == 0)
+            {
+                Console.WriteLine("No Factors are available for {0}",Number);
+            }
+        }
     }
 }
