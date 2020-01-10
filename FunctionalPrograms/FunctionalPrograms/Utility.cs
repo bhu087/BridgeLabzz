@@ -195,6 +195,43 @@ namespace FunctionalPrograms
             }
         }
 
+        //Quadratic Equation Utility
+        public void FindRoots(double a, double b, double c)
+        {
+            double Delta = ((b * b) - (4 * a * c));
+            double rePart, imPart;
+            double root1, root2;
+            if (Delta > 0)
+            {       //roots are real and different ex:1,6,5
+                root1 = ((-b + Math.Sqrt(Delta)) / (2 * a));
+                root2 = ((-b - Math.Sqrt(Delta)) / (2 * a));
+                Console.WriteLine("root1 = {0:0.00}, root2 = {1:0.00}", root1, root2);
+            }
+            if (Delta == 0)
+            {   //roots are same ex:1,-2,1
+                root1 = ((-b / (2 * a)));
+                root2 = root1;
+                Console.WriteLine("root1 = {0:0.00}, root2 = {1:0.00}", root1, root2);
+            }
+            if (Delta < 0)
+            {       //roots are imaginary ex:1,-3,10
+                rePart = ((-b / (2 * a)));
+                imPart = Math.Sqrt(-Delta / (2 * a));
+                Console.WriteLine("root1 = {0:0.00}+{1:0.00}i and root2 = {0:0.00}+{1:0.00}i", rePart, imPart, rePart, imPart);
+            }
+        }
 
+        //Wind Chill Utility program
+        public double WindChillUtility(double Temp, double Vel)
+        {
+            if (!(Temp > 50 || Vel > 120 || Vel < 3))
+            {
+
+                double Wind = (35.74 + 0.6215 * Temp + (0.4275 * Temp - 35.75) * Math.Pow(Vel, 0.16));
+                return Wind;
+            }
+            else
+                return -1;
+        }
     }
 }

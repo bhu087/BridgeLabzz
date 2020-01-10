@@ -18,7 +18,8 @@ namespace FunctionalPrograms
             Console.WriteLine("Enter a Option\n1 for Anagram for array of strings" +
                 "\n2 for String Replace\n3 for Flip Coin\n4 for Leap Year" +
                 "\n5 for power of two\n6 for Hormonic Number\n7 for Factors for " +
-                "\n8 for Two dimensional Array\n9 for Distance from (0,0) to (X,Y)");
+                "\n8 for Two dimensional Array\n9 for Distance from (0,0) to (X,Y)" +
+                "\n10 for finding roots of Quadratic equation\n11 for Wind chill");
             int Option = int.Parse(Console.ReadLine());
             switch (Option)
             {
@@ -48,6 +49,12 @@ namespace FunctionalPrograms
                     break;
                 case 9:
                     DistanceFind.Distance();
+                    break;
+                case 10:
+                    QuadraticEquationProgram.Quadratic();
+                    break;
+                case 11:
+                    WindChillProgram.WindChill();
                     break;
                 default:
                     Console.WriteLine("You are selecting invalid option");
