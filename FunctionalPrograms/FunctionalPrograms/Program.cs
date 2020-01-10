@@ -32,6 +32,9 @@ namespace FunctionalPrograms
                 case 4:
                     LeapYearProgram.LeapYear();
                     break;
+                case 5:
+                    PowerOfTwoProgram.PowerOfTwo();
+                    break;
                 default:
                     Console.WriteLine("You are selecting invalid option");
                     break;

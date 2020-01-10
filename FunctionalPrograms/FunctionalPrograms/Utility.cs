@@ -123,5 +123,16 @@ namespace FunctionalPrograms
                 return false;
             }
         }
+
+        //This is for checking given number is 4 digit or not
+        public bool IsFourDigit(int Number)
+        {
+            if (Number > 999 && Number < 10000)
+            {
+                return true;
+            }
+            else
+                return false;
+        }
     }
 }
