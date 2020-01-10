@@ -100,5 +100,28 @@ namespace FunctionalPrograms
             float ans = ((HeadsCount / TailsCount) * 100);
             return ans;
         }
+
+        //Leap Year utility
+        public bool IsLeapYear(int YearIs)
+        {
+            //remainder is zero it returns zero but it the yera is multiples of 100
+            // and that should satisfy for year % 400 is 0
+            if (YearIs % 4 == 0)
+            {
+                if (YearIs % 100 == 0)
+                {
+                    if (YearIs % 400 == 0)
+                    {
+                        return true;
+                    }
+                    return false;
+                }
+                    return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }
