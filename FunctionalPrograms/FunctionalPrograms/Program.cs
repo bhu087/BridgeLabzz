@@ -16,7 +16,7 @@ namespace FunctionalPrograms
         static void Main(string[] args)
         {
             Console.WriteLine("Enter a Option\n1 for Anagram for array of strings" +
-                "\n2 for String Replace");
+                "\n2 for String Replace\n3 for Flip Coin");
             int Option = int.Parse(Console.ReadLine());
             switch (Option)
             {
@@ -25,6 +25,9 @@ namespace FunctionalPrograms
                     break;
                 case 2:
                     StringReplaceProgram.StringReplace();
+                    break;
+                case 3:
+                    FlipCoinProgram.FlipCoin();
                     break;
                 default:
                     Console.WriteLine("You are selecting invalid option");

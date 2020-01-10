@@ -58,6 +58,47 @@ namespace FunctionalPrograms
             }
         }
 
-        
+        //Integer check if given input is integer it gives the number else
+        //it returns -1
+        public int IntInput()
+        {
+            bool Success = Int32.TryParse(Console.ReadLine(), out int Number);
+            if (Success)
+            {
+                return Number;
+            }
+            else
+            {
+                Console.WriteLine("you entered non integer value");
+                return -1;
+            }
+        }
+
+        //FlipCoin Utility
+        public float FlipCoinUtility(int Value)
+        {
+            //tails and heads counts are zero initially
+            float TailsCount = 0;
+            float HeadsCount = 0;
+            for (int i = 0; i < Value; i++)
+            {
+                Random random = new Random();
+                //Randomly generate a value between 0.0 to 1.0
+                //if random value is below 0.5 it increases tails count else heads
+                if ((float)random.Next(10) / 10 > 0.5)
+                {
+                    TailsCount++;
+                }
+                else
+                {
+                    HeadsCount++;
+                }
+            }
+            Console.WriteLine("tails count is " + TailsCount);
+            Console.WriteLine("heads count is " + HeadsCount);
+            //Heads vs Tails percentage
+            float ans = ((HeadsCount / TailsCount) * 100);
+            return ans;
+        }
     }
 }
