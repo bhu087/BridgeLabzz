@@ -15,12 +15,16 @@ namespace FunctionalPrograms
         /// <param name="args">The arguments.</param>
         static void Main(string[] args)
         {
-            Console.WriteLine("Enter a Option\n1 for Anagram for array of strings");
+            Console.WriteLine("Enter a Option\n1 for Anagram for array of strings" +
+                "\n2 for String Replace");
             int Option = int.Parse(Console.ReadLine());
             switch (Option)
             {
                 case 1:
                     Anagram.Anagrams();
+                    break;
+                case 2:
+                    StringReplaceProgram.StringReplace();
                     break;
                 default:
                     Console.WriteLine("You are selecting invalid option");
