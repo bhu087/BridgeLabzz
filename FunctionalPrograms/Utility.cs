@@ -379,5 +379,54 @@ namespace FunctionalPrograms
                 }
             }
         }
+
+        //Gambler BL
+        public void GamblerPlaying()
+        {
+            Console.WriteLine("Enter your Stake");
+            int stake = Int32.Parse(Console.ReadLine());
+            Console.WriteLine("Enter Your goal");
+            int goal = Int32.Parse(Console.ReadLine());
+            Console.WriteLine("Enter trails");
+            int trails = Int32.Parse(Console.ReadLine());
+            GamblerPlay(trails, stake, goal);
+
+        }
+
+        //Gambler Utility program
+        public void GamblerPlay(int trails, int stake, int goal)
+        {
+            int Wins = 0, Bets = 0;
+            float Bets1 = 0, Wins1 = 0;
+            Random random = new Random();
+            for (int i = 0; i < trails; i++)
+            {
+                int Cash = stake;
+                while (Cash > 0 && Cash < goal)
+                {
+                    Bets++;
+                    if (random.Next(10) < 5)
+                    {
+                        //Console.WriteLine(random.Next(10));
+                        Cash++;
+                    }
+                    else
+                        //Console.WriteLine(random.Next(10));
+                        Cash--;
+                }
+                if (Cash >= goal)
+                {
+                    Wins++;
+                    Console.WriteLine("Win at " + i + "th Game");
+                }
+            }
+            Bets1 = Bets;
+            Wins1 = Wins;
+            Console.WriteLine("Number of Wins " + Wins);
+            Console.WriteLine("Number of Bets " + Bets);
+            Console.WriteLine("wins percentage " + ((Wins1 / Bets1) * 100));
+            Console.WriteLine("loss percentage " + ((Bets1 - Wins1) / Bets1) * 100);
+
+        }
     }
 }
