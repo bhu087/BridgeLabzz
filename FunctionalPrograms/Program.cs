@@ -22,7 +22,7 @@ namespace FunctionalPrograms
                 "\n10 for finding roots of Quadratic equation\n11 for Wind chill" +
                 "\n12 for tic tac Toe program\n13 for playing Gambler Game" +
                 "\n14 for Coupon generation\n15 for Stop Watch\n16 for Few Number of Notes Count" +
-                "\n17 for Day of the week");
+                "\n17 for Day of the week\n18 for Temperature Conversion (F -> C) or (C -> F)");
             int Option = int.Parse(Console.ReadLine());
             switch (Option)
             {
@@ -76,6 +76,9 @@ namespace FunctionalPrograms
                     break;
                 case 17:
                     DayOfWeekProgram.DayOfTheWeek();
+                    break;
+                case 18:
+                    TemperatureConversionProgram.TemperatureConversion();
                     break;
                 default:
                     Console.WriteLine("You are selecting invalid option");

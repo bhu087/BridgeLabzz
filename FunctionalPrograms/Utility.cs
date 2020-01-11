@@ -632,6 +632,25 @@ namespace FunctionalPrograms
             string Str = MonthArray[m0+1]+" "+WeekArray[d0];
             return Str; 
         }
+
+        //Temperature conversion utility program
+        public void TemperatureConversionUtility(int TempSelect, double TempValue)
+        {
+            double ConvertedTemperature = 0;
+            //if select a 0 it will convert fahrenheit value to celcius
+            if (TempSelect == 0)
+            {
+                ConvertedTemperature = ((TempValue - 32) * 5 / 9);
+                Console.WriteLine(TempValue + " Fahrenheit = {0} celcius", ConvertedTemperature);
+            }
+            //if select a 0 it will convert fahrenheit value to celcius
+            if (TempSelect == 1)
+            {
+                ConvertedTemperature = (TempValue * 9 / 5) + 32;
+                Console.WriteLine(TempValue + " celcius = {0} Fahrenheit", ConvertedTemperature);
+            }
+
+        }
     }
 
 }
