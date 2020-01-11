@@ -116,7 +116,7 @@ namespace FunctionalPrograms
                     }
                     return false;
                 }
-                    return true;
+                return true;
             }
             else
             {
@@ -152,7 +152,7 @@ namespace FunctionalPrograms
         //Utility for Finding Factors
         public void FactrosUtility(int Number)
         {
-            int Count=0;
+            int Count = 0;
             //it checks the factors for a give number is any factors available between
             //(2 to Number/2)
             for (int i = 2; i <= Number / 2; i++)
@@ -165,7 +165,7 @@ namespace FunctionalPrograms
             }
             if (Count == 0)
             {
-                Console.WriteLine("No Factors are available for {0}",Number);
+                Console.WriteLine("No Factors are available for {0}", Number);
             }
         }
 
@@ -241,14 +241,14 @@ namespace FunctionalPrograms
             int turns = 9;
             char[] a = new char[9] { '-', '-', '-', '-', '-', '-', '-', '-', '-' };
 
-            
-                if (random.Next(10) > 5)
-                {
-                    User1Playing();
-                }
-                else
-                    User2Playing();
-            
+
+            if (random.Next(10) > 5)
+            {
+                User1Playing();
+            }
+            else
+                User2Playing();
+
 
             void User1Playing()
             {
@@ -617,7 +617,22 @@ namespace FunctionalPrograms
             //return total number of notes count
             return Thousand + FiveHundread + Hundread + Fifty + Twenty + Tens + Fives + Twos + Ones;
         }
+        //Day of the week Finder utility
+        public string DayOfTheWeekUtility(int Day, int Month, int Year)
+        {
+            string[] WeekArray = { "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" };
+            string[] MonthArray = { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
+            int d0 = 0;
+            int m0 = 0;
 
-
+            int y0 = Year - (14 - Month) / 12;
+            int a = y0 + y0 / 4 - y0 / 100 + y0 / 400;
+            m0 = (Month + 12 * ((14 - Month) / 12) - 2);
+            d0 = (Day + a + 31 * m0 / 12) % 7;
+            string Str = MonthArray[m0+1]+" "+WeekArray[d0];
+            return Str; 
+        }
     }
+
 }
+
