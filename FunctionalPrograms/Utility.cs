@@ -505,6 +505,118 @@ namespace FunctionalPrograms
             totalTime = time2 - time1;
             return totalTime;//.ToString();
         }
+        //Few Notes Utility
+        public int NotesCount(int Amount)
+        {
+            //initially all the count values are zero and values are assigned at the if blocks
+            int Ones = 0, Twos = 0, Fives = 0, Tens = 0, Twenty = 0, Fifty = 0, Hundread = 0, FiveHundread = 0, Thousand = 0;
+            int Reminder;
+            /*
+            Thousand = Amount / 1000;
+            Reminder = Amount % 1000;
+            Amount = Reminder;
+
+            FiveHundread = Amount / 500;
+            Reminder = Amount % 500;
+            Amount = Reminder;
+
+            Hundread = Amount / 100;
+            Reminder = Amount % 100;
+            Amount = Reminder;
+
+            Fifty = Amount / 50;
+            Reminder = Amount % 50;
+            Amount = Reminder;
+
+            Twenty = Amount / 20;
+            Reminder = Amount % 20;
+            Amount = Reminder;
+
+            Tens = Amount / 10;
+            Reminder = Amount % 10;
+            Amount = Reminder;
+
+            Fives = Amount / 5;
+            Reminder = Amount % 5;
+            Amount = Reminder;
+
+            Twos = Amount / 2;
+            Reminder = Amount % 2;
+            Amount = Reminder;
+
+            Ones = Amount;
+            */
+
+            if (Amount >= 1000)
+            {
+                Reminder = Amount % 1000;
+                Amount /= 1000;
+                Thousand += Amount;
+                Amount = Reminder;
+            }
+            if (Amount >= 500)
+            {
+                Reminder = Amount % 500;
+                Amount /= 500;
+                FiveHundread += Amount;
+                Amount = Reminder;
+            }
+            if (Amount >= 100)
+            {
+                Reminder = Amount % 100;
+                Amount /= 100;
+                Hundread += Amount;
+                Amount = Reminder;
+            }
+            if (Amount >= 50)
+            {
+                Reminder = Amount % 50;
+                Amount /= 50;
+                Fifty += Amount;
+                Amount = Reminder;
+            }
+            if (Amount >= 20)
+            {
+                Reminder = Amount % 20;
+                Amount /= 20;
+                Twenty += Amount;
+                Amount = Reminder;
+            }
+            if (Amount >= 10)
+            {
+                Reminder = Amount % 10;
+                Amount /= 10;
+                Tens += Amount;
+                Amount = Reminder;
+            }
+            if (Amount >= 5)
+            {
+                Reminder = Amount % 5;
+                Amount /= 5;
+                Fives += Amount;
+                Amount = Reminder;
+            }
+            if (Amount >= 2)
+            {
+                Reminder = Amount % 2;
+                Amount /= 2;
+                Twos += Amount;
+                Amount = Reminder;
+            }
+            Ones += Amount;
+            //this display the indivisual notes count
+            Console.WriteLine("Thousand Count       {0}", Thousand);
+            Console.WriteLine("FiveHundread Count   {0}", FiveHundread);
+            Console.WriteLine("Hundread Count       {0}", Hundread);
+            Console.WriteLine("Fifty Count          {0}", Fifty);
+            Console.WriteLine("Twenty Count         {0}", Twenty);
+            Console.WriteLine("Tens Count           {0}", Tens);
+            Console.WriteLine("Fives Count          {0}", Fives);
+            Console.WriteLine("Twos Count           {0}", Twos);
+            Console.WriteLine("Ones Count           {0}", Ones);
+            //return total number of notes count
+            return Thousand + FiveHundread + Hundread + Fifty + Twenty + Tens + Fives + Twos + Ones;
+        }
 
 
     }

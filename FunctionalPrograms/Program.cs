@@ -21,7 +21,7 @@ namespace FunctionalPrograms
                 "\n8 for Two dimensional Array\n9 for Distance from (0,0) to (X,Y)" +
                 "\n10 for finding roots of Quadratic equation\n11 for Wind chill" +
                 "\n12 for tic tac Toe program\n13 for playing Gambler Game" +
-                "\n14 for Coupon generation\n15 for Stop Watch");
+                "\n14 for Coupon generation\n15 for Stop Watch\n16 for Few Number of Notes Count");
             int Option = int.Parse(Console.ReadLine());
             switch (Option)
             {
@@ -69,6 +69,9 @@ namespace FunctionalPrograms
                     break;
                 case 15:
                     StopWatchProgram.SopWatch();
+                    break;
+                case 16:
+                    FewNumberOfNotesProgram.FewNumberOfNotes();
                     break;
                 default:
                     Console.WriteLine("You are selecting invalid option");
