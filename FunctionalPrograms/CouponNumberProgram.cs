@@ -5,6 +5,9 @@ namespace FunctionalPrograms
     using System.Collections.Generic;
     using System.Text;
 
+    /// <summary>
+    /// This is the coupon Number generation program
+    /// </summary>
     class CouponNumberProgram
     {
         public static void CouponNumber()

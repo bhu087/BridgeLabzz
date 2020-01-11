@@ -474,8 +474,38 @@ namespace FunctionalPrograms
                 //to print coupons
                 Console.WriteLine(CouponsArray[j]);
             }
-
-
         }
+
+        //stop watch Utility
+        public DateTime StopWatchLocalDate()
+        {
+            //TimeSpan total;
+            Stopwatch StopWatchTimer = new Stopwatch();
+            DateTime localDate = DateTime.Now;
+            return localDate;
+        }
+
+        //Stop watch tility
+        public TimeSpan StopWatchUtility()
+        {
+            TimeSpan totalTime;
+            //timer starts from here
+            Console.WriteLine("Enter toStart the timer");
+            Console.ReadLine();
+            DateTime time1 = StopWatchLocalDate();
+            //it shows the current time
+            Console.WriteLine("You Are started at " + time1.ToString("hh:mm:ss tt"));
+            //timer stops here
+            Console.WriteLine("Enter to stop the timer");
+            Console.ReadLine();
+            DateTime time2 = StopWatchLocalDate();
+            //it shows the stop time
+            Console.WriteLine("You Are stoped at " + time2.ToString("hh:mm:ss tt"));
+            //Difference between start and stop time is a total time span
+            totalTime = time2 - time1;
+            return totalTime;//.ToString();
+        }
+
+
     }
 }
