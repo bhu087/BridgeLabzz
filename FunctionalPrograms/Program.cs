@@ -20,7 +20,8 @@ namespace FunctionalPrograms
                 "\n5 for power of two\n6 for Hormonic Number\n7 for Factors for " +
                 "\n8 for Two dimensional Array\n9 for Distance from (0,0) to (X,Y)" +
                 "\n10 for finding roots of Quadratic equation\n11 for Wind chill" +
-                "\n12 for tic tac Toe program\n13 for playing Gambler Game");
+                "\n12 for tic tac Toe program\n13 for playing Gambler Game" +
+                "\n14 for Coupon generation");
             int Option = int.Parse(Console.ReadLine());
             switch (Option)
             {
@@ -62,6 +63,9 @@ namespace FunctionalPrograms
                     break;
                 case 13:
                     GamblerProgram.Gambler();
+                    break;
+                case 14:
+                    CouponNumberProgram.CouponNumber();
                     break;
                 default:
                     Console.WriteLine("You are selecting invalid option");

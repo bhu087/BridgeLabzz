@@ -399,9 +399,13 @@ namespace FunctionalPrograms
             int Wins = 0, Bets = 0;
             float Bets1 = 0, Wins1 = 0;
             Random random = new Random();
+            //this will plays (trails) number of time
             for (int i = 0; i < trails; i++)
             {
                 int Cash = stake;
+                //Keep betting till cash > 0 and cash < goal if both the conditions staisfied keep on betting
+                //if cash is zero means loss the bets
+                //if cash will reachs the goal this considered as a win
                 while (Cash > 0 && Cash < goal)
                 {
                     Bets++;
@@ -424,8 +428,53 @@ namespace FunctionalPrograms
             Wins1 = Wins;
             Console.WriteLine("Number of Wins " + Wins);
             Console.WriteLine("Number of Bets " + Bets);
+            //wins vs bets percentage
             Console.WriteLine("wins percentage " + ((Wins1 / Bets1) * 100));
             Console.WriteLine("loss percentage " + ((Bets1 - Wins1) / Bets1) * 100);
+
+        }
+
+        //Coupon Number Genaration Utility
+        public void CouponUtility(int n)
+        {
+            Random random = new Random();
+            int i;
+            //char array for different inputs
+            char[] CouponElements = "abcd1234ABCDefghIJKLEFGHijkMNOPmnopqrst5678QRSTUVWXYZuvwxyz90".ToCharArray();
+            String[] CouponsArray = new String[n];
+            //it will generate n number of coupons
+            for (i = 0; i < n; i++)
+            {
+                int value = (int)(random.Next());
+                var sb = new StringBuilder();
+                while (value > 0)
+                {
+                    //for random digit selector
+                    sb.Append(CouponElements[value % CouponElements.Length]);
+                    value /= CouponElements.Length;
+                }
+                CouponsArray[i] = sb.ToString();
+                //checking for duplicates
+                for (int j = 0; j < i; j++)
+                {
+                    //if duplicates break this loop 
+                    if (CouponsArray[j].Equals(sb))
+                    {
+                        i--;
+                        break;
+                    }
+                    //else store the Coupon code in Array
+                    CouponsArray[i] = sb.ToString();
+                }
+
+            }
+
+            for (int j = 0; j < n; j++)
+            {
+                //to print coupons
+                Console.WriteLine(CouponsArray[j]);
+            }
+
 
         }
     }
