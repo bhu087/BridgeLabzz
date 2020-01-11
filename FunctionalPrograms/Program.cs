@@ -23,7 +23,8 @@ namespace FunctionalPrograms
                 "\n12 for tic tac Toe program\n13 for playing Gambler Game" +
                 "\n14 for Coupon generation\n15 for Stop Watch\n16 for Few Number of Notes Count" +
                 "\n17 for Day of the week\n18 for Temperature Conversion (F -> C) or (C -> F)" +
-                "\n19 for Monthly Payment\n20 For Finding a Square root (using Newton's method)");
+                "\n19 for Monthly Payment\n20 For Finding a Square root (using Newton's method)" +
+                "\n21 for Binary places");
             int Option = int.Parse(Console.ReadLine());
             switch (Option)
             {
@@ -86,6 +87,9 @@ namespace FunctionalPrograms
                     break;
                 case 20:
                     Sqrt.SquareRoot();
+                    break;
+                case 21:
+                    BinaryPlacesProgram.BinaryPlaces();
                     break;
                 default:
                     Console.WriteLine("You are selecting invalid option");

@@ -664,7 +664,57 @@ namespace FunctionalPrograms
             double pay = (PrinciAmount * r) / (1 - Math.Pow(1 + r, -n));
             return pay;
         }
-    }
 
+        //This is the utility program for Binary places
+            static long BinaryResult = 0;
+            static string PositionString;// = string.Empty;
+         public static void toBinary(int DeciNumber)
+         {
+             long TempNumber = 0;
+             int Remainder = 0;
+             int Power = 0;
+             int PositionValue = 0;
+             while (DeciNumber > 0)
+             {
+                //to find binary representation
+                Remainder = DeciNumber % 2;
+                BinaryResult = (long)(BinaryResult + Remainder * Math.Pow(10, Power));
+                Power++;
+                DeciNumber = DeciNumber / 2;
+             }
+                TempNumber = BinaryResult;
+                Power = 0;
+             while (TempNumber / 10 > 0)
+             {  
+                //to find 2^pos value
+                if (TempNumber % 10 == 1)
+                {
+                    //position value is appending to string
+                    PositionValue = (int)Math.Pow(2, Power);
+                    PositionString += PositionValue.ToString() + "+";
+                }
+                Power++;
+                TempNumber = TempNumber / 10;
+             }
+                PositionValue = (int)Math.Pow(2, Power);
+                PositionString += PositionValue.ToString();
+         }
+        //This is for calling binary places result
+        public string PositionDeciValue(int DeciNum)
+        {
+            BinaryResult = 0;
+            PositionString = string.Empty;
+            toBinary(DeciNum);
+            return PositionString;
+        }
+        //This is for Binary representation result
+        public long PositionBinary(int DeciNum)
+        {
+            BinaryResult = 0;
+            PositionString = string.Empty;
+            toBinary(DeciNum);
+            return BinaryResult;
+        }
+    }
 }
 
