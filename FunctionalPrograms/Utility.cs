@@ -643,13 +643,26 @@ namespace FunctionalPrograms
                 ConvertedTemperature = ((TempValue - 32) * 5 / 9);
                 Console.WriteLine(TempValue + " Fahrenheit = {0} celcius", ConvertedTemperature);
             }
-            //if select a 0 it will convert fahrenheit value to celcius
+            //if select a 0 it will convert celcius value to fahrenheit
             if (TempSelect == 1)
             {
                 ConvertedTemperature = (TempValue * 9 / 5) + 32;
                 Console.WriteLine(TempValue + " celcius = {0} Fahrenheit", ConvertedTemperature);
             }
-
+        }
+        //Monthly payment utility program 
+        public double PaymentCalculator(long PrinciAmount, int Years, float Rate)
+        {
+            int n = 12 * Years;
+            //if rate is zero then monthly payment is principal amount by years and 12
+            if (Rate == 0)
+            {
+                return PrinciAmount / (Years * 12);
+            }
+            //else rate will b calculated by this formula
+            double r = Rate / (12 * 100);
+            double pay = (PrinciAmount * r) / (1 - Math.Pow(1 + r, -n));
+            return pay;
         }
     }
 
