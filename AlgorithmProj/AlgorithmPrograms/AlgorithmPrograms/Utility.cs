@@ -130,9 +130,9 @@ namespace AlgorithmPrograms
 			//
 			int MiddleNumber, Flag, i;
 			//initialize the array size here
-			int count = primeNumberCounter(PrimeNumberRange);
-			int[] PrimeArray = new int[count];
-			Console.WriteLine(count);
+			int PrimeNumbersCountount = primeNumberCounter(PrimeNumberRange);
+			int[] PrimeArray = new int[PrimeNumbersCountount];
+			Console.WriteLine("Total Prime Numbers Countis {0} ", PrimeNumbersCountount);
 			int ArrayIndex = 0;
 			//it will satrts checking value from 2 till given range
 			for (int k = 2; k < PrimeNumberRange; k++)
