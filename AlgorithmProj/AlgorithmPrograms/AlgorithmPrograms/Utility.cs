@@ -4,6 +4,7 @@ namespace AlgorithmPrograms
 	using System;
 	using System.Collections.Generic;
 	using System.Text;
+	using System.Text.RegularExpressions;
 
 	/// <summary>
 	/// This is the Utility Function for Algorithm programs
@@ -196,6 +197,29 @@ namespace AlgorithmPrograms
 			}
 			//returns Total count
 			return Count;
+		}
+
+		//This is the regex program
+		public void RegExUtility(string FirstName,string LastName,string PhoneNumber)
+		{
+			string StandardMessage = "Hello << name >>, We have your full name as <<full name>> in our " +
+				"system.your contact number is 91-xxxxxxxxxx.Please, let us know in case of any clarification " +
+				"Thank you BridgeLabz 01/01/2016.";
+			Regex a = new Regex("^[1-9]{1}[0-9]{9}$");
+			Regex b = new Regex("^[a-zA-Z]{3,20}$");
+			if (a.IsMatch(PhoneNumber) && b.IsMatch(FirstName) && b.IsMatch(LastName))
+			{
+				StandardMessage=StandardMessage.Replace("<< name >>",FirstName);
+				StandardMessage=StandardMessage.Replace("<<full name>>", FirstName+" "+LastName);
+				StandardMessage=StandardMessage.Replace("xxxxxxxxxx", PhoneNumber);
+				StandardMessage=StandardMessage.Replace("01/01/2016",DateTime.Now.ToString(@"dd\/MM\/yyyy"));
+				Console.WriteLine(StandardMessage);
+
+			}
+			else
+			{
+				Console.WriteLine("Your Inputs Are not in Standard format");
+			}
 		}
 
 	}

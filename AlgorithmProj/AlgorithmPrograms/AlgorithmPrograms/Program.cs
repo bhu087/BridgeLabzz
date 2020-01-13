@@ -32,6 +32,12 @@ namespace AlgorithmPrograms
                     case 6:
                         PrimeNumbersProgram.PrimeNumbers();
                         break;
+                    case 7:
+                        RegexCustomizeProgram.RegEx();
+                        break;
+                    case 8:
+
+                        break;
                     default:
                         Console.WriteLine("You have entered Wrong Option");
                         break;
