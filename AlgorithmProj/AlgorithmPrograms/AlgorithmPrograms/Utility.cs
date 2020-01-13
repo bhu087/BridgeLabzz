@@ -84,8 +84,20 @@ namespace AlgorithmPrograms
 				}
 				Count--;
 			}
-
 			return IntArray;
 		}
+
+		//Anagram String finder
+		public int AnagramStringFinder(string String1, string String2)
+		{
+			char[] CharString = String1.ToCharArray();
+			Array.Sort(CharString);
+			String1 = new string(CharString);
+			CharString = String2.ToCharArray();
+			Array.Sort(CharString);
+			String2 = new string(CharString);
+			return String1.CompareTo(String2);
+		}
+
 	}
 }
