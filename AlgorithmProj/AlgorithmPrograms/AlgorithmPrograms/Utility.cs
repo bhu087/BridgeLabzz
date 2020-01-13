@@ -98,6 +98,105 @@ namespace AlgorithmPrograms
 			String2 = new string(CharString);
 			return String1.CompareTo(String2);
 		}
+		//Given integer is anagram
+		public void AnagramFinder(int[] IntegerArray)
+		{
+			string IntegerString = string.Empty;
+			string IntegerString1 = string.Empty;
+			for (int i = 0; i < IntegerArray.Length; i++)
+			{
+				int TempValue = IntegerArray[i];
+				IntegerString = Convert.ToString(IntegerArray[i]);
+				char[] CharString = IntegerString.ToCharArray();
+				Array.Sort(CharString);
+				IntegerString = new string(CharString);
+				for (int j = i + 1; j < IntegerArray.Length; j++)
+				{
+					IntegerString1 = Convert.ToString(IntegerArray[j]);
+					CharString = IntegerString1.ToCharArray();
+					Array.Sort(CharString);
+					string ImegerString2 = new string(CharString);
+					if (IntegerString.CompareTo(ImegerString2) == 0)
+					{
+						Console.WriteLine("{0} {1} are anagram", TempValue, IntegerString1);
+					}
+				}
+			}
+		}
+
+		//prime Numbers utility
+		public int[] PrimeNumbersUtility(int PrimeNumberRange)
+		{
+			//
+			int MiddleNumber, Flag, i;
+			//initialize the array size here
+			int count = primeNumberCounter(PrimeNumberRange);
+			int[] PrimeArray = new int[count];
+			Console.WriteLine(count);
+			int ArrayIndex = 0;
+			//it will satrts checking value from 2 till given range
+			for (int k = 2; k < PrimeNumberRange; k++)
+			{
+				//to find the maximun middle value
+				MiddleNumber = k / 2;
+				//flag is for denoting given value is prime or not
+				Flag = 1;
+				//it will starts deviding a value from 2 to middle value
+				//if the the value divisible by any value between (2 to Middle value) then exit the loop
+				//else make flag as 1 and stores in to prime Array
+				for (i = 2; i <= MiddleNumber; i++)
+				{
+					if (k % i == 0)
+					{
+						Flag = 0;
+						break;
+					}
+					else
+					{
+						Flag = 1;
+					}
+				}
+				if (Flag == 1)
+				{
+					PrimeArray[ArrayIndex] = k;
+					ArrayIndex++;
+				}
+			}
+			//returns the array
+			return PrimeArray;
+		}
+
+		//count prime number count 
+		public int primeNumberCounter(int RangeForCounting)
+		{
+			int b;
+			int Flag;
+			int i = 0, Count = 0;
+			//This is for Counting Number of prime numbers between the range
+			for (int k = 2; k < RangeForCounting; k++)
+			{
+				b = k / 2;
+				Flag = 1;
+				for (i = 2; i <= b; i++)
+				{
+					if (k % i == 0)
+					{
+						Flag = 0;
+						break;
+					}
+					else
+					{
+						Flag = 1;
+					}
+				}
+				if (Flag == 1)
+				{
+					Count++;
+				}
+			}
+			//returns Total count
+			return Count;
+		}
 
 	}
 }

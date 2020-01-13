@@ -25,6 +25,9 @@ namespace AlgorithmPrograms
                     case 4:
                         AnagramProgram.Anagrams();
                         break;
+                    case 5:
+                        AnagramAndPrimeProgram.AnagramAndPrime();
+                        break;
                     default:
                         Console.WriteLine("You have entered Wrong Option");
                         break;
