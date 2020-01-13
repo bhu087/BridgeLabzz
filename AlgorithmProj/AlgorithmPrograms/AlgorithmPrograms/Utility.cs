@@ -43,5 +43,27 @@ namespace AlgorithmPrograms
 			}
 			return false;
 		}
-    }
+
+		//Insertion sort utility
+		public string[] InsertionSortUtility(string[] StringArray)
+		{
+			string TempString;
+			int Count = StringArray.Length;
+			//insertion sorting in this block
+			for (int i = 0; i < Count; i++)
+			{
+				for (int j = i + 1; j < Count; j++)
+				{
+					if (StringArray[i].CompareTo(StringArray[j]) > 0)
+					{
+						TempString = StringArray[j];
+						StringArray[j] = StringArray[i];
+						StringArray[i] = TempString;
+					}
+				}
+			}
+			//Return sorted array
+			return StringArray;
+		}
+	}
 }
