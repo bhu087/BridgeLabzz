@@ -24,7 +24,7 @@ namespace FunctionalPrograms
                 "\n14 for Coupon generation\n15 for Stop Watch\n16 for Few Number of Notes Count" +
                 "\n17 for Day of the week\n18 for Temperature Conversion (F -> C) or (C -> F)" +
                 "\n19 for Monthly Payment\n20 For Finding a Square root (using Newton's method)" +
-                "\n21 for Binary places");
+                "\n21 for Binary places\n22 for Binary Nibble Swap");
             int Option = int.Parse(Console.ReadLine());
             switch (Option)
             {
@@ -90,6 +90,9 @@ namespace FunctionalPrograms
                     break;
                 case 21:
                     BinaryPlacesProgram.BinaryPlaces();
+                    break;
+                case 22:
+                    BinaryNibbleSwapProgram.BinaryNibbleSwap();
                     break;
                 default:
                     Console.WriteLine("You are selecting invalid option");

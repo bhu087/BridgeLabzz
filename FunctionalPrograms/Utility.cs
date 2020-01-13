@@ -715,6 +715,12 @@ namespace FunctionalPrograms
             toBinary(DeciNum);
             return BinaryResult;
         }
+        //Nibble Swapping Utility
+        public int NibbleSwapping(int DeciValue)
+        {
+            int NibbleSwap = ((DeciValue & 0x0F) << 4 | (DeciValue & 0xF0) >> 4);
+            return NibbleSwap;
+        }
     }
 }
 
