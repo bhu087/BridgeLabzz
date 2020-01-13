@@ -6,20 +6,15 @@ namespace AlgorithmPrograms
     using System.Text;
     using System.Text.RegularExpressions;
 
+    /// <summary>
+    /// This is the program for Regex
+    /// </summary>
     class RegexCustomizeProgram
     {
         public static void RegEx()
         {
             Utility RegExUTL = new Utility();
-            Console.WriteLine("Enter Your First Name");
-            string FirstName = Console.ReadLine();
-            Console.WriteLine("Enter Your Last Name");
-            string LastName = Console.ReadLine();
-            Console.WriteLine("Enter Your Mobile Number");
-            string PhoneNumber = Console.ReadLine();
-            RegExUTL.RegExUtility(FirstName,LastName,PhoneNumber);
-
-            
+            Console.WriteLine(RegExUTL.RegExUtility());
         }
     }
 }

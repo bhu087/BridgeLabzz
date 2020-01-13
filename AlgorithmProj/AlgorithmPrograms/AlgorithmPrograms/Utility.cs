@@ -200,27 +200,90 @@ namespace AlgorithmPrograms
 		}
 
 		//This is the regex program
-		public void RegExUtility(string FirstName,string LastName,string PhoneNumber)
+		public string RegExUtility()
 		{
+			//Standard String
 			string StandardMessage = "Hello << name >>, We have your full name as <<full name>> in our " +
 				"system.your contact number is 91-xxxxxxxxxx.Please, let us know in case of any clarification " +
 				"Thank you BridgeLabz 01/01/2016.";
-			Regex a = new Regex("^[1-9]{1}[0-9]{9}$");
-			Regex b = new Regex("^[a-zA-Z]{3,20}$");
-			if (a.IsMatch(PhoneNumber) && b.IsMatch(FirstName) && b.IsMatch(LastName))
+			//RegEx formats for MobileNumber
+			Regex MobileNumberFormat = new Regex("^[1-9]{1}[0-9]{9}$");
+			//regex format for Name
+			Regex NameFormat = new Regex("^[a-zA-Z]{3,20}$");
+			Console.WriteLine("Enter Your First Name");
+			string FirstName = Console.ReadLine();
+			//if name format not matches regex then it returns the error else enter to next step
+			if (NameFormat.IsMatch(FirstName))
 			{
-				StandardMessage=StandardMessage.Replace("<< name >>",FirstName);
-				StandardMessage=StandardMessage.Replace("<<full name>>", FirstName+" "+LastName);
-				StandardMessage=StandardMessage.Replace("xxxxxxxxxx", PhoneNumber);
-				StandardMessage=StandardMessage.Replace("01/01/2016",DateTime.Now.ToString(@"dd\/MM\/yyyy"));
-				Console.WriteLine(StandardMessage);
-
+				Console.WriteLine("Enter Your Last Name");
+				string LastName = Console.ReadLine();
+				//if name format not matches regex then it returns the error else enter to next step
+				if (NameFormat.IsMatch(LastName))
+				{
+					Console.WriteLine("Enter Your Mobile Number");
+					string PhoneNumber = Console.ReadLine();
+					//if Mobile Number format not matches regex then it returns the error else enter to next step
+					//and returns String to display
+					if (MobileNumberFormat.IsMatch(PhoneNumber))
+					{
+						StandardMessage = StandardMessage.Replace("<< name >>", FirstName);
+						StandardMessage = StandardMessage.Replace("<<full name>>", FirstName+" "+LastName);
+						StandardMessage = StandardMessage.Replace("xxxxxxxxxx", PhoneNumber);
+						StandardMessage = StandardMessage.Replace("01/01/2016",DateTime.Now.ToString(@"dd\/MM\/yyyy"));
+						return StandardMessage;
+					}
+					else
+						return "Your Mobile Number is Not in the Number Format";
+				}
+				else
+					return "Your Last Name is Not in the Charector Format";
 			}
 			else
 			{
-				Console.WriteLine("Your Inputs Are not in Standard format");
+				return "Your First Name is Not in the Charector Format";
 			}
 		}
-
+		//Find Numbers in N Questions Utility function
+		public void searchNum(int MaxNumber)
+		{
+			//Enter the maximum value from 0 to maximum value
+			int High = MaxNumber;
+			int Low = 0;
+			int Middle = (High + Low) / 2;
+			Console.WriteLine("press 0 for " + Middle + " and below  \npress 1 for " + (Middle + 1) + " and above");
+			int i = int.Parse(Console.ReadLine());
+			while (Middle != Low)
+			{
+				//if the value from low to middle this block will execute
+				if (i == 0)
+				{
+					High = Middle;
+					Middle = (Low + High) / 2;
+					Console.WriteLine("press 0 for " + Middle + " and below  \npress 1 for " + (Middle + 1) + " and above");
+					i = int.Parse(Console.ReadLine());
+					Console.WriteLine(i);
+				}
+				//if the value from Middle to high this block will execute
+				if (i == 1)
+				{
+					Low = Middle + 1;
+					Middle = (Low + High) / 2;
+					Console.WriteLine("press 0 for " + Middle + " and below \npress 1 for " + (Middle + 1) + " and above");
+					i = int.Parse(Console.ReadLine());
+					Console.WriteLine(i);
+				}
+			}
+			if (i == 0)
+			{    
+				//one more comparison is here
+				Console.WriteLine("Your Number is " + Low);
+			}
+			if (i == 1)
+			{   
+				//one more comparison is here
+				Console.WriteLine("Your Number is " + High);
+			}
+		}
 	}
 }
+

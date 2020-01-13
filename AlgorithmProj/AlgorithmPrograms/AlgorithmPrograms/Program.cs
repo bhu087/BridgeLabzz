@@ -8,7 +8,7 @@ namespace AlgorithmPrograms
         {
             Console.WriteLine("Enter your option\n1 for Binary word search\n2 for Strimg Insertion sort" +
                 "\n3 for integer Bubble sorting\n4 for anagram checking for Strings\n5 for anagram and prime number in given range" +
-                "\n6 for prime Numbers in given range");
+                "\n6 for prime Numbers in given range\n7 for Regex program\n8 For Find Number in N Chances");
             try
             {
                 int Option = int.Parse(Console.ReadLine());
@@ -36,7 +36,7 @@ namespace AlgorithmPrograms
                         RegexCustomizeProgram.RegEx();
                         break;
                     case 8:
-
+                        FindNumberProgram.FindNumber();
                         break;
                     default:
                         Console.WriteLine("You have entered Wrong Option");
