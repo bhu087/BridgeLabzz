@@ -16,10 +16,12 @@ namespace AlgorithmPrograms
 		public static void InsertionSort()
 		{
 			Utility InsertionUtility = new Utility();
+			//This is the unsorted string input
 			string[] InputStringArray = { "ZZZ", "VVV", "III", "BBB", "CCC", "AAA" };
 			Console.WriteLine("Your string array is [{0}]", string.Join(", ", InputStringArray));
 			InputStringArray = InsertionUtility.InsertionSortUtility(InputStringArray);
 			Console.WriteLine("Your sorted Array");
+			//This is the Sorted String Array
 			for (int i = 0; i < InputStringArray.Length; i++)
 			{
 				Console.Write(InputStringArray[i] + ", ");

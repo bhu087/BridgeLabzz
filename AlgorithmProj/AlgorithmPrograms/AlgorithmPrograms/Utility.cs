@@ -65,5 +65,27 @@ namespace AlgorithmPrograms
 			//Return sorted array
 			return StringArray;
 		}
+
+		//Bubble sort Integer 
+		public int[] IntegerBubbleSort(int[] IntArray)
+		{
+			int Count = IntArray.Length - 1;
+			int TempVariable;
+			for (int i = 0; i < 5; i++)
+			{
+				for (int j = 0; j < Count; j++)
+				{
+					if (IntArray[j].CompareTo(IntArray[j + 1]) > 0)
+					{
+						TempVariable = IntArray[j];
+						IntArray[j] = IntArray[j + 1];
+						IntArray[j + 1] = TempVariable;
+					}
+				}
+				Count--;
+			}
+
+			return IntArray;
+		}
 	}
 }
