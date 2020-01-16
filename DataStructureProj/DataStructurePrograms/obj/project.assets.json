@@ -13,9 +13,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\BridgeLabzBhush\\DataStructurePrograms\\DataStructurePrograms\\DataStructurePrograms.csproj",
-      "projectName": "DataStructurePrograms",
-      "projectPath": "D:\\BridgeLabzBhush\\DataStructurePrograms\\DataStructurePrograms\\DataStructurePrograms.csproj",
+      "projectUniqueName": "D:\\BridgeLabzBhush\\DataStructurePrograms\\DataStructurePrograms\\DataStructureProgramsInteger.csproj",
+      "projectName": "DataStructureProgramsInteger",
+      "projectPath": "D:\\BridgeLabzBhush\\DataStructurePrograms\\DataStructurePrograms\\DataStructureProgramsInteger.csproj",
       "packagesPath": "C:\\Users\\bridgelabz\\.nuget\\packages\\",
       "outputPath": "D:\\BridgeLabzBhush\\DataStructurePrograms\\DataStructurePrograms\\obj\\",
       "projectStyle": "PackageReference",
