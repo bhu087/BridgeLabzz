@@ -1,0 +1,11 @@
+C:\Users\bridgelabz\source\repos\OrderedLinkedList\OrderedLinkedList\obj\Debug\netcoreapp3.1\OrderedLinkedList.csprojAssemblyReference.cache
+C:\Users\bridgelabz\source\repos\OrderedLinkedList\OrderedLinkedList\obj\Debug\netcoreapp3.1\OrderedLinkedList.AssemblyInfoInputs.cache
+C:\Users\bridgelabz\source\repos\OrderedLinkedList\OrderedLinkedList\obj\Debug\netcoreapp3.1\OrderedLinkedList.AssemblyInfo.cs
+C:\Users\bridgelabz\source\repos\OrderedLinkedList\OrderedLinkedList\bin\Debug\netcoreapp3.1\OrderedLinkedList.exe
+C:\Users\bridgelabz\source\repos\OrderedLinkedList\OrderedLinkedList\bin\Debug\netcoreapp3.1\OrderedLinkedList.deps.json
+C:\Users\bridgelabz\source\repos\OrderedLinkedList\OrderedLinkedList\bin\Debug\netcoreapp3.1\OrderedLinkedList.runtimeconfig.json
+C:\Users\bridgelabz\source\repos\OrderedLinkedList\OrderedLinkedList\bin\Debug\netcoreapp3.1\OrderedLinkedList.runtimeconfig.dev.json
+C:\Users\bridgelabz\source\repos\OrderedLinkedList\OrderedLinkedList\bin\Debug\netcoreapp3.1\OrderedLinkedList.dll
+C:\Users\bridgelabz\source\repos\OrderedLinkedList\OrderedLinkedList\bin\Debug\netcoreapp3.1\OrderedLinkedList.pdb
+C:\Users\bridgelabz\source\repos\OrderedLinkedList\OrderedLinkedList\obj\Debug\netcoreapp3.1\OrderedLinkedList.dll
+C:\Users\bridgelabz\source\repos\OrderedLinkedList\OrderedLinkedList\obj\Debug\netcoreapp3.1\OrderedLinkedList.pdb
