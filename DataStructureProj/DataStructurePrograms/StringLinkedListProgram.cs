@@ -31,10 +31,20 @@ namespace DataStructurePrograms
             }
             myLinkedListUTL.Append("Great");
             myLinkedListUTL.Append("Bengaluru");
-            myLinkedListUTL.remove("Great");
+            myLinkedListUTL.remove("the");
             myLinkedListUTL.add(10);
             myLinkedListUTL.add(120);
             myLinkedListUTL.Display();
+            int size = myLinkedListUTL.size();
+            TempString = string.Empty;
+            string[] StringArrayTemp = new string[myLinkedListUTL.size()];
+            //all the linked list values take to string array of string array of temp
+            for (int i = 0; i < size ; i++)
+            {
+                StringArrayTemp[i] = (string)myLinkedListUTL.ValueAt(i)+" ";
+            }
+            //using file Write all lines to rewrite modified data to same file
+            File.WriteAllLines(FilePath, StringArrayTemp);
         }
     }
 }

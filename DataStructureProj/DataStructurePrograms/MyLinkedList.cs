@@ -248,6 +248,26 @@ namespace DataStructurePrograms
             }
             return Current.data;
         }
+        //value at
+        public object ValueAt(int Position)
+        {
+            if (Position < size())
+            {
+                if (IsEmpty())
+                {
+                    return "List is empty";
+                }
+                int count = Position;
+                Node Current = head;
+                while (count > 0)
+                {
+                    Current = Current.Next;
+                    count--;
+                }
+                return Current.data;
+            }
+            return "invalid position";
+        }
         //pop at the perticular position 
         public Object pop(int Position)
         {
