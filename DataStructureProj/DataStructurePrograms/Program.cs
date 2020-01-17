@@ -11,7 +11,7 @@ namespace DataStructurePrograms
         static void Main(string[] args)
         {
             Console.WriteLine("Enter your Option\n1 for Linked List\n2 for Balanced Parentheses Program" +
-                "\n3 for Bankin Queue");
+                "\n3 for Bankin Queue\n4 for Palindrome checking program");
 Home:       try
             {
                 int Option = int.Parse(Console.ReadLine());
@@ -25,6 +25,9 @@ Home:       try
                         break;
                     case 3:
                         BankingCashCounterProgram.ServiceSelection();
+                        break;
+                    case 4:
+                        PalindromeCheckingProgram.PalindromeChecking();
                         break;
                     default:
                         Console.WriteLine("Wrong selection...");
