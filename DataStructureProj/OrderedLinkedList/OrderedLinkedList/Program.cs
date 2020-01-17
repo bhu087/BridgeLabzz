@@ -9,37 +9,28 @@ namespace OrderedLinkedList
     /// </summary>
     class Program
     {
-        static void Main(string[] args)
+       static void Main(String[] args)
         {
-            IntegerLinkedListProgram MyLinkedListIntegerUTL = new IntegerLinkedListProgram();
-            string[] Separators = new string[] { " ", ",", ".", "!", "\'", " ", "\'s", "\'n" };
-            string FilePath = @"D:\BridgeLabzBhush\AlgorithmPrograms\AlgorithmPrograms\bin\Debug\netcoreapp3.1\SampleInteger.txt";
-            string[] StringArray = File.ReadAllLines(FilePath);
-            string TempString = string.Empty;
-            foreach (string Str in StringArray)
+            Console.WriteLine("Enter your Option\n1 for ordered linked list\n2 for Hash function");
+            try
             {
-                TempString += Str;
+                int Option = int.Parse(Console.ReadLine());
+                switch (Option)
+                {
+                    case 1:
+                        OrderedListProgram.OrderedList();
+                        break;
+                    case 2:
+                        HashingFunctionProcess.HashingProcess();
+                        break;
+                    default:
+                        break;
+                }
             }
-            //in this section splitted at space and removes all the seperatos and added to linked list
-            foreach (string EachWord in TempString.Split(Separators, StringSplitOptions.RemoveEmptyEntries))
+            catch (Exception)
             {
-                MyLinkedListIntegerUTL.add(Convert.ToInt32(EachWord));
+                Console.WriteLine("Invalid Input\nTry again...");
             }
-
-
-            //MyLinkedListIntegerUTL.add(7);
-            //MyLinkedListIntegerUTL.add(1);
-            //MyLinkedListIntegerUTL.add(3);
-            //MyLinkedListIntegerUTL.add(2);
-            //MyLinkedListIntegerUTL.add(5);
-            //MyLinkedListIntegerUTL.add(4);
-            //MyLinkedListIntegerUTL.add(6);
-            //Console.WriteLine(MyLinkedListIntegerUTL.pop(6));
-            ////MyLinkedListIntegerUTL.add(1);
-            //MyLinkedListIntegerUTL.remove(100);
-            Console.WriteLine(MyLinkedListIntegerUTL.Index(12345));
-            MyLinkedListIntegerUTL.Display();
-            
         }
     }
 
