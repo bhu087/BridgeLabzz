@@ -51,5 +51,81 @@ namespace DataStructurePrograms
             //it shows the how much stack is filled
             Console.WriteLine(StackMemoryUTL.Size());
         }
+
+        //this is the calender utility
+        public void CalenderUtility(int Year, int Month)
+        {
+            //This array for declaring days count we start from 1 for january so simply make {0} as dummy value
+            int[] MonthDays = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+            //This array is week Days
+            string[] Weeks = { string.Empty, "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" };
+            //This array for storing dates in two dimensional structure
+            string[,] CalenderArray = new string[6, 7];
+            //Count is used for counting dates
+            int Count = 0;
+            //if year is leap then need to change february days as 29
+            if (Year % 4 == 0)
+            {
+                if (Year % 100 == 0)
+                {
+                    if (Year % 400 == 0)
+                       {
+                          MonthDays[2] = 29;
+                       }
+                }
+                    MonthDays[2] = 29;
+            }
+
+            //I'm getting first day of the month from this
+            string firstDayOfMonth = new DateTime(Year, Month, 1).DayOfWeek.ToString().Substring(0, 3);
+            //it will not saves anything so taking count value
+            int i = 1;
+            while (!(Weeks[i].Equals(firstDayOfMonth)))
+            {
+                i++;
+                Count++;
+            }
+            //Date starting from 1 so initialize to 1
+            int DateVariable = 1;
+            //This loops for first lines of the calender
+            for (i = 0; i < 1; i++)
+            {
+                //start storing from first day of the month 
+                for (int j = Count; j < 7; j++)
+                {
+                    CalenderArray[i, j] = Convert.ToString(DateVariable);
+                    DateVariable++;
+                }
+            }
+             //this line for remaining 5 rows of calender
+             for (int j = 1; j < 6; j++)
+             {
+                  for (i = 0; i < 7; i++)
+                  {
+                      if (DateVariable > MonthDays[Month])
+                      {
+                          break;
+                      }
+                    CalenderArray[j, i] = Convert.ToString(DateVariable);
+                      DateVariable++;
+                  }
+             }
+             Console.WriteLine("{0} {1}", Month, Year);
+            //this is for displaying the weeks name
+             for (i = 1; i < Weeks.Length; i++)
+             {
+                 Console.Write("{0}\t", Weeks[i]);
+             }
+             Console.WriteLine();
+             //this is for printing remaining rows in array
+             for (i = 0; i < 6; i++)
+             {
+                 for (int j = 0; j < 7; j++)
+                 {
+                     Console.Write("{0}\t", CalenderArray[i, j]);
+                 }
+                Console.WriteLine();
+             }
+        }
     }
 }
