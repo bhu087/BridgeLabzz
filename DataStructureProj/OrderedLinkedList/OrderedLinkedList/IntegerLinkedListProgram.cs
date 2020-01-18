@@ -106,6 +106,12 @@ namespace OrderedLinkedList
             }
             Node CurrentNode = head;
             int Ans;
+            if (CurrentNode.Next == null)
+            {
+                Ans = CurrentNode.Data;
+                head = null;
+                return Ans;
+            }
             while (CurrentNode.Next.Next != null)
             {
                 CurrentNode = CurrentNode.Next;

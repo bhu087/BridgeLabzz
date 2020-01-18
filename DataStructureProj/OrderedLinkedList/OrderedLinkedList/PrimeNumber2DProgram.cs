@@ -14,7 +14,7 @@ namespace OrderedLinkedList
         {
             Utility PrimeNumberUTL = new Utility();
             Console.WriteLine("You are selecting 2D array prime numbers\n1 for 1-1000 prime list" +
-                "\n2 for anagram and prime list");
+                "\n2 for anagram and prime list\n3 for Anagram reverse Using Stack(Linked List)");
             try
             {
                 switch (int.Parse(Console.ReadLine()))
@@ -25,12 +25,16 @@ namespace OrderedLinkedList
                     case 2:
                         PrimeNumberUTL.OnlyPrimeOnlyAnagramList();
                         break;
+                    case 3:
+                        PrimeNumberUTL.ReversePrimeListUsingStack();
+                        break;
                     default:
                         break;
                 }
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                Console.WriteLine(e.ToString());
                 Console.WriteLine("You are entered Invalid Input\nTry again...");
             }
         }

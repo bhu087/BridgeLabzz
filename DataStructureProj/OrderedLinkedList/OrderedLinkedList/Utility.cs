@@ -150,6 +150,7 @@ Here:           string TempString1 = Convert.ToString(FullPrimeList.ValueAt(i));
                     //if both are anagram then stored to anagram list and remove from all the prime number list
                     if (TempString1.Equals(TempString2))
                     {
+                        //if value is anagram then push it to Anagram list
                         AnagramsList.add(FullPrimeList.ValueAt(i));
                         //after removing ith data present list index varies so need to save kth item to temporarily
                         int ValueAK = FullPrimeList.ValueAt(k);
@@ -167,6 +168,78 @@ Here:           string TempString1 = Convert.ToString(FullPrimeList.ValueAt(i));
             AnagramsList.Display();
             Console.WriteLine("Only Primr List....................................................");
             FullPrimeList.Display();
+        }
+
+        //this is program for reversing prime array using stack
+        public void ReversePrimeListUsingStack()
+        {
+            IntegerLinkedListProgram FullPrimeList = new IntegerLinkedListProgram();
+            UserStack StackUtility = new UserStack();
+            FullPrimeList.add(2);
+            FullPrimeList.add(3);
+            int Flag;
+            int j;
+            //This is the prime number findin loop
+            for (int i = 2; i < 1000; i++)
+            {
+                Flag = 0;
+                for (j = 2; j <= i / 2; j++)
+                {
+                    if (i % j == 0)
+                    {
+                        Flag = 0;
+                        break;
+                    }
+                    else
+                    {
+                        Flag = 1;
+                    }
+                }
+                //if the number is prime number then it saves in perticular link
+                if (Flag == 1)
+                {
+                    FullPrimeList.add(i);
+                }
+            }
+            int size = FullPrimeList.Size();
+                //NonAnagramPrimeList = FullPrimeList;
+            for (int i = 0; i < size; i++)
+            {
+                //Here is used to if anagrams find in the list then remove the ith position data
+                //Now new data available here to check that also we use Label
+ Here:          string TempString1 = Convert.ToString(FullPrimeList.ValueAt(i));
+                char[] CharArray1 = TempString1.ToCharArray();
+                Array.Sort(CharArray1);
+                TempString1 = new string(CharArray1);
+                //Compare ith data with remaining all data within the list
+                for (int k = i + 1; k < size - 1; k++)
+                {
+                    string TempString2 = Convert.ToString(FullPrimeList.ValueAt(k));
+                    char[] CharArray2 = TempString2.ToCharArray();
+                    Array.Sort(CharArray2);
+                    TempString2 = new string(CharArray2);
+                    //if both are anagram then stored to anagram list and remove from all the prime number list
+                    if (TempString1.Equals(TempString2))
+                    {
+                        //if it is anagram then push to stack
+                        StackUtility.push(FullPrimeList.ValueAt(i));
+                        //after removing ith data present list index varies so need to save kth item to temporarily
+                        int ValueAK = FullPrimeList.ValueAt(k);
+                        //then remove both the values
+                        FullPrimeList.remove(FullPrimeList.ValueAt(i));
+                        FullPrimeList.remove(ValueAK);
+                        //Now size is changed to current value
+                        size = FullPrimeList.Size();
+                        //Goto Here without incrementing i value
+                        goto Here;
+                    }
+                }
+            }
+            //displaying data in reverse order by pop from stack(LIFO)
+            while (StackUtility.IsEmptyStack() != true)
+            {
+                Console.WriteLine(StackUtility.pop());
+            }
         }
     }
 }
