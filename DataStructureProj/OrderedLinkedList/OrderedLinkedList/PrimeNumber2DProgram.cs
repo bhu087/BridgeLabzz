@@ -28,6 +28,9 @@ namespace OrderedLinkedList
                     case 3:
                         PrimeNumberUTL.ReversePrimeListUsingStack();
                         break;
+                    case 4:
+                        PrimeNumberUTL.PrimeAnagramListUsingQueue();
+                        break;
                     default:
                         break;
                 }
