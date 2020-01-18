@@ -13,11 +13,21 @@ namespace OrderedLinkedList
         public static void PrimeNumber2D()
         {
             Utility PrimeNumberUTL = new Utility();
-            Console.WriteLine("You are selecting 2D array prime numbers");
+            Console.WriteLine("You are selecting 2D array prime numbers\n1 for 1-1000 prime list" +
+                "\n2 for anagram and prime list");
             try
             {
-                int Range = int.Parse(Console.ReadLine());
-                PrimeNumberUTL.PrimeNumberUtility();
+                switch (int.Parse(Console.ReadLine()))
+                {
+                    case 1:
+                        PrimeNumberUTL.PrimeNumberUtility();
+                        break;
+                    case 2:
+                        PrimeNumberUTL.OnlyPrimeOnlyAnagramList();
+                        break;
+                    default:
+                        break;
+                }
             }
             catch (Exception)
             {
