@@ -127,5 +127,89 @@ namespace DataStructurePrograms
                 Console.WriteLine();
              }
         }
+
+        //this is Calender Queue
+        public void CalenderQueueUtility(int Year, int Month)
+        {
+            Queue MyQueue = new Queue();
+            //This array for declaring days count we start from 1 for january so simply make {0} as dummy value
+            int[] MonthDays = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+            //This array is week Days
+            string[] Weeks = { string.Empty, "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" };
+            //This array for storing dates in two dimensional structure
+            string[,] CalenderArray = new string[6, 7];
+            //Count is used for counting dates
+            int Count = 0;
+            //if year is leap then need to change february days as 29
+            if (Year % 4 == 0)
+            {
+                if (Year % 100 == 0)
+                {
+                    if (Year % 400 == 0)
+                    {
+                        MonthDays[2] = 29;
+                    }
+                }
+                MonthDays[2] = 29;
+            }
+
+            //I'm getting first day of the month from this
+            string firstDayOfMonth = new DateTime(Year, Month, 1).DayOfWeek.ToString().Substring(0, 3);
+            //it will not saves anything so taking count value
+            int i;
+            for (i = 1; i < Weeks.Length; i++)
+            {
+                //this adding week names to queue
+                MyQueue.addToQueue(Weeks[i]);
+            }
+            i = 1;
+            while (!(firstDayOfMonth.Equals(Weeks[i])))
+            {
+                //till first day of the week it fills empty string
+                MyQueue.addToQueue(string.Empty);
+                Count++;
+                i++;
+            }
+            //Date starting from 1 so initialize to 1
+            int DateVariable = 1;
+            //This loops for first lines of the calender
+            for (i = 0; i < 1; i++)
+            {
+                //start storing from first day of the month 
+                for (int j = Count; j < 7; j++)
+                {
+                    //After start adding data to queue
+                    MyQueue.addToQueue(Convert.ToString(DateVariable));
+                    DateVariable++;
+                }
+            }
+            //this line for remaining 5 rows of calender
+            for (int j = 0; j < 6; j++)
+            {
+                for (i = 0; i < 7; i++)
+                {
+                    //if the datevariable exceeds then add empty string to queue
+                    if (DateVariable > MonthDays[Month])
+                    {
+                        MyQueue.addToQueue(Convert.ToString(string.Empty));
+                    }
+                    //if month date numbers below the date variable then push add to queue
+                    else
+                    {
+                        MyQueue.addToQueue(Convert.ToString(DateVariable));
+                    }
+                    DateVariable++;
+                }
+            }
+            //this is displaying data using deque from queue
+            for (i=0;i<6;i++)
+            {
+                for (int j=0;j<7;j++)
+                {
+                    Console.Write("{0}\t",MyQueue.RemoveFromQueue());
+                }
+                Console.WriteLine();
+            }
+        }
     }
 }
