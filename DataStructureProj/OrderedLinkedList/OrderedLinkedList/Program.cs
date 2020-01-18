@@ -11,7 +11,8 @@ namespace OrderedLinkedList
     {
        static void Main(String[] args)
         {
-            Console.WriteLine("Enter your Option\n1 for ordered linked list\n2 for Hash function");
+            Console.WriteLine("Enter your Option\n1 for ordered linked list\n2 for Hash function" +
+                "\n3 for Prime Number 2D array");
             try
             {
                 int Option = int.Parse(Console.ReadLine());
@@ -22,6 +23,9 @@ namespace OrderedLinkedList
                         break;
                     case 2:
                         HashingFunctionProcess.HashingProcess();
+                        break;
+                    case 3:
+                        PrimeNumber2DProgram.PrimeNumber2D();
                         break;
                     default:
                         break;

@@ -228,5 +228,21 @@ namespace OrderedLinkedList
             }
             Console.WriteLine(CurrentNode.Data);
         }
+
+        //Display in single line
+        public void DisplayLine()
+        {
+            if (IsEmpty())
+            {
+                return;
+            }
+            Node CurrentNode = head;
+            while (CurrentNode.Next != null)
+            {
+                Console.WriteLine("             "+CurrentNode.Data);
+                CurrentNode = CurrentNode.Next;
+            }
+            Console.WriteLine("             " + CurrentNode.Data);
+        }
     }
 }
