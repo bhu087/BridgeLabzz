@@ -12,7 +12,7 @@ namespace DataStructurePrograms
         {
             Console.WriteLine("Enter your Option\n1 for Linked List\n2 for Balanced Parentheses Program" +
                 "\n3 for Bankin Queue\n4 for Palindrome checking program\n5 for Calender using 2D array" +
-                "\n6 for Calender using Queue\n7 For Calender using Stack");
+                "\n6 for Calender using Queue\n7 For Calender using Stack\n8 for Doubly linked list");
 Home:       try
             {
                 int Option = int.Parse(Console.ReadLine());
@@ -38,6 +38,9 @@ Home:       try
                         break;
                     case 7:
                         CalenderStack.MyStackCalenderCall();
+                        break;
+                    case 8:
+                        DoublyLinkedListProgram.DoublyLinkedList();
                         break;
                     default:
                         Console.WriteLine("Wrong selection...");
