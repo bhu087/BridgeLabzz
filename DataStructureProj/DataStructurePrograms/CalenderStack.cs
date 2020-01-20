@@ -6,12 +6,11 @@ namespace DataStructurePrograms
     using System.Text;
 
     /// <summary>
-    /// This is the calender using queue
+    /// this is the calender using stack
     /// </summary>
-    class CalenderQueue
+    class CalenderStack
     {
-
-        public static void MyQueueCalenderCall()
+        public static void MyStackCalenderCall()
         {
             try
             {
@@ -30,11 +29,12 @@ Month:          int Month = int.Parse(Console.ReadLine());
                     goto Month;
                 }
                 Utility CalenderUTL = new Utility();
-                CalenderUTL.CalenderQueueUtility(Year, Month);
+                CalenderUTL.CalenderStackUtility(Year, Month);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                Console.WriteLine("You are entered Wrong input");
+                Console.WriteLine(e.ToString());
+                //Console.WriteLine("You are entered Wrong input");
             }
         }
     }
