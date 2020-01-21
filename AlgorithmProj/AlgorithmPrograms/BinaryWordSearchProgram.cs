@@ -10,9 +10,6 @@ namespace AlgorithmPrograms
 	/// </summary>
 	class BinaryWordSearchProgram
     {
-		/// <summary>
-		/// Binary word search.
-		/// </summary>
 		public static void BinaryWordSearch()
 		{
 			Utility BinaryWordSearchUTL = new Utility();
