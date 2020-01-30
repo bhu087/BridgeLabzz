@@ -1,0 +1,19 @@
+{
+  "Stock": [
+    {
+      "StockName": "SBI",
+      "NumberOfShare": 100,
+      "SharePrice": 150
+    },
+    {
+      "StockName": "Axis",
+      "NumberOfShare": 100,
+      "SharePrice": 150
+    },
+    {
+      "StockName": "Reliance-Jio",
+      "NumberOfShare": 100,
+      "SharePrice": 150
+    }
+  ]
+}
