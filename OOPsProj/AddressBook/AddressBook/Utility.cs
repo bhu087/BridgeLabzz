@@ -213,5 +213,20 @@ Number:     Console.Write("Enter a Number");
                 Console.WriteLine(str);
             }
         }
+
+        public void SortByNumber()
+        {
+            List<string> myList = new List<string>();
+            foreach (AddressObject var in AddObjList)
+            {
+                string tempString = var.MobileNumber + " " + var.Name + " " + var.Company;
+                myList.Add(tempString);
+            }
+            myList.Sort();
+            foreach (string str in myList)
+            {
+                Console.WriteLine(str);
+            }
+        }
     }
 }

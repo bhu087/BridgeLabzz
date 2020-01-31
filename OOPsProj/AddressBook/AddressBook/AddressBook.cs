@@ -27,6 +27,9 @@ namespace AddressBook
                 case 4:
                     AddressUtility.SortByName();
                     break;
+                case 5:
+                    AddressUtility.SortByNumber();
+                    break;
                 case 6:
                     AddressUtility.PrintEntries();
                     break;
