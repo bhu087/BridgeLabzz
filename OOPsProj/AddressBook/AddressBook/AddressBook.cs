@@ -19,6 +19,7 @@ namespace AddressBook
                     AddressUtility.AddAPerson();
                     break;
                 case 2:
+                    AddressUtility.EditPerson();
                     break;
                 case 6:
                     AddressUtility.PrintEntries();

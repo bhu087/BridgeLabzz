@@ -54,14 +54,14 @@
         /// </summary>
         public void AddAPerson()
         {
-Name:       Console.WriteLine("Enter a name");
+Name:       Console.Write("Enter a name");
             string name = Console.ReadLine();
             if (this.DuplicateName(name))
             {
                 Console.WriteLine("Name already exists");
                 goto Name;
             }
-Number:     Console.WriteLine("Enter a Number");
+Number:     Console.Write("Enter a Number");
             long number = this.LongInput();
             if (this.DuplicateNumber(number))
             {
@@ -70,6 +70,11 @@ Number:     Console.WriteLine("Enter a Number");
             }
             Console.Write("Company :");
             string company = Console.ReadLine();
+            this.CreateContact(name,number,company);
+        }
+
+        public void CreateContact(string name, long number, string company)
+        {
             AddressObject addressObject = new AddressObject
             {
                 Name = name,
@@ -77,32 +82,11 @@ Number:     Console.WriteLine("Enter a Number");
                 Company = company
             };
             AddObjList.Add(addressObject);
-            string output = JsonConvert.SerializeObject(AddList,Formatting.Indented);
-            File.WriteAllText(@"D:\BridgeLabzBhush\ObjectOrientedPrograms\AddressBook\AddressBook\AddressBook\AddressFile.json",output);
+            string output = JsonConvert.SerializeObject(AddList, Formatting.Indented);
+            File.WriteAllText(@"D:\BridgeLabzBhush\ObjectOrientedPrograms\AddressBook\AddressBook\AddressBook\AddressFile.json", output);
         }
-
-        //public string Name()
-        //{
-        //    Console.Write("First Name :");
-        //    string name = Console.ReadLine();
-        //    if (this.DuplicateName(name))
-        //    {
-        //        Console.WriteLine("Contact for this name already exists\ntry anethor");
-        //        return null;
-        //    }
-        //    return name;
-        //}
-        //public long Number()
-        //{
-        //    Console.Write("Mobile Number :");
-        //    long number = this.LongInput();
-        //    if (this.DuplicateNumber(number))
-        //    {
-        //        Console.WriteLine("Number Already exists");
-        //        return 0;
-        //    }
-        //    return number;
-        //}
+        
+        
         /// <summary>
         /// Prints the entries.
         /// </summary>
@@ -137,20 +121,42 @@ Number:     Console.WriteLine("Enter a Number");
             return false;
         }
 
-        //public void EditPerson()
-        //{
-        //    dynamic dyn = JObject.Parse(AddBook);
-        //    var 
-        //    Console.WriteLine("1 for edit name\n2 for Edit Mobile Number\n3 for edit Company");
-        //    int option = this.IntInput();
-        //    if (option == 1)
-        //    {
+        public void EditPerson()
+        {
+            dynamic dyn = JObject.Parse(AddBook);
+            int i = 0;
+            Console.WriteLine("edit");
+            foreach (AddressObject contact in AddObjList)
+            {
+                Console.WriteLine("{0} for edit {1}", i, contact.Name);
+                i++;
+            }
 
-        //    }
-        //    if ()
-        //    {
-
-        //    }
-        //}
+            i = this.IntInput();
+            Console.WriteLine("0 for edit name\n1 for Edit Mobile Number\n2 for edit Company");
+            int option = this.IntInput();
+            switch (option)
+            {
+                case 0:
+                    Console.WriteLine("Enter New Name");
+                    string newName = Console.ReadLine();
+                    dyn["AddressDetails"][i]["Name"] = newName;
+                    break;
+                case 1:
+                    Console.WriteLine("Enter New Number");
+                    long newNumber = this.LongInput();
+                    dyn["AddressDetails"][i]["MobileNumber"] = newNumber;
+                    break;
+                case 2:
+                    Console.WriteLine("Enter New Company");
+                    string newCompany = Console.ReadLine();
+                    dyn["AddressDetails"][i]["Name"] = newCompany;
+                    break;
+                default:
+                    break;
+            }
+            string output = JsonConvert.SerializeObject(dyn,Formatting.Indented);
+            File.WriteAllText(@"D:\BridgeLabzBhush\ObjectOrientedPrograms\AddressBook\AddressBook\AddressBook\AddressFile.json", output);
+        }
     }
 }
