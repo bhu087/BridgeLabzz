@@ -1,0 +1,19 @@
+{
+  "AddressDetails": [
+    {
+      "Name": "Mohan",
+      "MobileNumber": 5544112255,
+      "Company": ""
+    },
+    {
+      "Name": "Rohan",
+      "MobileNumber": 1254512451,
+      "Company": ""
+    },
+    {
+      "Name": "Nayan",
+      "MobileNumber": 1244444411,
+      "Company": ""
+    }
+  ]
+}
