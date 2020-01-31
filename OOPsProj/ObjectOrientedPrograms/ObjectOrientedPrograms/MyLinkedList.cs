@@ -16,9 +16,9 @@ namespace ObjectOrientedPrograms
     public class MyLinkedList<T>
     {
         /// <summary>
-        /// The head
+        /// The Head
         /// </summary>
-        public Node<T> head;
+        public Node<T> Head;
 
         /// <summary>
         /// Adds the specified value.
@@ -26,15 +26,15 @@ namespace ObjectOrientedPrograms
         /// <param name="value">The value.</param>
         public void Add(T value)
         {
-            if (head == null)
-            {
-                head = new Node<T>(value);
-            }
-
+            ////if Head is null then node is Head
             ////else it will check till next==null then added at tail
+            if (this.Head == null)
+            {
+                this.Head = new Node<T>(value);
+            }
             else
             {
-                Node<T> current = head;
+                Node<T> current = this.Head;
                 while (current.Next != null)
                 {
                     current = current.Next;
@@ -49,12 +49,12 @@ namespace ObjectOrientedPrograms
         /// </summary>
         public void Display()
         {
-            if (IsEmpty())
+            if (this.IsEmpty())
             {
                 return;
             }
 
-            Node<T> current = head;
+            Node<T> current = this.Head;
             while (current.Next != null)
             {
                 Console.WriteLine(current.Data);
@@ -71,11 +71,11 @@ namespace ObjectOrientedPrograms
         public void Remove(T value)
         {
             ////String StrValue = Value.ToString();
-            Node<T> current = head;
+            Node<T> current = this.Head;
             ////it will check untill last NodeGenerics
             while (current.Next != null)
             {
-                if (head == null)
+                if (this.Head == null)
                 {
                     return;
                 }
@@ -84,7 +84,7 @@ namespace ObjectOrientedPrograms
                 ////if equal remove it
                 if (current.Data.Equals(value))
                 {
-                    head = current.Next;
+                    this.Head = current.Next;
                     this.Remove(value);
                 }
 
@@ -111,7 +111,7 @@ namespace ObjectOrientedPrograms
             }
 
             ////if available returns true else false
-            Node<T> current = head;
+            Node<T> current = this.Head;
             while (current.Next != null)
             {
                 if (current.Data.Equals(value))
@@ -138,7 +138,7 @@ namespace ObjectOrientedPrograms
         /// </returns>
         public bool IsEmpty()
         {
-            if (head == null)
+            if (this.Head == null)
             {
                 return true;
             }
@@ -152,12 +152,12 @@ namespace ObjectOrientedPrograms
         /// <returns>Integer value</returns>
         public int Size()
         {
-            if (IsEmpty())
+            if (this.IsEmpty())
             {
                 return 0;
             }
 
-            Node<T> current = head;
+            Node<T> current = this.Head;
             int size = 0;
             while (current.Next != null)
             {
@@ -180,7 +180,7 @@ namespace ObjectOrientedPrograms
             }
             else
             {
-                Add(value);
+                this.Add(value);
             }
         }
 
@@ -191,12 +191,12 @@ namespace ObjectOrientedPrograms
         /// <returns>String of index</returns>
         public string Index(T value)
         {
-            if (IsEmpty())
+            if (this.IsEmpty())
             {
                 return "List is empty";
             }
 
-            Node<T> current = head;
+            Node<T> current = this.Head;
             int indexValue = -1;
             string indexString = string.Empty;
             while (current.Next != null)
@@ -237,7 +237,7 @@ namespace ObjectOrientedPrograms
         /// <param name="value">The value.</param>
         public void Insert(int position, T value)
         {
-            Node<T> current = head;
+            Node<T> current = this.Head;
             Node<T> tempNode = new Node<T>(value);
             int count = position;
             if (this.Search(value))
@@ -251,7 +251,7 @@ namespace ObjectOrientedPrograms
                 return;
             }
 
-            //this needs position -1 time movement to forward required
+            ////this needs position -1 time movement to forward required
             while (count > 1)
             {
                 current = current.Next;
@@ -268,10 +268,9 @@ namespace ObjectOrientedPrograms
         /// <param name="value">The value.</param>
         public void AddFirst(T value)
         {
-            Node<T> Current = head;
             Node<T> tempNode = new Node<T>(value);
-            tempNode.Next = head;
-            head = tempNode;
+            tempNode.Next = this.Head;
+            this.Head = tempNode;
         }
 
         /// <summary>
@@ -280,28 +279,28 @@ namespace ObjectOrientedPrograms
         /// <returns>returns the generic value</returns>
         public T Pop()
         {
-            T Ans;
+            T ans;
             if (this.IsEmpty())
             {
                 return default;
             }
 
-            Node<T> Current = head;
-            if (Current.Next == null)
+            Node<T> current = this.Head;
+            if (current.Next == null)
             {
-                Ans = Current.Data;
-                head = null;
-                return Ans;
+                ans = current.Data;
+                this.Head = null;
+                return ans;
             }
 
-            while (Current.Next.Next != null)
+            while (current.Next.Next != null)
             {
-                Current = Current.Next;
+                current = current.Next;
             }
 
-            Ans = Current.Next.Data;
-            Current.Next = null;
-            return Ans;
+            ans = current.Next.Data;
+            current.Next = null;
+            return ans;
         }
 
         /// <summary>
@@ -315,10 +314,10 @@ namespace ObjectOrientedPrograms
                 return default;
             }
 
-            Node<T> Current = head;
-            T Ans = Current.Data;
-            head = Current.Next;
-            return Ans;
+            Node<T> current = this.Head;
+            T ans = current.Data;
+            this.Head = current.Next;
+            return ans;
         }
 
         /// <summary>
@@ -332,13 +331,13 @@ namespace ObjectOrientedPrograms
                 return default;
             }
 
-            Node<T> Current = head;
-            while (Current.Next != null)
+            Node<T> current = this.Head;
+            while (current.Next != null)
             {
-                Current = Current.Next;
+                current = current.Next;
             }
 
-            return Current.Data;
+            return current.Data;
         }
 
         /// <summary>
@@ -356,14 +355,14 @@ namespace ObjectOrientedPrograms
                 }
 
                 int count = position;
-                Node<T> Current = head;
+                Node<T> current = this.Head;
                 while (count > 0)
                 {
-                    Current = Current.Next;
+                    current = current.Next;
                     count--;
                 }
 
-                return Current.Data;
+                return current.Data;
             }
 
             return default;
@@ -381,24 +380,24 @@ namespace ObjectOrientedPrograms
                 return default;
             }
 
-            Node<T> Current = head;
+            Node<T> current = this.Head;
             int count = position;
-            T Ans;
+            T ans;
             if (position == 0)
             {
-                Ans = this.PopFirst();
-                return Ans;
+                ans = this.PopFirst();
+                return ans;
             }
 
             while (count > 1)
             {
-                Current = Current.Next;
+                current = current.Next;
                 count--;
             }
 
-            Ans = Current.Next.Data;
-            Current.Next = Current.Next.Next;
-            return Ans;
+            ans = current.Next.Data;
+            current.Next = current.Next.Next;
+            return ans;
         }
     }
 }
