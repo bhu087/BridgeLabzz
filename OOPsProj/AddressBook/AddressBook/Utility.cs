@@ -54,15 +54,21 @@
         /// </summary>
         public void AddAPerson()
         {
-            Console.Write("First Name :");
+Name:       Console.WriteLine("Enter a name");
             string name = Console.ReadLine();
             if (this.DuplicateName(name))
             {
-                Console.WriteLine("Contact for this name already exists\ntry anethor");
-                this.AddAPerson();
+                Console.WriteLine("Name already exists");
+                goto Name;
             }
-            long number = this.Number();
-            Console.WriteLine("Compony :");
+Number:     Console.WriteLine("Enter a Number");
+            long number = this.LongInput();
+            if (this.DuplicateNumber(number))
+            {
+                Console.WriteLine("Number already exists");
+                goto Number;
+            }
+            Console.Write("Company :");
             string company = Console.ReadLine();
             AddressObject addressObject = new AddressObject
             {
@@ -75,17 +81,28 @@
             File.WriteAllText(@"D:\BridgeLabzBhush\ObjectOrientedPrograms\AddressBook\AddressBook\AddressBook\AddressFile.json",output);
         }
 
-        public long Number()
-        {
-            Console.Write("Mobile Number :");
-            long number = this.LongInput();
-            if (this.DuplicateNumber(number))
-            {
-                Console.WriteLine("Number Already exists");
-                this.Number();
-            }
-            return number;
-        }
+        //public string Name()
+        //{
+        //    Console.Write("First Name :");
+        //    string name = Console.ReadLine();
+        //    if (this.DuplicateName(name))
+        //    {
+        //        Console.WriteLine("Contact for this name already exists\ntry anethor");
+        //        return null;
+        //    }
+        //    return name;
+        //}
+        //public long Number()
+        //{
+        //    Console.Write("Mobile Number :");
+        //    long number = this.LongInput();
+        //    if (this.DuplicateNumber(number))
+        //    {
+        //        Console.WriteLine("Number Already exists");
+        //        return 0;
+        //    }
+        //    return number;
+        //}
         /// <summary>
         /// Prints the entries.
         /// </summary>
@@ -120,10 +137,20 @@
             return false;
         }
 
-        public void EditPerson()
-        {
-            dynamic dyn = JObject.Parse(AddBook);
-            
-        }
+        //public void EditPerson()
+        //{
+        //    dynamic dyn = JObject.Parse(AddBook);
+        //    var 
+        //    Console.WriteLine("1 for edit name\n2 for Edit Mobile Number\n3 for edit Company");
+        //    int option = this.IntInput();
+        //    if (option == 1)
+        //    {
+
+        //    }
+        //    if ()
+        //    {
+
+        //    }
+        //}
     }
 }

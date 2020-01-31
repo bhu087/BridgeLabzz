@@ -18,6 +18,8 @@ namespace AddressBook
                 case 1:
                     AddressUtility.AddAPerson();
                     break;
+                case 2:
+                    break;
                 case 6:
                     AddressUtility.PrintEntries();
                     break;
