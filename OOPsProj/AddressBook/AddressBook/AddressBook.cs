@@ -24,6 +24,9 @@ namespace AddressBook
                 case 3:
                     AddressUtility.DeleteContact();
                     break;
+                case 4:
+                    AddressUtility.SortByName();
+                    break;
                 case 6:
                     AddressUtility.PrintEntries();
                     break;

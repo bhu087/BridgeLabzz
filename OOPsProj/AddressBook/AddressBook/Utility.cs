@@ -131,42 +131,49 @@ Number:     Console.Write("Enter a Number");
                 Console.WriteLine("{0} for edit {1}", i, contact.Name);
                 i++;
             }
-
-            i = this.IntInput();
-            Console.WriteLine("0 for edit name\n1 for Edit Mobile Number\n2 for edit Company");
-            int option = this.IntInput();
-            switch (option)
+            try
             {
-                case 0:
-EditName:           Console.WriteLine("Enter New Name : ");
-                    string newName = Console.ReadLine();
-                    if (this.DuplicateName(newName))
-                    {
-                        Console.WriteLine("Name already exist");
-                        goto EditName;
-                    }
-                    dyn["AddressDetails"][i]["Name"] = newName;
-                    break;
-                case 1:
-EditNumber:         Console.WriteLine("Enter New Number");
-                    long newNumber = this.LongInput();
-                    if (this.DuplicateNumber(newNumber))
-                    {
-                        Console.WriteLine("Number already exist");
-                        goto EditNumber;
-                    }
-                    dyn["AddressDetails"][i]["MobileNumber"] = newNumber;
-                    break;
-                case 2:
-                    Console.WriteLine("Enter New Company");
-                    string newCompany = Console.ReadLine();
-                    dyn["AddressDetails"][i]["Name"] = newCompany;
-                    break;
-                default:
-                    break;
+                i = this.IntInput();
+                Console.WriteLine("0 for edit name\n1 for Edit Mobile Number\n2 for edit Company");
+                int option = this.IntInput();
+                switch (option)
+                {
+                    case 0:
+                    EditName: Console.WriteLine("Enter New Name : ");
+                        string newName = Console.ReadLine();
+                        if (this.DuplicateName(newName))
+                        {
+                            Console.WriteLine("Name already exist");
+                            goto EditName;
+                        }
+                        dyn["AddressDetails"][i]["Name"] = newName;
+                        break;
+                    case 1:
+                    EditNumber: Console.WriteLine("Enter New Number");
+                        long newNumber = this.LongInput();
+                        if (this.DuplicateNumber(newNumber))
+                        {
+                            Console.WriteLine("Number already exist");
+                            goto EditNumber;
+                        }
+                        dyn["AddressDetails"][i]["MobileNumber"] = newNumber;
+                        break;
+                    case 2:
+                        Console.WriteLine("Enter New Company");
+                        string newCompany = Console.ReadLine();
+                        dyn["AddressDetails"][i]["Name"] = newCompany;
+                        break;
+                    default:
+                        break;
+                }
+                string output = JsonConvert.SerializeObject(dyn, Formatting.Indented);
+                File.WriteAllText(@"D:\BridgeLabzBhush\ObjectOrientedPrograms\AddressBook\AddressBook\AddressBook\AddressFile.json", output);
+                Console.WriteLine("Update successful");
             }
-            string output = JsonConvert.SerializeObject(dyn,Formatting.Indented);
-            File.WriteAllText(@"D:\BridgeLabzBhush\ObjectOrientedPrograms\AddressBook\AddressBook\AddressBook\AddressFile.json", output);
+            catch (Exception)
+            {
+                Console.WriteLine("You are entered Wrong input");
+            }
         }
 
         public void DeleteContact()
@@ -177,10 +184,34 @@ EditNumber:         Console.WriteLine("Enter New Number");
                 Console.WriteLine("{0} for delete {1}", i, contact.Name);
                 i++;
             }
-            i = this.IntInput();
-            AddObjList.RemoveAt(i);
-            string output = JsonConvert.SerializeObject(AddList,Formatting.Indented);
-            File.WriteAllText(@"D:\BridgeLabzBhush\ObjectOrientedPrograms\AddressBook\AddressBook\AddressBook\AddressFile.json",output);
+            try
+            {
+                i = this.IntInput();
+                AddObjList.RemoveAt(i);
+                string output = JsonConvert.SerializeObject(AddList, Formatting.Indented);
+                File.WriteAllText(@"D:\BridgeLabzBhush\ObjectOrientedPrograms\AddressBook\AddressBook\AddressBook\AddressFile.json", output);
+                Console.WriteLine("Deleted successfully");
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("You selected wrong entry");
+            }
+            
+        }
+
+        public void SortByName()
+        {
+            List<string> myList = new List<string>();
+            foreach (AddressObject var in AddObjList)
+            {
+                string tempString = var.Name+" "+var.MobileNumber+" "+var.Company;
+                myList.Add(tempString);
+            }
+            myList.Sort();
+            foreach (string str in myList)
+            {
+                Console.WriteLine(str);
+            }
         }
     }
 }
