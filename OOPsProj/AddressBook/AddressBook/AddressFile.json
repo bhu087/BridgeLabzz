@@ -1,11 +1,6 @@
 {
   "AddressDetails": [
     {
-      "Name": "Mohan",
-      "MobileNumber": 5544112255,
-      "Company": ""
-    },
-    {
       "Name": "Rohan",
       "MobileNumber": 1254512451,
       "Company": ""
@@ -21,7 +16,7 @@
       "Company": "Bridge"
     },
     {
-      "Name": "Bhushan",
+      "Name": "Manohar",
       "MobileNumber": 9632121521,
       "Company": "BridgeLabz"
     },

@@ -138,13 +138,23 @@ Number:     Console.Write("Enter a Number");
             switch (option)
             {
                 case 0:
-                    Console.WriteLine("Enter New Name");
+EditName:           Console.WriteLine("Enter New Name : ");
                     string newName = Console.ReadLine();
+                    if (this.DuplicateName(newName))
+                    {
+                        Console.WriteLine("Name already exist");
+                        goto EditName;
+                    }
                     dyn["AddressDetails"][i]["Name"] = newName;
                     break;
                 case 1:
-                    Console.WriteLine("Enter New Number");
+EditNumber:         Console.WriteLine("Enter New Number");
                     long newNumber = this.LongInput();
+                    if (this.DuplicateNumber(newNumber))
+                    {
+                        Console.WriteLine("Number already exist");
+                        goto EditNumber;
+                    }
                     dyn["AddressDetails"][i]["MobileNumber"] = newNumber;
                     break;
                 case 2:
@@ -157,6 +167,20 @@ Number:     Console.Write("Enter a Number");
             }
             string output = JsonConvert.SerializeObject(dyn,Formatting.Indented);
             File.WriteAllText(@"D:\BridgeLabzBhush\ObjectOrientedPrograms\AddressBook\AddressBook\AddressBook\AddressFile.json", output);
+        }
+
+        public void DeleteContact()
+        {
+            int i = 0;
+            foreach (AddressObject contact in AddObjList)
+            {
+                Console.WriteLine("{0} for delete {1}", i, contact.Name);
+                i++;
+            }
+            i = this.IntInput();
+            AddObjList.RemoveAt(i);
+            string output = JsonConvert.SerializeObject(AddList,Formatting.Indented);
+            File.WriteAllText(@"D:\BridgeLabzBhush\ObjectOrientedPrograms\AddressBook\AddressBook\AddressBook\AddressFile.json",output);
         }
     }
 }
