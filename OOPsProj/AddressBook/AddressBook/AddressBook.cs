@@ -15,6 +15,9 @@ namespace AddressBook
             int option = AddressUtility.IntInput();
             switch (option)
             {
+                case 1:
+                    AddressUtility.AddAPerson();
+                    break;
                 case 6:
                     AddressUtility.PrintEntries();
                     break;
