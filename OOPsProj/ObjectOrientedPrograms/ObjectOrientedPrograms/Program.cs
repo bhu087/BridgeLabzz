@@ -1,16 +1,28 @@
-﻿using System;
-
+﻿////..........................................
+////<copyright file="Program.cs" company="BridgeLabz">
+////author="Bhushan"
+////</copyright>
+////..........................................
 namespace ObjectOrientedPrograms
 {
-    class Program
+    using System;
+
+    /// <summary>
+    /// This is the main class for OOPs
+    /// </summary>
+    public class Program
     {
-        static void Main(string[] args)
+        /// <summary>
+        /// main method.
+        /// </summary>
+        /// <param name="args">args parameter ID</param>
+        public static void Main(string[] args)
         {
-            Utility MainUtility = new Utility();
+            Utility mainUtility = new Utility();
             Console.WriteLine("Hello welcome to OOPs\n1 for Inventry Data Management");
             Console.WriteLine("2 for Stoke Account Management");
             Console.WriteLine("......................................................");
-            int option = MainUtility.IntInput();
+            int option = mainUtility.IntInput();
             switch (option)
             {
                 case 1:
