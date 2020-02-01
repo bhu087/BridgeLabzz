@@ -1,37 +1,48 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
+﻿////...................................
+////<copyright file="AddressBook.cs" company="BridgeLabz">
+//// author="Bhushan"
+////</copyright>
+////...................................
 namespace AddressBook
 {
-    class AddressBook
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+
+    /// <summary>
+    /// This is address book
+    /// </summary>
+    public class AddressBook
     {
+        /// <summary>
+        /// Addresses book method.
+        /// </summary>
         public static void AddressBookMethod()
         {
-            Utility AddressUtility = new Utility();
+            Utility addressUtility = new Utility();
             Console.WriteLine("Welcome to Address Book");
             Console.WriteLine("1 for Add a person\n2 for Edit a person\n3 for Delete a person");
             Console.WriteLine("4 for Sort by Names\n5 for sort by ZIP\n6 for print entries");
-            int option = AddressUtility.IntInput();
+            int option = addressUtility.IntInput();
             switch (option)
             {
                 case 1:
-                    AddressUtility.AddAPerson();
+                    addressUtility.AddAPerson();
                     break;
                 case 2:
-                    AddressUtility.EditPerson();
+                    addressUtility.EditPerson();
                     break;
                 case 3:
-                    AddressUtility.DeleteContact();
+                    addressUtility.DeleteContact();
                     break;
                 case 4:
-                    AddressUtility.SortByName();
+                    addressUtility.SortByName();
                     break;
                 case 5:
-                    AddressUtility.SortByNumber();
+                    addressUtility.SortByNumber();
                     break;
                 case 6:
-                    AddressUtility.PrintEntries();
+                    addressUtility.PrintEntries();
                     break;
             }
         }

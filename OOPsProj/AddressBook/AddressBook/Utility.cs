@@ -1,4 +1,9 @@
-﻿namespace AddressBook
+﻿////...................................
+////<copyright file="Utility.cs" company="BridgeLabz">
+//// author="Bhushan"
+////</copyright>
+////...................................
+namespace AddressBook
 {
     using System;
     using System.Collections.Generic;
@@ -10,16 +15,27 @@
     /// <summary>
     /// This is utility class for Address book
     /// </summary>
-    class Utility
+    public class Utility
     {
+        /// <summary>
+        /// The add book is the file
+        /// </summary>
         public static string AddBook = File.ReadAllText(@"D:\BridgeLabzBhush\ObjectOrientedPrograms\AddressBook\AddressBook\AddressBook\AddressFile.json");
+
+        /// <summary>
+        /// The added list
+        /// </summary>
         public static AddressList AddList = JsonConvert.DeserializeObject<AddressList>(AddBook);
+
+        /// <summary>
+        /// The add object list
+        /// </summary>
         public static List<AddressObject> AddObjList = AddList.AddressDetails;
 
         /// <summary>
         /// Integer input.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>return Integer</returns>
         public int IntInput()
         {
             try
@@ -34,6 +50,11 @@
                 return 0;
             }
         }
+
+        /// <summary>
+        /// Longs the input.
+        /// </summary>
+        /// <returns>returns long value</returns>
         public long LongInput()
         {
             try
@@ -61,6 +82,7 @@ Name:       Console.Write("Enter a name");
                 Console.WriteLine("Name already exists");
                 goto Name;
             }
+
 Number:     Console.Write("Enter a Number");
             long number = this.LongInput();
             if (this.DuplicateNumber(number))
@@ -68,11 +90,18 @@ Number:     Console.Write("Enter a Number");
                 Console.WriteLine("Number already exists");
                 goto Number;
             }
+
             Console.Write("Company :");
             string company = Console.ReadLine();
-            this.CreateContact(name,number,company);
+            this.CreateContact(name, number, company);
         }
 
+        /// <summary>
+        /// Creates the contact.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <param name="number">The number.</param>
+        /// <param name="company">The company.</param>
         public void CreateContact(string name, long number, string company)
         {
             AddressObject addressObject = new AddressObject
@@ -86,7 +115,6 @@ Number:     Console.Write("Enter a Number");
             File.WriteAllText(@"D:\BridgeLabzBhush\ObjectOrientedPrograms\AddressBook\AddressBook\AddressBook\AddressFile.json", output);
         }
         
-        
         /// <summary>
         /// Prints the entries.
         /// </summary>
@@ -98,6 +126,11 @@ Number:     Console.Write("Enter a Number");
             }
         }
 
+        /// <summary>
+        /// Duplicates the name.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <returns>returns true or false</returns>
         public bool DuplicateName(string name)
         {
             foreach (AddressObject contacts in AddObjList)
@@ -107,8 +140,15 @@ Number:     Console.Write("Enter a Number");
                     return true;
                 }
             }
+
             return false;
         }
+
+        /// <summary>
+        /// Duplicates the number.
+        /// </summary>
+        /// <param name="number">The number.</param>
+        /// <returns>returns boolean value</returns>
         public bool DuplicateNumber(long number)
         {
             foreach (AddressObject contacts in AddObjList)
@@ -118,9 +158,13 @@ Number:     Console.Write("Enter a Number");
                     return true;
                 }
             }
+
             return false;
         }
 
+        /// <summary>
+        /// Edits the person.
+        /// </summary>
         public void EditPerson()
         {
             dynamic dyn = JObject.Parse(AddBook);
@@ -131,6 +175,7 @@ Number:     Console.Write("Enter a Number");
                 Console.WriteLine("{0} for edit {1}", i, contact.Name);
                 i++;
             }
+
             try
             {
                 i = this.IntInput();
@@ -146,6 +191,7 @@ Number:     Console.Write("Enter a Number");
                             Console.WriteLine("Name already exist");
                             goto EditName;
                         }
+
                         dyn["AddressDetails"][i]["Name"] = newName;
                         break;
                     case 1:
@@ -156,6 +202,7 @@ Number:     Console.Write("Enter a Number");
                             Console.WriteLine("Number already exist");
                             goto EditNumber;
                         }
+
                         dyn["AddressDetails"][i]["MobileNumber"] = newNumber;
                         break;
                     case 2:
@@ -166,6 +213,7 @@ Number:     Console.Write("Enter a Number");
                     default:
                         break;
                 }
+
                 string output = JsonConvert.SerializeObject(dyn, Formatting.Indented);
                 File.WriteAllText(@"D:\BridgeLabzBhush\ObjectOrientedPrograms\AddressBook\AddressBook\AddressBook\AddressFile.json", output);
                 Console.WriteLine("Update successful");
@@ -176,6 +224,9 @@ Number:     Console.Write("Enter a Number");
             }
         }
 
+        /// <summary>
+        /// Deletes the contact.
+        /// </summary>
         public void DeleteContact()
         {
             int i = 0;
@@ -184,6 +235,7 @@ Number:     Console.Write("Enter a Number");
                 Console.WriteLine("{0} for delete {1}", i, contact.Name);
                 i++;
             }
+
             try
             {
                 i = this.IntInput();
@@ -196,17 +248,20 @@ Number:     Console.Write("Enter a Number");
             {
                 Console.WriteLine("You selected wrong entry");
             }
-            
         }
 
+        /// <summary>
+        /// Sorts the name of the by.
+        /// </summary>
         public void SortByName()
         {
             List<string> myList = new List<string>();
             foreach (AddressObject var in AddObjList)
             {
-                string tempString = var.Name+" "+var.MobileNumber+" "+var.Company;
+                string tempString = var.Name + " " + var.MobileNumber + " " + var.Company;
                 myList.Add(tempString);
             }
+
             myList.Sort();
             foreach (string str in myList)
             {
@@ -214,6 +269,9 @@ Number:     Console.Write("Enter a Number");
             }
         }
 
+        /// <summary>
+        /// Sorts the by number.
+        /// </summary>
         public void SortByNumber()
         {
             List<string> myList = new List<string>();
@@ -222,6 +280,7 @@ Number:     Console.Write("Enter a Number");
                 string tempString = var.MobileNumber + " " + var.Name + " " + var.Company;
                 myList.Add(tempString);
             }
+
             myList.Sort();
             foreach (string str in myList)
             {
