@@ -399,5 +399,9 @@ namespace ObjectOrientedPrograms
             current.Next = current.Next.Next;
             return ans;
         }
+        //public MyLinkedList<string> sort(MyLinkedList<string> mylinkedList)
+        //{
+        //    return mylinkedList;
+        //}
     }
 }

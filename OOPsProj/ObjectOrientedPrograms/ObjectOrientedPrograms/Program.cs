@@ -39,6 +39,10 @@ namespace ObjectOrientedPrograms
                 case 4:
                     DeckOfCards.Deck();
                     break;
+                case 5:
+                    DeckOfCardsUsingLinkedList dc = new DeckOfCardsUsingLinkedList();
+                    dc.DeckOfCardsLinkedList();
+                    break;
                 default:
                     break;
             }

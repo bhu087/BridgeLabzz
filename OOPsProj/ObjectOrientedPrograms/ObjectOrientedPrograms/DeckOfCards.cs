@@ -82,7 +82,7 @@ namespace ObjectOrientedPrograms
                 {
                     RankCards[index] -= 1;
                     SuitCards[suitIndex] -= 1;
-                    user = Suit[suitIndex] + " of " + Rank[index] + ", ";
+                    user = Rank[index] + " of " + Suit[suitIndex] + ", ";
                 }
                 else
                 {
