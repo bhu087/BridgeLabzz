@@ -279,5 +279,56 @@ namespace ObjectOrientedPrograms
             Console.WriteLine("Shares \t\t:{0} ", stockList[option].NumberOfShare);
             Console.WriteLine("Share Price \t:{0} ", stockList[option].SharePrice);
         }
+        /////////////////////////////////////////////////////////////////////////////
+        public MyLinkedList<string> suitInitialization(MyLinkedList<string> myLinkedList)
+        {
+            myLinkedList.Add("Clubs");
+            myLinkedList.Add("Diamonds");
+            myLinkedList.Add("Hearts");
+            myLinkedList.Add("Spades");
+            return myLinkedList;
+        }
+        public MyLinkedList<string> rankInitialization(MyLinkedList<string> myLinkedList)
+        {
+            myLinkedList.Add("2");
+            myLinkedList.Add("3");
+            myLinkedList.Add("4");
+            myLinkedList.Add("5");
+            myLinkedList.Add("6");
+            myLinkedList.Add("7");
+            myLinkedList.Add("8");
+            myLinkedList.Add("9");
+            myLinkedList.Add("10");
+            myLinkedList.Add("Jack");
+            myLinkedList.Add("Diamond");
+            myLinkedList.Add("Heart");
+            myLinkedList.Add("Spade");
+            return myLinkedList;
+        }
+        public MyLinkedList<int> MaxCardInitialization(MyLinkedList<int> myLinkedList)
+        {
+            myLinkedList.Add(4);
+            myLinkedList.Add(4);
+            myLinkedList.Add(4);
+            myLinkedList.Add(4);
+            myLinkedList.Add(4);
+            myLinkedList.Add(4);
+            myLinkedList.Add(4);
+            myLinkedList.Add(4);
+            myLinkedList.Add(4);
+            myLinkedList.Add(4);
+            myLinkedList.Add(4);
+            myLinkedList.Add(4);
+            myLinkedList.Add(4);
+            return myLinkedList;
+        }
+        public MyLinkedList<int> MaxSuitInitialization(MyLinkedList<int> myLinkedList)
+        {
+            myLinkedList.Add(13);
+            myLinkedList.Add(13);
+            myLinkedList.Add(13);
+            myLinkedList.Add(13);
+            return myLinkedList;
+        }
     }
 }

@@ -21,6 +21,7 @@ namespace ObjectOrientedPrograms
             Utility mainUtility = new Utility();
             Console.WriteLine("Hello welcome to OOPs\n1 for Inventry Data Management");
             Console.WriteLine("2 for Stoke Account Management");
+            Console.WriteLine("3 for user Stock Account\n4 for Deck Of Cards");
             Console.WriteLine("......................................................");
             int option = mainUtility.IntInput();
             ////Depending on option this will calls the classes.
@@ -31,6 +32,12 @@ namespace ObjectOrientedPrograms
                     break;
                 case 2:
                     StockAccountManagement.StokeAccount();
+                    break;
+                case 3:
+                    StockAccount.UserStockAccount();
+                    break;
+                case 4:
+                    DeckOfCards.Deck();
                     break;
                 default:
                     break;
