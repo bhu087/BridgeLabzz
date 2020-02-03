@@ -20,6 +20,8 @@ namespace ObjectOrientedPrograms
                     stockUtility.StockAccount();
                     break;
                 case 2:
+                    string name = Console.ReadLine();
+                    stockUtility.ValueOf(name);
                     break;
                 case 3:
                     break;

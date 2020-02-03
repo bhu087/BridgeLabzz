@@ -408,5 +408,55 @@ namespace ObjectOrientedPrograms
         //{
 
         //}
+
+        public void ValueOf(string userName)
+        {
+            string jsonFile = File.ReadAllText(@"D:\BridgeLabzBhush\ObjectOrientedPrograms\ObjectOrientedPrograms\StockUsers.json");
+            UserList userList = JsonConvert.DeserializeObject<UserList>(jsonFile);
+            JObject jobj = JObject.Parse(jsonFile);
+            int i = 0;
+            int j = 0;
+            int sharesCount = 0;
+            int sharePrice = 0;
+            int totalMoney = 0;
+            try
+            {
+                foreach (UserObject userObject in userList.StockUsers)
+                {
+                    if (userObject.Name.Equals(userName))
+                    {
+                        int jArray = userObject.ShareValue.Count;
+                        Console.WriteLine(jArray);
+                        while (jArray > 0)
+                        {
+                            sharesCount = (int)jobj["StockUsers"][i]["NumberOfShares"][j];
+                            Console.WriteLine(sharesCount);
+                            sharePrice = (int)jobj["StockUsers"][i]["ShareValue"][j];
+                            Console.WriteLine(sharePrice);
+                            totalMoney += sharesCount * sharePrice;
+                            j++;
+                            jArray--;
+                        }
+                        break;
+                    }
+                    else
+                    {
+                        i++;
+                    }
+                }
+                Console.WriteLine("Your Total Share Value is {0}", totalMoney);
+            }
+            catch (NullReferenceException)
+            {
+                Console.WriteLine("Your List Is Empty");
+            }
+            
+        }
+
+        public void BuyAShare()
+        {
+            string stockFile = File.ReadAllText(@"D:\BridgeLabzBhush\ObjectOrientedPrograms\ObjectOrientedPrograms\StockFile.json");
+            StockList stockList = JsonConvert.DeserializeObject<StockList>(stockFile);
+        }
     }
 }
