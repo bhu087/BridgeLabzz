@@ -458,47 +458,63 @@ namespace ObjectOrientedPrograms
             string stockFile = File.ReadAllText(@"D:\BridgeLabzBhush\ObjectOrientedPrograms\ObjectOrientedPrograms\StockFile.json");
             StockList stockList = JsonConvert.DeserializeObject<StockList>(stockFile);
             int i = 0;
+            ////it asks for which share you want to buy
             foreach (StockObject stockObject in stockList.Stock)
             {
                 Console.WriteLine("Enter {0} for {1}", i, stockObject.StockName);
                 Console.WriteLine("{0} shares available", stockObject.NumberOfShare);
                 i++;
             }
+            ////option is index for corresponding share company
             int option = this.IntInput();
             Console.WriteLine("Enter a Number of Shares you want to buy");
+            ////share count have how much share you want
             int shareCount = this.IntInput();
+            ////jobject is created for checking available shares and share value finding
             JObject jobj = JObject.Parse(stockFile);
+            ////assigned here
             int sharesAvailable = (int)jobj["Stock"][option]["NumberOfShare"];
             int shareValue = (int)jobj["Stock"][option]["SharePrice"];
+            ////if the share count is equal or less then to available then only it enters
             if (sharesAvailable >= shareCount)
             {
+                ////takes the name
                 Console.WriteLine("Enter your name");
                 string name = Console.ReadLine();
+                ////user object is created to add or update the data
                 string userFile = File.ReadAllText(@"D:\BridgeLabzBhush\ObjectOrientedPrograms\ObjectOrientedPrograms\StockUsers.json");
                 UserList userList = JsonConvert.DeserializeObject<UserList>(userFile);
+                ////userIndex is needed to update data at perticular location
                 int userIndex = this.UserIndex(name);
+                ////if the returned data in -1 means user is not have an account
                 if (userIndex  == -1)
                 {
                     Console.WriteLine("User Not Available");
                     return;
                 }
+                ////else now shres available in stock is reduced by share count
                 sharesAvailable -= shareCount;
+                ////number of shares are updated
                 jobj["Stock"][option]["NumberOfShare"] = sharesAvailable;
                 string output = JsonConvert.SerializeObject(jobj,Formatting.Indented);
                 File.WriteAllText(@"D:\BridgeLabzBhush\ObjectOrientedPrograms\ObjectOrientedPrograms\StockFile.json",output);
-                ////
+                ////jobj1 is created for updating the user file
                 JObject jobj1 = JObject.Parse(userFile);
+                ////taking company name here for checking if it is already available in list or not
                 string companyName = (string)jobj["Stock"][option]["StockName"];
+                ////checking the index
                 int shareIndex = this.ShareCompanyIndex(name, companyName);
+                ////if returned value is -1 means company is new 
                 if (shareIndex == -1)
                 {
                     this.AddNewShare(name, companyName, shareCount, shareValue, userIndex);
                     return;
                 }
-                
+                ////it udates the current data with new values
                 var value = jobj1["StockUsers"][userIndex]["NumberOfShares"];
-                var value1 = value[3];
+                var value1 = value[shareIndex];
                 jobj1["StockUsers"][userIndex]["NumberOfShares"][shareIndex] = shareCount + (int)value1;
+                ////rewrite it in the file
                 string userOutput = JsonConvert.SerializeObject(jobj1, Formatting.Indented);
                 File.WriteAllText(@"D:\BridgeLabzBhush\ObjectOrientedPrograms\ObjectOrientedPrograms\StockUsers.json", userOutput);
             }
