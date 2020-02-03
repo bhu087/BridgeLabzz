@@ -12,49 +12,71 @@ namespace ObjectOrientedPrograms
     /// <summary>
     /// This is the Queue class
     /// </summary>
-    public class MyQueue
+    public class MyQueue<T>
     {
-        /// <summary>
-        /// The date list
-        /// </summary>
-        public static MyLinkedList<DateTime> dateList = new MyLinkedList<DateTime>();
+        public Node<T> Head;
 
         /// <summary>
-        /// size of Queue
+        /// Adds to queue.
         /// </summary>
-        int size = 0;
-
-        /// <summary>
-        /// Adds the date time to list.
-        /// </summary>
-        /// <param name="dateTime">The date time.</param>
-        public void Add(DateTime dateTime)
+        /// <param name="data">The data.</param>
+        public void AddToQueue(T data)
         {
-            dateList.Add(dateTime);
-            this.size++;
-        }
-
-        /// <summary>
-        /// Deletes the first entry.
-        /// </summary>
-        public void Delete()
-        {
-            if (dateList.IsEmpty())
+            Node<T> current = this.Head;
+            Node<T> tempNode = new Node<T>(data);
+            if (this.IsEmpty())
             {
+                this.Head = new Node<T>(data);
                 return;
             }
 
-            dateList.PopFirst();
-            this.size--;
+            tempNode.Next = current;
+            this.Head = tempNode;
         }
 
         /// <summary>
-        /// Size of this instance.
+        /// Removes from queue.
         /// </summary>
-        /// <returns>returns size of list</returns>
-        public int Size()
+        /// <returns>string value</returns>
+        public string RemoveFromQueue()
         {
-            return this.size;
+            if (this.IsEmpty())
+            {
+                Console.WriteLine("Queue is empty");
+                return string.Empty;
+            }
+
+            Node<T> current = this.Head;
+            string charValue;
+            if (current.Next == null)
+            {
+                return Convert.ToString(current.Data);
+            }
+
+            while (current.Next.Next != null)
+            {
+                current = current.Next;
+            }
+
+            charValue = Convert.ToString(current.Next.Data);
+            current.Next = null;
+            return charValue;
+        }
+
+        /// <summary>
+        /// Determines whether this instance is empty.
+        /// </summary>
+        /// <returns>
+        ///   <c>true</c> if this instance is empty; otherwise, <c>false</c>.
+        /// </returns>
+        public bool IsEmpty()
+        {
+            if (this.Head == null)
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }

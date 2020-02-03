@@ -399,6 +399,5 @@ namespace ObjectOrientedPrograms
             current.Next = current.Next.Next;
             return ans;
         }
-        
     }
 }

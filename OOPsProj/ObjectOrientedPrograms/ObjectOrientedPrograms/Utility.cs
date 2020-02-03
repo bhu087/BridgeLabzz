@@ -280,55 +280,72 @@ namespace ObjectOrientedPrograms
             Console.WriteLine("Share Price \t:{0} ", stockList[option].SharePrice);
         }
         /////////////////////////////////////////////////////////////////////////////
-        public MyLinkedList<string> suitInitialization(MyLinkedList<string> myLinkedList)
+
+        /// <summary>
+        /// Sorts the specified my linked list.
+        /// </summary>
+        /// <param name="mylinkedList">The my linked list.</param>
+        /// <returns>my Linked List</returns>
+        public MyLinkedList<string> Sort(MyLinkedList<string> mylinkedList)
         {
-            myLinkedList.Add("Clubs");
-            myLinkedList.Add("Diamonds");
-            myLinkedList.Add("Hearts");
-            myLinkedList.Add("Spades");
-            return myLinkedList;
+            int size = mylinkedList.Size();
+            string[] s = new string[size];
+            for (int i = 0; i < size; i++)
+            {
+                s[i] = mylinkedList.Pop();
+            }
+
+            for (int i = 0; i < size; i++)
+            {
+                for (int j = i + 1; j < size; j++)
+                {
+                    char strI = s[i].ToCharArray()[0];
+                    char strJ = s[j].ToCharArray()[0];
+                    if (strI == '1')
+                    {
+                        strI = '9';
+                    }
+
+                    if (strJ == '1')
+                    {
+                        strJ = '9';
+                    }
+
+                    if (strI.CompareTo(strJ) >= 0)
+                    {
+                        string tempstring = s[i];
+                        s[i] = s[j];
+                        s[j] = tempstring;
+                    }
+                }
+            }
+
+            for (int i = 0; i < size; i++)
+            {
+                mylinkedList.Add(s[i]);
+            }
+
+            return mylinkedList;
         }
-        public MyLinkedList<string> rankInitialization(MyLinkedList<string> myLinkedList)
+
+        /// <summary>
+        /// Adds to queue.
+        /// </summary>
+        /// <param name="myLinkedList">My linked list.</param>
+        /// <param name="userNumber">The user number.</param>
+        /// <param name="myQueue">My queue.</param>
+        /// <returns>my Queue</returns>
+        public MyQueue<string> AddToQueue(MyLinkedList<string> myLinkedList, string userNumber, MyQueue<string> myQueue)
         {
-            myLinkedList.Add("2");
-            myLinkedList.Add("3");
-            myLinkedList.Add("4");
-            myLinkedList.Add("5");
-            myLinkedList.Add("6");
-            myLinkedList.Add("7");
-            myLinkedList.Add("8");
-            myLinkedList.Add("9");
-            myLinkedList.Add("10");
-            myLinkedList.Add("Jack");
-            myLinkedList.Add("Diamond");
-            myLinkedList.Add("Heart");
-            myLinkedList.Add("Spade");
-            return myLinkedList;
-        }
-        public MyLinkedList<int> MaxCardInitialization(MyLinkedList<int> myLinkedList)
-        {
-            myLinkedList.Add(4);
-            myLinkedList.Add(4);
-            myLinkedList.Add(4);
-            myLinkedList.Add(4);
-            myLinkedList.Add(4);
-            myLinkedList.Add(4);
-            myLinkedList.Add(4);
-            myLinkedList.Add(4);
-            myLinkedList.Add(4);
-            myLinkedList.Add(4);
-            myLinkedList.Add(4);
-            myLinkedList.Add(4);
-            myLinkedList.Add(4);
-            return myLinkedList;
-        }
-        public MyLinkedList<int> MaxSuitInitialization(MyLinkedList<int> myLinkedList)
-        {
-            myLinkedList.Add(13);
-            myLinkedList.Add(13);
-            myLinkedList.Add(13);
-            myLinkedList.Add(13);
-            return myLinkedList;
+            int size = myLinkedList.Size();
+            myQueue.AddToQueue(userNumber);
+            while (size > 0)
+            {
+                myQueue.AddToQueue(myLinkedList.PopFirst());
+                size--;
+            }
+
+            return myQueue;
         }
     }
 }
