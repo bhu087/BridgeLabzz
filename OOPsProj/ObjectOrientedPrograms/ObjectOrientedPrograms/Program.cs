@@ -20,7 +20,7 @@ namespace ObjectOrientedPrograms
         {
             Utility mainUtility = new Utility();
             Console.WriteLine("Hello welcome to OOPs\n1 for Inventry Data Management");
-            Console.WriteLine("2 for Stoke Account Management");
+            Console.WriteLine("2 for Stock Account Management");
             Console.WriteLine("3 for user Stock Account\n4 for Deck Of Cards");
             Console.WriteLine("5 for Deck of cards using List/Queue");
             Console.WriteLine("......................................................");

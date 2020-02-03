@@ -7,10 +7,10 @@ namespace ObjectOrientedPrograms
     class UserObject
     {
         public string Name { get; set; }
-        public string SharesList { get; set; }
-        public int ShareMoney { get; set; }
-        public int DateTimes{ get; set; }
-        public int Status { get; set; }
+        public long Savings { get; set; }
+        public List<string> CompanyShares { get; set; }
+        public List<int> NumberOfShares { get; set; }
+        public List<int> ShareValue { get; set; }
         
     }
 }

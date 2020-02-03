@@ -14,6 +14,6 @@ namespace ObjectOrientedPrograms
     /// </summary>
     class UserList
     {
-        public MyLinkedList<UserObject> StockUsers;
+        public List<UserObject> StockUsers;
     }
 }

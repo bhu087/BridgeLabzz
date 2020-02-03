@@ -17,7 +17,7 @@ namespace ObjectOrientedPrograms
             switch (option)
             {
                 case 1:
-                    StockAccountProcess.UserAccount();
+                    stockUtility.StockAccount();
                     break;
                 case 2:
                     break;

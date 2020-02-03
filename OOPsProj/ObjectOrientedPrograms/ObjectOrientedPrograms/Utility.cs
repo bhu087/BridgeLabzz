@@ -41,6 +41,21 @@ namespace ObjectOrientedPrograms
             }
         }
 
+        public long LongInput()
+        {
+            try
+            {
+                long input = long.Parse(Console.ReadLine());
+                return input;
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("You are entered invalid entry\nTry again...");
+                this.LongInput();
+                return default;
+            }
+        }
+
         /// <summary>
         /// input for floats.
         /// </summary>
@@ -347,5 +362,51 @@ namespace ObjectOrientedPrograms
 
             return myQueue;
         }
+
+        /////////////////////////////////////Commercial processessing//////////////////////////////////
+        public void StockAccount()
+        {
+            string jsonFile = File.ReadAllText(@"D:\BridgeLabzBhush\ObjectOrientedPrograms\ObjectOrientedPrograms\StockUsers.json");
+            UserList userList = JsonConvert.DeserializeObject<UserList>(jsonFile);
+        Name:    Console.WriteLine("Enter your Name");
+            string name = Console.ReadLine();
+            if (this.DuplicateNames(name))
+            {
+                Console.WriteLine("This name already exist try anethor");
+                goto Name;
+            }
+            Console.WriteLine("Your Account Number");
+            long accNumber = this.LongInput();
+            UserObject userObject = new UserObject
+            {
+                Name = name,
+                Savings = 100000,
+                CompanyShares = null,
+                NumberOfShares = null,
+                ShareValue = null
+            };
+            userList.StockUsers.Add(userObject);
+            string output = JsonConvert.SerializeObject(userList,Formatting.Indented);
+            File.WriteAllText(@"D:\BridgeLabzBhush\ObjectOrientedPrograms\ObjectOrientedPrograms\StockUsers.json", output);
+            Console.WriteLine("Account created successfully");
+        }
+        public bool DuplicateNames(string name)
+        {
+            string jsonFile = File.ReadAllText(@"D:\BridgeLabzBhush\ObjectOrientedPrograms\ObjectOrientedPrograms\StockUsers.json");
+            UserList userList = JsonConvert.DeserializeObject<UserList>(jsonFile);
+            foreach (UserObject userObject in userList.StockUsers)
+            {
+                if (userObject.Name.Equals(name))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        //public void DeleteAccount()
+        //{
+
+        //}
     }
 }
