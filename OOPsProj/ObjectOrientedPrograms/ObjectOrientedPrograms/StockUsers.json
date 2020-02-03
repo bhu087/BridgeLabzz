@@ -16,7 +16,7 @@
       "ShareValue": [
         10,
         20,
-        30
+        300
       ]
     },
     {
@@ -39,30 +39,33 @@
       ]
     },
     {
-      "Name": "Navdeep",
-      "Savings": 95000,
-      "CompanyShares": [
-        "Mysore Sandal",
-        "BSNL",
-        "Amezon"
-      ],
-      "NumberOfShares": [
-        4,
-        5,
-        6
-      ],
-      "ShareValue": [
-        500,
-        200,
-        100
-      ]
-    },
-    {
       "Name": "Bhushan",
       "Savings": 100000,
       "CompanyShares": null,
       "NumberOfShares": null,
       "ShareValue": null
+    },
+    {
+      "Name": "Navdeep",
+      "Savings": 95000,
+      "CompanyShares": [
+        "Mysore Sandal",
+        "BSNL",
+        "Amezon",
+        "Axis"
+      ],
+      "NumberOfShares": [
+        4,
+        5,
+        6,
+        3
+      ],
+      "ShareValue": [
+        500,
+        200,
+        100,
+        150
+      ]
     }
   ]
 }

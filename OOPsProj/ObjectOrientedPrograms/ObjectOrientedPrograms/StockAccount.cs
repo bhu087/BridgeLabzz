@@ -24,6 +24,7 @@ namespace ObjectOrientedPrograms
                     stockUtility.ValueOf(name);
                     break;
                 case 3:
+                    stockUtility.BuyAShare();
                     break;
                 case 4:
                     break;

@@ -2,12 +2,12 @@
   "Stock": [
     {
       "StockName": "SBI",
-      "NumberOfShare": 100,
+      "NumberOfShare": 50,
       "SharePrice": 150
     },
     {
       "StockName": "Axis",
-      "NumberOfShare": 100,
+      "NumberOfShare": 49,
       "SharePrice": 150
     },
     {
