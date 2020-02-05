@@ -51,7 +51,7 @@ namespace ObjectOrientedPrograms
                     break;
                 default:
                     Console.WriteLine("You are entered Wrong input\nTry Again...");
-                    StokeAccount();
+                    StockAccount();
                     break;
             }
         }

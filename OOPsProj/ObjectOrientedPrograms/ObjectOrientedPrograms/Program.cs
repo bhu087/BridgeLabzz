@@ -32,7 +32,7 @@ namespace ObjectOrientedPrograms
                     InventoryDataManagement.DataManagement();
                     break;
                 case 2:
-                    StockAccountManagement.StokeAccount();
+                    StockAccountManagement.StockAccount();
                     break;
                 case 3:
                     StockAccount.UserStockAccount();
