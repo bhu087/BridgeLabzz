@@ -510,7 +510,7 @@ namespace ObjectOrientedPrograms
                     this.AddNewShare(name, companyName, shareCount, shareValue, userIndex);
                     return;
                 }
-                ////it udates the current data with new values
+                ////it updates the current data with new values
                 var value = jobj1["StockUsers"][userIndex]["NumberOfShares"];
                 var value1 = value[shareIndex];
                 jobj1["StockUsers"][userIndex]["NumberOfShares"][shareIndex] = shareCount + (int)value1;
@@ -579,10 +579,101 @@ namespace ObjectOrientedPrograms
                 }
             }
 
-
-
             string userOutput = JsonConvert.SerializeObject(userList, Formatting.Indented);
             File.WriteAllText(@"D:\BridgeLabzBhush\ObjectOrientedPrograms\ObjectOrientedPrograms\StockUsers.json", userOutput);
+        }
+
+        public void SellAShare()
+        {
+            Console.WriteLine("Enter Your name finding Account");
+            string name = Console.ReadLine();
+            int userIndex = this.UserIndex(name);
+            if  (userIndex == -1)
+            {
+                Console.WriteLine("User Account Not available");
+            }
+            string userFile = File.ReadAllText(@"D:\BridgeLabzBhush\ObjectOrientedPrograms\ObjectOrientedPrograms\StockUsers.json");
+            UserList userList = JsonConvert.DeserializeObject<UserList>(userFile);
+
+            JObject jObject = JObject.Parse(userFile);
+            var companyName = jObject["StockUsers"][userIndex]["CompanyShares"];
+            int i = 0;
+            foreach (string str in companyName)
+            {
+                Console.WriteLine("{0} for {1}",i,companyName[i]);
+                i++;
+            }
+            i = this.IntInput();
+            string companyNameAt = (string)companyName[i];
+            var shareNumber = jObject["StockUsers"][userIndex]["NumberOfShares"][i];
+            var shareValue = jObject["StockUsers"][userIndex]["ShareValue"][i];
+            Console.WriteLine("You have {0} : shares and {1} : share value", shareNumber, shareValue);
+            Console.WriteLine("How much shares you want to sell");
+            int shareCount = this.IntInput();
+            if (shareCount > (int)shareNumber)
+            {
+                Console.WriteLine("You dont have that much shares");
+                return;
+            }
+            jObject["StockUsers"][userIndex]["NumberOfShares"][i] = (int)shareNumber - shareCount;
+            string output = JsonConvert.SerializeObject(jObject,Formatting.Indented);
+            File.WriteAllText(@"D:\BridgeLabzBhush\ObjectOrientedPrograms\ObjectOrientedPrograms\StockUsers.json",output);
+            string stockFile = File.ReadAllText(@"D:\BridgeLabzBhush\ObjectOrientedPrograms\ObjectOrientedPrograms\StockFile.json");
+            StockList stockList = JsonConvert.DeserializeObject<StockList>(stockFile);
+            i = 0;
+            foreach (var data in stockList.Stock)
+            {
+                if ( data.StockName.Equals(companyNameAt))
+                {
+                    JObject jobj1 = JObject.Parse(stockFile);
+                    var va = jobj1["Stock"][i]["NumberOfShare"];
+                    va = (int)va + shareCount;
+                    jobj1["Stock"][i]["NumberOfShare"] = va;
+                    output = JsonConvert.SerializeObject(jobj1, Formatting.Indented);
+                    File.WriteAllText(@"D:\BridgeLabzBhush\ObjectOrientedPrograms\ObjectOrientedPrograms\StockFile.json",output);
+                    return;
+                }
+                i++;
+            }
+            StockObject stockObject = new StockObject
+            {
+                StockName = companyNameAt,
+                NumberOfShare = shareCount,
+                SharePrice = (int)shareValue
+            };
+            stockList.Stock.Add(stockObject);
+            output = JsonConvert.SerializeObject(stockList,Formatting.Indented);
+            File.WriteAllText(@"D:\BridgeLabzBhush\ObjectOrientedPrograms\ObjectOrientedPrograms\StockFile.json", output);
+        }
+        public void Report()
+        {
+            Console.WriteLine("Enter your name");
+            string name = Console.ReadLine();
+            string userFile = File.ReadAllText(@"D:\BridgeLabzBhush\ObjectOrientedPrograms\ObjectOrientedPrograms\StockUsers.json");
+            UserList userList = JsonConvert.DeserializeObject<UserList>(userFile);
+            foreach (var data in userList.StockUsers)
+            {
+                if (data.Name.Equals(name))
+                {
+                    Console.WriteLine("Name : {0}", name);
+                    Console.WriteLine("Companyshares");
+                    foreach (string str in data.CompanyShares)
+                    {
+                        Console.WriteLine(str);
+                    }
+                    Console.WriteLine("Number Of Shares");
+                    foreach (int str in data.NumberOfShares)
+                    {
+                        Console.WriteLine(str);
+                    }
+                    Console.WriteLine("ShareValue");
+                    foreach (int str in data.ShareValue)
+                    {
+                        Console.WriteLine(str);
+                    }
+                    return;
+                }
+            }
         }
     }
 }

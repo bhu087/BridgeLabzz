@@ -2,7 +2,7 @@
   "Stock": [
     {
       "StockName": "SBI",
-      "NumberOfShare": 50,
+      "NumberOfShare": 40,
       "SharePrice": 150
     },
     {
@@ -14,6 +14,16 @@
       "StockName": "Reliance-Jio",
       "NumberOfShare": 100,
       "SharePrice": 150
+    },
+    {
+      "StockName": "Mysore Sandal",
+      "NumberOfShare": 1,
+      "SharePrice": 500
+    },
+    {
+      "StockName": "IBM",
+      "NumberOfShare": 2,
+      "SharePrice": 10
     }
   ]
 }

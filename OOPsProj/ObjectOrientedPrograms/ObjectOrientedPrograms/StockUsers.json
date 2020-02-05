@@ -9,7 +9,7 @@
         "Amezon"
       ],
       "NumberOfShares": [
-        20,
+        18,
         30,
         40
       ],
@@ -41,9 +41,9 @@
     {
       "Name": "Bhushan",
       "Savings": 100000,
-      "CompanyShares": null,
-      "NumberOfShares": null,
-      "ShareValue": null
+      "CompanyShares": [ "IBM" ],
+      "NumberOfShares": [ 0 ],
+      "ShareValue": [ 0 ]
     },
     {
       "Name": "Navdeep",
@@ -52,18 +52,21 @@
         "Mysore Sandal",
         "BSNL",
         "Amezon",
-        "Axis"
+        "Axis",
+        "SBI"
       ],
       "NumberOfShares": [
-        4,
+        3,
         5,
         6,
-        4
+        4,
+        10
       ],
       "ShareValue": [
         500,
         200,
         100,
+        150,
         150
       ]
     }

@@ -27,11 +27,14 @@ namespace ObjectOrientedPrograms
                     stockUtility.BuyAShare();
                     break;
                 case 4:
+                    stockUtility.SellAShare();
                     break;
                 case 5:
+                    stockUtility.Report();
                     break;
                 default:
-                    break;
+                    Console.WriteLine("Invalid options");
+                    return;
             }
         }
     }

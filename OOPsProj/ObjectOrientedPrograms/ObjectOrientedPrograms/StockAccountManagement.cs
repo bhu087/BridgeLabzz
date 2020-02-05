@@ -20,7 +20,7 @@ namespace ObjectOrientedPrograms
         /// <summary>
         /// Stoke account.
         /// </summary>
-        public static void StokeAccount()
+        public static void StockAccount()
         {
             Utility stockUtility = new Utility();
             ////reads the file as string
