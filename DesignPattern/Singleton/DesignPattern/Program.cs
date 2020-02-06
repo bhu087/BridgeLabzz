@@ -21,6 +21,7 @@ namespace DesignPattern
             Utility mainUtility = new Utility();
             Console.WriteLine("1 for Eager Initializatin\n2 for Lazy initialization");
             Console.WriteLine("3 for Static block initialization\n4 for Thread safe singleton");
+            Console.WriteLine("5 for Factory Pattern");
             int option = mainUtility.IntiInput();
             SingletonMain singletonMain = new SingletonMain();
             switch (option)
@@ -38,6 +39,9 @@ namespace DesignPattern
                 case 4:
                     //ThreadSafeSingalton threadSafeSingalton = new ThreadSafeSingalton();
                     ThreadSafeSingalton.Threading();
+                    break;
+                case 5:
+                    FactoryPattern.Factory.FactoryDeviceDetails();
                     break;
                 default:
                     break;
