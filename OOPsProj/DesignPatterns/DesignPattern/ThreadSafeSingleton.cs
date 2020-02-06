@@ -1,33 +1,51 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-
+﻿////...............................................
+////<copyright file="SingletonForThreadSafe.cs" company="BridgeLabz">
+////author="Bhushan"
+////</copyright>
+////................................................
 namespace DesignPattern
 {
-    class ThreadSafeSingalton
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+    using System.Threading;
+    using System.Threading.Tasks;
+
+    /// <summary>
+    /// This is the thread safe singleton example
+    /// </summary>
+    public class ThreadSafeSingalton
     {
-        public void Threading()
+        /// <summary>
+        /// Threadings this instance.
+        /// </summary>
+        public static void Threading()
         {
             Parallel.Invoke(
                 () => Teacher(),
                 () => Student()
                 );
-
+            Console.ReadLine();
         }
+
+        /// <summary>
+        /// Teachers this instance.
+        /// </summary>
         private static void Teacher()
         {
-            Singleton singleton = Singleton.GetInstance();
-            singleton.Message("Teacher Here");
-            Thread.Sleep(1000);
-            Console.WriteLine(singleton.GetHashCode());
+            SingletonForThreadSafe fromTeacher = SingletonForThreadSafe.GetInstance();
+            fromTeacher.Message("Teacher Here");
+            Console.WriteLine(fromTeacher.GetHashCode());
         }
+
+        /// <summary>
+        /// Students this instance.
+        /// </summary>
         private static void Student()
         {
-            Singleton singleton = Singleton.GetInstance();
-            singleton.Message("Student Here");
-            Console.WriteLine(singleton.GetHashCode());
+            SingletonForThreadSafe fromStudent = SingletonForThreadSafe.GetInstance();
+            fromStudent.Message("Student Here");
+            Console.WriteLine(fromStudent.GetHashCode());
         }
     }
 }

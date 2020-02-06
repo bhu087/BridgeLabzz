@@ -1,21 +1,31 @@
-﻿
+﻿////...............................................
+////<copyright file="StaticBlocks.cs" company="BridgeLabz">
+////author="Bhushan"
+////</copyright>
+////................................................
 namespace DesignPattern
 {
     using System;
     using System.Collections.Generic;
     using System.Text;
 
-
-    class StaticBlocks
+    /// <summary>
+    /// /
+    /// </summary>
+    public class StaticBlocks
     {
+        /// <summary>
+        /// The data
+        /// </summary>
         public static int Data;
 
         /// <summary>
         /// Initializes the <see cref="StaticBlocks"/> class.
         /// </summary>
-        static StaticBlocks()       ////Static blocks are used to initialize the static elements
+        static StaticBlocks()
             {
-                Data =80;
+            ////Static blocks are used to initialize the static elements
+            Data = 80;
             }
 
         /// <summary>

@@ -36,8 +36,8 @@ namespace DesignPattern
                     staticBlocks.StaticBlockAccess();
                     break;
                 case 4:
-                    ThreadSafeSingalton threadSafeSingalton = new ThreadSafeSingalton();
-                    threadSafeSingalton.Threading();
+                    //ThreadSafeSingalton threadSafeSingalton = new ThreadSafeSingalton();
+                    ThreadSafeSingalton.Threading();
                     break;
                 default:
                     break;
