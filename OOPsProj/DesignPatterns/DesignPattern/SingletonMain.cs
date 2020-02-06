@@ -17,19 +17,40 @@ namespace DesignPattern
         /// <summary>
         /// Designs this instance.
         /// </summary>
-        public void Design()
+        public void Design(int n)
         {
-            ////i have created 3 objects
-            Singleton object1 = Singleton.GetInstance();
-            object1.Message("Object One Here");
-            Singleton object2 = Singleton.GetInstance();
-            object2.Message("Object two Here");
-            Singleton object3 = Singleton.GetInstance();
-            object3.Message("Object Three Here");
-            ////but it creates only a single instance we observe it by hash code of each objects
-            Console.WriteLine("Object one Hash Code " + object1.GetHashCode());
-            Console.WriteLine("Object two Hash Code " + object2.GetHashCode());
-            Console.WriteLine("Object two Hash Code " + object3.GetHashCode());
+            if (n == 1)
+            {
+                Console.WriteLine("Eager Initialization");
+                ////i have created 3 objects
+                Singleton object1 = Singleton.GetInstance();
+                object1.Message("Object One Here");
+                Singleton object2 = Singleton.GetInstance();
+                object2.Message("Object two Here");
+                Singleton object3 = Singleton.GetInstance();
+                object3.Message("Object Three Here");
+                ////but it creates only a single instance we observe it by hash code of each objects
+                Console.WriteLine("Object one Hash Code " + object1.GetHashCode());
+                Console.WriteLine("Object two Hash Code " + object2.GetHashCode());
+                Console.WriteLine("Object two Hash Code " + object3.GetHashCode());
+                return;
+            }
+            if (n == 2)
+            {
+                Console.WriteLine("Lazy Initialization");
+                ////i have created 3 objects
+                SingletonLazy object1 = SingletonLazy.GetInstance();
+                object1.Message("Object One Here");
+                SingletonLazy object2 = SingletonLazy.GetInstance();
+                object2.Message("Object two Here");
+                SingletonLazy object3 = SingletonLazy.GetInstance();
+                object3.Message("Object Three Here");
+                ////but it creates only a single instance we observe it by hash code of each objects
+                Console.WriteLine("Object one Hash Code " + object1.GetHashCode());
+                Console.WriteLine("Object two Hash Code " + object2.GetHashCode());
+                Console.WriteLine("Object two Hash Code " + object3.GetHashCode());
+                return;
+            }
         }
 
         /*

@@ -18,8 +18,30 @@ namespace DesignPattern
         /// <param name="args">The arguments.</param>
         public static void Main(string[] args)
         {
+            Utility mainUtility = new Utility();
+            Console.WriteLine("1 for Eager Initializatin\n2 for Lazy initialization");
+            Console.WriteLine("3 for Static block initialization\n4 for Thread safe singleton");
+            int option = mainUtility.IntiInput();
             SingletonMain singletonMain = new SingletonMain();
-            singletonMain.Design();
+            switch (option)
+            {
+                case 1:
+                    singletonMain.Design(1);
+                    break;
+                case 2:
+                    singletonMain.Design(2);
+                    break;
+                case 3:
+                    StaticBlocks staticBlocks = new StaticBlocks();
+                    staticBlocks.StaticBlockAccess();
+                    break;
+                case 4:
+                    ThreadSafeSingalton threadSafeSingalton = new ThreadSafeSingalton();
+                    threadSafeSingalton.Threading();
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

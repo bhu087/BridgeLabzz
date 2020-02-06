@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\BridgeLabzBhush\\DesignPatternPrograms\\ConsoleApp1\\ConsoleApp1\\DesignPattern.csproj": {}
+    "D:\\BridgeLabzBhush\\DesignPatternPrograms\\DesignPattern\\DesignPattern\\DesignPattern.csproj": {}
   },
   "projects": {
-    "D:\\BridgeLabzBhush\\DesignPatternPrograms\\ConsoleApp1\\ConsoleApp1\\DesignPattern.csproj": {
+    "D:\\BridgeLabzBhush\\DesignPatternPrograms\\DesignPattern\\DesignPattern\\DesignPattern.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\BridgeLabzBhush\\DesignPatternPrograms\\ConsoleApp1\\ConsoleApp1\\DesignPattern.csproj",
+        "projectUniqueName": "D:\\BridgeLabzBhush\\DesignPatternPrograms\\DesignPattern\\DesignPattern\\DesignPattern.csproj",
         "projectName": "DesignPattern",
-        "projectPath": "D:\\BridgeLabzBhush\\DesignPatternPrograms\\ConsoleApp1\\ConsoleApp1\\DesignPattern.csproj",
+        "projectPath": "D:\\BridgeLabzBhush\\DesignPatternPrograms\\DesignPattern\\DesignPattern\\DesignPattern.csproj",
         "packagesPath": "C:\\Users\\bridgelabz\\.nuget\\packages\\",
-        "outputPath": "D:\\BridgeLabzBhush\\DesignPatternPrograms\\ConsoleApp1\\ConsoleApp1\\obj\\",
+        "outputPath": "D:\\BridgeLabzBhush\\DesignPatternPrograms\\DesignPattern\\DesignPattern\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\bridgelabz\\AppData\\Roaming\\NuGet\\NuGet.Config",
