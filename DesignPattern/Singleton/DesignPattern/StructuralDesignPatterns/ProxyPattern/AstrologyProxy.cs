@@ -1,12 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
+﻿////------------------------------------------------------------------------
+////<copyright file="AstrologyProxy.cs" company="BridgeLabz">
+////author="Bhushan"
+////</copyright>
+////-------------------------------------------------------------------------
 namespace DesignPattern.StructuralDesignPatterns.ProxyPattern
 {
-    class AstrologyProxy : IAstrology
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+
+    /// <summary>
+    /// Astrology proxy
+    /// </summary>
+    /// <seealso cref="DesignPattern.StructuralDesignPatterns.ProxyPattern.IAstrology" />
+    public class AstrologyProxy : IAstrology
     {
-        IAstrology astrology;
+        /// <summary>
+        /// The astrology
+        /// </summary>
+        private IAstrology astrology;
+
+        /// <summary>
+        /// Gets the astrology.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <returns>Astrology to user</returns>
         public string GetAstrology(string name)
         {
             Utility utility = new Utility();
@@ -15,19 +33,22 @@ namespace DesignPattern.StructuralDesignPatterns.ProxyPattern
             int choice = utility.IntiInput();
             if (choice == 1)
             {
-                astrology = new AstrologyToday();
-                returnString = astrology.GetAstrology(name);
+                this.astrology = new AstrologyToday();
+                returnString = this.astrology.GetAstrology(name);
             }
+
             if (choice == 2)
             {
-                astrology = new AstrologyTomorrow();
-                returnString = astrology.GetAstrology(name);
+                this.astrology = new AstrologyTomorrow();
+                returnString = this.astrology.GetAstrology(name);
             }
+
             if (choice == 3)
             {
-                astrology = new AstrologyFuture();
-                returnString = astrology.GetAstrology(name);
+                this.astrology = new AstrologyFuture();
+                returnString = this.astrology.GetAstrology(name);
             }
+
             return returnString;
         }
     }

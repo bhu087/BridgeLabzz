@@ -1,11 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
+﻿////------------------------------------------------------------------------
+////<copyright file="AstrologyFuture.cs" company="BridgeLabz">
+////author="Bhushan"
+////</copyright>
+////-------------------------------------------------------------------------
 namespace DesignPattern.StructuralDesignPatterns.ProxyPattern
 {
-    class AstrologyFuture : IAstrology
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+
+    /// <summary>
+    /// This is the Astrology for future
+    /// </summary>
+    /// <seealso cref="DesignPattern.StructuralDesignPatterns.ProxyPattern.IAstrology" />
+    public class AstrologyFuture : IAstrology
     {
+        /// <summary>
+        /// Gets the astrology.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <returns>future astrology it will returns</returns>
         public string GetAstrology(string name)
         {
             Random random = new Random();
