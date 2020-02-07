@@ -22,7 +22,7 @@ namespace DesignPattern
             Console.WriteLine("1 for Eager Initializatin\n2 for Lazy initialization");
             Console.WriteLine("3 for Static block initialization\n4 for Thread safe singleton");
             Console.WriteLine("5 for Factory Pattern\n6 for proto-type Pattern");
-            Console.WriteLine("7 for Adapter\n8 for Facade Pattern");
+            Console.WriteLine("7 for Adapter\n8 for Facade Pattern\n9 for Proxy Pattern");
             int option = mainUtility.IntiInput();
             SingletonMain singletonMain = new SingletonMain();
             switch (option)
@@ -51,6 +51,9 @@ namespace DesignPattern
                     break;
                 case 8:
                     StructuralDesignPatterns.FacadePattern.BookFacade.BookFacadePattern();
+                    break;
+                case 9:
+                    StructuralDesignPatterns.ProxyPattern.UserAstrology.UserAstrologyDetails();
                     break;
                 default:
                     break;
