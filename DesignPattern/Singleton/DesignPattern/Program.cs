@@ -22,6 +22,7 @@ namespace DesignPattern
             Console.WriteLine("1 for Eager Initializatin\n2 for Lazy initialization");
             Console.WriteLine("3 for Static block initialization\n4 for Thread safe singleton");
             Console.WriteLine("5 for Factory Pattern\n6 for proto-type Pattern");
+            Console.WriteLine("7 for Adapter");
             int option = mainUtility.IntiInput();
             SingletonMain singletonMain = new SingletonMain();
             switch (option)
@@ -44,6 +45,9 @@ namespace DesignPattern
                     break;
                 case 6:
                     SchoolProtoTypePattern.School.SchoolDetails();
+                    break;
+                case 7:
+                    StructuralDesignPatterns.BirdAdapter.BirdFinder.BirdSound();
                     break;
                 default:
                     break;
