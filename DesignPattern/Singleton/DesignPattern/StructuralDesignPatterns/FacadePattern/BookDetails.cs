@@ -1,31 +1,66 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
+﻿////------------------------------------------------------------------------
+////<copyright file="BookDetails.cs" company="BridgeLabz">
+////author="Bhushan"
+////</copyright>
+////-------------------------------------------------------------------------
 namespace DesignPattern.StructuralDesignPatterns.FacadePattern
 {
-    class BookDetails
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+
+    /// <summary>
+    /// Book Details
+    /// </summary>
+    public class BookDetails
     {
+        /// <summary>
+        /// The book1
+        /// </summary>
         private IBook book1;
+
+        /// <summary>
+        /// The book2
+        /// </summary>
         private IBook book2;
+
+        /// <summary>
+        /// The book3
+        /// </summary>
         private IBook book3;
+
+        /// <summary>
+        /// Books the authors.
+        /// </summary>
         public void BookAuthors()
         {
-            book1 = new Kavaludaari();
-            book2 = new Runa();
-            book3 = new Janapada();
+            this.book1 = new Kavaludaari();
+            this.book2 = new Runa();
+            this.book3 = new Janapada();
         }
+
+        /// <summary>
+        /// Kavalu author.
+        /// </summary>
         public void KavaluAuthor()
         {
-            book1.Author();
+            this.book1.Author();
         }
+
+        /// <summary>
+        /// Runa author.
+        /// </summary>
         public void RunaAuthor()
         {
-            book2.Author();
+            this.book2.Author();
         }
+
+        /// <summary>
+        /// Janapada book author.
+        /// </summary>
         public void JanaAuthor()
         {
-            book3.Author();
+            this.book3.Author();
         }
     }
 }

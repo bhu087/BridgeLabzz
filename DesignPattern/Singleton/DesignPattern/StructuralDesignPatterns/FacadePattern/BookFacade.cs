@@ -1,11 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
+﻿////------------------------------------------------------------------------
+////<copyright file="BookFacade.cs" company="BridgeLabz">
+////author="Bhushan"
+////</copyright>
+////-------------------------------------------------------------------------
 namespace DesignPattern.StructuralDesignPatterns.FacadePattern
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+
+    /// <summary>
+    /// The Book Facade class
+    /// </summary>
     class BookFacade
     {
+        /// <summary>
+        /// Books the facade pattern.
+        /// </summary>
         public static void BookFacadePattern()
         {
             Utility utility = new Utility();

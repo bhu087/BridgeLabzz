@@ -1,11 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
+﻿////------------------------------------------------------------------------
+////<copyright file="Janapada.cs" company="BridgeLabz">
+////author="Bhushan"
+////</copyright>
+////-------------------------------------------------------------------------
 namespace DesignPattern.StructuralDesignPatterns.FacadePattern
 {
-    class Janapada : IBook
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+
+    /// <summary>
+    /// janapada book
+    /// </summary>
+    /// <seealso cref="DesignPattern.StructuralDesignPatterns.FacadePattern.IBook" />
+    public class Janapada : IBook
     {
+        /// <summary>
+        /// Authors this instance.
+        /// </summary>
         public void Author()
         {
             Console.WriteLine("------------Janapada-----------");
