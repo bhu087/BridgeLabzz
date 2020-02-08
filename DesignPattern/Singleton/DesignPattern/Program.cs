@@ -23,6 +23,7 @@ namespace DesignPattern
             Console.WriteLine("3 for Static block initialization\n4 for Thread safe singleton");
             Console.WriteLine("5 for Factory Pattern\n6 for proto-type Pattern");
             Console.WriteLine("7 for Adapter\n8 for Facade Pattern\n9 for Proxy Pattern");
+            Console.WriteLine("10 for Annotations");
             int option = mainUtility.IntiInput();
             SingletonMain singletonMain = new SingletonMain();
             switch (option)
@@ -54,6 +55,9 @@ namespace DesignPattern
                     break;
                 case 9:
                     StructuralDesignPatterns.ProxyPattern.UserAstrology.UserAstrologyDetails();
+                    break;
+                case 10:
+                    Annotations.AnnotationUser.AnnotationTest();
                     break;
                 default:
                     break;
