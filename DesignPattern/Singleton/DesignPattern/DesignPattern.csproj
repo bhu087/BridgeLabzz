@@ -16,8 +16,4 @@
     </Compile>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="BehavioralDesignPatterns\" />
-  </ItemGroup>
-
 </Project>

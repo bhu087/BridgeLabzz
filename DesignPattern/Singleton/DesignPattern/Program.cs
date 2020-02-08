@@ -59,6 +59,9 @@ namespace DesignPattern
                 case 10:
                     Annotations.AnnotationUser.AnnotationTest();
                     break;
+                case 11:
+                    BehavioralDesignPatterns.ObserverDesignPattern.ProductObserver.Observer();
+                    break;
                 default:
                     break;
             }
