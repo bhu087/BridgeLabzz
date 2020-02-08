@@ -1,87 +1,155 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
+﻿////------------------------------------------------------------------------
+////<copyright file="NokiaRG.cs" company="BridgeLabz">
+////author="Bhushan"
+////</copyright>
+////-------------------------------------------------------------------------
 namespace DesignPattern.BehavioralDesignPatterns.ObserverDesignPattern
 {
-    class NokiaRG : IProduct
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+
+    /// <summary>
+    /// The Nokia subject
+    /// </summary>
+    /// <seealso cref="DesignPattern.BehavioralDesignPatterns.ObserverDesignPattern.IProduct" />
+    public class NokiaRG : IProduct
     {
+        /// <summary>
+        /// The name
+        /// </summary>
         private string name;
+
+        /// <summary>
+        /// The price
+        /// </summary>
         private int price;
+
+        /// <summary>
+        /// The version
+        /// </summary>
         private float version;
-        private IProduct product;
-        List<Customer> customers = new List<Customer>();
+
+        /// <summary>
+        /// The customers
+        /// </summary>
+        private List<Customer> customers = new List<Customer>();
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="NokiaRG"/> class.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <param name="price">The price.</param>
+        /// <param name="version">The version.</param>
         public NokiaRG(string name, int price, float version)
         {
             this.name = name;
             this.price = price;
             this.version = version;
         }
+
+        /// <summary>
+        /// Gets or sets the name.
+        /// </summary>
+        /// <value>
+        /// The name.
+        /// </value>
         public string Name
         {
             get
             {
-                return name;
+                return this.name;
             }
+
             set
             {
                 if (!(this.name.Equals(value)))
                 {
                     this.name = value;
-                    Notify();
+                    this.Notify();
                 }
+
                 this.name = value;
             }
         }
+
+        /// <summary>
+        /// Gets or sets the price.
+        /// </summary>
+        /// <value>
+        /// The price.
+        /// </value>
         public int Price
         {
             get
             {
                 return this.price;
             }
+
             set
             {
                 if (this.price != value)
                 {
                     this.price = value;
-                    Notify();
+                    this.Notify();
                 }
             }
         }
+
+        /// <summary>
+        /// Gets or sets the version.
+        /// </summary>
+        /// <value>
+        /// The version.
+        /// </value>
         public float Version
         {
             get
             {
                 return this.version;
             }
+
             set
             {
                 if (this.version != value)
                 {
-                    if (version != value)
+                    if (this.version != value)
                     {
                         this.version = value;
-                        Notify();
+                        this.Notify();
                     }
+
                     this.version = value;
                 }
             }
         }
 
+        /// <summary>
+        /// Subscribes the specified customer.
+        /// </summary>
+        /// <param name="customer">The customer.</param>
         public void Subscribe(Customer customer)
         {
-            customers.Add(customer);
+            this.customers.Add(customer);
         }
+
+        /// <summary>
+        /// Unsubscribes the specified customer.
+        /// </summary>
+        /// <param name="customer">The customer.</param>
         public void Unsubscribe(Customer customer)
         {
-            customers.Remove(customer);
+            this.customers.Remove(customer);
         }
-       
+
+        /// <summary>
+        /// Notifies this instance.
+        /// </summary>
         public void Notify()
         {
-            foreach (Customer customer in customers)
+            foreach (Customer customer in this.customers)
             {
-                customer.Update(this,customer);
+                customer.Update(this, customer);
             }
         }
     }

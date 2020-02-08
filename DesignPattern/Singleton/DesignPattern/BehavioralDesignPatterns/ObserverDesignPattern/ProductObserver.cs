@@ -1,15 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
+﻿////------------------------------------------------------------------------
+////<copyright file="ProductObserver.cs" company="BridgeLabz">
+////author="Bhushan"
+////</copyright>
+////-------------------------------------------------------------------------
 namespace DesignPattern.BehavioralDesignPatterns.ObserverDesignPattern
 {
-    class ProductObserver
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+
+    /// <summary>
+    /// The Product observer
+    /// </summary>
+    public class ProductObserver
     {
+        /// <summary>
+        /// Observers this instance.
+        /// </summary>
         public static void Observer()
         {
             NokiaRG nokia = new NokiaRG("Nokia", 1000, 12.01f);
-            Customer customer = new Customer("Naveen",1234);
+            Customer customer = new Customer("Naveen", 1234);
             nokia.Subscribe(customer);
             nokia.Price = 800;
             RedMiY2 redmi = new RedMiY2("Redmi", 2000, 18.01f);
