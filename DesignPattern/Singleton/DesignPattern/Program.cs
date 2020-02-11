@@ -62,6 +62,9 @@ namespace DesignPattern
                 case 11:
                     BehavioralDesignPatterns.ObserverDesignPattern.ProductObserver.Observer();
                     break;
+                case 12:
+                    BehavioralDesignPatterns.MediatorDesignPattern.MediatorPattern.Mediator();
+                    break;
                 default:
                     break;
             }

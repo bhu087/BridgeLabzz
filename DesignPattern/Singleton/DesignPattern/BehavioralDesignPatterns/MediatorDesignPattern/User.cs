@@ -4,20 +4,24 @@ using System.Text;
 
 namespace DesignPattern.BehavioralDesignPatterns.MediatorDesignPattern
 {
-    class User
+    public class User
     {
-        public string name 
-        { 
-            get { return this.name; } 
-            set { this.name = name; }
+        private string name;
+        IChatRoom chatRoom;
+        public User()
+        {
+
         }
         public User(string name)
         {
             this.name = name;
         }
-        public void DisplayMessage(string message)
+        public string Name { get { return name; } set { this.name = value; } }
+        public string Message { get; set; }
+        public void DisplayMessage()
         {
-            ChatRoom.ShowMessage(this,message);
+            chatRoom = new ChatRoom();
+            chatRoom.ShowMessage(this,Message);
         }
     }
 }
