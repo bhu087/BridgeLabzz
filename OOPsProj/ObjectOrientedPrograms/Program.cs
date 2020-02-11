@@ -23,7 +23,7 @@ namespace ObjectOrientedPrograms
             Console.WriteLine("2 for Stock Account Management");
             Console.WriteLine("3 for user Stock Account\n4 for Deck Of Cards");
             Console.WriteLine("5 for Deck of cards using List/Queue");
-            Console.WriteLine("6 for File Watcher");
+            Console.WriteLine("6 for File Watcher\n7 for Delegates");
             Console.WriteLine("......................................................");
             int option = mainUtility.IntInput();
             ////Depending on option this will calls the classes.
@@ -47,6 +47,9 @@ namespace ObjectOrientedPrograms
                     break;
                 case 6:
                     FileWatcher.FileWatcherClass.FileWatcherMethod();
+                    break;
+                case 7:
+                    Delegates.DelegateProgram.DelegatesPragram();
                     break;
                 default:
                     break;
