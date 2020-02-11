@@ -23,7 +23,9 @@ namespace DesignPattern
             Console.WriteLine("3 for Static block initialization\n4 for Thread safe singleton");
             Console.WriteLine("5 for Factory Pattern\n6 for proto-type Pattern");
             Console.WriteLine("7 for Adapter\n8 for Facade Pattern\n9 for Proxy Pattern");
-            Console.WriteLine("10 for Annotations");
+            Console.WriteLine("10 for Annotations\n11 for Observer Pattern");
+            Console.WriteLine("12 for Mediator pattern\n13 for Visitor Pattern");
+            Console.WriteLine("-------------------------------------------------------------");
             int option = mainUtility.IntiInput();
             SingletonMain singletonMain = new SingletonMain();
             switch (option)
@@ -64,6 +66,9 @@ namespace DesignPattern
                     break;
                 case 12:
                     BehavioralDesignPatterns.MediatorDesignPattern.MediatorPattern.Mediator();
+                    break;
+                case 13:
+                    BehavioralDesignPatterns.VisitorDesignPattern.School.SchoolVisitor();
                     break;
                 default:
                     break;

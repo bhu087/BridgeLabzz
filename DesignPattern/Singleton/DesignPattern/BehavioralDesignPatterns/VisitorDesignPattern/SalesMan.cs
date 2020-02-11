@@ -6,10 +6,12 @@ namespace DesignPattern.BehavioralDesignPatterns.VisitorDesignPattern
 {
     class SalesMan : IServicePersons
     {
-        private string name { get; set; }
+        static int count;
+        public string name { get; set; }
         public void Visit(IKids kids)
         {
-            Console.WriteLine("{0} is providing Service to {1}", this.name, kids.GetName());
+            Console.WriteLine("{0} is providing Service to {1} Bag No : {2}", this.name, kids.GetName(), count);
+            count++;
         }
     }
 }
