@@ -1,11 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
+﻿////------------------------------------------------------------
+////<copyright file="ContractEmployees.cs" company="BridgeLabz">
+////author="Bhushan"
+////</copyright>
+////------------------------------------------------------------
 namespace ObjectOrientedPrograms.Delegates
 {
-    class ContractEmployees
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+
+    /// <summary>
+    /// This is the Contract employees list
+    /// </summary>
+    public class ContractEmployees
     {
+        /// <summary>
+        /// Contracts the employees list.
+        /// </summary>
+        /// <param name="person">The person.</param>
         public void ContractEmployeesList(string person)
         {
             List<User> users = new List<User>();
@@ -18,6 +30,7 @@ namespace ObjectOrientedPrograms.Delegates
             {
                 user.GetMessage(person);
             }
+
             Console.WriteLine("----------------------------------------------------");
         }
     }

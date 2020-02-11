@@ -1,11 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
+﻿////------------------------------------------------------------
+////<copyright file="TeamMembers.cs" company="BridgeLabz">
+////author="Bhushan"
+////</copyright>
+////------------------------------------------------------------
 namespace ObjectOrientedPrograms.Delegates
 {
-    class TeamMembers
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+
+    /// <summary>
+    /// This is the Team members class
+    /// </summary>
+    public class TeamMembers
     {
+        /// <summary>
+        /// Teams the members list.
+        /// </summary>
+        /// <param name="person">The person.</param>
         public void TeamMembersList(string person)
         {
             List<User> users = new List<User>();
@@ -18,6 +30,7 @@ namespace ObjectOrientedPrograms.Delegates
             {
                 user.GetMessage(person);
             }
+
             Console.WriteLine("-------------------------------------------------");
         }
     }

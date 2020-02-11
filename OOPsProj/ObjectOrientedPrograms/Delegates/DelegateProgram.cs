@@ -1,9 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
+﻿
 namespace ObjectOrientedPrograms.Delegates
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+
     public delegate void Message(string Designation);
     class DelegateProgram
     {
