@@ -1,0 +1,74 @@
+{
+  "StockUsers": [
+    {
+      "Name": "Pradeep",
+      "Savings": 50000,
+      "CompanyShares": [
+        "IBM",
+        "Infosys",
+        "Amezon"
+      ],
+      "NumberOfShares": [
+        18,
+        30,
+        40
+      ],
+      "ShareValue": [
+        10,
+        20,
+        300
+      ]
+    },
+    {
+      "Name": "Sandeep",
+      "Savings": 25000,
+      "CompanyShares": [
+        "Google",
+        "LIC",
+        "SBI"
+      ],
+      "NumberOfShares": [
+        1,
+        2,
+        3
+      ],
+      "ShareValue": [
+        100,
+        200,
+        300
+      ]
+    },
+    {
+      "Name": "Bhushan",
+      "Savings": 100000,
+      "CompanyShares": [ "IBM" ],
+      "NumberOfShares": [ 0 ],
+      "ShareValue": [ 0 ]
+    },
+    {
+      "Name": "Navdeep",
+      "Savings": 95000,
+      "CompanyShares": [
+        "Mysore Sandal",
+        "BSNL",
+        "Amezon",
+        "Axis",
+        "SBI"
+      ],
+      "NumberOfShares": [
+        3,
+        5,
+        6,
+        4,
+        10
+      ],
+      "ShareValue": [
+        500,
+        200,
+        100,
+        150,
+        150
+      ]
+    }
+  ]
+}
