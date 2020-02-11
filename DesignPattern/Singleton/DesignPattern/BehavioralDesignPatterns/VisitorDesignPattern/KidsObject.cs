@@ -9,7 +9,11 @@ namespace DesignPattern.BehavioralDesignPatterns.VisitorDesignPattern
         public string name { get; set; }
         public void Accept(IServicePersons servicePersons)
         {
-            Console.WriteLine();
+            servicePersons.Visit(this);
+        }
+        public string GetName()
+        {
+            return this.name;
         }
     }
 }

@@ -4,7 +4,9 @@ using System.Text;
 
 namespace DesignPattern.BehavioralDesignPatterns.VisitorDesignPattern
 {
-    interface IKids
+    public interface IKids
     {
+        void Accept(IServicePersons servicePersons);
+        string GetName();
     }
 }
