@@ -4,8 +4,12 @@ using System.Text;
 
 namespace DesignPattern.BehavioralDesignPatterns.VisitorDesignPattern
 {
-    class KidsObject
+    class KidsObject : IKids
     {
         public string name { get; set; }
+        public void Accept(IServicePersons servicePersons)
+        {
+            Console.WriteLine();
+        }
     }
 }
