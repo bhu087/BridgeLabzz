@@ -5,7 +5,7 @@
     <title></title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="stylesheet" href="StyleSheet.css">
-    <script src="MyjavaScript.js"></script>
+    <script src="EmployeeJavaScript.js"></script>
     <style>
         div.relative {
             position: relative;
@@ -14,38 +14,130 @@
             border: 3px solid #73AD21;
         }
     </style>
+    <style>
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        li {
+            float: right;
+        }
+
+            li a{
+                display: block;
+                color: white;
+                text-align: center;
+                padding: 14px 16px;
+                font-size: 20px;
+                text-decoration: none;
+            }
+            li p {
+                display: block;
+                color: white;
+                text-align: center;
+                padding: 14px 16px;
+                font-size: 20px;
+                text-decoration: none;
+            }
+
+                li a:hover:not(.active) {
+                    background-color: #111;
+                }
+
+        .active {
+            background-color: #4CAF50;
+        }
+        .disabled{
+            pointer-events: none;
+            cursor: default;
+            background-color: #333300;
+        }
+    </style>
 </head>
 <body>
-    <div class="relative">
+    <div class="Main Bar" style="width:100%; height:44px;">
+        <ul>
+            <li><a onclick="deActiveLogin(); activeEmployeeManagement();">Home</a></li>
+            <li><a onclick="activeLogin(); deActiveEmployeeManagement();">Login</a></li>
+            <li hidden><a href="#contact">Employee Management</a></li>
+            <li style="float: left"><a class="disabled"><img src="https://i.ya-webdesign.com/images/icons-transparent-employee-16.png" style="width:100%; height:20px"></a></li>
+            <li style="float: left"><a class="disabled">Welcome To Employee Management System</a></li>
+        </ul>
+    </div>
+    <br />
+    <br />
+    <br />
+    <div id="EmployeeManagement" style="display:none">
         <font size="5" face="Courier New">
-            <table style="color: white;" width="20">
+            <table style="color: white;" width="100%">
+                <tr><td></td><td>Login</td></tr>
                 <tr>
-                    <td align="right">
+                    <td align="right" class="active">
                         Name:
                     </td>
                     <td>
-                        <input type="text">
+                        <input type="text" placeholder="name" required>
                     </td>
                 </tr>
                 <tr><td></td></tr>
                 <tr>
-                    <td>
+                    <td align="right" class="active">
                         Password:
                     </td>
                     <td>
-                        <input type="text">
+                        <input type="text" placeholder="password">
                     </td>
                 </tr>
                 <tr><td></td></tr>
                 <tr>
-                    <td align="right">
+                    <td align="right" class="active">
                         Mobile:
                     </td>
                     <td>
-                        <input type="text">
+                        <input type="text" placeholder="age">
                     </td>
                 </tr>
+                <tr><td></td><td><input type="submit" value="Sign In"></td></tr>
+            </table>
+        </font>
+    </div>
+    <div id="LoginDiv" style="display:none">
+        <font size="5" face="Courier New">
+            <table style="color: white;" width="100%">
+                <tr><td></td><td>Login</td></tr>
+                <tr>
+                    <td align="right" class="active">
+                        Name:
+                    </td>
+                    <td>
+                        <input type="text" placeholder="name" required class="Fields">
+                    </td>
+                </tr>
+                <tr><td></td></tr>
+                <tr>
+                    <td  align="right" class="active">
+                        Password:
+                    </td>
+                    <td>
+                        <input type="text" placeholder="password" class="Fields">
+                    </td>
+                </tr>
+                <tr><td></td></tr>
+                <tr>
+                    <td align="right" class="active">
+                        Mobile:
+                    </td>
+                    <td>
+                        <input type="text" placeholder="age" class="Fields">
+                    </td>
+                </tr>
+                <tr><td></td><td><input type="submit" value="Sign In" class="Button"></td></tr>
             </table>
         </font>
     </div>
 </body>
+</html>
