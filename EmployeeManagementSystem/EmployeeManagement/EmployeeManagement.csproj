@@ -5,15 +5,31 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Controller\**" />
+    <Compile Remove="ModelClass\**" />
+    <Compile Remove="Repository\**" />
+    <Compile Remove="Utility\**" />
+    <Content Remove="Controller\**" />
+    <Content Remove="ModelClass\**" />
+    <Content Remove="Repository\**" />
+    <Content Remove="Utility\**" />
+    <EmbeddedResource Remove="Controller\**" />
+    <EmbeddedResource Remove="ModelClass\**" />
+    <EmbeddedResource Remove="Repository\**" />
+    <EmbeddedResource Remove="Utility\**" />
+    <None Remove="Controller\**" />
+    <None Remove="ModelClass\**" />
+    <None Remove="Repository\**" />
+    <None Remove="Utility\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controller\" />
     <Folder Include="Manager\" />
-    <Folder Include="ModelClass\" />
-    <Folder Include="Repository\" />
   </ItemGroup>
 
 </Project>
