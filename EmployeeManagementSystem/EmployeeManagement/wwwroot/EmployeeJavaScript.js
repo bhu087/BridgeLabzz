@@ -33,21 +33,46 @@ function deActiveParagraph() {
 	});
 }
 function LoginAction() {
-	$("#Login").click(function () {
+	$(document).ready(function () {
 		var formData = new FormData;
-		formData.append("name", $("#LoginName").val());
-		formData.append("userId", $("#LoginPassword").val());
-		formData.append("mobile", $("#LoginMobile").val());
+		formData.append('name', $("#LoginName").val());
+		formData.append('userId', $("#LoginPassword").val());
+		formData.append('mobile', $("#LoginMobile").val());
 		$.ajax({
-			url: "api/add",
+			url: "api/login",
 			type: 'POST',
 			cache: false,
 			contentType: false,
 			processData: false,
 			data: formData,
 			success: function (response) {
-				window.location.href = 'https://localhost:44378/Login.html'
-				alert("Added!");
+				// Replace the div's content with the page method's return.
+				alert(response);
+			},
+			error: function (response) {
+				alert(response)
+			}
+		});
+	});
+}
+function RegisterAction() {
+	$(document).ready(function () {
+		var formData = new FormData;
+		formData.append('Id',$("#RegisterId").val());
+		formData.append('name',$("#RegisterName").val());
+		formData.append('mobile',$("#RegisterMobile").val());
+		formData.append('salary',$("#registerSalary").val());
+		formData.append('city', $("#RegisterCity").val());
+		$.ajax({
+			url: "api/login",
+			type: 'POST',
+			cache: false,
+			contentType: false,
+			processData: false,
+			data: formData,
+			success: function (response) {
+				// Replace the div's content with the page method's return.
+				alert(response);
 			}
 		});
 	});

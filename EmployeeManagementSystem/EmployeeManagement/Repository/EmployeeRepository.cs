@@ -29,12 +29,30 @@ namespace EmployeeManagement.Repository
                             if (mobile.Equals(data["Mobile"]))
                             {
                                 con.Close();
+                                Console.WriteLine("true");
                                 return true;
                             }
                         }
                     }
                 }
                 return false;
+            }
+        }
+
+        public void Register(string Id, string name, string mobile, string salary, string city)
+        {
+            using (SqlConnection sqlConnection = new SqlConnection(this.connectionString))
+            {
+                SqlCommand sqlCommand = new SqlCommand("spAddEmployee",sqlConnection);
+                sqlCommand.CommandType = CommandType.StoredProcedure;
+                sqlCommand.Parameters.AddWithValue("Id",Id);
+                sqlCommand.Parameters.AddWithValue("FirstName",name);
+                sqlCommand.Parameters.AddWithValue("Mobile",mobile);
+                sqlCommand.Parameters.AddWithValue("Salary",salary);
+                sqlCommand.Parameters.AddWithValue("City",city);
+                sqlConnection.Open();
+                sqlCommand.ExecuteNonQuery();
+                sqlConnection.Close();
             }
         }
     }

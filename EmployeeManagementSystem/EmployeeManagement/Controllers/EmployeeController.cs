@@ -14,6 +14,7 @@ namespace EmployeeManagement.Controllers
         [Route("api/login")]
         public ActionResult Login(string name, string userId, string mobile)
         {
+            Console.WriteLine("Hi");
             try
             {
                 bool responceFlag = employeeView.Login(name, userId, mobile);
@@ -23,6 +24,12 @@ namespace EmployeeManagement.Controllers
             {
                 return this.BadRequest(e.Message);
             }
+        }
+        [HttpPost]
+        [Route("api/add")]
+        public void Register(string Id, string name, string mobile, string salary, string city)
+        {
+            employeeView.Register(Id, name, mobile, salary, city);
         }
     }
 }

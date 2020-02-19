@@ -13,5 +13,9 @@ namespace EmployeeManagement.View
         {
             return this.repository.Login(name, userId, mobile);
         }
+        public void Register(string Id, string name, string mobile, string salary, string city)
+        {
+            this.repository.Register(Id, name, mobile, salary, city);
+        }
     }
 }

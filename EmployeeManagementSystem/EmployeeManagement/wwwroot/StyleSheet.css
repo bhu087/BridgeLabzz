@@ -13,11 +13,7 @@
 }
 
 .Button {
-    outline: none;
-    border-radius: 10px;
-    border: 1px solid #aaa;
-    background: #4B0082;
-    color: white;
+    background-color : green;
 }
 .Fields {
     outline: none;

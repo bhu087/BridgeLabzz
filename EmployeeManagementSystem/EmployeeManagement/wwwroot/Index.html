@@ -41,7 +41,7 @@
                         Emp ID:
                     </td>
                     <td>
-                        <input type="text" placeholder="id" class="Fields">
+                        <input type="text" id="RegisterId" placeholder="id" class="Fields">
                     </td>
                 </tr>
                 <tr><td></td></tr>
@@ -50,7 +50,7 @@
                         Name:
                     </td>
                     <td>
-                        <input type="text" placeholder="name" class="Fields">
+                        <input type="text" id="RegisterName" placeholder="name" class="Fields">
                     </td>
                 </tr>
                 <tr><td></td></tr>
@@ -59,7 +59,7 @@
                         MobileNo:
                     </td>
                     <td>
-                        <input type="text" placeholder="number" class="Fields">
+                        <input type="text" id="RegisterMobile" placeholder="number" class="Fields">
                     </td>
                 </tr>
                 <tr>
@@ -67,7 +67,7 @@
                         Salary:
                     </td>
                     <td>
-                        <input type="text" placeholder="salary" class="Fields">
+                        <input type="text" id="RegisterSalary" placeholder="salary" class="Fields">
                     </td>
                 </tr>
                 <tr>
@@ -75,10 +75,10 @@
                             City:
                     </td>
                     <td>
-                        <input type="text" placeholder="city" class="Fields">
+                        <input type="text" id="RegisterCity" placeholder="city" class="Fields">
                     </td>
                 </tr>
-                <tr><td></td><td><input type="submit" value="Submit" class="Button"></td></tr>
+                <tr><td></td><td><button type="button" value="Submit" class="Button" onclick="RegisterAction()">Submit</button></td></tr>
             </table>
         </font>
     </div>
@@ -112,7 +112,7 @@
                         <input id="LoginMobile" type="text" placeholder="age" class="Fields">
                     </td>
                 </tr>
-                <tr><td></td><td><input id="Login" type="submit" value="Sign In" class="Button"></td></tr>
+                <tr><td></td><td><button id="Login" onclick="LoginAction()" type="button" value="Sign In" class="Button">Sign In</button></td></tr>
             </table>
         </font>
     </div>

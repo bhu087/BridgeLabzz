@@ -8,19 +8,15 @@
     <Compile Remove="Controller\**" />
     <Compile Remove="Manager\**" />
     <Compile Remove="ModelClass\**" />
-    <Compile Remove="Utility\**" />
     <Content Remove="Controller\**" />
     <Content Remove="Manager\**" />
     <Content Remove="ModelClass\**" />
-    <Content Remove="Utility\**" />
     <EmbeddedResource Remove="Controller\**" />
     <EmbeddedResource Remove="Manager\**" />
     <EmbeddedResource Remove="ModelClass\**" />
-    <EmbeddedResource Remove="Utility\**" />
     <None Remove="Controller\**" />
     <None Remove="Manager\**" />
     <None Remove="ModelClass\**" />
-    <None Remove="Utility\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,12 +24,6 @@
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.7.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-    <Folder Include="Models\" />
-    <Folder Include="Repository\" />
   </ItemGroup>
 
 </Project>
