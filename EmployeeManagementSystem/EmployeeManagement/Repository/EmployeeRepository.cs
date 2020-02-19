@@ -1,41 +1,41 @@
-﻿using System;
+﻿using EmployeeManagement.Utility;
+using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Data.SqlClient;
-using System.Text;
-using System.Configuration;
-using EmployeeManagement.Models;
 
 namespace EmployeeManagement.Repository
 {
-    public class EmployeeRepository : IEmployeeManagement
+    public class EmployeeRepository : IEmployeeRepository
     {
-        public SqlConnection con;
-
-        public Employee AddEmployee(Employee employee)
+        private string connectionString = ConnectionString.ConnectionName;
+        
+        public bool Login(string name, string userId, string mobile)
         {
-            throw new NotImplementedException();
-        }
-
-        public Employee DeleteEmployee(int Id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<Employee> GetAllEmployees()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Employee GetEmployee(int Id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Employee UpdateEmployee(Employee employee)
-        {
-            throw new NotImplementedException();
+            using (SqlConnection con = new SqlConnection(this.connectionString))
+            {
+                SqlCommand sqlCommand = new SqlCommand("spGetAllEmployee", con);
+                sqlCommand.CommandType = CommandType.StoredProcedure;
+                con.Open();
+                SqlDataReader data= sqlCommand.ExecuteReader();
+                while (data.Read())
+                {
+                    if (userId.Equals(data["Id"]))
+                    {
+                        if (name.Equals(data["FirstName"]))
+                        {
+                            if (mobile.Equals(data["Mobile"]))
+                            {
+                                con.Close();
+                                return true;
+                            }
+                        }
+                    }
+                }
+                return false;
+            }
         }
     }
 }

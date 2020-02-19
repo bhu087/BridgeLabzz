@@ -32,3 +32,23 @@ function deActiveParagraph() {
 		$("#paragraph").hide();
 	});
 }
+function LoginAction() {
+	$("#Login").click(function () {
+		var formData = new FormData;
+		formData.append("name", $("#LoginName").val());
+		formData.append("userId", $("#LoginPassword").val());
+		formData.append("mobile", $("#LoginMobile").val());
+		$.ajax({
+			url: "api/add",
+			type: 'POST',
+			cache: false,
+			contentType: false,
+			processData: false,
+			data: formData,
+			success: function (response) {
+				window.location.href = 'https://localhost:44378/Login.html'
+				alert("Added!");
+			}
+		});
+	});
+}
