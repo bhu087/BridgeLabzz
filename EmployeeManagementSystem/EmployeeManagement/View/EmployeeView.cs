@@ -1,4 +1,5 @@
-﻿using EmployeeManagement.Repository;
+﻿using EmployeeManagement.Models;
+using EmployeeManagement.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,9 +14,9 @@ namespace EmployeeManagement.View
         {
             return this.repository.Login(name, userId, mobile);
         }
-        public void Register(string Id, string name, string mobile, string salary, string city)
+        public void Register(Employee employee)
         {
-            this.repository.Register(Id, name, mobile, salary, city);
+            this.repository.Register(employee);
         }
     }
 }

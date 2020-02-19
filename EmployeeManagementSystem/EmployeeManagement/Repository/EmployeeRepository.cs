@@ -1,4 +1,5 @@
-﻿using EmployeeManagement.Utility;
+﻿using EmployeeManagement.Models;
+using EmployeeManagement.Utility;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -39,17 +40,17 @@ namespace EmployeeManagement.Repository
             }
         }
 
-        public void Register(string Id, string name, string mobile, string salary, string city)
+        public void Register(Employee employee)
         {
             using (SqlConnection sqlConnection = new SqlConnection(this.connectionString))
             {
                 SqlCommand sqlCommand = new SqlCommand("spAddEmployee",sqlConnection);
                 sqlCommand.CommandType = CommandType.StoredProcedure;
-                sqlCommand.Parameters.AddWithValue("Id",Id);
-                sqlCommand.Parameters.AddWithValue("FirstName",name);
-                sqlCommand.Parameters.AddWithValue("Mobile",mobile);
-                sqlCommand.Parameters.AddWithValue("Salary",salary);
-                sqlCommand.Parameters.AddWithValue("City",city);
+                //sqlCommand.Parameters.AddWithValue("Id", employee.UserId);
+                sqlCommand.Parameters.AddWithValue("FirstName", employee.Name);
+                sqlCommand.Parameters.AddWithValue("Mobile", employee.Mobile);
+                sqlCommand.Parameters.AddWithValue("Salary", employee.Salary);
+                sqlCommand.Parameters.AddWithValue("City", employee.City);
                 sqlConnection.Open();
                 sqlCommand.ExecuteNonQuery();
                 sqlConnection.Close();

@@ -1,5 +1,7 @@
-﻿using EmployeeManagement.View;
+﻿using EmployeeManagement.Models;
+using EmployeeManagement.View;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace EmployeeManagement.Controllers
 {
-    public class EmployeeController : ControllerBase
+    public class EmployeeController : Controller
     {
         IEmployeeView employeeView = new EmployeeView();
         [HttpPost]
@@ -27,9 +29,24 @@ namespace EmployeeManagement.Controllers
         }
         [HttpPost]
         [Route("api/add")]
-        public void Register(string Id, string name, string mobile, string salary, string city)
+        public ActionResult Register(string name, string mobile, string salary, string city)
         {
-            employeeView.Register(Id, name, mobile, salary, city);
+            Employee employee = new Employee();
+            employee.UserId = "";
+            employee.Name = name;
+            employee.Mobile = mobile;
+            employee.Salary = salary;
+            employee.City = city;
+            try
+            {
+                employeeView.Register(employee);
+                return this.Ok("Added Successfully");
+            }
+            catch(Exception e)
+            {
+                return this.BadRequest(e.Message);
+            }
+           
         }
     }
 }

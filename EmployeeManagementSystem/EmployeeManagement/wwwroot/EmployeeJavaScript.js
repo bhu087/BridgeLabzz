@@ -57,14 +57,41 @@ function LoginAction() {
 }
 function RegisterAction() {
 	$(document).ready(function () {
+		//var formData = new FormData;
+		//formData.append('Id',$("#RegisterId").val());
+		//formData.append('name',$("#RegisterName").val());
+		//formData.append('mobile',$("#RegisterMobile").val());
+		//formData.append('salary',$("#registerSalary").val());
+		//formData.append('city', $("#RegisterCity").val());
+		//console.log(formData);
+		//var data = {
+		//	Id:document.getElementById("RegisterId").value,
+		//	name:document.getElementById("RegisterName").value,
+		//	mobile:document.getElementById("RegisterMobile").value,
+		//	salary: document.getElementById("RegisterSalary").value,
+		//	city:document.getElementById("RegisterCity").value
+		//}
+		//console.log(data);
+		//$.ajax({
+		//	url: "api/add",
+		//	type: 'POST',
+		//	cache: false,
+		//	contentType: 'application/json; charset=utf-8',
+		//	processData: true,
+		//	async: true,
+		//	data: JSON.stringify(data),
+		//	success: function (response) {
+		//		// Replace the div's content with the page method's return.
+		//		alert(response);
+		//	}
 		var formData = new FormData;
-		formData.append('Id',$("#RegisterId").val());
-		formData.append('name',$("#RegisterName").val());
-		formData.append('mobile',$("#RegisterMobile").val());
-		formData.append('salary',$("#registerSalary").val());
-		formData.append('city', $("#RegisterCity").val());
+		formData.append("name", $("#RegisterName").val());
+		formData.append("mobile", $("#RegisterMobile").val());
+		formData.append("salary", $("#RegisterSalary").val());
+		formData.append("city", $("#RegisterCity").val());
+
 		$.ajax({
-			url: "api/login",
+			url: "api/add",
 			type: 'POST',
 			cache: false,
 			contentType: false,
@@ -72,6 +99,9 @@ function RegisterAction() {
 			data: formData,
 			success: function (response) {
 				// Replace the div's content with the page method's return.
+				alert(response);
+			},
+			error: function (response) {
 				alert(response);
 			}
 		});
