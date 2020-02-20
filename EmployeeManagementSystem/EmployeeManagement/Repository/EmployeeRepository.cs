@@ -59,7 +59,7 @@ namespace EmployeeManagement.Repository
 
         public IEnumerable<Employee> GetEmployees()
         {
-            IEnumerable<Employee> list;
+            List<Employee> list = new List<Employee>();
             using (SqlConnection sqlConnection = new SqlConnection(connectionString))
             {
                 SqlCommand sqlCommand = new SqlCommand("spGetAllEmployees",sqlConnection);
@@ -68,9 +68,17 @@ namespace EmployeeManagement.Repository
                 SqlDataReader data = sqlCommand.ExecuteReader();
                 while (data.Read())
                 {
-
+                    Employee employee = new Employee();
+                    employee.UserId = data["Id"].ToString();
+                    employee.Name = data["Name"].ToString();
+                    employee.Mobile = data["Mobile"].ToString();
+                    employee.Salary = data["Salary"].ToString();
+                    employee.City = data["City"].ToString();
+                    list.Add(employee);
                 }
+                sqlConnection.Close();
             }
+            return list;
         }
     }
 }

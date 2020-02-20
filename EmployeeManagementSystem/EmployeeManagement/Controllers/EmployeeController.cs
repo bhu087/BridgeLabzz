@@ -23,7 +23,7 @@ namespace EmployeeManagement.Controllers
                 bool responceFlag = employeeView.Login(name, userId, mobile);
                 return this.Ok(responceFlag);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return this.BadRequest(e.Message);
             }
@@ -55,6 +55,21 @@ namespace EmployeeManagement.Controllers
                 }
             }
             return View();
+        }
+        [HttpPost]
+        [Route("api/getEmplyees")]
+        public ActionResult GetAllEmployees()
+        {
+            try
+            {
+                IEnumerable<Employee> employees = this.employeeView.GetEmployees();
+                return this.Ok(employees);
+            }
+            catch (Exception e)
+            {
+                return this.BadRequest(e.Message);
+            }
+
         }
     }
 }
