@@ -78,7 +78,29 @@ function LoginAction() {
 	});
 }
 function UpdateAction() {
+	$(document).ready(function () {
+		var formData = new FormData;
+		formData.append("userId", $("#UpdateId").val());
+		formData.append("name", $("#UpdateName").val());
+		formData.append("mobile", $("#UpdateMobile").val());
+		formData.append("salary", $("#UpdateSalary").val());
+		formData.append("city", $("#UpdateCity").val());
 
+		$.ajax({
+			url: "api/update",
+			type: 'POST',
+			cache: false,
+			contentType: false,
+			processData: false,
+			data: formData,
+			success: function (response) {
+				alert(response);
+			},
+			error: function (response) {
+				alert("Wrong User Id");
+			}
+		});
+	});
 }
 function RegisterAction() {
 	$(document).ready(function () {
