@@ -90,6 +90,11 @@ function activeLoggedIn() {
 	deActiveListView();
 	deActiveUpdate();
 }
+function clearLoggedIn() {
+	$(document).ready(function () {
+		$("#LoginTable").html("");
+	});
+}
 function deActiveLoggedIn() {
 	$(document).ready(function () {
 		$("#LoggedInDiv").hide();
@@ -98,6 +103,26 @@ function deActiveLoggedIn() {
 function clearListView() {
 	$(document).ready(function () {
 		$("#ListTable").html("");
+	});
+}
+function deactiveMainBar() {
+	$(document).ready(function () {
+		$("#MainBar").hide();
+	});
+}
+function activeMainBar() {
+	$(document).ready(function () {
+		$("#MainBar").show();
+	});
+}
+function deactiveLogoutButton() {
+	$(document).ready(function () {
+		$("#LogOutButton").hide();
+	});
+}
+function activeLogoutButton() {
+	$(document).ready(function () {
+		$("#LogOutButton").show();
 	});
 }
 function LoginAction() {
@@ -118,7 +143,9 @@ function LoginAction() {
 			data: formData,
 			success: function (response) {
 				// Replace the div's content with the page method's return.
+				activeLogoutButton();
 				activeLoggedIn();
+				deactiveMainBar();
 				alert("Logged in successfully");
 				var trHtml = '<tr><td>' + "Name :" + $("#LoginName").val() + '</td><td>' + "Mobile :" + $("#LoginMobile").val() + '</td></tr>';
 				$("#LoginTable").append(trHtml);
