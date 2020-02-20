@@ -1,6 +1,6 @@
 ﻿body {
-   
-    background-color: white;
+    background-image: url('imagess/background.jpg');
+    background-color: black;
 }
 
 .LoginDiv {
@@ -12,7 +12,7 @@
     color: ghostwhite;
 }
 
-#Button {
+.Button {
     outline: none;
     background-color: wheat;
     border: 1px solid #aaa;

@@ -4,6 +4,7 @@
 	});
 	deActiveParagraph();
 	deActiveListView();
+	deActiveUpdate();
 }
 function deActiveLogin() {
 	$(document).ready(function () {
@@ -16,6 +17,7 @@ function activeEmployeeManagement() {
 	});
 	deActiveParagraph();
 	deActiveListView();
+	deActiveUpdate();
 }
 function deActiveEmployeeManagement() {
 	$(document).ready(function () {
@@ -29,6 +31,7 @@ function activeParagraph() {
 	deActiveEmployeeManagement();
 	deActiveLogin();
 	deActiveListView();
+	deActiveUpdate();
 }
 function deActiveParagraph() {
 	$(document).ready(function () {
@@ -42,10 +45,25 @@ function activeListView() {
 	deActiveParagraph();
 	deActiveEmployeeManagement();
 	deActiveLogin();
+	deActiveUpdate();
 }
 function deActiveListView() {
 	$(document).ready(function (){
 		$("#ListView").hide();
+	});
+}
+function activeUpdate() {
+	$(document).ready(function () {
+		$("#UpdateDiv").show();
+	});
+	deActiveParagraph();
+	deActiveEmployeeManagement();
+	deActiveLogin();
+	deActiveListView();
+}
+function deActiveUpdate() {
+	$(document).ready(function () {
+		$("#UpdateDiv").hide();
 	});
 }
 function clearListView() {

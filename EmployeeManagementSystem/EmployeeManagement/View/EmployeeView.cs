@@ -22,5 +22,10 @@ namespace EmployeeManagement.View
         {
             return this.repository.GetEmployees();
         }
+
+        public bool UpdateEmployee(Employee employee)
+        {
+            return this.repository.UpdateEmployee(employee);
+        }
     }
 }

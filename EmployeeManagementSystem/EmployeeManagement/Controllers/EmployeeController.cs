@@ -73,7 +73,7 @@ namespace EmployeeManagement.Controllers
         }
 
         [HttpPost]
-        [Route("api / update")]
+        [Route("api/update")]
         public ActionResult UpdateEmployee(string userId, string name, string mobile, string salary, string city)
         {
             Employee employee = new Employee
@@ -84,6 +84,16 @@ namespace EmployeeManagement.Controllers
                 Salary = salary,
                 City = city
             };
+            try
+            {
+                bool returnResult = this.employeeView.UpdateEmployee(employee);
+                return this.Ok(returnResult);
+            }
+            catch(Exception e)
+            {
+                return this.BadRequest(e.Message);
+            }
+            
         }
     }
 }
