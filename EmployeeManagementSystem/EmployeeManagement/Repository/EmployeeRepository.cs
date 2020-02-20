@@ -13,26 +13,22 @@ namespace EmployeeManagement.Repository
     {
         private string connectionString = ConnectionString.ConnectionName;
         
-        public bool Login(string name, string userId, string mobile)
+        public bool Login(Employee employee)
         {
             using (SqlConnection con = new SqlConnection(this.connectionString))
             {
-                SqlCommand sqlCommand = new SqlCommand("spGetAllEmployee", con);
+                SqlCommand sqlCommand = new SqlCommand("spGetAllEmployees", con);
                 sqlCommand.CommandType = CommandType.StoredProcedure;
                 con.Open();
                 SqlDataReader data= sqlCommand.ExecuteReader();
                 while (data.Read())
                 {
-                    if (userId.Equals(data["Id"]))
+                    if (employee.Name.Equals(data["FirstName"]))
                     {
-                        if (name.Equals(data["FirstName"]))
+                        if (employee.Mobile.Equals(data["Mobile"]))
                         {
-                            if (mobile.Equals(data["Mobile"]))
-                            {
-                                con.Close();
-                                Console.WriteLine("true");
-                                return true;
-                            }
+                            con.Close();
+                            return true;
                         }
                     }
                 }

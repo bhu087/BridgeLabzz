@@ -9,7 +9,7 @@ namespace EmployeeManagement.View
     interface IEmployeeView
     {
         void Register(Employee employee);
-        bool Login(string name, string userId, string mobile);
+        bool Login(Employee employee);
         IEnumerable<Employee> GetEmployees();
         bool UpdateEmployee(Employee employee);
     }

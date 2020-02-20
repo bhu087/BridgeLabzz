@@ -15,12 +15,14 @@ namespace EmployeeManagement.Controllers
         IEmployeeView employeeView = new EmployeeView();
         [HttpPost]
         [Route("api/login")]
-        public ActionResult Login(string name, string userId, string mobile)
+        public ActionResult Login(string name, string mobile)
         {
-            Console.WriteLine("Hi");
+            Employee employee = new Employee();
+            employee.Name = name;
+            employee.Mobile = mobile;
             try
             {
-                bool responceFlag = employeeView.Login(name, userId, mobile);
+                bool responceFlag = this.employeeView.Login(employee);
                 return this.Ok(responceFlag);
             }
             catch (Exception e)

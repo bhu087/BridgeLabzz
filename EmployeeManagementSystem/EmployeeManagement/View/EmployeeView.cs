@@ -10,9 +10,10 @@ namespace EmployeeManagement.View
     public class EmployeeView : IEmployeeView
     {
         IEmployeeRepository repository = new EmployeeRepository();
-        public bool Login(string name, string userId, string mobile)
+        public bool Login(Employee employee)
         {
-            return this.repository.Login(name, userId, mobile);
+            bool responseFlag =  this.repository.Login(employee);
+            return responseFlag;
         }
         public void Register(Employee employee)
         {

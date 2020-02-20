@@ -47,6 +47,14 @@ function activeListView() {
 	deActiveLogin();
 	deActiveUpdate();
 }
+function activeUpdateListView() {
+	$(document).ready(function () {
+		$("#ListView").show();
+	});
+	deActiveParagraph();
+	deActiveEmployeeManagement();
+	deActiveLogin();
+}
 function deActiveListView() {
 	$(document).ready(function (){
 		$("#ListView").hide();
@@ -73,10 +81,13 @@ function clearListView() {
 }
 function LoginAction() {
 	$(document).ready(function () {
+		console.log($("#LoginName").val());
+		console.log($("#LoginMobile").val());
 		var formData = new FormData;
-		formData.append('name', $("#LoginName").val());
-		formData.append('userId', $("#LoginPassword").val());
-		formData.append('mobile', $("#LoginMobile").val());
+		formData.append("name", $("#LoginName").val());
+		formData.append("mobile", $("#LoginMobile").val());
+
+		console.log(formData);
 		$.ajax({
 			url: "api/login",
 			type: 'POST',
@@ -86,11 +97,10 @@ function LoginAction() {
 			data: formData,
 			success: function (response) {
 				// Replace the div's content with the page method's return.
-				alert(response);
+				alert("Ok");
 			},
 			error: function (response) {
-				console.log(response);
-				alert(response)
+				alert("Not ok")
 			}
 		});
 	});
@@ -103,7 +113,7 @@ function UpdateAction() {
 		formData.append("mobile", $("#UpdateMobile").val());
 		formData.append("salary", $("#UpdateSalary").val());
 		formData.append("city", $("#UpdateCity").val());
-
+		console.log(formData)
 		$.ajax({
 			url: "api/update",
 			type: 'POST',
@@ -113,6 +123,8 @@ function UpdateAction() {
 			data: formData,
 			success: function (response) {
 				alert(response);
+				GetAllEmployee();
+				activeUpdateListView();
 			},
 			error: function (response) {
 				alert("Wrong User Id");

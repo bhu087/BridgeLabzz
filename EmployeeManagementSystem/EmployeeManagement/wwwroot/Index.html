@@ -23,11 +23,6 @@
             document.getElementById("RegisterCity").value = event.target.value;
         }
     </script>
-    <script>
-        function myFunction() {
-            document.getElementById("UpdateDiv").reset();
-        }
-    </script>
 </head>
 <body>
     <div class="Main Bar" style="width:100%; height:44px;">
@@ -38,8 +33,10 @@
             <li><a onclick="activeListView()">Employee List</a></li>
             <li><a onclick="activeUpdate()">Update Employee</a></li>
             <li style="float: left"><a class="disabled"><img src="https://i.ya-webdesign.com/images/icons-transparent-employee-16.png" style="width:100%; height:20px"></a></li>
-            <li style="float: left"><a class="disabled">Welcome To Employee Management System</a></li>
         </ul>
+        <div class="Main Bar">
+            <ul><li style="background-color:indigo;"><a>Welcome To Employee Management System</a></li></ul>
+        </div>
     </div>
     <br />
     <br />
@@ -107,16 +104,7 @@
                         Name:
                     </td>
                     <td>
-                        <input id="LoginName" type="text" placeholder="name" required class="Fields">
-                    </td>
-                </tr>
-                <tr><td></td></tr>
-                <tr>
-                    <td align="right" class="active">
-                        Password:
-                    </td>
-                    <td>
-                        <input id="LoginPassword" type="text" placeholder="password" class="Fields">
+                        <input id="LoginName" type="text" placeholder="name" required class="Fields" onchange="handleEmployeeName(event)">
                     </td>
                 </tr>
                 <tr><td></td></tr>
@@ -125,18 +113,10 @@
                         Mobile:
                     </td>
                     <td>
-                        <input id="LoginMobile" type="text" placeholder="age" class="Fields">
+                        <input id="LoginMobile" type="text" placeholder="mobile" class="Fields" onchange="handleEmployeeNumber(event)">
                     </td>
                 </tr>
-                <tr><td></td><td><button id="Login" onclick="LoginAction()" type="button" value="Sign In" class="Button">Sign In</button></td></tr>
-            </table>
-        </font>
-    </div>
-    <div id="ListView" style="display:none" class="table table-bordered table-dark">
-        <button onclick="GetAllEmployee(); clearListView()" id="List-Button" class="Button">click to view</button>
-        <font size="5" face="Courier New">
-            <table id="ListTable" style="color: white;" border="1" width="100%">
-                
+                <tr><td></td><td><button id="Login" onclick="LoginAction()" type="button" value="Submit" class="Button">Sign In</button></td></tr>
             </table>
         </font>
     </div>
@@ -184,10 +164,17 @@
                         City:
                     </td>
                     <td>
-                        <input type="text" value='' id="UpdateCity" placeholder="city" class="Fields" onchange="handleEmployeeCity(event)">
+                        <input type="text" value="" id="UpdateCity" placeholder="city" class="Fields" onchange="handleEmployeeCity(event)">
                     </td>
                 </tr>
-                <tr><td></td><td><button type="button" value="Submit" class="Button" onclick="UpdateAction(); myFunction()">Submit</button></td></tr>
+                <tr><td></td><td><button type="button" value="Submit" class="Button" onclick="UpdateAction()">Submit</button></td></tr>
+            </table>
+        </font>
+    </div>
+    <div id="ListView" style="display:none" class="table table-bordered table-dark">
+        <button onclick="GetAllEmployee(); clearListView()" id="List-Button" class="Button">click to view</button>
+        <font size="5" face="Courier New">
+            <table id="ListTable" style="color: white;" border="1" width="100%">
             </table>
         </font>
     </div>
