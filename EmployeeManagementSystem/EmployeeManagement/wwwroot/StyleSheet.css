@@ -1,4 +1,9 @@
-﻿body {
+﻿div {
+    display: inline-block;
+    width: 100%;
+    max-width: 100%;
+}
+body {
     background-image: url('imagess/background.jpg');
     background-color: black;
 }
@@ -57,7 +62,7 @@ li {
 .disabled {
     pointer-events: none;
     cursor: default;
-    background-color: #333300;
+    background-color: antiquewhite;
 }
 div.relative {
     position: relative;
@@ -74,4 +79,13 @@ div.relative {
 .Table{
     display : table;
     color:aqua;
+}
+.WelcomeBar {
+    display: block;
+    color: Black;
+    text-align: center;
+    font-size:200%;
+    padding: 3px 5px;
+    text-decoration: none;
+    background-color: #4CAF50;
 }
