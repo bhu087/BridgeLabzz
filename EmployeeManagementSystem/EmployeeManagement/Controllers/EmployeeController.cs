@@ -56,7 +56,7 @@ namespace EmployeeManagement.Controllers
             }
             return View();
         }
-        [HttpPost]
+        [HttpGet]
         [Route("api/getEmplyees")]
         public ActionResult GetAllEmployees()
         {

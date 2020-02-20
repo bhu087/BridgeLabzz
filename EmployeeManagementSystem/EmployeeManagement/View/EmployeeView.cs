@@ -18,5 +18,9 @@ namespace EmployeeManagement.View
         {
             this.repository.Register(employee);
         }
+        public IEnumerable<Employee> GetEmployees()
+        {
+            return this.repository.GetEmployees();
+        }
     }
 }

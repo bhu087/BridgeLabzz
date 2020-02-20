@@ -1,6 +1,6 @@
 ﻿body {
-    background-image: url("https://wallpapersmug.com/large/7ea043/mountain-dark-nature.jpg");
-    background-color: black;
+   
+    background-color: white;
 }
 
 .LoginDiv {
@@ -64,4 +64,11 @@ div.relative {
 }
 #paragraph{
     color : white;
+}
+#ListView {
+    color: white;
+}
+.Table{
+    display : table;
+    color:aqua;
 }

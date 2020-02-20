@@ -70,7 +70,7 @@ namespace EmployeeManagement.Repository
                 {
                     Employee employee = new Employee();
                     employee.UserId = data["Id"].ToString();
-                    employee.Name = data["Name"].ToString();
+                    employee.Name = data["FirstName"].ToString();
                     employee.Mobile = data["Mobile"].ToString();
                     employee.Salary = data["Salary"].ToString();
                     employee.City = data["City"].ToString();

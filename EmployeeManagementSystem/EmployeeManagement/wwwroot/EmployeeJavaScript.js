@@ -3,6 +3,7 @@
 		$("#LoginDiv").show();
 	});
 	deActiveParagraph();
+	deActiveListView();
 }
 function deActiveLogin() {
 	$(document).ready(function () {
@@ -14,6 +15,7 @@ function activeEmployeeManagement() {
 		$("#EmployeeManagement").show();
 	});
 	deActiveParagraph();
+	deActiveListView();
 }
 function deActiveEmployeeManagement() {
 	$(document).ready(function () {
@@ -26,10 +28,29 @@ function activeParagraph() {
 	});
 	deActiveEmployeeManagement();
 	deActiveLogin();
+	deActiveListView();
 }
 function deActiveParagraph() {
 	$(document).ready(function () {
 		$("#paragraph").hide();
+	});
+}
+function activeListView() {
+	$(document).ready(function () {
+		$("#ListView").show();
+	});
+	deActiveParagraph();
+	deActiveEmployeeManagement();
+	deActiveLogin();
+}
+function deActiveListView() {
+	$(document).ready(function (){
+		$("#ListView").hide();
+	});
+}
+function clearListView() {
+	$(document).ready(function () {
+		$("#ListTable").html("");
 	});
 }
 function LoginAction() {
@@ -58,33 +79,6 @@ function LoginAction() {
 }
 function RegisterAction() {
 	$(document).ready(function () {
-		//var formData = new FormData;
-		//formData.append('Id',$("#RegisterId").val());
-		//formData.append('name',$("#RegisterName").val());
-		//formData.append('mobile',$("#RegisterMobile").val());
-		//formData.append('salary',$("#registerSalary").val());
-		//formData.append('city', $("#RegisterCity").val());
-		//console.log(formData);
-		//var data = {
-		//	Id:document.getElementById("RegisterId").value,
-		//	name:document.getElementById("RegisterName").value,
-		//	mobile:document.getElementById("RegisterMobile").value,
-		//	salary: document.getElementById("RegisterSalary").value,
-		//	city:document.getElementById("RegisterCity").value
-		//}
-		//console.log(data);
-		//$.ajax({
-		//	url: "api/add",
-		//	type: 'POST',
-		//	cache: false,
-		//	contentType: 'application/json; charset=utf-8',
-		//	processData: true,
-		//	async: true,
-		//	data: JSON.stringify(data),
-		//	success: function (response) {
-		//		// Replace the div's content with the page method's return.
-		//		alert(response);
-		//	}
 		var formData = new FormData;
 		formData.append("name", $("#RegisterName").val());
 		formData.append("mobile", $("#RegisterMobile").val());
@@ -104,6 +98,26 @@ function RegisterAction() {
 			},
 			error: function (response) {
 				alert(response);
+			}
+		});
+	});
+}
+function GetAllEmployee() {
+	$(document).ready(function () {
+		$.ajax({
+			url: "api/getEmplyees",
+			dataType: "json",
+			type: 'GET',
+			success: function (data) {
+				//console.log(data);
+				//$("#ListView").append(JSON.stringify(data));
+				data: JSON.stringify(data);
+				var tablehtml = '<tr><td>Id</td><td>Name</td><td>Mobile</td><td>Salary</td><td>City</td><tr>';
+				$.each(data, function (i, item) {
+					tablehtml += '<tr><td>' + item.userId + '</td><td>' + item.name + '</td><td>' + item.mobile
+						+ '</td><td>' + item.salary + '</td><td>' + item.city + '</td></tr>';
+				});
+				$("#ListTable").append(tablehtml);
 			}
 		});
 	});

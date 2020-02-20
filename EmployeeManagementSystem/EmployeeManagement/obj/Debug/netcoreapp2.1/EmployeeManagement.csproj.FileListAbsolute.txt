@@ -22,3 +22,4 @@ D:\BridgeLabzBhush\EmployeeManagement\EmployeeManagement\EmployeeManagement\obj\
 D:\BridgeLabzBhush\EmployeeManagement\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp2.1\EmployeeManagement.RazorTargetAssemblyInfo.cs
 D:\BridgeLabzBhush\EmployeeManagement\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp2.1\EmployeeManagement.Views.pdb
 D:\BridgeLabzBhush\EmployeeManagement\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp2.1\EmployeeManagement.csproj.CopyComplete
+D:\BridgeLabzBhush\EmployeeManagement\EmployeeManagement\EmployeeManagement\bin\Debug\netcoreapp2.1\libman.json

@@ -10,5 +10,6 @@ namespace EmployeeManagement.View
     {
         void Register(Employee employee);
         bool Login(string name, string userId, string mobile);
+        IEnumerable<Employee> GetEmployees();
     }
 }
