@@ -80,5 +80,23 @@ namespace EmployeeManagement.Repository
             }
             return list;
         }
+
+        public bool UpdateEmployee(Employee employee)
+        {
+            using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+            {
+                SqlCommand sqlCommand = new SqlCommand("spUpdateEmployee",sqlConnection);
+                sqlCommand.CommandType = CommandType.StoredProcedure;
+                sqlCommand.Parameters.AddWithValue("Id",Convert.ToInt32(employee.UserId));
+                sqlCommand.Parameters.AddWithValue("FirstName",employee.Name);
+                sqlCommand.Parameters.AddWithValue("Mobile",employee.Mobile);
+                sqlCommand.Parameters.AddWithValue("Salary",employee.Salary);
+                sqlCommand.Parameters.AddWithValue("City",employee.City);
+                sqlConnection.Open();
+                sqlCommand.ExecuteNonQuery();
+                sqlConnection.Close();
+                return true;
+            }
+        }
     }
 }
