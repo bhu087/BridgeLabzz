@@ -71,5 +71,19 @@ namespace EmployeeManagement.Controllers
             }
 
         }
+
+        [HttpPost]
+        [Route("api / update")]
+        public ActionResult UpdateEmployee(string userId, string name, string mobile, string salary, string city)
+        {
+            Employee employee = new Employee
+            {
+                UserId = userId,
+                Name = name,
+                Mobile = mobile,
+                Salary = salary,
+                City = city
+            };
+        }
     }
 }
