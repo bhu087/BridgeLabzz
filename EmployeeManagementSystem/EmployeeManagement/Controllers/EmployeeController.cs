@@ -23,7 +23,11 @@ namespace EmployeeManagement.Controllers
             try
             {
                 bool responceFlag = this.employeeView.Login(employee);
-                return this.Ok(responceFlag);
+                if (responceFlag)
+                {
+                    return this.Ok(responceFlag);
+                }
+                return this.BadRequest("User not registered");
             }
             catch (Exception e)
             {

@@ -5,6 +5,7 @@
 	deActiveParagraph();
 	deActiveListView();
 	deActiveUpdate();
+	deActiveLoggedIn();
 }
 function deActiveLogin() {
 	$(document).ready(function () {
@@ -18,6 +19,7 @@ function activeEmployeeManagement() {
 	deActiveParagraph();
 	deActiveListView();
 	deActiveUpdate();
+	deActiveLoggedIn();
 }
 function deActiveEmployeeManagement() {
 	$(document).ready(function () {
@@ -32,6 +34,7 @@ function activeParagraph() {
 	deActiveLogin();
 	deActiveListView();
 	deActiveUpdate();
+	deActiveLoggedIn();
 }
 function deActiveParagraph() {
 	$(document).ready(function () {
@@ -46,6 +49,7 @@ function activeListView() {
 	deActiveEmployeeManagement();
 	deActiveLogin();
 	deActiveUpdate();
+	deActiveLoggedIn();
 }
 function activeUpdateListView() {
 	$(document).ready(function () {
@@ -54,6 +58,7 @@ function activeUpdateListView() {
 	deActiveParagraph();
 	deActiveEmployeeManagement();
 	deActiveLogin();
+	deActiveLoggedIn();
 }
 function deActiveListView() {
 	$(document).ready(function (){
@@ -68,10 +73,26 @@ function activeUpdate() {
 	deActiveEmployeeManagement();
 	deActiveLogin();
 	deActiveListView();
+	deActiveLoggedIn();
 }
 function deActiveUpdate() {
 	$(document).ready(function () {
 		$("#UpdateDiv").hide();
+	});
+}
+function activeLoggedIn() {
+	$(document).ready(function () {
+		$("#LoggedInDiv").show();
+	});
+	deActiveParagraph();
+	deActiveEmployeeManagement();
+	deActiveLogin();
+	deActiveListView();
+	deActiveUpdate();
+}
+function deActiveLoggedIn() {
+	$(document).ready(function () {
+		$("#LoggedInDiv").hide();
 	});
 }
 function clearListView() {
@@ -97,10 +118,13 @@ function LoginAction() {
 			data: formData,
 			success: function (response) {
 				// Replace the div's content with the page method's return.
-				alert("Ok");
+				activeLoggedIn();
+				alert("Logged in successfully");
+				var trHtml = '<tr><td>' + "Name :" + $("#LoginName").val() + '</td><td>' + "Mobile :" + $("#LoginMobile").val() + '</td></tr>';
+				$("#LoginTable").append(trHtml);
 			},
 			error: function (response) {
-				alert("Not ok")
+				alert(response.responseText)
 			}
 		});
 	});

@@ -23,15 +23,16 @@ namespace EmployeeManagement.Repository
                 SqlDataReader data= sqlCommand.ExecuteReader();
                 while (data.Read())
                 {
-                    if (employee.Name.Equals(data["FirstName"]))
+                    if (employee.Name.Equals(data["FirstName"].ToString()))
                     {
-                        if (employee.Mobile.Equals(data["Mobile"]))
+                        if (employee.Mobile.Equals(data["Mobile"].ToString()))
                         {
                             con.Close();
                             return true;
                         }
                     }
                 }
+                con.Close();
                 return false;
             }
         }
