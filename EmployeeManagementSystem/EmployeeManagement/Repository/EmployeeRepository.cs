@@ -56,5 +56,21 @@ namespace EmployeeManagement.Repository
                 sqlConnection.Close();
             }
         }
+
+        public IEnumerable<Employee> GetEmployees()
+        {
+            IEnumerable<Employee> list;
+            using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+            {
+                SqlCommand sqlCommand = new SqlCommand("spGetAllEmployees",sqlConnection);
+                sqlCommand.CommandType = CommandType.StoredProcedure;
+                sqlConnection.Open();
+                SqlDataReader data = sqlCommand.ExecuteReader();
+                while (data.Read())
+                {
+
+                }
+            }
+        }
     }
 }

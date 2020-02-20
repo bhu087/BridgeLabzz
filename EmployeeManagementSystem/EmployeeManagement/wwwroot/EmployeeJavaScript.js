@@ -50,6 +50,7 @@ function LoginAction() {
 				alert(response);
 			},
 			error: function (response) {
+				console.log(response);
 				alert(response)
 			}
 		});

@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace EmployeeManagement.Controllers
 {
@@ -31,22 +32,29 @@ namespace EmployeeManagement.Controllers
         [Route("api/add")]
         public ActionResult Register(string name, string mobile, string salary, string city)
         {
-            Employee employee = new Employee();
-            employee.UserId = "";
-            employee.Name = name;
-            employee.Mobile = mobile;
-            employee.Salary = salary;
-            employee.City = city;
-            try
+            if (ModelState.IsValid)
             {
-                employeeView.Register(employee);
-                return this.Ok("Added Successfully");
+                if (salary == null)
+                {
+                    salary = string.Empty;
+                }
+                Employee employee = new Employee();
+                employee.UserId = "";
+                employee.Name = name;
+                employee.Mobile = mobile;
+                employee.Salary = salary;
+                employee.City = city;
+                try
+                {
+                    employeeView.Register(employee);
+                    return this.Ok("Added Successfully");
+                }
+                catch (Exception e)
+                {
+                    return this.BadRequest(e.Message);
+                }
             }
-            catch(Exception e)
-            {
-                return this.BadRequest(e.Message);
-            }
-           
+            return View();
         }
     }
 }

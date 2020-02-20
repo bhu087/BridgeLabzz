@@ -12,3 +12,13 @@ D:\BridgeLabzBhush\EmployeeManagement\EmployeeManagement\EmployeeManagement\obj\
 D:\BridgeLabzBhush\EmployeeManagement\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp2.1\EmployeeManagement.RazorTargetAssemblyInfo.cache
 D:\BridgeLabzBhush\EmployeeManagement\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp2.1\EmployeeManagement.dll
 D:\BridgeLabzBhush\EmployeeManagement\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp2.1\EmployeeManagement.pdb
+D:\BridgeLabzBhush\EmployeeManagement\EmployeeManagement\EmployeeManagement\bin\Debug\netcoreapp2.1\EmployeeManagement.Views.dll
+D:\BridgeLabzBhush\EmployeeManagement\EmployeeManagement\EmployeeManagement\bin\Debug\netcoreapp2.1\EmployeeManagement.Views.pdb
+D:\BridgeLabzBhush\EmployeeManagement\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp2.1\EmployeeManagement.TagHelpers.input.cache
+D:\BridgeLabzBhush\EmployeeManagement\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp2.1\EmployeeManagement.TagHelpers.output.cache
+D:\BridgeLabzBhush\EmployeeManagement\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp2.1\EmployeeManagement.RazorCoreGenerate.cache
+D:\BridgeLabzBhush\EmployeeManagement\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp2.1\Razor\Views\Employee\Register.cshtml.g.cs
+D:\BridgeLabzBhush\EmployeeManagement\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
+D:\BridgeLabzBhush\EmployeeManagement\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp2.1\EmployeeManagement.RazorTargetAssemblyInfo.cs
+D:\BridgeLabzBhush\EmployeeManagement\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp2.1\EmployeeManagement.Views.pdb
+D:\BridgeLabzBhush\EmployeeManagement\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp2.1\EmployeeManagement.csproj.CopyComplete
