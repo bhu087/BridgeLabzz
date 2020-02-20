@@ -135,7 +135,56 @@
         </font>
     </div>
     <div id="UpdateDiv" style="display:none">
-
+        <font size="5" face="Courier New">
+            <table style="color: white;" width="100%">
+                <tr><td></td><td>Update</td></tr>
+                <tr><td></td></tr>
+                <tr>
+                    <td align="right" class="active">
+                        Id:
+                    </td>
+                    <td>
+                        <input type="text" id="UpdateId" placeholder="name" class="Fields" onchange="handleEmployeeId(event)">
+                    </td>
+                </tr>
+                <tr><td></td><td>Register</td></tr>
+                <tr><td></td></tr>
+                <tr>
+                    <td align="right" class="active">
+                        Name:
+                    </td>
+                    <td>
+                        <input type="text" id="UpdateName" placeholder="name" class="Fields" onchange="handleEmployeeName(event)">
+                    </td>
+                </tr>
+                <tr><td></td></tr>
+                <tr>
+                    <td align="right" class="active">
+                        MobileNo:
+                    </td>
+                    <td>
+                        <input type="text" id="UpdateMobile" placeholder="number" class="Fields" onchange="handleEmployeeNumber(event)">
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right" class="active">
+                        Salary:
+                    </td>
+                    <td>
+                        <input type="text" id="UpdateSalary" placeholder="salary" class="Fields" onchange="handleEmployeeSalary(event)">
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right" class="active">
+                        City:
+                    </td>
+                    <td>
+                        <input type="text" id="UpdateCity" placeholder="city" class="Fields" onchange="handleEmployeeCity(event)">
+                    </td>
+                </tr>
+                <tr><td></td><td><button type="button" value="Submit" class="Button" onclick="RegisterAction()">Submit</button></td></tr>
+            </table>
+        </font>
     </div>
 </body>
 </html>
