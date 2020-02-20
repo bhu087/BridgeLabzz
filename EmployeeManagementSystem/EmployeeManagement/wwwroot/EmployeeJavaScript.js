@@ -202,8 +202,9 @@ function RegisterAction() {
 				// Replace the div's content with the page method's return.
 				alert(response);
 			},
-			error: function (response) {
-				alert(response);
+			error: function (jqHXR,response) {
+				console.log(jqHXR.responseText);
+				alert(jqHXR.responseText);
 			}
 		});
 	});

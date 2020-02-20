@@ -38,18 +38,18 @@ namespace EmployeeManagement.Controllers
         [Route("api/add")]
         public ActionResult Register(string name, string mobile, string salary, string city)
         {
+            Employee employee = new Employee();
+            if (salary == null)
+            {
+                salary = string.Empty;
+            }
+            employee.UserId = "";
+            employee.Name = name;
+            employee.Mobile = mobile;
+            employee.Salary = salary;
+            employee.City = city;
             if (ModelState.IsValid)
             {
-                if (salary == null)
-                {
-                    salary = string.Empty;
-                }
-                Employee employee = new Employee();
-                employee.UserId = "";
-                employee.Name = name;
-                employee.Mobile = mobile;
-                employee.Salary = salary;
-                employee.City = city;
                 try
                 {
                     employeeView.Register(employee);
@@ -60,7 +60,7 @@ namespace EmployeeManagement.Controllers
                     return this.BadRequest(e.Message);
                 }
             }
-            return View();
+            return View(employee);
         }
         [HttpGet]
         [Route("api/getEmplyees")]
