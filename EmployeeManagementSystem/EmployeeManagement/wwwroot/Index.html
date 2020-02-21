@@ -53,138 +53,183 @@
             and upscale lifestyle.
         </p>
     </div>
-    <div id="EmployeeManagement" style="display:none">
-        <font size="5" face="Courier New">
-            <table style="color: white;" width="100%">
-                <tr><td></td><td>Register</td></tr>
-                <tr><td></td></tr>
-                <tr>
-                    <td align="right" class="active">
-                        Name:
-                    </td>
-                    <td>
-                        <input type="text" id="RegisterName" placeholder="name" class="Fields" onchange="handleEmployeeName(event)">
-                    </td>
-                </tr>
-                <tr><td></td></tr>
-                <tr>
-                    <td align="right" class="active">
-                        MobileNo:
-                    </td>
-                    <td>
-                        <input type="text" id="RegisterMobile" placeholder="number" class="Fields" onchange="handleEmployeeNumber(event)">
-                    </td>
-                </tr>
-                <tr>
-                    <td align="right" class="active">
-                        Salary:
-                    </td>
-                    <td>
-                        <input type="text" id="RegisterSalary" placeholder="salary" class="Fields" onchange="handleEmployeeSalary(event)">
-                    </td>
-                </tr>
-                <tr>
-                    <td align="right" class="active">
-                        City:
-                    </td>
-                    <td>
-                        <input type="text" id="RegisterCity" placeholder="city" class="Fields" onchange="handleEmployeeCity(event)">
-                    </td>
-                </tr>
-                <tr><td></td><td><button type="button" value="Submit" class="Button" onclick="RegisterAction()">Submit</button></td></tr>
-            </table>
+    <!--<div id="EmployeeManagement" style="display:none;">
+        <font size="5" face="Courier New" class="form-horizontal" align="center">
+            <form style="color: white;" width="100%">
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="name">Name:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="RegisterName" placeholder="Enter Name">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="mobile">Mobile:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="RegisterMobile" placeholder="Enter Mobile">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="salary">Salary:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="RegisterSalary" placeholder="Enter salary">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="city">City:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="RegisterCity" placeholder="Enter city">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="Button" onclick="RegisterAction()">Submit</button>
+                    </div>
+                </div>-->
+                <!--<label for="name" class="form-group">Name:</label>
+                <input type="text" id="RegisterName" name="fname"><br>
+                <label for="mobile">Mobile No:</label>
+                <input type="text" id="RegisterMobile" name="Mobile"><br>
+                <label for="mobile">Salary</label>
+                <input type="text" id="RegisterSalary" name="salary"><br>
+                <label for="mobile">City</label>
+                <input type="text" id="RegisterCity" name="city"><br>
+                <input type="submit" value="Submit" onclick="RegisterAction()">-->
+
+            <!--</form>
         </font>
-    </div>
-    <div id="LoginDiv" style="display:none">
-        <font size="5" face="Courier New">
-            <table style="color: white;" width="100%">
-                <tr><td></td><td>Login</td></tr>
-                <tr>
-                    <td align="right" class="active">
-                        Name:
-                    </td>
-                    <td>
-                        <input id="LoginName" type="text" placeholder="name" required class="Fields" onchange="handleEmployeeName(event)">
-                    </td>
-                </tr>
-                <tr><td></td></tr>
-                <tr>
-                    <td align="right" class="active">
-                        Mobile:
-                    </td>
-                    <td>
-                        <input id="LoginMobile" type="text" placeholder="mobile" class="Fields" onchange="handleEmployeeNumber(event)">
-                    </td>
-                </tr>
-                <tr><td></td><td><button id="Login" onclick="LoginAction()" type="button" value="Submit" class="Button">Sign In</button></td></tr>
-            </table>
-        </font>
-    </div>
-    <div id="UpdateDiv" style="display:none">
-        <font size="5" face="Courier New">
-            <table style="color: white;" width="100%">
-                <tr><td></td><td>Update</td></tr>
-                <tr><td></td></tr>
-                <tr>
-                    <td align="right" class="active">
-                        Id:
-                    </td>
-                    <td>
-                        <input type="text" value="" id="UpdateId" placeholder="ID" class="Fields" onchange="handleEmployeeId(event)">
-                    </td>
-                </tr>
-                <tr><td></td></tr>
-                <tr>
-                    <td align="right" class="active">
-                        Name:
-                    </td>
-                    <td>
-                        <input type="text" value="" id="UpdateName" placeholder="name" class="Fields" onchange="handleEmployeeName(event)">
-                    </td>
-                </tr>
-                <tr><td></td></tr>
-                <tr>
-                    <td align="right" class="active">
-                        MobileNo:
-                    </td>
-                    <td>
-                        <input type="text" value="" id="UpdateMobile" placeholder="number" class="Fields" onchange="handleEmployeeNumber(event)">
-                    </td>
-                </tr>
-                <tr>
-                    <td align="right" class="active">
-                        Salary:
-                    </td>
-                    <td>
-                        <input type="text" value="" id="UpdateSalary" placeholder="salary" class="Fields" onchange="handleEmployeeSalary(event)">
-                    </td>
-                </tr>
-                <tr>
-                    <td align="right" class="active">
-                        City:
-                    </td>
-                    <td>
-                        <input type="text" value="" id="UpdateCity" placeholder="city" class="Fields" onchange="handleEmployeeCity(event)">
-                    </td>
-                </tr>
-                <tr><td></td><td><button type="button" value="Submit" class="Button" onclick="UpdateAction()">Submit</button></td></tr>
-            </table>
-        </font>
-    </div>
-    <div id="ListView" style="display:none" class="table table-bordered table-dark">
-        <button onclick="GetAllEmployee(); clearListView()" id="List-Button" class="Button">click to view</button>
-        <font size="5" face="Courier New">
-            <table id="ListTable" style="color: white;" border="1" width="100%">
-            </table>
-        </font>
-    </div>
-    <div style="display:none" id="LoggedInDiv">
-        <font style="color: white;" size="5" face="Courier New">
-            <p>Logged In:</p>
-            <table id="LoginTable"  border="1" width="100%">
-            </table>
-            <button id="LogOutButton" onclick="activeMainBar(); deActiveLoggedIn(); clearLoggedIn(); deactiveLogoutButton()">Log Out</button>
-        </font>
-    </div>
+    </div>-->
+        <div id="EmployeeManagement" style="display:none">
+            <font size="5" face="Courier New">
+                <table style="color: white;" width="100%">
+                    <tr><td></td><td>Register</td></tr>
+                    <tr><td></td></tr>
+                    <tr>
+                        <td align="right" class="active">
+                            Name:
+                        </td>
+                        <td>
+                            <input type="text" id="RegisterName" placeholder="name" class="Fields" onchange="handleEmployeeName(event)">
+                        </td>
+                    </tr>
+                    <tr><td></td></tr>
+                    <tr>
+                        <td align="right" class="active">
+                            MobileNo:
+                        </td>
+                        <td>
+                            <input type="text" id="RegisterMobile" placeholder="number" class="Fields" onchange="handleEmployeeNumber(event)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right" class="active">
+                            Salary:
+                        </td>
+                        <td>
+                            <input type="text" id="RegisterSalary" placeholder="salary" class="Fields" onchange="handleEmployeeSalary(event)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right" class="active">
+                            City:
+                        </td>
+                        <td>
+                            <input type="text" id="RegisterCity" placeholder="city" class="Fields" onchange="handleEmployeeCity(event)">
+                        </td>
+                    </tr>
+                    <tr><td></td><td><button type="button" value="Submit" class="Button" onclick="RegisterAction()">Submit</button></td></tr>
+                </table>
+            </font>
+        </div>
+        <div id="LoginDiv" style="display:none">
+            <font size="5" face="Courier New">
+                <table style="color: white;" width="100%">
+                    <tr><td></td><td>Login</td></tr>
+                    <tr>
+                        <td align="right" class="active">
+                            Name:
+                        </td>
+                        <td>
+                            <input id="LoginName" type="text" placeholder="name" required class="Fields" onchange="handleEmployeeName(event)">
+                        </td>
+                    </tr>
+                    <tr><td></td></tr>
+                    <tr>
+                        <td align="right" class="active">
+                            Mobile:
+                        </td>
+                        <td>
+                            <input id="LoginMobile" type="text" placeholder="mobile" class="Fields" onchange="handleEmployeeNumber(event)">
+                        </td>
+                    </tr>
+                    <tr><td></td><td><button id="Login" onclick="LoginAction()" type="button" value="Submit" class="Button">Sign In</button></td></tr>
+                </table>
+            </font>
+        </div>
+        <div id="UpdateDiv" style="display:none">
+            <font size="5" face="Courier New">
+                <table style="color: white;" width="100%">
+                    <tr><td></td><td>Update</td></tr>
+                    <tr><td></td></tr>
+                    <tr>
+                        <td align="right" class="active">
+                            Id:
+                        </td>
+                        <td>
+                            <input type="text" value="" id="UpdateId" placeholder="ID" class="Fields" onchange="handleEmployeeId(event)">
+                        </td>
+                    </tr>
+                    <tr><td></td></tr>
+                    <tr>
+                        <td align="right" class="active">
+                            Name:
+                        </td>
+                        <td>
+                            <input type="text" value="" id="UpdateName" placeholder="name" class="Fields" onchange="handleEmployeeName(event)">
+                        </td>
+                    </tr>
+                    <tr><td></td></tr>
+                    <tr>
+                        <td align="right" class="active">
+                            MobileNo:
+                        </td>
+                        <td>
+                            <input type="text" value="" id="UpdateMobile" placeholder="number" class="Fields" onchange="handleEmployeeNumber(event)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right" class="active">
+                            Salary:
+                        </td>
+                        <td>
+                            <input type="text" value="" id="UpdateSalary" placeholder="salary" class="Fields" onchange="handleEmployeeSalary(event)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right" class="active">
+                            City:
+                        </td>
+                        <td>
+                            <input type="text" value="" id="UpdateCity" placeholder="city" class="Fields" onchange="handleEmployeeCity(event)">
+                        </td>
+                    </tr>
+                    <tr><td></td><td><button type="button" value="Submit" class="Button" onclick="UpdateAction()">Submit</button></td></tr>
+                </table>
+            </font>
+        </div>
+        <div id="ListView" style="display:none" class="table table-bordered table-dark">
+            <button onclick="GetAllEmployee(); clearListView()" id="List-Button" class="Button">click to view</button>
+            <font size="5" face="Courier New">
+                <table id="ListTable" style="color: white;" border="1" width="100%">
+                </table>
+            </font>
+        </div>
+        <div style="display:none" id="LoggedInDiv">
+            <font style="color: white;" size="5" face="Courier New">
+                <p>Logged In:</p>
+                <table id="LoginTable" border="1" width="100%">
+                </table>
+                <button id="LogOutButton" onclick="activeMainBar(); deActiveLoggedIn(); clearLoggedIn(); deactiveLogoutButton()">Log Out</button>
+            </font>
+        </div>
 </body>
 </html>

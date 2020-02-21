@@ -48,19 +48,15 @@ namespace EmployeeManagement.Controllers
             employee.Mobile = mobile;
             employee.Salary = salary;
             employee.City = city;
-            if (ModelState.IsValid)
+            try
             {
-                try
-                {
-                    employeeView.Register(employee);
-                    return this.Ok("Added Successfully");
-                }
-                catch (Exception e)
-                {
-                    return this.BadRequest(e.Message);
-                }
+                this.employeeView.Register(employee);
+                return this.Ok("Added Successfully");
             }
-            return View(employee);
+            catch (Exception e)
+            {
+                return this.BadRequest(e.Message);
+            }
         }
         [HttpGet]
         [Route("api/getEmplyees")]

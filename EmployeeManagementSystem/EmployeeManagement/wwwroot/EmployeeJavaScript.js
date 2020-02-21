@@ -190,23 +190,35 @@ function RegisterAction() {
 		formData.append("mobile", $("#RegisterMobile").val());
 		formData.append("salary", $("#RegisterSalary").val());
 		formData.append("city", $("#RegisterCity").val());
+		//if ($("#RegisterName").val() == '') {
+		//	alert('Name is required');
+		//	$('#RegisterName').focus();
+		//}
+		//if ($("#RegisterMobile").val() == '') {
+		//	alert('Mobile is required');
+		//	$('#RegisterMobile').focus();
+		//}
+		//if (("#RegisterCity").val() == '') {
+		//	alert('City is required');
+		//	$('#RegisterCity').focus();
+		//}
+			$.ajax({
+				url: "api/add",
+				type: 'POST',
+				cache: false,
+				contentType: false,
+				processData: false,
+				data: formData,
+				success: function (response) {
+					alert(response);
+					console.log(response);
+				},
+				error: function (response) {
+					alert(response);
+					console.log(response);
+				}
+			});
 
-		$.ajax({
-			url: "api/add",
-			type: 'POST',
-			cache: false,
-			contentType: false,
-			processData: false,
-			data: formData,
-			success: function (response) {
-				// Replace the div's content with the page method's return.
-				alert(response);
-			},
-			error: function (jqHXR,response) {
-				console.log(jqHXR.responseText);
-				alert(jqHXR.responseText);
-			}
-		});
 	});
 }
 function GetAllEmployee() {
