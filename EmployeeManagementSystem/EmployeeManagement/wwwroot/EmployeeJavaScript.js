@@ -183,6 +183,7 @@ function UpdateAction() {
 		});
 	});
 }
+
 function RegisterAction() {
 	$(document).ready(function () {
 		var formData = new FormData;
@@ -216,7 +217,7 @@ function RegisterAction() {
 					alert(response);
 				}
 			});
-
+		e.preventDefault();
 	});
 }
 function GetAllEmployee() {
