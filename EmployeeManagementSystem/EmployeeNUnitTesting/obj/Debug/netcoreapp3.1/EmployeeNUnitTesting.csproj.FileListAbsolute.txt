@@ -132,3 +132,9 @@ D:\BridgeLabzBhush\EmployeeManagement\EmployeeManagement\EmployeeNUnitTesting\ob
 D:\BridgeLabzBhush\EmployeeManagement\EmployeeManagement\EmployeeNUnitTesting\obj\Debug\netcoreapp3.1\EmployeeNUnitTesting.csproj.CopyComplete
 D:\BridgeLabzBhush\EmployeeManagement\EmployeeManagement\EmployeeNUnitTesting\obj\Debug\netcoreapp3.1\EmployeeNUnitTesting.dll
 D:\BridgeLabzBhush\EmployeeManagement\EmployeeManagement\EmployeeNUnitTesting\obj\Debug\netcoreapp3.1\EmployeeNUnitTesting.pdb
+D:\BridgeLabzBhush\EmployeeManagement\EmployeeManagement\EmployeeNUnitTesting\bin\Debug\netcoreapp3.1\System.Data.SqlClient.dll
+D:\BridgeLabzBhush\EmployeeManagement\EmployeeManagement\EmployeeNUnitTesting\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
+D:\BridgeLabzBhush\EmployeeManagement\EmployeeManagement\EmployeeNUnitTesting\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
+D:\BridgeLabzBhush\EmployeeManagement\EmployeeManagement\EmployeeNUnitTesting\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
+D:\BridgeLabzBhush\EmployeeManagement\EmployeeManagement\EmployeeNUnitTesting\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+D:\BridgeLabzBhush\EmployeeManagement\EmployeeManagement\EmployeeNUnitTesting\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
