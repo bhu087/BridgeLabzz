@@ -78,6 +78,10 @@ namespace EmployeeManagement.Controllers
         [Route("api/update")]
         public ActionResult UpdateEmployee(string userId, string name, string mobile, string salary, string city)
         {
+            if (salary == null)
+            {
+                salary = string.Empty;
+            }
             Employee employee = new Employee
             {
                 UserId = userId,

@@ -44,9 +44,33 @@ namespace EmployeeNUnitTesting
             
         }
         [Test]
+        public void LoginTest4()
+        {
+            try
+            {
+                var employee = new Employee();
+                var employeeProject = new EmployeeView();
+                bool flag = employeeProject.Login(employee);
+            }
+            catch (Exception e)
+            {
+                Assert.AreEqual("NullReferenceException", e.GetType().Name);
+            }
+
+        }
+        [Test]
         public void UpdateTest1()
         {
-
+            try
+            {
+                var employee = new Employee();
+                var employeeProject = new EmployeeView();
+                bool flag = employeeProject.Login(employee);
+            }
+            catch (Exception e)
+            {
+                Assert.AreEqual("NullReferenceException", e.GetType().Name);
+            }
         }
     }
 }
