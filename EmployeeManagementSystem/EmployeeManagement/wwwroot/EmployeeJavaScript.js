@@ -211,11 +211,9 @@ function RegisterAction() {
 				data: formData,
 				success: function (response) {
 					alert(response);
-					console.log(response);
 				},
 				error: function (response) {
 					alert(response);
-					console.log(response);
 				}
 			});
 
