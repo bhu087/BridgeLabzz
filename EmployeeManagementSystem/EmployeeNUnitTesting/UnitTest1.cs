@@ -98,13 +98,29 @@ namespace EmployeeNUnitTesting
                 //employee.City = "Sirsi";
                 var employeeProject = new EmployeeView();
                 bool flag = employeeProject.UpdateEmployee(employee);
-                Assert.IsTrue(flag);
             }
             catch (Exception e)
             {
                 Assert.AreEqual("SqlException", e.GetType().Name);
             }
         }
-            
+        [Test]
+        public void RegisterTest()
+        {
+            try
+            {
+                var employee = new Employee();
+                employee.Name = "John";
+                employee.Mobile = "1223456652";
+                employee.Salary = "1000";
+                //employee.City = "Sirsi";
+                var employeeProject = new EmployeeView();
+                employeeProject.Register(employee);
+            }
+            catch (Exception e)
+            {
+                Assert.AreEqual("SqlException", e.GetType().Name);
+            }
+        }
     }
 }
