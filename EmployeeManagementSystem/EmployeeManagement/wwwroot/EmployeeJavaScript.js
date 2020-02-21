@@ -173,9 +173,41 @@ function UpdateAction() {
 			processData: false,
 			data: formData,
 			success: function (response) {
-				alert(response);
-				GetAllEmployee();
-				activeUpdateListView();
+				if (response == true) {
+					alert(response);
+					GetAllEmployee();
+					activeUpdateListView();
+				}
+				else
+				{
+					if (response == "User Id Required") {
+						alert("User Id Required");
+					}
+					if (response == "userId is invalid") {
+						alert("userId is invalid");
+					}
+					if (response == "Name Required") {
+						alert("Name required");
+					}
+					if (response == "Name is invalid") {
+						alert("Name is invalid");
+					}
+					if (response == "Mobile Number Required") {
+						alert("Mobile Number required");
+					}
+					if (response == "Mobile Number Invalid") {
+						alert("Mobile Number Invalid");
+					} 
+					if (response == "Invalid Amount") {
+						alert("Invalid Amount");
+					}
+					if (response == "City Required") {
+						alert("City required");
+					}
+					if (response == "Invalid city name") {
+						alert("Invalid city name");
+					}
+				}
 			},
 			error: function (response) {
 				alert("Wrong User Id");
