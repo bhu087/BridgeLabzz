@@ -7,11 +7,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using System.Text.RegularExpressions;
 
 namespace EmployeeManagement.Controllers
 {
     public class EmployeeController : Controller
     {
+        Regex mobileNumber = new Regex("^[0-9]{10}$");
+        Regex nameRegex = new Regex("^[A-Z]{1}[a-z]{5,10}");
+        Regex cityRegex = new Regex("^[A-Z]{1}[a-z]{5,10}");
         IEmployeeView employeeView = new EmployeeView();
         [HttpPost]
         [Route("api/login")]
@@ -39,6 +43,33 @@ namespace EmployeeManagement.Controllers
         public ActionResult Register(string name, string mobile, string salary, string city)
         {
             Employee employee = new Employee();
+            if (name == null)
+            {
+                return this.BadRequest("Name Required");
+            }
+            Match nameMatch = nameRegex.Match(name);
+            if (!nameMatch.Success)
+            {
+                return this.BadRequest("Name is invalid");
+            }
+            if (mobile == null)
+            {
+                return this.BadRequest("Mobile Number Required");
+            }
+            Match mobileMatch = mobileNumber.Match(mobile);
+            if (!mobileMatch.Success)
+            {
+                return this.BadRequest("Mobile Number Invalid");
+            }
+            if (city == null)
+            {
+                return this.BadRequest("City Required");
+            }
+            Match cityMatch = nameRegex.Match(city);
+            if (!cityMatch.Success)
+            {
+                return this.BadRequest("Invalid city name");
+            }
             if (salary == null)
             {
                 salary = string.Empty;

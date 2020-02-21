@@ -191,18 +191,6 @@ function RegisterAction() {
 		formData.append("mobile", $("#RegisterMobile").val());
 		formData.append("salary", $("#RegisterSalary").val());
 		formData.append("city", $("#RegisterCity").val());
-		//if ($("#RegisterName").val() == '') {
-		//	alert('Name is required');
-		//	$('#RegisterName').focus();
-		//}
-		//if ($("#RegisterMobile").val() == '') {
-		//	alert('Mobile is required');
-		//	$('#RegisterMobile').focus();
-		//}
-		//if (("#RegisterCity").val() == '') {
-		//	alert('City is required');
-		//	$('#RegisterCity').focus();
-		//}
 			$.ajax({
 				url: "api/add",
 				type: 'POST',
@@ -211,13 +199,35 @@ function RegisterAction() {
 				processData: false,
 				data: formData,
 				success: function (response) {
-					alert(response);
+					if (response == "Added Successfully") {
+						alert(response);
+					}
+					else {
+						var teHtml;
+						if (response == "Name Required") {
+							alert("Name required");
+						}
+						if (response == "Mobile Number Required") {
+							alert("Mobile Number required");
+						}
+						if (response == "City Required") {
+							alert("City required");
+						}
+						if (response == "Name is invalid") {
+							alert("Name is invalid");
+						}
+						if (response == "Mobile Number Invalid") {
+							alert("Mobile Number Invalid");
+						}
+						if (response == "Invalid city name") {
+							alert("Invalid city name");
+						}
+					}
 				},
 				error: function (response) {
 					alert(response);
 				}
 			});
-		e.preventDefault();
 	});
 }
 function GetAllEmployee() {
