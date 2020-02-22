@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Repository.Repo.Account
 {
-    class Class1
+    class AccountRepo
     {
     }
 }
