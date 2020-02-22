@@ -1,24 +1,60 @@
-﻿using EmployeeManagement.Models;
-using EmployeeManagement.View;
-using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.ComponentModel.DataAnnotations;
-using System.Text.RegularExpressions;
-
+﻿/////------------------------------------------------------------------------
+////<copyright file="EmployeeController.cs" company="BridgeLabz">
+////author="Bhushan"
+////</copyright>
+////-------------------------------------------------------------------------
 namespace EmployeeManagement.Controllers
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Text.RegularExpressions;
+    using EmployeeManagement.Models;
+    using EmployeeManagement.View;
+    using Microsoft.AspNetCore.Mvc;
+    using Newtonsoft.Json;
+    
+    /// <summary>
+    /// Employee Controller class
+    /// </summary>
+    /// <seealso cref="Microsoft.AspNetCore.Mvc.Controller" />
     public class EmployeeController : Controller
     {
-        Regex mobileNumber = new Regex("^[0-9]{10}$");
-        Regex nameRegex = new Regex("^[A-Z]{1}[a-z]{5,10}$");
-        Regex cityRegex = new Regex("^[A-Z]{1}[a-z]{5,10}$");
-        Regex salaryRegex = new Regex("^[0-9]{5}$");
-        Regex idRegex = new Regex("^[0-9]{4}$");
-        IEmployeeView employeeView = new EmployeeView();
+        /// <summary>
+        /// Regular expression mobile number
+        /// </summary>
+        private Regex mobileNumber = new Regex("^[0-9]{10}$");
+
+        /// <summary>
+        /// The name Regular expression
+        /// </summary>
+        private Regex nameRegex = new Regex("^[A-Z]{1}[a-z]{5,10}$");
+
+        /// <summary>
+        /// The city Regular expression
+        /// </summary>
+        private Regex cityRegex = new Regex("^[A-Z]{1}[a-z]{5,10}$");
+
+        /// <summary>
+        /// The salary Regular expression
+        /// </summary>
+        private Regex salaryRegex = new Regex("^[0-9]{5}$");
+
+        /// <summary>
+        /// The identifier Regular expression
+        /// </summary>
+        private Regex idRegex = new Regex("^[0-9]{4}$");
+
+        /// <summary>
+        /// The employee view
+        /// </summary>
+        private IEmployeeView employeeView = new EmployeeView();
+
+        /// <summary>
+        /// Logins the specified name.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <param name="mobile">The mobile.</param>
+        /// <returns>action result</returns>
         [HttpPost]
         [Route("api/login")]
         public ActionResult Login(string name, string mobile)
@@ -33,6 +69,7 @@ namespace EmployeeManagement.Controllers
                 {
                     return this.Ok(responceFlag);
                 }
+
                 return this.BadRequest("User not registered");
             }
             catch (Exception e)
@@ -40,6 +77,15 @@ namespace EmployeeManagement.Controllers
                 return this.BadRequest(e.Message);
             }
         }
+
+        /// <summary>
+        /// Registers the specified name.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <param name="mobile">The mobile.</param>
+        /// <param name="salary">The salary.</param>
+        /// <param name="city">The city.</param>
+        /// <returns>action result</returns>
         [HttpPost]
         [Route("api/add")]
         public ActionResult Register(string name, string mobile, string salary, string city)
@@ -49,34 +95,41 @@ namespace EmployeeManagement.Controllers
             {
                 return this.Ok("Name Required");
             }
-            Match nameMatch = nameRegex.Match(name);
+
+            Match nameMatch = this.nameRegex.Match(name);
             if (!nameMatch.Success)
             {
                 return this.Ok("Name is invalid");
             }
+
             if (mobile == null)
             {
                 return this.Ok("Mobile Number Required");
             }
-            Match mobileMatch = mobileNumber.Match(mobile);
+
+            Match mobileMatch = this.mobileNumber.Match(mobile);
             if (!mobileMatch.Success)
             {
                 return this.Ok("Mobile Number Invalid");
             }
+
             if (city == null)
             {
                 return this.Ok("City Required");
             }
-            Match cityMatch = nameRegex.Match(city);
+
+            Match cityMatch = this.nameRegex.Match(city);
             if (!cityMatch.Success)
             {
                 return this.Ok("Invalid city name");
             }
+
             if (salary == null)
             {
                 salary = string.Empty;
             }
-            employee.UserId = "";
+
+            employee.UserId = string.Empty;
             employee.Name = name;
             employee.Mobile = mobile;
             employee.Salary = salary;
@@ -91,6 +144,11 @@ namespace EmployeeManagement.Controllers
                 return this.BadRequest(e.Message);
             }
         }
+
+        /// <summary>
+        /// Gets all employees.
+        /// </summary>
+        /// <returns>action result</returns>
         [HttpGet]
         [Route("api/getEmplyees")]
         public ActionResult GetAllEmployees()
@@ -104,9 +162,17 @@ namespace EmployeeManagement.Controllers
             {
                 return this.BadRequest(e.Message);
             }
-
         }
 
+        /// <summary>
+        /// Updates the employee.
+        /// </summary>
+        /// <param name="userId">The user identifier.</param>
+        /// <param name="name">The name.</param>
+        /// <param name="mobile">The mobile.</param>
+        /// <param name="salary">The salary.</param>
+        /// <param name="city">The city.</param>
+        /// <returns>action result</returns>
         [HttpPost]
         [Route("api/update")]
         public ActionResult UpdateEmployee(string userId, string name, string mobile, string salary, string city)
@@ -115,48 +181,57 @@ namespace EmployeeManagement.Controllers
             {
                 salary = "0";
             }
+
             if (userId == null)
             {
                 return this.Ok("User Id Required");
             }
-            //int intUserID = Convert.ToInt32(userId);
-            Match userIdMatch = idRegex.Match(userId);
+            
+            Match userIdMatch = this.idRegex.Match(userId);
             if (!userIdMatch.Success)
             {
                 return this.Ok("userId is invalid");
             }
+
             if (name == null)
             {
                 return this.Ok("Name Required");
             }
-            Match nameMatch = nameRegex.Match(name);
+
+            Match nameMatch = this.nameRegex.Match(name);
             if (!nameMatch.Success)
             {
                 return this.Ok("Name is invalid");
             }
+
             if (mobile == null)
             {
                 return this.Ok("Mobile Number Required");
             }
-            Match mobileMatch = mobileNumber.Match(mobile);
+
+            Match mobileMatch = this.mobileNumber.Match(mobile);
             if (!mobileMatch.Success)
             {
                 return this.Ok("Mobile Number Invalid");
             }
-            Match salaryMatch = salaryRegex.Match(salary);
+
+            Match salaryMatch = this.salaryRegex.Match(salary);
             if (!salaryMatch.Success)
             {
                 return this.Ok("Invalid Amount");
             }
+
             if (city == null)
             {
                 return this.Ok("City Required");
             }
-            Match cityMatch = cityRegex.Match(city);
+
+            Match cityMatch = this.cityRegex.Match(city);
             if (!cityMatch.Success)
             {
                 return this.Ok("Invalid city name");
             }
+
             Employee employee = new Employee
             {
                 UserId = userId,

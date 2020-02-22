@@ -21,8 +21,8 @@ namespace EmployeeNUnitTesting
         public void LoginTest2()
         {
             var employee = new Employee();
-            employee.Name = "bhu";
-            employee.Mobile = "sdg";
+            employee.Name = "Johnsi";
+            employee.Mobile = "1223456652";
             var employeeProject = new EmployeeView();
             bool flag = employeeProject.Login(employee);
             Assert.IsTrue(flag);
@@ -76,14 +76,14 @@ namespace EmployeeNUnitTesting
         public void UpdateTest2()
         {
                 var employee = new Employee();
-                employee.UserId = "1000";
-                employee.Name = "John";
+                employee.UserId = "8031";
+                employee.Name = "Johnsi";
                 employee.Mobile = "1223456652";
-                employee.Salary = "1000";
-                employee.City = "Sirsi";
+                employee.Salary = "10000";
+                employee.City = "Sagara";
                 var employeeProject = new EmployeeView();
                 bool flag = employeeProject.UpdateEmployee(employee);
-            Assert.IsTrue(flag);
+                Assert.IsTrue(flag);
         }
         [Test]
         public void UpdateTest3()
