@@ -1,13 +1,23 @@
-using EmployeeManagement.View;
-using EmployeeManagement.Models;
-using NUnit.Framework;
-using EmployeeManagement.Controllers;
-using System;
-
+/////------------------------------------------------------------------------
+////<copyright file="EmployeeNUnitTest.cs" company="BridgeLabz">
+////author="Bhushan"
+////</copyright>
+////-------------------------------------------------------------------------
 namespace EmployeeNUnitTesting
 {
+    using System;
+    using EmployeeManagement.Models;
+    using EmployeeManagement.View;
+    using NUnit.Framework;
+
+    /// <summary>
+    /// Employee NUnit Testing class
+    /// </summary>
     public class EmployeeNUnitTest
     {
+        /// <summary>
+        /// Logins the test 1.
+        /// </summary>
         [Test]
         public void LoginTest1()
         {
@@ -17,6 +27,10 @@ namespace EmployeeNUnitTesting
             var employeeProject = new EmployeeView();
             Assert.False(employeeProject.Login(employee));
         }
+
+        /// <summary>
+        /// Logins the test 2.
+        /// </summary>
         [Test]
         public void LoginTest2()
         {
@@ -27,6 +41,10 @@ namespace EmployeeNUnitTesting
             bool flag = employeeProject.Login(employee);
             Assert.IsTrue(flag);
         }
+
+        /// <summary>
+        /// Logins the test 3.
+        /// </summary>
         [Test]
         public void LoginTest3()
         {
@@ -37,12 +55,15 @@ namespace EmployeeNUnitTesting
                 var employeeProject = new EmployeeView();
                 bool flag = employeeProject.Login(employee);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Assert.AreEqual("NullReferenceException", e.GetType().Name);
             }
-            
         }
+
+        /// <summary>
+        /// Logins the test 4.
+        /// </summary>
         [Test]
         public void LoginTest4()
         {
@@ -56,8 +77,11 @@ namespace EmployeeNUnitTesting
             {
                 Assert.AreEqual("NullReferenceException", e.GetType().Name);
             }
-
         }
+
+        /// <summary>
+        /// Updates the test 1.
+        /// </summary>
         [Test]
         public void UpdateTest1()
         {
@@ -72,6 +96,10 @@ namespace EmployeeNUnitTesting
                 Assert.AreEqual("SqlException", e.GetType().Name);
             }
         }
+
+        /// <summary>
+        /// Updates the test 2.
+        /// </summary>
         [Test]
         public void UpdateTest2()
         {
@@ -85,6 +113,10 @@ namespace EmployeeNUnitTesting
                 bool flag = employeeProject.UpdateEmployee(employee);
                 Assert.IsTrue(flag);
         }
+
+        /// <summary>
+        /// Updates the test 3.
+        /// </summary>
         [Test]
         public void UpdateTest3()
         {
@@ -95,7 +127,7 @@ namespace EmployeeNUnitTesting
                 employee.Name = "John";
                 employee.Mobile = "1223456652";
                 employee.Salary = "1000";
-                //employee.City = "Sirsi";
+                //// employee.City = "Sirsi";
                 var employeeProject = new EmployeeView();
                 bool flag = employeeProject.UpdateEmployee(employee);
             }
@@ -104,6 +136,10 @@ namespace EmployeeNUnitTesting
                 Assert.AreEqual("SqlException", e.GetType().Name);
             }
         }
+
+        /// <summary>
+        /// Registers the test.
+        /// </summary>
         [Test]
         public void RegisterTest()
         {
@@ -113,7 +149,7 @@ namespace EmployeeNUnitTesting
                 employee.Name = "John";
                 employee.Mobile = "1223456652";
                 employee.Salary = "1000";
-                //employee.City = "Sirsi";
+                //// employee.City = "Sirsi";
                 var employeeProject = new EmployeeView();
                 employeeProject.Register(employee);
             }
