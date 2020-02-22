@@ -14,10 +14,10 @@ namespace EmployeeManagement.Controllers
     public class EmployeeController : Controller
     {
         Regex mobileNumber = new Regex("^[0-9]{10}$");
-        Regex nameRegex = new Regex("^[A-Z]{1}[a-z]{5,10}");
-        Regex cityRegex = new Regex("^[A-Z]{1}[a-z]{5,10}");
-        Regex salaryRegex = new Regex("^['1'-'9']{1}['0'-'9']{3,5}");
-        Regex idRegex = new Regex("^['1'-'9']{1},['0'-'9']{3,5}");
+        Regex nameRegex = new Regex("^[A-Z]{1}[a-z]{5,10}$");
+        Regex cityRegex = new Regex("^[A-Z]{1}[a-z]{5,10}$");
+        Regex salaryRegex = new Regex("^[0-9]{5}$");
+        Regex idRegex = new Regex("^[0-9]{4}$");
         IEmployeeView employeeView = new EmployeeView();
         [HttpPost]
         [Route("api/login")]
@@ -119,7 +119,8 @@ namespace EmployeeManagement.Controllers
             {
                 return this.Ok("User Id Required");
             }
-            Match userIdMatch = nameRegex.Match(userId);
+            //int intUserID = Convert.ToInt32(userId);
+            Match userIdMatch = idRegex.Match(userId);
             if (!userIdMatch.Success)
             {
                 return this.Ok("userId is invalid");
@@ -142,7 +143,7 @@ namespace EmployeeManagement.Controllers
             {
                 return this.Ok("Mobile Number Invalid");
             }
-            Match salaryMatch = mobileNumber.Match(salary);
+            Match salaryMatch = salaryRegex.Match(salary);
             if (!salaryMatch.Success)
             {
                 return this.Ok("Invalid Amount");
@@ -151,7 +152,7 @@ namespace EmployeeManagement.Controllers
             {
                 return this.Ok("City Required");
             }
-            Match cityMatch = nameRegex.Match(city);
+            Match cityMatch = cityRegex.Match(city);
             if (!cityMatch.Success)
             {
                 return this.Ok("Invalid city name");
@@ -164,16 +165,15 @@ namespace EmployeeManagement.Controllers
                 Salary = salary,
                 City = city
             };
-            try
+            bool returnResult = this.employeeView.UpdateEmployee(employee);
+            if (returnResult)
             {
-                bool returnResult = this.employeeView.UpdateEmployee(employee);
-                return this.Ok(returnResult);
+                return this.Ok("Updated Successfully");
             }
-            catch(Exception e)
+            else
             {
-                return this.BadRequest(e.Message);
+                return this.BadRequest("User Not Found");
             }
-            
         }
     }
 }

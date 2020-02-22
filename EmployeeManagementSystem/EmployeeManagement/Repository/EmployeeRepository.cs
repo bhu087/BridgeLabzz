@@ -23,9 +23,9 @@ namespace EmployeeManagement.Repository
                 SqlDataReader data= sqlCommand.ExecuteReader();
                 while (data.Read())
                 {
-                    if (employee.Name.Equals(data["FirstName"].ToString()))
+                    if (employee.Name.Equals(data["FirstName"]))
                     {
-                        if (employee.Mobile.Equals(data["Mobile"].ToString()))
+                        if (employee.Mobile.Equals(data["Mobile"]))
                         {
                             con.Close();
                             return true;
@@ -82,17 +82,32 @@ namespace EmployeeManagement.Repository
         {
             using (SqlConnection sqlConnection = new SqlConnection(connectionString))
             {
-                SqlCommand sqlCommand = new SqlCommand("spUpdateEmployee",sqlConnection);
+
+                SqlCommand validateSqlCommand = new SqlCommand("spGetAllEmployees", sqlConnection);
+                SqlCommand sqlCommand = new SqlCommand("spUpdateEmployee", sqlConnection);
                 sqlCommand.CommandType = CommandType.StoredProcedure;
-                sqlCommand.Parameters.AddWithValue("Id",Convert.ToInt32(employee.UserId));
-                sqlCommand.Parameters.AddWithValue("FirstName",employee.Name);
-                sqlCommand.Parameters.AddWithValue("Mobile",employee.Mobile);
-                sqlCommand.Parameters.AddWithValue("Salary",employee.Salary);
-                sqlCommand.Parameters.AddWithValue("City",employee.City);
+                sqlCommand.Parameters.AddWithValue("Id", Convert.ToInt32(employee.UserId));
+                sqlCommand.Parameters.AddWithValue("FirstName", employee.Name);
+                sqlCommand.Parameters.AddWithValue("Mobile", employee.Mobile);
+                sqlCommand.Parameters.AddWithValue("Salary", employee.Salary);
+                sqlCommand.Parameters.AddWithValue("City", employee.City);
                 sqlConnection.Open();
-                sqlCommand.ExecuteNonQuery();
+                SqlDataReader data = validateSqlCommand.ExecuteReader();
+                while (data.Read())
+                {
+                    string UserIdInDB = data["Id"].ToString();
+                    string UserId = employee.UserId;
+                    if (UserIdInDB.Equals(UserId))
+                    {
+                        sqlConnection.Close();
+                        sqlConnection.Open();
+                        sqlCommand.ExecuteNonQuery();
+                        sqlConnection.Close();
+                        return true;
+                    }
+                } 
                 sqlConnection.Close();
-                return true;
+                return false;
             }
         }
     }

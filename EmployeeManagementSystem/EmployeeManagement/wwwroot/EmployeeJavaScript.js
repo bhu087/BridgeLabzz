@@ -173,7 +173,7 @@ function UpdateAction() {
 			processData: false,
 			data: formData,
 			success: function (response) {
-				if (response == true) {
+				if (response == "Updated Successfully") {
 					alert(response);
 					GetAllEmployee();
 					activeUpdateListView();
@@ -209,7 +209,7 @@ function UpdateAction() {
 					}
 				}
 			},
-			error: function (response) {
+			error: function () {
 				alert("Wrong User Id");
 			}
 		});
