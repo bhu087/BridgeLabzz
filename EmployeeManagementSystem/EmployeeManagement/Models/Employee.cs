@@ -7,9 +7,9 @@ namespace EmployeeManagement.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     using System.Linq;
     using System.Threading.Tasks;
-    using System.ComponentModel.DataAnnotations;
 
     /// <summary>
     /// this is the employee model
@@ -40,13 +40,48 @@ namespace EmployeeManagement.Models
         /// The city
         /// </summary>
         private string city;
+
+        /// <summary>
+        /// Gets or sets the user identifier.
+        /// </summary>
+        /// <value>
+        /// The user identifier.
+        /// </value>
         public string UserId { get => this.userId; set => this.userId = value; }
-        [Required(ErrorMessage ="Name Required")]
+
+        /// <summary>
+        /// Gets or sets the name.
+        /// </summary>
+        /// <value>
+        /// The name.
+        /// </value>
+        [Required(ErrorMessage = "Name Required")]
         public string Name { get => this.name; set => this.name = value; }
-        [Required(ErrorMessage ="Mobile Number Required")]
+
+        /// <summary>
+        /// Gets or sets the mobile.
+        /// </summary>
+        /// <value>
+        /// The mobile.
+        /// </value>
+        [Required(ErrorMessage = "Mobile Number Required")]
         public string Mobile { get => this.mobile; set => this.mobile = value; }
+
+        /// <summary>
+        /// Gets or sets the salary.
+        /// </summary>
+        /// <value>
+        /// The salary.
+        /// </value>
         public string Salary { get => this.salary; set => this.salary = value; }
-        [Required(ErrorMessage ="City name Required")]
+
+        /// <summary>
+        /// Gets or sets the city.
+        /// </summary>
+        /// <value>
+        /// The city.
+        /// </value>
+        [Required(ErrorMessage = "City name Required")]
         public string City { get => this.city; set => this.city = value; }
     }
 }
