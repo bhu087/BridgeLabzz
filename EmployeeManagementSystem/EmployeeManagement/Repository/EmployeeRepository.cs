@@ -1,18 +1,37 @@
-﻿using EmployeeManagement.Models;
-using EmployeeManagement.Utility;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Threading.Tasks;
-
+﻿/////------------------------------------------------------------------------
+////<copyright file="EmployeeRepository.cs" company="BridgeLabz">
+////author="Bhushan"
+////</copyright>
+////-------------------------------------------------------------------------
 namespace EmployeeManagement.Repository
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Data;
+    using System.Data.SqlClient;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using EmployeeManagement.Models;
+    using EmployeeManagement.Utility;
+
+    /// <summary>
+    /// This is the Employee repository class
+    /// </summary>
+    /// <seealso cref="EmployeeManagement.Repository.IEmployeeRepository" />
     public class EmployeeRepository : IEmployeeRepository
     {
+        /// <summary>
+        /// The connection string
+        /// </summary>
         private string connectionString = ConnectionString.ConnectionName;
-        
+
+        /// <summary>
+        /// Logins the specified employee.
+        /// </summary>
+        /// <param name="employee">The employee.</param>
+        /// <returns>
+        /// returns the boolean value
+        /// </returns>
         public bool Login(Employee employee)
         {
             using (SqlConnection con = new SqlConnection(this.connectionString))
@@ -20,7 +39,7 @@ namespace EmployeeManagement.Repository
                 SqlCommand sqlCommand = new SqlCommand("spGetAllEmployees", con);
                 sqlCommand.CommandType = CommandType.StoredProcedure;
                 con.Open();
-                SqlDataReader data= sqlCommand.ExecuteReader();
+                SqlDataReader data = sqlCommand.ExecuteReader();
                 while (data.Read())
                 {
                     if (employee.Name.Equals(data["FirstName"].ToString()))
@@ -32,18 +51,22 @@ namespace EmployeeManagement.Repository
                         }
                     }
                 }
+
                 con.Close();
                 return false;
             }
         }
 
+        /// <summary>
+        /// Registers the specified employee.
+        /// </summary>
+        /// <param name="employee">The employee.</param>
         public void Register(Employee employee)
         {
             using (SqlConnection sqlConnection = new SqlConnection(this.connectionString))
             {
-                SqlCommand sqlCommand = new SqlCommand("spAddEmployee",sqlConnection);
+                SqlCommand sqlCommand = new SqlCommand("spAddEmployee", sqlConnection);
                 sqlCommand.CommandType = CommandType.StoredProcedure;
-                //sqlCommand.Parameters.AddWithValue("Id", employee.UserId);
                 sqlCommand.Parameters.AddWithValue("FirstName", employee.Name);
                 sqlCommand.Parameters.AddWithValue("Mobile", employee.Mobile);
                 sqlCommand.Parameters.AddWithValue("Salary", employee.Salary);
@@ -54,12 +77,18 @@ namespace EmployeeManagement.Repository
             }
         }
 
+        /// <summary>
+        /// Gets the employees.
+        /// </summary>
+        /// <returns>
+        /// returns the List of employees
+        /// </returns>
         public IEnumerable<Employee> GetEmployees()
         {
             List<Employee> list = new List<Employee>();
-            using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+            using (SqlConnection sqlConnection = new SqlConnection(this.connectionString))
             {
-                SqlCommand sqlCommand = new SqlCommand("spGetAllEmployees",sqlConnection);
+                SqlCommand sqlCommand = new SqlCommand("spGetAllEmployees", sqlConnection);
                 sqlCommand.CommandType = CommandType.StoredProcedure;
                 sqlConnection.Open();
                 SqlDataReader data = sqlCommand.ExecuteReader();
@@ -73,16 +102,24 @@ namespace EmployeeManagement.Repository
                     employee.City = data["City"].ToString();
                     list.Add(employee);
                 }
+
                 sqlConnection.Close();
             }
+
             return list;
         }
 
+        /// <summary>
+        /// Updates the employee.
+        /// </summary>
+        /// <param name="employee">The employee.</param>
+        /// <returns>
+        /// returns the boolean value
+        /// </returns>
         public bool UpdateEmployee(Employee employee)
         {
-            using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+            using (SqlConnection sqlConnection = new SqlConnection(this.connectionString))
             {
-
                 SqlCommand validateSqlCommand = new SqlCommand("spGetAllEmployees", sqlConnection);
                 SqlCommand sqlCommand = new SqlCommand("spUpdateEmployee", sqlConnection);
                 sqlCommand.CommandType = CommandType.StoredProcedure;
@@ -95,9 +132,9 @@ namespace EmployeeManagement.Repository
                 SqlDataReader data = validateSqlCommand.ExecuteReader();
                 while (data.Read())
                 {
-                    string UserIdInDB = data["Id"].ToString();
-                    string UserId = employee.UserId;
-                    if (UserIdInDB.Equals(UserId))
+                    string userIdInDB = data["Id"].ToString();
+                    string userId = employee.UserId;
+                    if (userIdInDB.Equals(userId))
                     {
                         sqlConnection.Close();
                         sqlConnection.Open();
@@ -106,6 +143,7 @@ namespace EmployeeManagement.Repository
                         return true;
                     }
                 } 
+
                 sqlConnection.Close();
                 return false;
             }
