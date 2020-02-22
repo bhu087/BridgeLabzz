@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Model.Common
 {
-    class ForgetPassword
+    class Class1
     {
     }
 }

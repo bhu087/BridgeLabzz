@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Repository.Repo.Account
+namespace Repository.Context
 {
-    class Class1
+    class UserContext
     {
     }
 }

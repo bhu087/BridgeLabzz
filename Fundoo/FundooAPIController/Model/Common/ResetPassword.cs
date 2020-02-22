@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Repository.Repo.Account
+namespace Model.Common
 {
-    class Class1
+    class ResetPassword
     {
     }
 }

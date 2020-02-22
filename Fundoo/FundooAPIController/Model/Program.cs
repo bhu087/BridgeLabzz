@@ -7,6 +7,7 @@ namespace Model
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
+            UserDetails details = new UserDetails();
         }
     }
 }
