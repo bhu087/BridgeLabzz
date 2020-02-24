@@ -1,0 +1,4 @@
+D:\BridgeLabzBhush\Fundoo\FundooAPIController\Repository\bin\Debug\netcoreapp3.1\Repository.exe
+D:\BridgeLabzBhush\Fundoo\FundooAPIController\Repository\obj\Debug\netcoreapp3.1\Repository.csprojAssemblyReference.cache
+D:\BridgeLabzBhush\Fundoo\FundooAPIController\Repository\obj\Debug\netcoreapp3.1\Repository.AssemblyInfoInputs.cache
+D:\BridgeLabzBhush\Fundoo\FundooAPIController\Repository\obj\Debug\netcoreapp3.1\Repository.AssemblyInfo.cs
