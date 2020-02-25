@@ -9,5 +9,6 @@ namespace Repository.Repo.AccountRepository
     public interface IAccountRepository
     {
         Task<int> Register(Register register);
+        Task<int> Update(Register register);
     }
 }

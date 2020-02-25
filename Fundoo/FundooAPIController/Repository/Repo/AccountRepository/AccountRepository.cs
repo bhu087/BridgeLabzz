@@ -26,5 +26,25 @@ namespace Repository.Repo.AccountRepository
             var result = this.userDBContext.SaveChangesAsync();
             return result;
         }
+        //public Task<bool> Login(Login login)
+        //{
+        //    Login add = new Login() 
+        //    { 
+        //        Email = login.Email,
+        //        Password = login.Password
+        //    };
+        //}
+        public Task<int> Update(Register register)
+        {
+            Register add = new Register()
+            {
+                Name = register.Name,
+                Email = register.Email,
+                Password = register.Password
+            };
+            this.userDBContext.Registers.Update(add);
+            var result = this.userDBContext.SaveChangesAsync();
+            return result;
+        }
     }
 }

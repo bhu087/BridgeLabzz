@@ -25,5 +25,19 @@ namespace FondooAPIController.Controllers
             var result = this.manager.RegisterAsync(register);
             return Ok(result);
         }
+
+        [HttpPost]
+        [Route("update")]
+        public ActionResult Update(Register register)
+        {
+            var result = this.manager.RegisterAsync(register);
+            return Ok(result);
+        }
+        //[HttpPost]
+        //[Route("login")]
+        //public ActionResult Login()
+        //{
+
+        //}
     }
 }

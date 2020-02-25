@@ -10,5 +10,6 @@ namespace Manager.Account
     {
         Task<int> LoginAsync(Login loginModel);
         Task<int> RegisterAsync(Register register);
+        Task<int> Update(Register register);
     }
 }

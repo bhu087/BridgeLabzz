@@ -26,5 +26,10 @@ namespace Manager.Account
         {
             return accountRepository.Register(register);
         }
+
+        public Task<int> Update(Register register)
+        {
+            return accountRepository.Update(register);
+        }
     }
 }
