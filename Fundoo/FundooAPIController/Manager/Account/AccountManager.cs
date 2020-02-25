@@ -4,16 +4,27 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Repository.Repo.AccountRepository;
 
 namespace Manager.Account
 {
-    class AccountManager : IAccountManager
+    public class AccountManager : IAccountManager
     {
-        public Task<bool> LoginAsync(Login loginModel)
+        public readonly IAccountRepository accountRepository;
+        public AccountManager(IAccountRepository accountRepository)
         {
-            UserDBContext userDBContext;
-            var flag = LoginAsync(loginModel);
-            return flag;
+            this.accountRepository = accountRepository;
+        }
+        public Task<int> LoginAsync(Login loginModel)
+        {
+            //UserAction userAction = new UserAction();
+            //var flag = userAction.LoginAsync(loginModel);
+            return default;
+        }
+
+        public Task<int> RegisterAsync(Register register)
+        {
+            return accountRepository.Register(register);
         }
     }
 }

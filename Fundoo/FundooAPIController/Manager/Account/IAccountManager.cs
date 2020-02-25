@@ -8,6 +8,7 @@ namespace Manager.Account
 {
     public interface IAccountManager
     {
-        Task<bool> LoginAsync(Login loginModel);
+        Task<int> LoginAsync(Login loginModel);
+        Task<int> RegisterAsync(Register register);
     }
 }

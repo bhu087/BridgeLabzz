@@ -3,8 +3,8 @@ D:\BridgeLabzBhush\Fundoo\FondooAPIController\Model\bin\Debug\netcoreapp2.1\Mode
 D:\BridgeLabzBhush\Fundoo\FondooAPIController\Model\bin\Debug\netcoreapp2.1\Model.runtimeconfig.dev.json
 D:\BridgeLabzBhush\Fundoo\FondooAPIController\Model\bin\Debug\netcoreapp2.1\Model.dll
 D:\BridgeLabzBhush\Fundoo\FondooAPIController\Model\bin\Debug\netcoreapp2.1\Model.pdb
-D:\BridgeLabzBhush\Fundoo\FondooAPIController\Model\obj\Debug\netcoreapp2.1\Model.csprojAssemblyReference.cache
 D:\BridgeLabzBhush\Fundoo\FondooAPIController\Model\obj\Debug\netcoreapp2.1\Model.AssemblyInfoInputs.cache
 D:\BridgeLabzBhush\Fundoo\FondooAPIController\Model\obj\Debug\netcoreapp2.1\Model.AssemblyInfo.cs
 D:\BridgeLabzBhush\Fundoo\FondooAPIController\Model\obj\Debug\netcoreapp2.1\Model.dll
 D:\BridgeLabzBhush\Fundoo\FondooAPIController\Model\obj\Debug\netcoreapp2.1\Model.pdb
+D:\BridgeLabzBhush\Fundoo\FondooAPIController\Model\obj\Debug\netcoreapp2.1\Model.csprojAssemblyReference.cache

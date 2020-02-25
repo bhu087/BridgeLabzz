@@ -1,3 +1,7 @@
+D:\BridgeLabzBhush\Fundoo\FondooAPIController\FondooAPIController\obj\Debug\netcoreapp2.1\FondooAPIController.RazorAssemblyInfo.cache
+D:\BridgeLabzBhush\Fundoo\FondooAPIController\FondooAPIController\obj\Debug\netcoreapp2.1\FondooAPIController.RazorAssemblyInfo.cs
+D:\BridgeLabzBhush\Fundoo\FondooAPIController\FondooAPIController\obj\Debug\netcoreapp2.1\FondooAPIController.AssemblyInfoInputs.cache
+D:\BridgeLabzBhush\Fundoo\FondooAPIController\FondooAPIController\obj\Debug\netcoreapp2.1\FondooAPIController.AssemblyInfo.cs
 D:\BridgeLabzBhush\Fundoo\FondooAPIController\FondooAPIController\bin\Debug\netcoreapp2.1\appsettings.Development.json
 D:\BridgeLabzBhush\Fundoo\FondooAPIController\FondooAPIController\bin\Debug\netcoreapp2.1\appsettings.json
 D:\BridgeLabzBhush\Fundoo\FondooAPIController\FondooAPIController\bin\Debug\netcoreapp2.1\Properties\launchSettings.json
@@ -13,10 +17,6 @@ D:\BridgeLabzBhush\Fundoo\FondooAPIController\FondooAPIController\bin\Debug\netc
 D:\BridgeLabzBhush\Fundoo\FondooAPIController\FondooAPIController\bin\Debug\netcoreapp2.1\Repository.pdb
 D:\BridgeLabzBhush\Fundoo\FondooAPIController\FondooAPIController\bin\Debug\netcoreapp2.1\Model.pdb
 D:\BridgeLabzBhush\Fundoo\FondooAPIController\FondooAPIController\obj\Debug\netcoreapp2.1\FondooAPIController.csprojAssemblyReference.cache
-D:\BridgeLabzBhush\Fundoo\FondooAPIController\FondooAPIController\obj\Debug\netcoreapp2.1\FondooAPIController.RazorAssemblyInfo.cache
-D:\BridgeLabzBhush\Fundoo\FondooAPIController\FondooAPIController\obj\Debug\netcoreapp2.1\FondooAPIController.RazorAssemblyInfo.cs
-D:\BridgeLabzBhush\Fundoo\FondooAPIController\FondooAPIController\obj\Debug\netcoreapp2.1\FondooAPIController.AssemblyInfoInputs.cache
-D:\BridgeLabzBhush\Fundoo\FondooAPIController\FondooAPIController\obj\Debug\netcoreapp2.1\FondooAPIController.AssemblyInfo.cs
 D:\BridgeLabzBhush\Fundoo\FondooAPIController\FondooAPIController\obj\Debug\netcoreapp2.1\FondooAPIController.RazorTargetAssemblyInfo.cache
 D:\BridgeLabzBhush\Fundoo\FondooAPIController\FondooAPIController\obj\Debug\netcoreapp2.1\FondooAPIController.csproj.CopyComplete
 D:\BridgeLabzBhush\Fundoo\FondooAPIController\FondooAPIController\obj\Debug\netcoreapp2.1\FondooAPIController.dll
