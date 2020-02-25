@@ -1,10 +1,13 @@
-﻿using System;
+﻿using Model.Common.Account;
+using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Manager.Account
 {
-    interface IAccountManager
+    public interface IAccountManager
     {
+        Task<bool> LoginAsync(Login loginModel);
     }
 }

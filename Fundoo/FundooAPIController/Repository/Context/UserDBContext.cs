@@ -1,13 +1,24 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Text;
-using Microsoft.EntityFrameworkCore;
-using Model;
+using Model.Common.Account;
 
 namespace Repository.Context
 {
-    class UserDBContext : DbContext
+    public class UserDBContext : DbContext
     {
-        public DbSet<User> Users { get; set; }
+        public UserDBContext(DbContextOptions<UserDBContext> options) : base(options)
+        {
+
+        }
+        public DbSet<Login> Logins
+        {
+            get; set;
+        }
+        public DbSet<Register> Registers
+        {
+            get; set;
+        }
     }
 }

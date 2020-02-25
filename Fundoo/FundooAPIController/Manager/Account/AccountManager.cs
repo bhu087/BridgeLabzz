@@ -1,26 +1,19 @@
-﻿using Model;
+﻿using Model.Common.Account;
+using Repository.Context;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Manager.Account
 {
-    public class AccountManager : IAccountManager
+    class AccountManager : IAccountManager
     {
-        IAccountManager accountManager;
-        public bool ForgetPassWord(User user)
+        public Task<bool> LoginAsync(Login loginModel)
         {
-            return accountManager.ForgetPassWord(user);
-        }
-
-        public bool Login(User user)
-        {
-            return accountManager.Login(user);
-        }
-
-        public bool ResetPassword(User user)
-        {
-            return accountManager.ResetPassword(user);
+            UserDBContext userDBContext;
+            var flag = LoginAsync(loginModel);
+            return flag;
         }
     }
 }
