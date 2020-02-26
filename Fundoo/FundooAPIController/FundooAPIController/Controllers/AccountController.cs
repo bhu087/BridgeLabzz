@@ -93,6 +93,20 @@ namespace FundooAPIController.Controllers
                 throw new Exception(e.Message);
             }
         }
+        [HttpPost]
+        [Route("login")]
+        public ActionResult Login(Login loginModel)
+        {
+            var result = this.manager.Login(loginModel);
+            if (result == null)
+            {
+                return this.BadRequest();
+            }
+            else
+            {
+                return this.Ok(result);
+            }
+        }
     }
     
 }

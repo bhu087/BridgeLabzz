@@ -13,5 +13,6 @@ namespace Repository.Repo
         Task<int> Update(Registration register);
         IEnumerable<Registration> GetAll();
         Registration GetById(int id);
+        Task<Registration> Login(Login loginModel);
     }
 }

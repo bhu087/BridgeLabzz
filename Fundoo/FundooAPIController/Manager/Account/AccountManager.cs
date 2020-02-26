@@ -54,6 +54,19 @@ namespace Manager.Account
             }
         }
 
+        public Task<Registration> Login(Login loginModel)
+        {
+            try
+            {
+                var result = accountRepository.Login(loginModel);
+                return result;
+            }
+            catch(Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+
         public Task<int> Register(Registration register)
         {
             try

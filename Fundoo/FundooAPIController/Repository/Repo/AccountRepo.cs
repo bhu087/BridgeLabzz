@@ -1,8 +1,11 @@
-﻿using Model.Account;
+﻿using Microsoft.IdentityModel.Tokens;
+using Model.Account;
 using Repository.Context;
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -93,6 +96,44 @@ namespace Repository.Repo
             {
                 throw new Exception(e.Message);
             }
+        }
+        public async Task<Registration> Login(Login loginModel)
+        {
+            var userCheck = this.context.Registers.Where(userId => userId.Id == loginModel.Id).SingleOrDefault();
+            if (userCheck != null && this.CheckName(loginModel.Id, loginModel.Name))
+            {
+                try
+                {
+                    var tokenDescriptor = new SecurityTokenDescriptor
+                    {
+                        Subject = new ClaimsIdentity(new Claim[]
+                        {
+                       new Claim("Id",userCheck.Id.ToString())
+                        }),
+                        Expires = DateTime.UtcNow.AddDays(1),
+                        SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes("Hello this is Radis Cache")), SecurityAlgorithms.HmacSha256Signature)
+                    };
+                    var tokenHandler = new JwtSecurityTokenHandler();
+                    var securityToken = tokenHandler.CreateToken(tokenDescriptor);
+                    var token = tokenHandler.WriteToken(securityToken);
+                    var cacheKey = loginModel.Id;
+                    return userCheck;
+                }
+                catch (Exception e)
+                {
+                    throw new Exception(e.Message);
+                }
+            }
+            return new Registration();
+        }
+        public bool CheckName(int id,string name)
+        {
+            var userCheck = this.context.Registers.Where(userId => userId.Id == id).SingleOrDefault();
+            if(userCheck.Name.Equals(name) && userCheck.Id == id)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }
