@@ -99,8 +99,8 @@ namespace Repository.Repo
         }
         public async Task<Registration> Login(Login loginModel)
         {
-            var userCheck = this.context.Registers.Where(userId => userId.Id == loginModel.Id).SingleOrDefault();
-            if (userCheck != null && this.CheckName(loginModel.Id, loginModel.Name))
+            var userCheck = this.context.Registers.Where(userId => userId.Email == loginModel.Email).SingleOrDefault();
+            if (userCheck != null && this.CheckName(loginModel.Password, loginModel.Password))
             {
                 try
                 {
@@ -108,15 +108,16 @@ namespace Repository.Repo
                     {
                         Subject = new ClaimsIdentity(new Claim[]
                         {
-                       new Claim("Id",userCheck.Id.ToString())
+                            new Claim("Id",userCheck.Id.ToString()),
+                            new Claim("Name",userCheck.Name.ToString())
                         }),
                         Expires = DateTime.UtcNow.AddDays(1),
                         SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes("Hello this is Radis Cache")), SecurityAlgorithms.HmacSha256Signature)
                     };
-                    var tokenHandler = new JwtSecurityTokenHandler();
-                    var securityToken = tokenHandler.CreateToken(tokenDescriptor);
-                    var token = tokenHandler.WriteToken(securityToken);
-                    var cacheKey = loginModel.Id;
+                    var securityTokenHandler = new JwtSecurityTokenHandler();
+                    var securityToken = securityTokenHandler.CreateToken(tokenDescriptor);
+                    var token = securityTokenHandler.WriteToken(securityToken);
+                    //var cacheKey = loginModel.Id;
                     return userCheck;
                 }
                 catch (Exception e)
@@ -126,10 +127,10 @@ namespace Repository.Repo
             }
             return new Registration();
         }
-        public bool CheckName(int id,string name)
+        public bool CheckName(string email,string name)
         {
-            var userCheck = this.context.Registers.Where(userId => userId.Id == id).SingleOrDefault();
-            if(userCheck.Name.Equals(name) && userCheck.Id == id)
+            var userCheck = this.context.Registers.Where(userId => userId.Email == email).SingleOrDefault();
+            if(userCheck.Name.Equals(name) && userCheck.Email == email)
             {
                 return true;
             }
