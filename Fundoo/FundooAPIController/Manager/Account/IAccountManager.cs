@@ -12,5 +12,6 @@ namespace Manager.Account
         Task<int> Delete(int id);
         Task<int> Update(Registration register);
         IEnumerable<Registration> GetAll();
+        Registration GetById(int id);
     }
 }

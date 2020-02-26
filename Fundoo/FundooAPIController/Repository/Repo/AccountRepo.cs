@@ -73,10 +73,23 @@ namespace Repository.Repo
             try
             {
                 //List<Registration> registrations = new List<Registration>();
-                var updateUser = this.context.Registers.ToList() ;
-                return updateUser;
+                var allUser = this.context.Registers.ToList() ;
+                return allUser;
             }
             catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+
+        public Registration GetById(int id)
+        {
+            try
+            {
+                var singleUser = this.context.Registers.Where(userId => userId.Id == id).SingleOrDefault();
+                return singleUser;
+            }
+            catch(Exception e)
             {
                 throw new Exception(e.Message);
             }

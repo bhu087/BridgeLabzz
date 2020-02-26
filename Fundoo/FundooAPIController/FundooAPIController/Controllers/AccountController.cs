@@ -62,13 +62,31 @@ namespace FundooAPIController.Controllers
             }
         }
         [HttpGet]
-        [Route("getall")]
+        [Route("getAll")]
         public ActionResult GetAll()
         {
             try
             {
                 var result = manager.GetAll();
                 return Ok(result);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+        [HttpGet]
+        [Route("getById")]
+        public ActionResult GetById(int id)
+        {
+            try
+            {
+                var result = this.manager.GetById(id);
+                if (result != null)
+                {
+                    return Ok(result);
+                }
+                return this.BadRequest("User Not Registered");
             }
             catch (Exception e)
             {

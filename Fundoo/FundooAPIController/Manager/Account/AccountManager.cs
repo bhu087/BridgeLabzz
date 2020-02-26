@@ -41,6 +41,19 @@ namespace Manager.Account
             }
         }
 
+        public Registration GetById(int id)
+        {
+            try 
+            {
+                var singleUser = this.accountRepository.GetById(id);
+                return singleUser;
+            }
+            catch(Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+
         public Task<int> Register(Registration register)
         {
             try
