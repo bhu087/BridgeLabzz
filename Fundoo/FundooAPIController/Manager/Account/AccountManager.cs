@@ -1,35 +1,70 @@
-﻿using Model.Common.Account;
-using Repository.Context;
+﻿using Model.Account;
+using Repository.Repo;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using Repository.Repo.AccountRepository;
 
 namespace Manager.Account
 {
     public class AccountManager : IAccountManager
     {
-        public readonly IAccountRepository accountRepository;
-        public AccountManager(IAccountRepository accountRepository)
+        public readonly IAccountRepo accountRepository;
+        public AccountManager(IAccountRepo accountRepository)
         {
             this.accountRepository = accountRepository;
         }
-        public Task<int> LoginAsync(Login loginModel)
+
+        public Task<int> Delete(int id)
         {
-            //UserAction userAction = new UserAction();
-            //var flag = userAction.LoginAsync(loginModel);
-            return default;
+            try 
+            {
+                var result = this.accountRepository.Delete(id);
+                return result;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
-        public Task<int> RegisterAsync(Register register)
+        public IEnumerable<Registration> GetAll()
         {
-            return accountRepository.Register(register);
+            try
+            {
+                var list = this.accountRepository.GetAll();
+                return list;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
-        public Task<int> Update(Register register)
+        public Task<int> Register(Registration register)
         {
-            return accountRepository.Update(register);
+            try
+            {
+                var result = accountRepository.Register(register);
+                return result;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+
+        public Task<int> Update(Registration register)
+        {
+            try
+            {
+                var result = accountRepository.Update(register);
+                return result;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
     }
 }

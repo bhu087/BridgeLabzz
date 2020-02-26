@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\BridgeLabzBhush\\Fundoo\\FondooAPIController\\Model\\Model.csproj": {}
+    "D:\\BridgeLabzBhush\\Fundoo\\FundooAPIController\\Model\\Model.csproj": {}
   },
   "projects": {
-    "D:\\BridgeLabzBhush\\Fundoo\\FondooAPIController\\Model\\Model.csproj": {
+    "D:\\BridgeLabzBhush\\Fundoo\\FundooAPIController\\Model\\Model.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\BridgeLabzBhush\\Fundoo\\FondooAPIController\\Model\\Model.csproj",
+        "projectUniqueName": "D:\\BridgeLabzBhush\\Fundoo\\FundooAPIController\\Model\\Model.csproj",
         "projectName": "Model",
-        "projectPath": "D:\\BridgeLabzBhush\\Fundoo\\FondooAPIController\\Model\\Model.csproj",
+        "projectPath": "D:\\BridgeLabzBhush\\Fundoo\\FundooAPIController\\Model\\Model.csproj",
         "packagesPath": "C:\\Users\\bridgelabz\\.nuget\\packages\\",
-        "outputPath": "D:\\BridgeLabzBhush\\Fundoo\\FondooAPIController\\Model\\obj\\",
+        "outputPath": "D:\\BridgeLabzBhush\\Fundoo\\FundooAPIController\\Model\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\bridgelabz\\AppData\\Roaming\\NuGet\\NuGet.Config",

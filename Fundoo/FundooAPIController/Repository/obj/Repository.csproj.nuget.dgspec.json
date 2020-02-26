@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\BridgeLabzBhush\\Fundoo\\FondooAPIController\\Repository\\Repository.csproj": {}
+    "D:\\BridgeLabzBhush\\Fundoo\\FundooAPIController\\Repository\\Repository.csproj": {}
   },
   "projects": {
-    "D:\\BridgeLabzBhush\\Fundoo\\FondooAPIController\\Model\\Model.csproj": {
+    "D:\\BridgeLabzBhush\\Fundoo\\FundooAPIController\\Model\\Model.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\BridgeLabzBhush\\Fundoo\\FondooAPIController\\Model\\Model.csproj",
+        "projectUniqueName": "D:\\BridgeLabzBhush\\Fundoo\\FundooAPIController\\Model\\Model.csproj",
         "projectName": "Model",
-        "projectPath": "D:\\BridgeLabzBhush\\Fundoo\\FondooAPIController\\Model\\Model.csproj",
+        "projectPath": "D:\\BridgeLabzBhush\\Fundoo\\FundooAPIController\\Model\\Model.csproj",
         "packagesPath": "C:\\Users\\bridgelabz\\.nuget\\packages\\",
-        "outputPath": "D:\\BridgeLabzBhush\\Fundoo\\FondooAPIController\\Model\\obj\\",
+        "outputPath": "D:\\BridgeLabzBhush\\Fundoo\\FundooAPIController\\Model\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\bridgelabz\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -59,14 +59,14 @@
         }
       }
     },
-    "D:\\BridgeLabzBhush\\Fundoo\\FondooAPIController\\Repository\\Repository.csproj": {
+    "D:\\BridgeLabzBhush\\Fundoo\\FundooAPIController\\Repository\\Repository.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\BridgeLabzBhush\\Fundoo\\FondooAPIController\\Repository\\Repository.csproj",
+        "projectUniqueName": "D:\\BridgeLabzBhush\\Fundoo\\FundooAPIController\\Repository\\Repository.csproj",
         "projectName": "Repository",
-        "projectPath": "D:\\BridgeLabzBhush\\Fundoo\\FondooAPIController\\Repository\\Repository.csproj",
+        "projectPath": "D:\\BridgeLabzBhush\\Fundoo\\FundooAPIController\\Repository\\Repository.csproj",
         "packagesPath": "C:\\Users\\bridgelabz\\.nuget\\packages\\",
-        "outputPath": "D:\\BridgeLabzBhush\\Fundoo\\FondooAPIController\\Repository\\obj\\",
+        "outputPath": "D:\\BridgeLabzBhush\\Fundoo\\FundooAPIController\\Repository\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\bridgelabz\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -82,8 +82,8 @@
         "frameworks": {
           "netcoreapp2.1": {
             "projectReferences": {
-              "D:\\BridgeLabzBhush\\Fundoo\\FondooAPIController\\Model\\Model.csproj": {
-                "projectPath": "D:\\BridgeLabzBhush\\Fundoo\\FondooAPIController\\Model\\Model.csproj"
+              "D:\\BridgeLabzBhush\\Fundoo\\FundooAPIController\\Model\\Model.csproj": {
+                "projectPath": "D:\\BridgeLabzBhush\\Fundoo\\FundooAPIController\\Model\\Model.csproj"
               }
             }
           }
@@ -98,10 +98,6 @@
         "netcoreapp2.1": {
           "dependencies": {
             "Microsoft.EntityFrameworkCore": {
-              "target": "Package",
-              "version": "[2.1.0, )"
-            },
-            "Microsoft.EntityFrameworkCore.Relational": {
               "target": "Package",
               "version": "[2.1.0, )"
             },

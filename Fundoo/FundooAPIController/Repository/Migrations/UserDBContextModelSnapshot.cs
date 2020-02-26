@@ -18,19 +18,20 @@ namespace Repository.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Model.Common.Account.Login", b =>
+            modelBuilder.Entity("Model.Account.Login", b =>
                 {
-                    b.Property<string>("Email")
-                        .ValueGeneratedOnAdd();
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Password");
+                    b.Property<string>("Name");
 
-                    b.HasKey("Email");
+                    b.HasKey("Id");
 
                     b.ToTable("Logins");
                 });
 
-            modelBuilder.Entity("Model.Common.Account.Register", b =>
+            modelBuilder.Entity("Model.Account.Registration", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()

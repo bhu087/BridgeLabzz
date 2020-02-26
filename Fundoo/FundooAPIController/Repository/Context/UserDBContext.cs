@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Model.Account;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Model.Common.Account;
 
 namespace Repository.Context
 {
@@ -10,13 +10,13 @@ namespace Repository.Context
     {
         public UserDBContext(DbContextOptions<UserDBContext> options) : base(options)
         {
-            
+
         }
         public DbSet<Login> Logins
         {
             get; set;
         }
-        public DbSet<Register> Registers
+        public DbSet<Registration> Registers
         {
             get; set;
         }

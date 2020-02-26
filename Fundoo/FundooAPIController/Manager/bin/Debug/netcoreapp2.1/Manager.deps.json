@@ -8,7 +8,6 @@
     ".NETCoreApp,Version=v2.1": {
       "Manager/1.0.0": {
         "dependencies": {
-          "Model": "1.0.0",
           "Repository": "1.0.0"
         },
         "runtime": {
@@ -481,7 +480,6 @@
       "Repository/1.0.0": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "2.1.0",
-          "Microsoft.EntityFrameworkCore.Relational": "2.1.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "2.1.0",
           "Model": "1.0.0"
         },

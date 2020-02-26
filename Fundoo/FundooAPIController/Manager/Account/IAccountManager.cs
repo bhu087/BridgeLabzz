@@ -1,4 +1,4 @@
-﻿using Model.Common.Account;
+﻿using Model.Account;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,8 +8,9 @@ namespace Manager.Account
 {
     public interface IAccountManager
     {
-        Task<int> LoginAsync(Login loginModel);
-        Task<int> RegisterAsync(Register register);
-        Task<int> Update(Register register);
+        Task<int> Register(Registration register);
+        Task<int> Delete(int id);
+        Task<int> Update(Registration register);
+        IEnumerable<Registration> GetAll();
     }
 }
