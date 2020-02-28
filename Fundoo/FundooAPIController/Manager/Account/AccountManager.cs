@@ -54,7 +54,7 @@ namespace Manager.Account
             }
         }
 
-        public Task<Registration> Login(Login loginModel)
+        public Task<string> Login(Login loginModel)
         {
             try
             {
@@ -75,6 +75,19 @@ namespace Manager.Account
                 return result;
             }
             catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+
+        public Task<string> ResetPassword(string email)
+        {
+            try
+            {
+                var result = accountRepository.ResetPassword(email);
+                return result;
+            }
+            catch(Exception e)
             {
                 throw new Exception(e.Message);
             }

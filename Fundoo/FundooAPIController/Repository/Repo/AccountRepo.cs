@@ -5,9 +5,12 @@ using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using System.Configuration;
 
 namespace Repository.Repo
 {
@@ -97,10 +100,11 @@ namespace Repository.Repo
                 throw new Exception(e.Message);
             }
         }
-        public async Task<Registration> Login(Login loginModel)
+        public async Task<string> Login(Login loginModel)
         {
             var userCheck = this.context.Registers.Where(userId => userId.Email == loginModel.Email).SingleOrDefault();
-            if (userCheck != null && this.CheckName(loginModel.Password, loginModel.Password))
+            //var userCheck = this.context.Registers.Where(userId => userId.Email == loginModel.Email).SingleOrDefault();
+            if (userCheck != null && this.CheckUser(loginModel.Email, loginModel.Password))
             {
                 try
                 {
@@ -118,19 +122,68 @@ namespace Repository.Repo
                     var securityToken = securityTokenHandler.CreateToken(tokenDescriptor);
                     var token = securityTokenHandler.WriteToken(securityToken);
                     //var cacheKey = loginModel.Id;
-                    return userCheck;
+                    return token;
                 }
                 catch (Exception e)
                 {
                     throw new Exception(e.Message);
                 }
             }
-            return new Registration();
+            return "Email Not Present";
         }
-        public bool CheckName(string email,string name)
+        public static void AppSettings(out string UserID, out string Password, out string SMTPPort, out string Host)
+        {
+            UserID = ConfigurationManager.AppSettings.Get("UserID");
+            Password = ConfigurationManager.AppSettings.Get("Password");
+            SMTPPort = ConfigurationManager.AppSettings.Get("SMTPPort");
+            Host = ConfigurationManager.AppSettings.Get("Host");
+        }
+        public async Task<string> ResetPassword(string email)
         {
             var userCheck = this.context.Registers.Where(userId => userId.Email == email).SingleOrDefault();
-            if(userCheck.Name.Equals(name) && userCheck.Email == email)
+            if (userCheck != null && CheckUserByEmail(email))
+            {
+                try
+                {
+                    MailMessage mail = new MailMessage();
+                    mail.To.Add(email);
+                    //mail.CC.Add("ccid@hotmail.com");
+                    mail.From = new MailAddress("bhush087@gmail.com");
+                    mail.Subject = "Reset Account";
+                    string Body = "https://www.w3schools.com/js/js_htmldom_animate.asp";
+                    mail.Body = Body;
+                    mail.IsBodyHtml = false;
+                    SmtpClient smtp = new SmtpClient();
+                    smtp.Host = "smtp.gmail.com";
+                    smtp.EnableSsl = true;
+                    smtp.Credentials = new NetworkCredential("bhush087@gmail.com", "Bhushan087***");
+                    smtp.Send(mail);
+                    return "Success";
+                }
+                catch (Exception)
+                {
+                    return "ex";
+                }
+                //return "OK";
+            }
+            else
+            {
+                return "This email address does not match our records.";
+            }
+        }
+        public bool CheckUserByEmail(string email)
+        {
+            var userCheck = this.context.Registers.Where(userId => userId.Email == email).SingleOrDefault();
+            if (userCheck.Email.Equals(email))
+            {
+                return true;
+            }
+            return false;
+        }
+        public bool CheckUser(string email,string password)
+        {
+            var userCheck = this.context.Registers.Where(userId => userId.Email == email).SingleOrDefault();
+            if(userCheck.Email.Equals(email) && userCheck.Password == password)
             {
                 return true;
             }

@@ -104,9 +104,29 @@ namespace FundooAPIController.Controllers
             }
             else
             {
-                return this.Ok(result);
+                return this.Ok(result.Result);
             }
         }
-    }
-    
+        [HttpPost]
+        [Route("resetPassword")]
+        public ActionResult ResetPassword(string email)
+        {
+            var result = this.manager.ResetPassword(email);
+            try
+            {
+                if (result == null)
+                {
+                    return this.BadRequest();
+                }
+                else
+                {
+                    return this.Ok(result.Result);
+                }
+            }
+            catch (Exception e)
+            {
+                return this.BadRequest(e.ToString());
+            }
+        }
+    }  
 }
