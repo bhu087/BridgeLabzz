@@ -22,10 +22,10 @@ namespace FundooAPIController.Controllers
     public class AccountController : ControllerBase
     {
         public readonly IAccountManager manager;
-        protected string googleplus_client_id = "1034367374374-cumrd86psek13h3cte3a30g3ojh93mm4.apps.googleusercontent.com";    // Replace this with your Client ID
-        protected string googleplus_client_secret = "-Lx-O2ZtldcQ86PJ-ru-oJ-E";                                                // Replace this with your Client Secret
-        protected string googleplus_redirect_url = "https://localhost:44371/swagger";                                         // Replace this with your Redirect URL; Your Redirect URL from your developer.google application should match this URL.
-        protected string Parameters;
+        //protected string googleplus_client_id = "1034367374374-cumrd86psek13h3cte3a30g3ojh93mm4.apps.googleusercontent.com";    // Replace this with your Client ID
+        //protected string googleplus_client_secret = "-Lx-O2ZtldcQ86PJ-ru-oJ-E";                                                // Replace this with your Client Secret
+        //protected string googleplus_redirect_url = "https://localhost:44371/swagger";                                         // Replace this with your Redirect URL; Your Redirect URL from your developer.google application should match this URL.
+        //protected string Parameters;
         public AccountController(IAccountManager manager)
         {
             this.manager = manager;
