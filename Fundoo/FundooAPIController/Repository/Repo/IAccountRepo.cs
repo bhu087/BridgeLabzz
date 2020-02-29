@@ -15,6 +15,7 @@ namespace Repository.Repo
         Registration GetById(int id);
         Task<string> Login(Login loginModel);
         Task<string> ResetPassword(string email);
-        Task<string> LoginByGoogle(string email);
+        Task<Registration> LoginByGoogle(Login loginModel);
+        Task<string> ForgetPassword(string email);
     }
 }

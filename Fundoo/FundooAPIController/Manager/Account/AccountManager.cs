@@ -73,9 +73,9 @@ namespace Manager.Account
             }
         }
 
-        public Task<string> LoginByGoogle(string email)
+        public Task<Registration> LoginByGoogle(Login loginModel)
         {
-            return this.accountRepository.LoginByGoogle(email);
+            return this.accountRepository.LoginByGoogle(loginModel);
         }
 
         public Task<int> Register(Registration register)

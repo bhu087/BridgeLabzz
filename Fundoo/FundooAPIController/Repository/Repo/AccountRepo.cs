@@ -11,6 +11,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
+using StackExchange.Redis;
 
 namespace Repository.Repo
 {
@@ -220,11 +221,11 @@ namespace Repository.Repo
             }
             return false;
         }
-        public async Task<string> LoginByGoogle(string email)
+        public async Task<Registration> LoginByGoogle(Login loginModel)
         {
-            var userCheck = this.context.Registers.Where(userId => userId.Email == email).SingleOrDefault();
+            var userCheck = this.context.Registers.Where(userId => userId.Email == loginModel.Email).SingleOrDefault();
             //var userCheck = this.context.Registers.Where(userId => userId.Email == loginModel.Email).SingleOrDefault();
-            if (userCheck != null && this.CheckUserByEmail(email))
+            if (userCheck != null && this.CheckUserByEmail(loginModel.Email))
             {
                 try
                 {
@@ -232,7 +233,8 @@ namespace Repository.Repo
                     {
                         Subject = new ClaimsIdentity(new Claim[]
                         {
-                            new Claim("Email",userCheck.Email.ToString())
+                            new Claim("Id", userCheck.Id.ToString()),
+                            new Claim("Name", userCheck.Name.ToString())
                         }),
                         Expires = DateTime.UtcNow.AddDays(1),
                         SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes("Hello this is Radis Cache")), SecurityAlgorithms.HmacSha256Signature)
@@ -240,15 +242,43 @@ namespace Repository.Repo
                     var securityTokenHandler = new JwtSecurityTokenHandler();
                     var securityToken = securityTokenHandler.CreateToken(tokenDescriptor);
                     var token = securityTokenHandler.WriteToken(securityToken);
-                    //var cacheKey = loginModel.Id;
-                    return token;
+                    var cacheKey = loginModel.Email;
+                    ConnectionMultiplexer connectionMultiplexer = ConnectionMultiplexer.Connect("127.0.0.1:6379");
+                    IDatabase database = connectionMultiplexer.GetDatabase();
+                    database.StringSet(cacheKey, token.ToString());
+                    database.StringGet(cacheKey);
+                    // return new JwtSecurityTokenHandler().WriteToken(token) + "    expiration:" + token.ValidTo;
+                    return userCheck;
                 }
                 catch (Exception e)
                 {
                     throw new Exception(e.Message);
                 }
             }
-            return "Email Not Present";
+            else
+            {
+                var tokenDescriptor = new SecurityTokenDescriptor
+                {
+                    Subject = new ClaimsIdentity(new Claim[]
+                        {
+                            new Claim("Email", loginModel.Email)
+                        }),
+                    Expires = DateTime.UtcNow.AddDays(1),
+                    SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes("Hello this is Radis Cache")), SecurityAlgorithms.HmacSha256Signature)
+                };
+                var securityTokenHandler = new JwtSecurityTokenHandler();
+                var securityToken = securityTokenHandler.CreateToken(tokenDescriptor);
+                var token = securityTokenHandler.WriteToken(securityToken);
+                var cacheKey = loginModel.Email;
+                ConnectionMultiplexer connectionMultiplexer = ConnectionMultiplexer.Connect("127.0.0.1:6379");
+                IDatabase database = connectionMultiplexer.GetDatabase();
+                database.StringSet(cacheKey, token.ToString());
+                database.StringGet(cacheKey);
+                return new Registration {
+                    Name = "Visitor",
+                    Email = loginModel.Email
+                };
+            }
         }
     }
 }

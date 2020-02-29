@@ -163,36 +163,22 @@ namespace FundooAPIController.Controllers
         }
         [HttpPost]
         [Route("loginbygoogle")]
-        public void LoginByGoogle(string email)
+        public ActionResult LoginByGoogle(Login loginModel)
         {
-            var code1 = (this.manager.LoginByGoogle(email));
-            var code = code1.Result;
-            string poststring = "grant_type=authorization_code&code=" + code + "&client_id=" + googleplus_client_id + "&client_secret=" + googleplus_client_secret + "&redirect_uri=" + googleplus_redirect_url + "&code=FFFF";
-            var request = (HttpWebRequest)WebRequest.Create("https://accounts.google.com/o/oauth2/token");
-            request.ContentType = "application/x-www-form-urlencoded";
-            request.Method = "POST";
-            UTF8Encoding utfenc = new UTF8Encoding();
-            byte[] bytes = utfenc.GetBytes(poststring);
-            Stream outputstream = null;
             try
             {
-                string responseFromServer; // = streamReader.ReadToEnd();
-                request.ContentLength = bytes.Length;
-                outputstream = request.GetRequestStream();
-                outputstream.Write(bytes, 0, bytes.Length);
-                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-                Stream s = response.GetResponseStream();
-                using (StreamReader sr = new StreamReader(s))
-                {
-                    s.Flush();
-                    responseFromServer = sr.ReadToEnd();
-                    Debug.WriteLine(responseFromServer);
+                var result = (this.manager.LoginByGoogle(loginModel));
+                if (result != null)
+                {  
+                    return this.Ok(result);
                 }
+                return this.BadRequest("Something Wrong");
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Debug.WriteLine(e.Message);
-            }  
+                throw new Exception();
+            }
+              
         }
     }
 }
