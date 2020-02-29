@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace Model.Account
 {
-    class NotesModel
+    public class NotesModel
     {
         private int NotesId;
         private string email;
@@ -19,6 +20,7 @@ namespace Model.Account
         private bool isPin;
         private string color;
 
+        [Key]
         public int NotesId1 { get => NotesId; set => NotesId = value; }
         public string Email { get => email; set => email = value; }
         public string Title { get => title; set => title = value; }

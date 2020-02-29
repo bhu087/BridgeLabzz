@@ -20,5 +20,9 @@ namespace Repository.Context
         {
             get; set;
         }
+        public DbSet<NotesModel> Notes
+        {
+            get; set;
+        }
     }
 }
