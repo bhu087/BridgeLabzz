@@ -171,6 +171,37 @@ namespace Repository.Repo
                 return "This email address does not match our records.";
             }
         }
+        public async Task<string> ForgetPassword(string email)
+        {
+            var userCheck = this.context.Registers.Where(userId => userId.Email == email).SingleOrDefault();
+            if (userCheck != null && CheckUserByEmail(email))
+            {
+                try
+                {
+                    MailMessage mail = new MailMessage();
+                    mail.To.Add(email);
+                    //mail.CC.Add("ccid@hotmail.com");
+                    mail.From = new MailAddress("bhush087@gmail.com");
+                    mail.Subject = "Reset Account : our Password is";
+                    mail.Body = userCheck.Password;
+                    mail.IsBodyHtml = false;
+                    SmtpClient smtp = new SmtpClient();
+                    smtp.Host = "smtp.gmail.com";
+                    smtp.EnableSsl = true;
+                    smtp.Credentials = new NetworkCredential("bhush087@gmail.com", "Bhushan087***");
+                    smtp.Send(mail);
+                    return "Success";
+                }
+                catch (Exception)
+                {
+                    return "ex";
+                }
+            }
+            else
+            {
+                return "This email address does not match our records.";
+            }
+        }
         public bool CheckUserByEmail(string email)
         {
             var userCheck = this.context.Registers.Where(userId => userId.Email == email).SingleOrDefault();

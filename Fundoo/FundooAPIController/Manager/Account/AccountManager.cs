@@ -28,6 +28,12 @@ namespace Manager.Account
             }
         }
 
+        public Task<string> ForgetPassword(string email)
+        {
+            var result = this.accountRepository.ForgetPassword(email);
+            return result;
+        }
+
         public IEnumerable<Registration> GetAll()
         {
             try

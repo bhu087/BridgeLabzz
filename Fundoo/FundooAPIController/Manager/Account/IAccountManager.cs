@@ -16,5 +16,6 @@ namespace Manager.Account
         Task<string> Login(Login loginModel);
         Task<string> ResetPassword(string email);
         Task<string> LoginByGoogle(string email);
+        Task<string> ForgetPassword(string email);
     }
 }

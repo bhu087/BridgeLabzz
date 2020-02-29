@@ -144,7 +144,7 @@ namespace FundooAPIController.Controllers
         [Route("forgetPassword")]
         public ActionResult ForgetPassword(string email)
         {
-            var result = this.manager.ResetPassword(email);
+            var result = this.manager.ForgetPassword(email);
             try
             {
                 if (result == null)
