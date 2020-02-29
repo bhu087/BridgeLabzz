@@ -189,5 +189,35 @@ namespace Repository.Repo
             }
             return false;
         }
+        public async Task<string> LoginByGoogle(string email)
+        {
+            var userCheck = this.context.Registers.Where(userId => userId.Email == email).SingleOrDefault();
+            //var userCheck = this.context.Registers.Where(userId => userId.Email == loginModel.Email).SingleOrDefault();
+            if (userCheck != null && this.CheckUserByEmail(email))
+            {
+                try
+                {
+                    var tokenDescriptor = new SecurityTokenDescriptor
+                    {
+                        Subject = new ClaimsIdentity(new Claim[]
+                        {
+                            new Claim("Email",userCheck.Email.ToString())
+                        }),
+                        Expires = DateTime.UtcNow.AddDays(1),
+                        SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes("Hello this is Radis Cache")), SecurityAlgorithms.HmacSha256Signature)
+                    };
+                    var securityTokenHandler = new JwtSecurityTokenHandler();
+                    var securityToken = securityTokenHandler.CreateToken(tokenDescriptor);
+                    var token = securityTokenHandler.WriteToken(securityToken);
+                    //var cacheKey = loginModel.Id;
+                    return token;
+                }
+                catch (Exception e)
+                {
+                    throw new Exception(e.Message);
+                }
+            }
+            return "Email Not Present";
+        }
     }
 }

@@ -12,6 +12,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Microsoft.Owin.Security.Google;
+using Owin;
+using Microsoft.Owin.Security;
 using Repository.Context;
 using Repository.Repo;
 using Swashbuckle.AspNetCore.Swagger;
@@ -46,6 +49,13 @@ namespace FundooAPIController
                     Contact = new Contact() { Name = "Talking Dotnet", Email = "youat@gmail.com", Url = "www.HelloYou.com" }
                 });
             });
+            /////
+            services.AddAuthentication().AddGoogle(googleOptions =>
+            {
+                googleOptions.ClientId = Configuration["Authentication:Google:ClientId"];
+                googleOptions.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
+            });
+            /////
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -66,6 +76,11 @@ namespace FundooAPIController
             app.UseSwaggerUI(c => {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
             });
+            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            //{
+            //    ClientId = "",
+            //    ClientSecret = ""
+            //});
         }
     }
 }

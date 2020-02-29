@@ -67,6 +67,11 @@ namespace Manager.Account
             }
         }
 
+        public Task<string> LoginByGoogle(string email)
+        {
+            return this.accountRepository.LoginByGoogle(email);
+        }
+
         public Task<int> Register(Registration register)
         {
             try

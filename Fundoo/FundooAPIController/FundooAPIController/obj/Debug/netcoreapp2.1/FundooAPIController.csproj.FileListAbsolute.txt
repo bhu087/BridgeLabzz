@@ -21,3 +21,4 @@ D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController\obj\Debug\netc
 D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController\obj\Debug\netcoreapp2.1\FundooAPIController.csproj.CopyComplete
 D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController\obj\Debug\netcoreapp2.1\FundooAPIController.dll
 D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController\obj\Debug\netcoreapp2.1\FundooAPIController.pdb
+D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController\bin\Debug\netcoreapp2.1\secrets.json
