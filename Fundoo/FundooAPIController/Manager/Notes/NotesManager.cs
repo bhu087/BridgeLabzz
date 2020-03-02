@@ -35,5 +35,17 @@ namespace Manager.Notes
                 throw new Exception();
             }
         }
+
+        public Task<int> ArchieveNotes(int id)
+        {
+            try
+            {
+                return this.notesRepo.ArchieveNotes(id);
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
+        }
     }
 }

@@ -82,5 +82,23 @@ namespace FundooAPIController.Controllers
                 throw new Exception();
             }
         }
+        [HttpPost]
+        [Route("archieve")]
+        public ActionResult ArchieveNotes(int id)
+        {
+            try
+            {
+                var result = this.notesManager.ArchieveNotes(id);
+                if (result != null)
+                {
+                    return this.Ok("Notes is Archieved");
+                }
+                return this.BadRequest("Notes Not found");
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
+        }
     }
 }

@@ -68,5 +68,19 @@ namespace Repository.Repo
                 throw new Exception(e.Message);
             }
         }
+        public Task<int> ArchieveNotes(int id)
+        {
+            try
+            {
+                var note = this.context.Notes.Where(notesId => notesId.NotesId1 == id).SingleOrDefault();
+                note.IsArchive = true;
+                var result = this.context.SaveChangesAsync();
+                return result;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
     }
 }
