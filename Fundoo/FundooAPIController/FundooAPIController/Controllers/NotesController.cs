@@ -155,5 +155,23 @@ namespace FundooAPIController.Controllers
                 throw new Exception();
             }
         }
+        [HttpPost]
+        [Route("deleteRemainder")]
+        public ActionResult DeleteRemainder(int id)
+        {
+            try
+            {
+                var result = this.notesManager.DeleteRemainder(id);
+                if (result != null)
+                {
+                    return this.Ok("Remainder Deleted");
+                }
+                return this.BadRequest("Notes Not found");
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
+        }
     }
 }

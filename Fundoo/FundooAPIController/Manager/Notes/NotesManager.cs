@@ -83,5 +83,17 @@ namespace Manager.Notes
                 throw new Exception();
             }
         }
+
+        public Task<int> DeleteRemainder(int id)
+        {
+            try
+            {
+                return this.notesRepo.DeleteRemainder(id);
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
+        }
     }
 }

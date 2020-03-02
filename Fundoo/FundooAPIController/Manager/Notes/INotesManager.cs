@@ -15,5 +15,6 @@ namespace Manager.Notes
         Task<string> DeleteArchievedNote(int id);
         Task<int> SetRemainder(int id, string time);
         Task<string> UpdateNotes(NotesModel notesModel);
+        Task<int> DeleteRemainder(int id);
     }
 }

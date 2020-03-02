@@ -172,5 +172,27 @@ namespace Repository.Repo
                 throw new Exception(e.Message);
             }
         }
+        public Task<int> DeleteRemainder(int id)
+        {
+            try
+            {
+                if (this.FindById(id))
+                {
+                    var note = this.context.Notes.Where(notesId => notesId.NotesId1 == id).SingleOrDefault();
+                    if (!note.Remainder.Equals(string.Empty))
+                    {
+                        note.Remainder = string.Empty;
+                        var result = this.context.SaveChangesAsync();
+                        return result;
+                    }
+                    return null;
+                }
+                return null;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
     }
 }
