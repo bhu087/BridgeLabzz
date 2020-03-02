@@ -222,5 +222,23 @@ namespace FundooAPIController.Controllers
                 throw new Exception();
             }
         }
+        [HttpGet]
+        [Route("getAllNotes")]
+        public ActionResult GetAllNotes()
+        {
+            var result = this.notesManager.GetAllNotes();
+            try
+            {
+                if(result != null)
+                {
+                    return this.Ok(result.ToArray());
+                }
+                return this.BadRequest("Notes Not Available");
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
+        }
     }
 }

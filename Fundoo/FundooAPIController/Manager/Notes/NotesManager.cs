@@ -119,5 +119,10 @@ namespace Manager.Notes
                 throw new Exception();
             }
         }
+
+        public IEnumerable<NotesModel> GetAllNotes()
+        {
+            return this.notesRepo.GetAllNotes();
+        }
     }
 }

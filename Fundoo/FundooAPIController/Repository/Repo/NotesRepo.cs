@@ -231,5 +231,17 @@ namespace Repository.Repo
                 throw new Exception(e.Message);
             }
         }
+        public IEnumerable<NotesModel> GetAllNotes()
+        {
+            try
+            {
+                var allNotes = this.context.Notes.ToList();
+                return allNotes;
+            }
+            catch (Exception) 
+            {
+                throw new Exception();
+            }
+        }
     }
 }

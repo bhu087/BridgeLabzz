@@ -18,5 +18,6 @@ namespace Manager.Notes
         Task<int> DeleteRemainder(int id);
         Task<string> EditTitle(NotesModel notesModel);
         Task<string> SetColor(int id, string color);
+        IEnumerable<NotesModel> GetAllNotes();
     }
 }
