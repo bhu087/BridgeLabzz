@@ -18,5 +18,17 @@ namespace Manager.Notes
         {
             return this.notesRepo.AddNotes(notesModel);
         }
+
+        public Task<int> DeleteNotes(int id)
+        {
+            try
+            {
+                return this.notesRepo.DeleteNotes(id);
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
+        }
     }
 }

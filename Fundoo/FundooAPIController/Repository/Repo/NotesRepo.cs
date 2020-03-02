@@ -3,6 +3,7 @@ using Repository.Context;
 using Repository.IRepo;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -29,6 +30,20 @@ namespace Repository.Repo
                 this.context.Notes.Add(add);
                 var result = this.context.SaveChangesAsync();
                 return "Saved";
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+        public Task<int> DeleteNotes(int id)
+        {
+            try
+            {
+                var note = this.context.Notes.Where(notesId => notesId.NotesId1 == id).SingleOrDefault();
+                note.IsTrash = true;
+                var result = this.context.SaveChangesAsync();
+                return result;
             }
             catch (Exception e)
             {

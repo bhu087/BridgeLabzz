@@ -45,5 +45,23 @@ namespace FundooAPIController.Controllers
                 throw new Exception();
             }
         }
+        [HttpPost]
+        [Route("delete")]
+        public ActionResult DeleteNotes(int id)
+        {
+            try
+            {
+                var result = this.notesManager.DeleteNotes(id);
+                if (result != null)
+                {
+                    return this.Ok("Notes is Archieved");
+                }
+                return this.BadRequest("Notes Not found");
+            }
+            catch(Exception)
+            {
+                throw new Exception();
+            }
+        }
     }
 }
