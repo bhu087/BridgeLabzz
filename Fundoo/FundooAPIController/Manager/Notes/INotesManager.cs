@@ -1,4 +1,5 @@
-﻿using Model.Account;
+﻿using CloudinaryDotNet.Actions;
+using Model.Account;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -20,7 +21,6 @@ namespace Manager.Notes
         Task<string> SetColor(int id, string color);
         IEnumerable<NotesModel> GetAllNotes();
         Task<NotesModel> GetNotesById(int id);
-        Task<int> SaveImage(int id, string image);
-        Task<string> DownloadImage(int id);
+        Task<ImageUploadResult> UploadImage(int id, string imagePath);
     }
 }

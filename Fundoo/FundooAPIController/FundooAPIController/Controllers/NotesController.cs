@@ -223,49 +223,60 @@ namespace FundooAPIController.Controllers
                 throw new Exception();
             }
         }
-        public static string GetBase64StringForImage(string imgPath)
-        {
-            byte[] imageBytes = System.IO.File.ReadAllBytes(imgPath);
-            string base64String = Convert.ToBase64String(imageBytes);
-            return base64String;
-        }
+        //public static string GetBase64StringForImage(string imgPath)
+        //{
+        //    byte[] imageBytes = System.IO.File.ReadAllBytes(imgPath);
+        //    string base64String = Convert.ToBase64String(imageBytes);
+        //    return base64String;
+        //}
+        //[HttpPost]
+        //[Route("uploadImage")]
+        //public ActionResult UploadImage(int id)
+        //{
+        //    string path = @"D:\Abc\Fundu.png";
+        //    string image = GetBase64StringForImage(path);
+        //    var result = this.notesManager.SaveImage(id, image);
+        //    try
+        //    {
+        //        if (result != null)
+        //        {
+        //            return this.Ok(result);
+        //        }
+        //        return this.BadRequest("Notes Not Available");
+        //    }
+        //    catch (Exception)
+        //    {
+        //        throw new Exception();
+        //    }
+        //}
+        //[HttpGet]
+        //[Route("DownloadImage")]
+        //public ActionResult DownlaodImage(int id)
+        //{
+        //    var result = this.notesManager.DownloadImage(id);
+        //    try
+        //    {
+        //        if (result != null)
+        //        {
+        //            return this.Ok(result.Result);
+        //        }
+        //        return this.BadRequest("Notes Not Available");
+        //    }
+        //    catch (Exception)
+        //    {
+        //        throw new Exception();
+        //    }
+        //}
         [HttpPost]
         [Route("uploadImage")]
-        public ActionResult UploadImage(int id)
+        public ActionResult UploadImage(int id, string imagePath)
         {
-            string path = @"D:\Abc\Fundu.png";
-            string image = GetBase64StringForImage(path);
-            var result = this.notesManager.SaveImage(id, image);
-            try
+            var result = this.notesManager.UploadImage(id, imagePath);
+            if (result != null)
             {
-                if (result != null)
-                {
-                    return this.Ok(result);
-                }
-                return this.BadRequest("Notes Not Available");
+                return this.Ok(result);
             }
-            catch (Exception)
-            {
-                throw new Exception();
-            }
-        }
-        [HttpGet]
-        [Route("DownloadImage")]
-        public ActionResult DownlaodImage(int id)
-        {
-            var result = this.notesManager.DownloadImage(id);
-            try
-            {
-                if (result != null)
-                {
-                    return this.Ok(result.Result);
-                }
-                return this.BadRequest("Notes Not Available");
-            }
-            catch (Exception)
-            {
-                throw new Exception();
-            }
+            return this.BadRequest("Not Uploaded");
         }
         [HttpGet]
         [Route("getAllNotes")]

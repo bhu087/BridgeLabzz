@@ -1,4 +1,6 @@
-﻿using Model.Account;
+﻿using CloudinaryDotNet;
+using CloudinaryDotNet.Actions;
+using Model.Account;
 using Repository.Context;
 using Repository.IRepo;
 using System;
@@ -12,6 +14,9 @@ namespace Repository.Repo
 {
     public class NotesRepo : INotesRepo
     {
+        public const string CloudName = "bhu087";
+        public const string APIKey = "354171364155512";
+        public const string APISecret = "ZtRMv8zmp1hqFjyFAeOpNNj2p3A";
         public readonly UserDBContext context;
         public NotesRepo(UserDBContext userDBContext)
         {
@@ -260,40 +265,66 @@ namespace Repository.Repo
                 throw new Exception();
             }
         }
-        public Task<int> SaveImage(int id, string image)
+        //public Task<int> SaveImage(int id, string image)
+        //{
+        //    try
+        //    {
+        //        if (this.FindById(id))
+        //        {
+        //            var note = this.context.Notes.Where(notesId => notesId.NotesId1 == id).SingleOrDefault();
+        //            note.Image = image;
+        //            var result = this.context.SaveChangesAsync();
+        //            return result;
+        //        }
+        //        return null;
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        throw new Exception(e.Message);
+        //    }
+        //}
+        //public async Task<string> DownloadImage(int id)
+        //{
+        //    try
+        //    {
+        //        if (this.FindById(id))
+        //        {
+        //            var note = this.context.Notes.Where(notesId => notesId.NotesId1 == id).SingleOrDefault();
+        //            string image = note.Image;
+        //            return image;
+        //        }
+        //        return null;
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        throw new Exception(e.Message);
+        //    }
+        //}
+        public async Task<ImageUploadResult> UploadImage(int id, string imagePath)
         {
-            try
+            if (this.FindById(id))
             {
-                if (this.FindById(id))
+                var note = this.context.Notes.Where(notesId => notesId.NotesId1 == id).SingleOrDefault();
+                Account account = new Account(CloudName, APIKey, APISecret);
+                Cloudinary cloudinary = new Cloudinary(account);
+                try
                 {
-                    var note = this.context.Notes.Where(notesId => notesId.NotesId1 == id).SingleOrDefault();
-                    note.Image = image;
-                    var result = this.context.SaveChangesAsync();
-                    return result;
+                    var uploadparams = new ImageUploadParams()
+                    {
+                        File = new FileDescription(imagePath)
+                    };
+                    var uploadResult = cloudinary.Upload(uploadparams);
+                    note.Image = uploadResult.Uri.ToString();
+                    note.ModifiedTime = DateTime.Now;
+                    await this.context.SaveChangesAsync();
+                    return uploadResult;
                 }
-                return null;
-            }
-            catch (Exception e)
-            {
-                throw new Exception(e.Message);
-            }
-        }
-        public async Task<string> DownloadImage(int id)
-        {
-            try
-            {
-                if (this.FindById(id))
+                catch (Exception)
                 {
-                    var note = this.context.Notes.Where(notesId => notesId.NotesId1 == id).SingleOrDefault();
-                    string image = note.Image;
-                    return image;
+                    throw new Exception();
                 }
-                return null;
             }
-            catch (Exception e)
-            {
-                throw new Exception(e.Message);
-            }
+            return null;
         }
     }
 }
