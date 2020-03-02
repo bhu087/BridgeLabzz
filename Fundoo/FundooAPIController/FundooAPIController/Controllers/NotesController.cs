@@ -156,6 +156,19 @@ namespace FundooAPIController.Controllers
             }
         }
         [HttpPost]
+        [Route("resetRemainder")]
+        public ActionResult ResetRemainder(int id, string time)
+        {
+            try
+            {
+                return this.SetRemainder(id, time);
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
+        }
+        [HttpPost]
         [Route("deleteRemainder")]
         public ActionResult DeleteRemainder(int id)
         {
