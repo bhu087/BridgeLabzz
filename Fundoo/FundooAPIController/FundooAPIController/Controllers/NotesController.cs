@@ -240,5 +240,23 @@ namespace FundooAPIController.Controllers
                 throw new Exception();
             }
         }
+        [HttpGet]
+        [Route("getNotesById")]
+        public ActionResult GetNotesById(int id)
+        {
+            var result = this.notesManager.GetNotesById(id);
+            try
+            {
+                if (result != null)
+                {
+                    return this.Ok(result.Result);
+                }
+                return this.BadRequest("Notes Not Available");
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
+        }
     }
 }

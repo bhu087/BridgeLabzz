@@ -243,5 +243,21 @@ namespace Repository.Repo
                 throw new Exception();
             }
         }
+        public async Task<NotesModel> GetNotesById(int id)
+        {
+            try
+            {
+                if (this.FindById(id))
+                {
+                    var note = this.context.Notes.Where(notesId => notesId.NotesId1 == id).SingleOrDefault();
+                    return note;
+                }
+                return null;
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
+        }
     }
 }

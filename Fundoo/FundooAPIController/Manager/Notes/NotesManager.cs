@@ -122,7 +122,26 @@ namespace Manager.Notes
 
         public IEnumerable<NotesModel> GetAllNotes()
         {
-            return this.notesRepo.GetAllNotes();
+            try
+            {
+                return this.notesRepo.GetAllNotes();
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
+        }
+
+        public Task<NotesModel> GetNotesById(int id)
+        {
+            try
+            {
+                return this.notesRepo.GetNotesById(id);
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
         }
     }
 }
