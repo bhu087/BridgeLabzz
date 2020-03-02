@@ -1,11 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.Security;
+using System.Net.Sockets;
+using System.Text;
 using System.Threading.Tasks;
-using Manager.Notes;
+using System.Web;
+using Manager.Account;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using Model.Account;
+using Manager.Notes;
 
 namespace FundooAPIController.Controllers
 {
@@ -13,7 +22,7 @@ namespace FundooAPIController.Controllers
     [ApiController]
     public class NotesController : ControllerBase
     {
-        INotesManager notesManager;
+        public readonly INotesManager notesManager;
         public NotesController(INotesManager notesManager)
         {
             this.notesManager = notesManager;

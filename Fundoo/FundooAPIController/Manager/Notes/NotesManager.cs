@@ -9,7 +9,7 @@ namespace Manager.Notes
 {
     public class NotesManager : INotesManager
     {
-        INotesRepo notesRepo;
+        public readonly INotesRepo notesRepo;
         public NotesManager(INotesRepo notesRepo)
         {
             this.notesRepo = notesRepo;

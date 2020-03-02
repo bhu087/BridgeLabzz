@@ -18,6 +18,8 @@ using Microsoft.Owin.Security;
 using Repository.Context;
 using Repository.Repo;
 using Swashbuckle.AspNetCore.Swagger;
+using Repository.IRepo;
+using Manager.Notes;
 
 namespace FundooAPIController
 {
@@ -38,6 +40,8 @@ namespace FundooAPIController
                options => options.UseSqlServer(Configuration.GetConnectionString("UserDbConnection")));
             services.AddTransient<IAccountRepo, AccountRepo>();
             services.AddTransient<IAccountManager, AccountManager>();
+            services.AddTransient<INotesRepo, NotesRepo>();
+            services.AddTransient<INotesManager, NotesManager>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Info
