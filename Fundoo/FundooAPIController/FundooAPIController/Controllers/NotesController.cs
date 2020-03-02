@@ -204,5 +204,23 @@ namespace FundooAPIController.Controllers
                 throw new Exception();
             }
         }
+        [HttpPost]
+        [Route("setColor")]
+        public ActionResult SetColor(int id, string color)
+        {
+            try
+            {
+                var result = this.notesManager.SetColor(id, color);
+                if (result != null)
+                {
+                    return this.Ok("Color Changed");
+                }
+                return this.BadRequest("Notes Not found");
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
+        }
     }
 }

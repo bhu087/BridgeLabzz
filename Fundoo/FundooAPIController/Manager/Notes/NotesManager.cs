@@ -107,5 +107,17 @@ namespace Manager.Notes
                 throw new Exception();
             }
         }
+
+        public Task<string> SetColor(int id, string color)
+        {
+            try
+            {
+                return this.notesRepo.SetColor(id, color);
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
+        }
     }
 }

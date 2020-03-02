@@ -17,5 +17,6 @@ namespace Repository.IRepo
         Task<string> UpdateNotes(NotesModel notesModel);
         Task<int> DeleteRemainder(int id);
         Task<string> EditTitle(NotesModel notesModel);
+        Task<string> SetColor(int id, string color);
     }
 }

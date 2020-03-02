@@ -213,5 +213,23 @@ namespace Repository.Repo
                 throw new Exception(e.Message);
             }
         }
+        public async Task<string> SetColor(int id, string color)
+        {
+            try
+            {
+                if (this.FindById(id))
+                {
+                    var notesCheck = this.context.Notes.Where(notesId => notesId.NotesId1 == id).SingleOrDefault();
+                    notesCheck.Color = color;
+                    var result = this.context.SaveChangesAsync();
+                    return "Color Changed";
+                }
+                return null;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
     }
 }

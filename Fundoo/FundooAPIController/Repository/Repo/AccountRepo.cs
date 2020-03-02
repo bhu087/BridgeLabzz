@@ -279,6 +279,6 @@ namespace Repository.Repo
                     Email = loginModel.Email
                 };
             }
-        }
+        } 
     }
 }
