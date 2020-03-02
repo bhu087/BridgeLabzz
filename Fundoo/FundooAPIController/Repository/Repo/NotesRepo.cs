@@ -5,10 +5,12 @@ using Repository.Context;
 using Repository.IRepo;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Repository.Repo
 {
@@ -314,9 +316,10 @@ namespace Repository.Repo
                         File = new FileDescription(imagePath)
                     };
                     var uploadResult = cloudinary.Upload(uploadparams);
+                    note.Image = string.Empty;
                     note.Image = uploadResult.Uri.ToString();
                     note.ModifiedTime = DateTime.Now;
-                    await this.context.SaveChangesAsync();
+                    var result = this.context.SaveChangesAsync();
                     return uploadResult;
                 }
                 catch (Exception)
@@ -326,5 +329,35 @@ namespace Repository.Repo
             }
             return null;
         }
+        //public async Task<string> DownloadImage(int id)
+        //{
+        //    if (this.FindById(id))
+        //    {
+        //        var note = this.context.Notes.Where(notesId => notesId.NotesId1 == id).SingleOrDefault();
+        //        if (note.Image != string.Empty)
+        //        {
+        //            Account account = new Account(CloudName, APIKey, APISecret);
+        //            Cloudinary cloudinary = new Cloudinary(account);
+        //            try
+        //            {
+        //                var url = note.Image.ToString();
+        //                var image = cloudinary.Api.UrlImgUp.BuildImageTag(url);
+        //                string savePath = @"D:\Abc\DownloadedImages\"+note.Title+".png";
+        //                byte[] imageBytes = Convert.FromBase64String(image);
+        //                MemoryStream ms = new MemoryStream(imageBytes);
+        //                System.Drawing.Image image1 = System.Drawing.Image.FromStream(ms, true, true);
+        //                image1.Save(savePath);
+        //                return "Downloaded";
+        //            }
+        //            catch (Exception)
+        //            {
+        //                throw new Exception();
+        //            }
+        //        }
+        //        return null;
+                
+        //    }
+        //    return null;
+        //}
     }
 }

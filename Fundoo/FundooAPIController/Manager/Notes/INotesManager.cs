@@ -22,5 +22,6 @@ namespace Manager.Notes
         IEnumerable<NotesModel> GetAllNotes();
         Task<NotesModel> GetNotesById(int id);
         Task<ImageUploadResult> UploadImage(int id, string imagePath);
+        //Task<string> DownloadImage(int id);
     }
 }
