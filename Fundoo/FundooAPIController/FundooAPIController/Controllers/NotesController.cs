@@ -15,6 +15,7 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Model.Account;
 using Manager.Notes;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace FundooAPIController.Controllers
 {
@@ -216,6 +217,50 @@ namespace FundooAPIController.Controllers
                     return this.Ok("Color Changed");
                 }
                 return this.BadRequest("Notes Not found");
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
+        }
+        public static string GetBase64StringForImage(string imgPath)
+        {
+            byte[] imageBytes = System.IO.File.ReadAllBytes(imgPath);
+            string base64String = Convert.ToBase64String(imageBytes);
+            return base64String;
+        }
+        [HttpPost]
+        [Route("uploadImage")]
+        public ActionResult UploadImage(int id)
+        {
+            string path = @"D:\Abc\Fundu.png";
+            string image = GetBase64StringForImage(path);
+            var result = this.notesManager.SaveImage(id, image);
+            try
+            {
+                if (result != null)
+                {
+                    return this.Ok(result);
+                }
+                return this.BadRequest("Notes Not Available");
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
+        }
+        [HttpGet]
+        [Route("DownloadImage")]
+        public ActionResult DownlaodImage(int id)
+        {
+            var result = this.notesManager.DownloadImage(id);
+            try
+            {
+                if (result != null)
+                {
+                    return this.Ok(result.Result);
+                }
+                return this.BadRequest("Notes Not Available");
             }
             catch (Exception)
             {

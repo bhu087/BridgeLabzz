@@ -20,5 +20,7 @@ namespace Repository.IRepo
         Task<string> SetColor(int id, string color);
         IEnumerable<NotesModel> GetAllNotes();
         Task<NotesModel> GetNotesById(int id);
+        Task<int> SaveImage(int id, string image);
+        Task<string> DownloadImage(int id);
     }
 }

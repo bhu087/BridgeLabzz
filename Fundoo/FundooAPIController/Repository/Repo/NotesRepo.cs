@@ -3,6 +3,7 @@ using Repository.Context;
 using Repository.IRepo;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -257,6 +258,41 @@ namespace Repository.Repo
             catch (Exception)
             {
                 throw new Exception();
+            }
+        }
+        public Task<int> SaveImage(int id, string image)
+        {
+            try
+            {
+                if (this.FindById(id))
+                {
+                    var note = this.context.Notes.Where(notesId => notesId.NotesId1 == id).SingleOrDefault();
+                    note.Image = image;
+                    var result = this.context.SaveChangesAsync();
+                    return result;
+                }
+                return null;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+        public async Task<string> DownloadImage(int id)
+        {
+            try
+            {
+                if (this.FindById(id))
+                {
+                    var note = this.context.Notes.Where(notesId => notesId.NotesId1 == id).SingleOrDefault();
+                    string image = note.Image;
+                    return image;
+                }
+                return null;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
             }
         }
     }

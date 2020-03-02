@@ -2,6 +2,7 @@
 using Repository.IRepo;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -142,6 +143,32 @@ namespace Manager.Notes
             {
                 throw new Exception();
             }
+        }
+        public Task<int> SaveImage(int id, string image)
+        {
+            try
+            {
+                return this.notesRepo.SaveImage(id, image);
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
+        }
+
+        public async Task<string> DownloadImage(int id)
+        {
+            try
+            {
+                string inputString = await this.notesRepo.DownloadImage(id);
+                string filePath = @"D:\Abc\Download.png";
+                File.WriteAllBytes(filePath, Convert.FromBase64String(inputString));
+                return ("Saved to Abc folder");
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            } 
         }
     }
 }
