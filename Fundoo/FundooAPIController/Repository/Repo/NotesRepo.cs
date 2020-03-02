@@ -1,16 +1,17 @@
 ﻿using CloudinaryDotNet;
 using CloudinaryDotNet.Actions;
+using Microsoft.IdentityModel.Tokens;
 using Model.Account;
 using Repository.Context;
 using Repository.IRepo;
+using StackExchange.Redis;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
-using System.IO;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace Repository.Repo
 {
@@ -37,6 +38,23 @@ namespace Repository.Repo
                 };
                 this.context.Notes.Add(add);
                 var result = this.context.SaveChangesAsync();
+                var tokenDescriptor = new SecurityTokenDescriptor
+                {
+                    Subject = new ClaimsIdentity(new Claim[]
+                        {
+                            new Claim("Id", notesModel.NotesId1.ToString())
+                        }),
+                    Expires = DateTime.UtcNow.AddDays(1),
+                    SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes("Hello this is Radis Cache")), SecurityAlgorithms.HmacSha256Signature)
+                };
+                var securityTokenHandler = new JwtSecurityTokenHandler();
+                var securityToken = securityTokenHandler.CreateToken(tokenDescriptor);
+                var token = securityTokenHandler.WriteToken(securityToken);
+                var cacheKey = notesModel.NotesId1 + " Add";
+                ConnectionMultiplexer connectionMultiplexer = ConnectionMultiplexer.Connect("127.0.0.1:6379");
+                IDatabase database = connectionMultiplexer.GetDatabase();
+                database.StringSet(cacheKey, token.ToString());
+                database.StringGet(cacheKey);
                 return "Saved";
             }
             catch (Exception e)
@@ -56,6 +74,23 @@ namespace Repository.Repo
                     notesCheck.Description = notesModel.Description;
                     notesCheck.ModifiedTime = notesModel.ModifiedTime;
                     var result = this.context.SaveChangesAsync();
+                    var tokenDescriptor = new SecurityTokenDescriptor
+                    {
+                        Subject = new ClaimsIdentity(new Claim[]
+                        {
+                            new Claim("Id", notesModel.NotesId1.ToString())
+                        }),
+                        Expires = DateTime.UtcNow.AddDays(1),
+                        SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes("Hello this is Radis Cache")), SecurityAlgorithms.HmacSha256Signature)
+                    };
+                    var securityTokenHandler = new JwtSecurityTokenHandler();
+                    var securityToken = securityTokenHandler.CreateToken(tokenDescriptor);
+                    var token = securityTokenHandler.WriteToken(securityToken);
+                    var cacheKey = notesModel.NotesId1 + " Update";
+                    ConnectionMultiplexer connectionMultiplexer = ConnectionMultiplexer.Connect("127.0.0.1:6379");
+                    IDatabase database = connectionMultiplexer.GetDatabase();
+                    database.StringSet(cacheKey, token.ToString());
+                    database.StringGet(cacheKey);
                     return "Saved";
                 }
                 return null;
@@ -75,6 +110,23 @@ namespace Repository.Repo
                     notesCheck.Title = notesModel.Title;
                     notesCheck.ModifiedTime = notesModel.ModifiedTime;
                     var result = this.context.SaveChangesAsync();
+                    var tokenDescriptor = new SecurityTokenDescriptor
+                    {
+                        Subject = new ClaimsIdentity(new Claim[]
+                        {
+                            new Claim("Id", notesModel.NotesId1.ToString())
+                        }),
+                        Expires = DateTime.UtcNow.AddDays(1),
+                        SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes("Hello this is Radis Cache")), SecurityAlgorithms.HmacSha256Signature)
+                    };
+                    var securityTokenHandler = new JwtSecurityTokenHandler();
+                    var securityToken = securityTokenHandler.CreateToken(tokenDescriptor);
+                    var token = securityTokenHandler.WriteToken(securityToken);
+                    var cacheKey = notesModel.NotesId1 + " Edit";
+                    ConnectionMultiplexer connectionMultiplexer = ConnectionMultiplexer.Connect("127.0.0.1:6379");
+                    IDatabase database = connectionMultiplexer.GetDatabase();
+                    database.StringSet(cacheKey, token.ToString());
+                    database.StringGet(cacheKey);
                     return "Title Updated";
                 }
                 return null;
@@ -110,6 +162,23 @@ namespace Repository.Repo
                     var note = this.context.Notes.Where(notesId => notesId.NotesId1 == id).SingleOrDefault();
                     note.IsTrash = true;
                     var result = this.context.SaveChangesAsync();
+                    var tokenDescriptor = new SecurityTokenDescriptor
+                    {
+                        Subject = new ClaimsIdentity(new Claim[]
+                        {
+                            new Claim("Id", id.ToString())
+                        }),
+                        Expires = DateTime.UtcNow.AddDays(1),
+                        SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes("Hello this is Radis Cache")), SecurityAlgorithms.HmacSha256Signature)
+                    };
+                    var securityTokenHandler = new JwtSecurityTokenHandler();
+                    var securityToken = securityTokenHandler.CreateToken(tokenDescriptor);
+                    var token = securityTokenHandler.WriteToken(securityToken);
+                    var cacheKey = id + " Delete";
+                    ConnectionMultiplexer connectionMultiplexer = ConnectionMultiplexer.Connect("127.0.0.1:6379");
+                    IDatabase database = connectionMultiplexer.GetDatabase();
+                    database.StringSet(cacheKey, token.ToString());
+                    database.StringGet(cacheKey);
                     return result;
                 }
                 return null;
@@ -130,6 +199,23 @@ namespace Repository.Repo
                     {
                         this.context.Notes.Remove(note);
                         var result = this.context.SaveChangesAsync();
+                        var tokenDescriptor = new SecurityTokenDescriptor
+                        {
+                            Subject = new ClaimsIdentity(new Claim[]
+                        {
+                            new Claim("Id", id.ToString())
+                        }),
+                            Expires = DateTime.UtcNow.AddDays(1),
+                            SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes("Hello this is Radis Cache")), SecurityAlgorithms.HmacSha256Signature)
+                        };
+                        var securityTokenHandler = new JwtSecurityTokenHandler();
+                        var securityToken = securityTokenHandler.CreateToken(tokenDescriptor);
+                        var token = securityTokenHandler.WriteToken(securityToken);
+                        var cacheKey = id + " DeleteTrash";
+                        ConnectionMultiplexer connectionMultiplexer = ConnectionMultiplexer.Connect("127.0.0.1:6379");
+                        IDatabase database = connectionMultiplexer.GetDatabase();
+                        database.StringSet(cacheKey, token.ToString());
+                        database.StringGet(cacheKey);
                         return "Deleted from Trash";
                     }
                     return "This Note is Not Trash";
@@ -150,6 +236,23 @@ namespace Repository.Repo
                     var note = this.context.Notes.Where(notesId => notesId.NotesId1 == id).SingleOrDefault();
                     note.IsArchive = true;
                     var result = this.context.SaveChangesAsync();
+                    var tokenDescriptor = new SecurityTokenDescriptor
+                    {
+                        Subject = new ClaimsIdentity(new Claim[]
+                        {
+                            new Claim("Id", id.ToString())
+                        }),
+                        Expires = DateTime.UtcNow.AddDays(1),
+                        SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes("Hello this is Radis Cache")), SecurityAlgorithms.HmacSha256Signature)
+                    };
+                    var securityTokenHandler = new JwtSecurityTokenHandler();
+                    var securityToken = securityTokenHandler.CreateToken(tokenDescriptor);
+                    var token = securityTokenHandler.WriteToken(securityToken);
+                    var cacheKey = id + " Archieve";
+                    ConnectionMultiplexer connectionMultiplexer = ConnectionMultiplexer.Connect("127.0.0.1:6379");
+                    IDatabase database = connectionMultiplexer.GetDatabase();
+                    database.StringSet(cacheKey, token.ToString());
+                    database.StringGet(cacheKey);
                     return result;
                 }
                 return null; 
@@ -170,6 +273,23 @@ namespace Repository.Repo
                     {
                         note.IsTrash = true;
                         var result = this.context.SaveChangesAsync();
+                        var tokenDescriptor = new SecurityTokenDescriptor
+                        {
+                            Subject = new ClaimsIdentity(new Claim[]
+                        {
+                            new Claim("Id", id.ToString())
+                        }),
+                            Expires = DateTime.UtcNow.AddDays(1),
+                            SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes("Hello this is Radis Cache")), SecurityAlgorithms.HmacSha256Signature)
+                        };
+                        var securityTokenHandler = new JwtSecurityTokenHandler();
+                        var securityToken = securityTokenHandler.CreateToken(tokenDescriptor);
+                        var token = securityTokenHandler.WriteToken(securityToken);
+                        var cacheKey = id + " DeleteArchieve";
+                        ConnectionMultiplexer connectionMultiplexer = ConnectionMultiplexer.Connect("127.0.0.1:6379");
+                        IDatabase database = connectionMultiplexer.GetDatabase();
+                        database.StringSet(cacheKey, token.ToString());
+                        database.StringGet(cacheKey);
                         return "Deleted";
                     }
                     return "No";
@@ -190,6 +310,23 @@ namespace Repository.Repo
                     var note = this.context.Notes.Where(notesId => notesId.NotesId1 == id).SingleOrDefault();
                     note.Remainder = time;
                     var result = this.context.SaveChangesAsync();
+                    var tokenDescriptor = new SecurityTokenDescriptor
+                    {
+                        Subject = new ClaimsIdentity(new Claim[]
+                        {
+                            new Claim("Id", id.ToString())
+                        }),
+                        Expires = DateTime.UtcNow.AddDays(1),
+                        SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes("Hello this is Radis Cache")), SecurityAlgorithms.HmacSha256Signature)
+                    };
+                    var securityTokenHandler = new JwtSecurityTokenHandler();
+                    var securityToken = securityTokenHandler.CreateToken(tokenDescriptor);
+                    var token = securityTokenHandler.WriteToken(securityToken);
+                    var cacheKey = id + " SetRemainder";
+                    ConnectionMultiplexer connectionMultiplexer = ConnectionMultiplexer.Connect("127.0.0.1:6379");
+                    IDatabase database = connectionMultiplexer.GetDatabase();
+                    database.StringSet(cacheKey, token.ToString());
+                    database.StringGet(cacheKey);
                     return result;
                 }
                 return null;
@@ -210,6 +347,23 @@ namespace Repository.Repo
                     {
                         note.Remainder = string.Empty;
                         var result = this.context.SaveChangesAsync();
+                        var tokenDescriptor = new SecurityTokenDescriptor
+                        {
+                            Subject = new ClaimsIdentity(new Claim[]
+                        {
+                            new Claim("Id", id.ToString())
+                        }),
+                            Expires = DateTime.UtcNow.AddDays(1),
+                            SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes("Hello this is Radis Cache")), SecurityAlgorithms.HmacSha256Signature)
+                        };
+                        var securityTokenHandler = new JwtSecurityTokenHandler();
+                        var securityToken = securityTokenHandler.CreateToken(tokenDescriptor);
+                        var token = securityTokenHandler.WriteToken(securityToken);
+                        var cacheKey = id + " DeleteRemainder";
+                        ConnectionMultiplexer connectionMultiplexer = ConnectionMultiplexer.Connect("127.0.0.1:6379");
+                        IDatabase database = connectionMultiplexer.GetDatabase();
+                        database.StringSet(cacheKey, token.ToString());
+                        database.StringGet(cacheKey);
                         return result;
                     }
                     return null;
@@ -230,6 +384,23 @@ namespace Repository.Repo
                     var notesCheck = this.context.Notes.Where(notesId => notesId.NotesId1 == id).SingleOrDefault();
                     notesCheck.Color = color;
                     var result = this.context.SaveChangesAsync();
+                    var tokenDescriptor = new SecurityTokenDescriptor
+                    {
+                        Subject = new ClaimsIdentity(new Claim[]
+                        {
+                            new Claim("Id", id.ToString())
+                        }),
+                        Expires = DateTime.UtcNow.AddDays(1),
+                        SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes("Hello this is Radis Cache")), SecurityAlgorithms.HmacSha256Signature)
+                    };
+                    var securityTokenHandler = new JwtSecurityTokenHandler();
+                    var securityToken = securityTokenHandler.CreateToken(tokenDescriptor);
+                    var token = securityTokenHandler.WriteToken(securityToken);
+                    var cacheKey = id + " SetColor";
+                    ConnectionMultiplexer connectionMultiplexer = ConnectionMultiplexer.Connect("127.0.0.1:6379");
+                    IDatabase database = connectionMultiplexer.GetDatabase();
+                    database.StringSet(cacheKey, token.ToString());
+                    database.StringGet(cacheKey);
                     return "Color Changed";
                 }
                 return null;
@@ -244,6 +415,23 @@ namespace Repository.Repo
             try
             {
                 var allNotes = this.context.Notes.ToList();
+                var tokenDescriptor = new SecurityTokenDescriptor
+                {
+                    Subject = new ClaimsIdentity(new Claim[]
+                        {
+                            new Claim("Id", allNotes.ToString())
+                        }),
+                    Expires = DateTime.UtcNow.AddDays(1),
+                    SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes("Hello this is Radis Cache")), SecurityAlgorithms.HmacSha256Signature)
+                };
+                var securityTokenHandler = new JwtSecurityTokenHandler();
+                var securityToken = securityTokenHandler.CreateToken(tokenDescriptor);
+                var token = securityTokenHandler.WriteToken(securityToken);
+                var cacheKey = "AllNotes";
+                ConnectionMultiplexer connectionMultiplexer = ConnectionMultiplexer.Connect("127.0.0.1:6379");
+                IDatabase database = connectionMultiplexer.GetDatabase();
+                database.StringSet(cacheKey, token.ToString());
+                database.StringGet(cacheKey);
                 return allNotes;
             }
             catch (Exception) 
@@ -258,6 +446,23 @@ namespace Repository.Repo
                 if (this.FindById(id))
                 {
                     var note = this.context.Notes.Where(notesId => notesId.NotesId1 == id).SingleOrDefault();
+                    var tokenDescriptor = new SecurityTokenDescriptor
+                    {
+                        Subject = new ClaimsIdentity(new Claim[]
+                        {
+                            new Claim("Id", note.ToString())
+                        }),
+                        Expires = DateTime.UtcNow.AddDays(1),
+                        SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes("Hello this is Radis Cache")), SecurityAlgorithms.HmacSha256Signature)
+                    };
+                    var securityTokenHandler = new JwtSecurityTokenHandler();
+                    var securityToken = securityTokenHandler.CreateToken(tokenDescriptor);
+                    var token = securityTokenHandler.WriteToken(securityToken);
+                    var cacheKey = id + " GetById";
+                    ConnectionMultiplexer connectionMultiplexer = ConnectionMultiplexer.Connect("127.0.0.1:6379");
+                    IDatabase database = connectionMultiplexer.GetDatabase();
+                    database.StringSet(cacheKey, token.ToString());
+                    database.StringGet(cacheKey);
                     return note;
                 }
                 return null;
@@ -320,6 +525,23 @@ namespace Repository.Repo
                     note.Image = uploadResult.Uri.ToString();
                     note.ModifiedTime = DateTime.Now;
                     var result = this.context.SaveChangesAsync();
+                    var tokenDescriptor = new SecurityTokenDescriptor
+                    {
+                        Subject = new ClaimsIdentity(new Claim[]
+                        {
+                            new Claim("Id", uploadparams.ToString())
+                        }),
+                        Expires = DateTime.UtcNow.AddDays(1),
+                        SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes("Hello this is Radis Cache")), SecurityAlgorithms.HmacSha256Signature)
+                    };
+                    var securityTokenHandler = new JwtSecurityTokenHandler();
+                    var securityToken = securityTokenHandler.CreateToken(tokenDescriptor);
+                    var token = securityTokenHandler.WriteToken(securityToken);
+                    var cacheKey = "Upload";
+                    ConnectionMultiplexer connectionMultiplexer = ConnectionMultiplexer.Connect("127.0.0.1:6379");
+                    IDatabase database = connectionMultiplexer.GetDatabase();
+                    database.StringSet(cacheKey, token.ToString());
+                    database.StringGet(cacheKey);
                     return uploadResult;
                 }
                 catch (Exception)
