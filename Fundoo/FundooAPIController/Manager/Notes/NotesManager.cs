@@ -59,5 +59,29 @@ namespace Manager.Notes
                 throw new Exception();
             }
         }
+
+        public Task<int> SetRemainder(int id, string time)
+        {
+            try
+            {
+                return this.notesRepo.SetRemainder(id, time);
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
+        }
+
+        public Task<string> UpdateNotes(NotesModel notesModel)
+        {
+            try
+            {
+                return this.notesRepo.UpdateNotes(notesModel);
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
+        }
     }
 }

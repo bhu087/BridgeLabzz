@@ -36,14 +36,56 @@ namespace Repository.Repo
                 throw new Exception(e.Message);
             }
         }
+        public async Task<string> UpdateNotes(NotesModel notesModel)
+        {
+            try
+            {
+                if (this.FindById(notesModel.NotesId1))
+                {
+                    var notesCheck = this.context.Notes.Where(notesId => notesId.NotesId1 == notesModel.NotesId1).SingleOrDefault();
+                    notesCheck.Email = notesModel.Email;
+                    notesCheck.Title = notesModel.Title;
+                    notesCheck.Description = notesModel.Description;
+                    notesCheck.ModifiedTime = notesModel.ModifiedTime;
+                    var result = this.context.SaveChangesAsync();
+                    return "Saved";
+                }
+                return null;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+        public bool FindById(int id)
+        {
+            try
+            {
+                var notesCheck = this.context.Notes.Where(notesId => notesId.NotesId1 == id).SingleOrDefault();
+                if (notesCheck.NotesId1 == id)
+                {
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            
+        }
         public Task<int> DeleteNotes(int id)
         {
             try
             {
-                var note = this.context.Notes.Where(notesId => notesId.NotesId1 == id).SingleOrDefault();
-                note.IsTrash = true;
-                var result = this.context.SaveChangesAsync();
-                return result;
+                if (this.FindById(id))
+                {
+                    var note = this.context.Notes.Where(notesId => notesId.NotesId1 == id).SingleOrDefault();
+                    note.IsTrash = true;
+                    var result = this.context.SaveChangesAsync();
+                    return result;
+                }
+                return null;
             }
             catch (Exception e)
             {
@@ -54,14 +96,18 @@ namespace Repository.Repo
         {
             try
             {
-                var note = this.context.Notes.Where(noteId => noteId.NotesId1 == id).SingleOrDefault();
-                if (note.IsTrash)
+                if (this.FindById(id))
                 {
-                    this.context.Notes.Remove(note);
-                    var result = this.context.SaveChangesAsync();
-                    return "Deleted from Trash";
+                    var note = this.context.Notes.Where(noteId => noteId.NotesId1 == id).SingleOrDefault();
+                    if (note.IsTrash)
+                    {
+                        this.context.Notes.Remove(note);
+                        var result = this.context.SaveChangesAsync();
+                        return "Deleted from Trash";
+                    }
+                    return "This Note is Not Trash";
                 }
-                return "This Note is Not Trash";
+                return null;
             }
             catch (Exception e)
             {
@@ -72,10 +118,14 @@ namespace Repository.Repo
         {
             try
             {
-                var note = this.context.Notes.Where(notesId => notesId.NotesId1 == id).SingleOrDefault();
-                note.IsArchive = true;
-                var result = this.context.SaveChangesAsync();
-                return result;
+                if (this.FindById(id))
+                {
+                    var note = this.context.Notes.Where(notesId => notesId.NotesId1 == id).SingleOrDefault();
+                    note.IsArchive = true;
+                    var result = this.context.SaveChangesAsync();
+                    return result;
+                }
+                return null; 
             }
             catch (Exception e)
             {
@@ -86,14 +136,36 @@ namespace Repository.Repo
         {
             try
             {
-                var note = this.context.Notes.Where(notesId => notesId.NotesId1 == id).SingleOrDefault();
-                if (note.IsArchive)
+                if (this.FindById(id))
                 {
-                    note.IsTrash = true;
-                    var result = this.context.SaveChangesAsync();
-                    return "Deleted";
+                    var note = this.context.Notes.Where(notesId => notesId.NotesId1 == id).SingleOrDefault();
+                    if (note.IsArchive)
+                    {
+                        note.IsTrash = true;
+                        var result = this.context.SaveChangesAsync();
+                        return "Deleted";
+                    }
+                    return "No";
                 }
-                return "No";
+                return null;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+        public Task<int> SetRemainder(int id, string time)
+        {
+            try
+            {
+                if (this.FindById(id))
+                {
+                    var note = this.context.Notes.Where(notesId => notesId.NotesId1 == id).SingleOrDefault();
+                    note.Remainder = time;
+                    var result = this.context.SaveChangesAsync();
+                    return result;
+                }
+                return null;
             }
             catch (Exception e)
             {

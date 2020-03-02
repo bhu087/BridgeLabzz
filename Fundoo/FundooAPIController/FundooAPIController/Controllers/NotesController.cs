@@ -46,6 +46,24 @@ namespace FundooAPIController.Controllers
             }
         }
         [HttpPost]
+        [Route("updateNote")]
+        public ActionResult UpdateNotes(NotesModel notesModel)
+        {
+            try
+            {
+                var result = this.notesManager.UpdateNotes(notesModel);
+                if (result != null)
+                {
+                    return this.Ok(result);
+                }
+                return this.BadRequest("Something wrong");
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
+        }
+        [HttpPost]
         [Route("delete")]
         public ActionResult DeleteNotes(int id)
         {
@@ -113,6 +131,24 @@ namespace FundooAPIController.Controllers
                     return this.Ok("Archieved Notes Deleted");
                 }
                 return this.BadRequest("Notes Not Available in Archieve");
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
+        }
+        [HttpPost]
+        [Route("setRemainder")]
+        public ActionResult SetRemainder(int id, string time)
+        {
+            try
+            {
+                var result = this.notesManager.SetRemainder(id, time);
+                if (result != null)
+                {
+                    return this.Ok("Remainder SET");
+                }
+                return this.BadRequest("Notes Not found");
             }
             catch (Exception)
             {
