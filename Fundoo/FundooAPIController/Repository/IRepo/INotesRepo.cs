@@ -16,5 +16,6 @@ namespace Repository.IRepo
         Task<int> SetRemainder(int id, string time);
         Task<string> UpdateNotes(NotesModel notesModel);
         Task<int> DeleteRemainder(int id);
+        Task<string> EditTitle(NotesModel notesModel);
     }
 }

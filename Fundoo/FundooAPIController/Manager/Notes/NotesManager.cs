@@ -95,5 +95,17 @@ namespace Manager.Notes
                 throw new Exception();
             }
         }
+
+        public Task<string> EditTitle(NotesModel notesModel)
+        {
+            try
+            {
+                return this.notesRepo.EditTitle(notesModel);
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
+        }
     }
 }

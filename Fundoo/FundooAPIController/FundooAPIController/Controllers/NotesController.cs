@@ -64,6 +64,24 @@ namespace FundooAPIController.Controllers
             }
         }
         [HttpPost]
+        [Route("EditTitle")]
+        public ActionResult EditTitle(NotesModel notesModel)
+        {
+            try
+            {
+                var result = this.notesManager.EditTitle(notesModel);
+                if (result != null)
+                {
+                    return this.Ok(result);
+                }
+                return this.BadRequest("Something wrong");
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
+        }
+        [HttpPost]
         [Route("delete")]
         public ActionResult DeleteNotes(int id)
         {

@@ -57,6 +57,25 @@ namespace Repository.Repo
                 throw new Exception(e.Message);
             }
         }
+        public async Task<string> EditTitle(NotesModel notesModel)
+        {
+            try
+            {
+                if (this.FindById(notesModel.NotesId1))
+                {
+                    var notesCheck = this.context.Notes.Where(notesId => notesId.NotesId1 == notesModel.NotesId1).SingleOrDefault();
+                    notesCheck.Title = notesModel.Title;
+                    notesCheck.ModifiedTime = notesModel.ModifiedTime;
+                    var result = this.context.SaveChangesAsync();
+                    return "Title Updated";
+                }
+                return null;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
         public bool FindById(int id)
         {
             try
