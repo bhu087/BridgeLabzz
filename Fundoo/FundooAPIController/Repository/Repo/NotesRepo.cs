@@ -50,5 +50,23 @@ namespace Repository.Repo
                 throw new Exception(e.Message);
             }
         }
+        public async Task<string> DeleteTrash(int id)
+        {
+            try
+            {
+                var note = this.context.Notes.Where(noteId => noteId.NotesId1 == id).SingleOrDefault();
+                if (note.IsTrash)
+                {
+                    this.context.Notes.Remove(note);
+                    var result = this.context.SaveChangesAsync();
+                    return "Deleted from Trash";
+                }
+                return "This Note is Not Trash";
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
     }
 }

@@ -63,5 +63,24 @@ namespace FundooAPIController.Controllers
                 throw new Exception();
             }
         }
+        [HttpDelete]
+        [Route("deleteTrash")]
+        public ActionResult DeleteTrash(int id)
+        {
+            try
+            {
+                var result = this.notesManager.DeleteTrash(id);
+                Debug.WriteLine(result.Result);
+                if (result.Result.Equals("Deleted from Trash"))
+                {
+                    return this.Ok("Notes Deleted from Trash");
+                }
+                return this.BadRequest("Notes Not Available in Trash");
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
+        }
     }
 }
