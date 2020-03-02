@@ -47,5 +47,17 @@ namespace Manager.Notes
                 throw new Exception();
             }
         }
+
+        public Task<string> DeleteArchievedNote(int id)
+        {
+            try
+            {
+                return this.notesRepo.DeleteArchievedNote(id);
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
+        }
     }
 }

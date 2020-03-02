@@ -12,5 +12,6 @@ namespace Repository.IRepo
         Task<int> DeleteNotes(int id);
         Task<string> DeleteTrash(int id);
         Task<int> ArchieveNotes(int id);
+        Task<string> DeleteArchievedNote(int id);
     }
 }

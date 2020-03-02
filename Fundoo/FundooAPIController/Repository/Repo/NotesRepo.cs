@@ -82,5 +82,23 @@ namespace Repository.Repo
                 throw new Exception(e.Message);
             }
         }
+        public async Task<string> DeleteArchievedNote(int id)
+        {
+            try
+            {
+                var note = this.context.Notes.Where(notesId => notesId.NotesId1 == id).SingleOrDefault();
+                if (note.IsArchive)
+                {
+                    note.IsTrash = true;
+                    var result = this.context.SaveChangesAsync();
+                    return "Deleted";
+                }
+                return "No";
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
     }
 }

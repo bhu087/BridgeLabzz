@@ -100,5 +100,24 @@ namespace FundooAPIController.Controllers
                 throw new Exception();
             }
         }
+        [HttpDelete]
+        [Route("deleteArchieve")]
+        public ActionResult DeleteArchievedNote(int id)
+        {
+            try
+            {
+                var result = this.notesManager.DeleteArchievedNote(id);
+                Debug.WriteLine(result.Result);
+                if (result.Result.Equals("Deleted"))
+                {
+                    return this.Ok("Archieved Notes Deleted");
+                }
+                return this.BadRequest("Notes Not Available in Archieve");
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
+        }
     }
 }
