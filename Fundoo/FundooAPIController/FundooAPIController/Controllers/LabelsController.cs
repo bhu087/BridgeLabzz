@@ -38,11 +38,11 @@ namespace FundooAPIController.Controllers
         }
         [HttpPost]
         [Route("updateLabel")]
-        public ActionResult UpdateLabel(LabelModel labelModel)
+        public ActionResult UpdateLabel(int id, LabelModel labelModel)
         {
             try
             {
-                var result = this.labelManager.AddLabel(labelModel);
+                var result = this.labelManager.UpdateLabel(id, labelModel);
                 if (result.Result.Equals("Updated"))
                 {
                     return this.Ok("Updated");

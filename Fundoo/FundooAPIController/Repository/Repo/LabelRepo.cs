@@ -106,21 +106,16 @@ namespace Repository.Repo
             }
         }
 
-        public async Task<string> UpdateLabel(LabelModel labelModel)
+        public async Task<string> UpdateLabel(int id, LabelModel labelModel)
         {
             try
             {
-                if (this.FindById(labelModel.LabelId))
+                if (this.FindById(id))
                 {
-                    LabelModel add = new LabelModel()
-                    {
-                        LabelId = labelModel.LabelId,
-                        LabelName = labelModel.LabelName
-                    };
-                    var label = this.context.Lables.Where(labelId => labelId.LabelId == labelModel.LabelId).SingleOrDefault();
+                    var label = this.context.Lables.Where(labelId => labelId.LabelId == id).SingleOrDefault();
                     label.LabelId = labelModel.LabelId;
                     label.LabelName = labelModel.LabelName;
-                    var result = await this.context.SaveChangesAsync();
+                    var result = this.context.SaveChangesAsync();
                     return "Updated";
                 }
                 return "";
