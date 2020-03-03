@@ -13,5 +13,6 @@ namespace Manager.Labels
         Task<string> DeleteLabel(int id);
         Task<IEnumerable> GetAllLabels();
         Task<LabelModel> GetLabelById(int id);
+        Task<string> UpdateLabel(LabelModel labelModel);
     }
 }

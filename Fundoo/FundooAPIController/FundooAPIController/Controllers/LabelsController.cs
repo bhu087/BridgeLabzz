@@ -36,6 +36,24 @@ namespace FundooAPIController.Controllers
                 throw new Exception();
             }
         }
+        [HttpPost]
+        [Route("updateLabel")]
+        public ActionResult UpdateLabel(LabelModel labelModel)
+        {
+            try
+            {
+                var result = this.labelManager.AddLabel(labelModel);
+                if (result.Result.Equals("Updated"))
+                {
+                    return this.Ok("Updated");
+                }
+                return this.BadRequest("Not Updated");
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
+        }
         [HttpDelete]
         [Route("deleteLabel")]
         public ActionResult DeleteLabel(int id)

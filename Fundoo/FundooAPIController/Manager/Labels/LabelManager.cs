@@ -66,5 +66,18 @@ namespace Manager.Labels
                 throw new Exception();
             }
         }
+
+        public Task<string> UpdateLabel(LabelModel labelModel)
+        {
+            try
+            {
+                var result = this.labelRepo.UpdateLabel(labelModel);
+                return result;
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
+        }
     }
 }

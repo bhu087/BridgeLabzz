@@ -65,7 +65,7 @@ namespace Repository.Repo
                 {
                     var removeLabel = this.context.Lables.Where(labelId => labelId.LabelId == id).SingleOrDefault();
                     this.context.Lables.Remove(removeLabel);
-                    var result = this.context.SaveChanges();
+                    var result = await this.context.SaveChangesAsync();
                     return "Deleted";
                 }
             }
@@ -103,6 +103,31 @@ namespace Repository.Repo
             catch (Exception)
             {
                 return new LabelModel();
+            }
+        }
+
+        public async Task<string> UpdateLabel(LabelModel labelModel)
+        {
+            try
+            {
+                if (this.FindById(labelModel.LabelId))
+                {
+                    LabelModel add = new LabelModel()
+                    {
+                        LabelId = labelModel.LabelId,
+                        LabelName = labelModel.LabelName
+                    };
+                    var label = this.context.Lables.Where(labelId => labelId.LabelId == labelModel.LabelId).SingleOrDefault();
+                    label.LabelId = labelModel.LabelId;
+                    label.LabelName = labelModel.LabelName;
+                    var result = await this.context.SaveChangesAsync();
+                    return "Updated";
+                }
+                return "";
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
             }
         }
     }
