@@ -42,7 +42,7 @@ namespace Repository.Repo
                 {
                     Subject = new ClaimsIdentity(new Claim[]
                         {
-                            new Claim("Id", notesModel.NotesId1.ToString())
+                            new Claim("Id", add.ToString())
                         }),
                     Expires = DateTime.UtcNow.AddDays(1),
                     SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes("Hello this is Radis Cache")), SecurityAlgorithms.HmacSha256Signature)
@@ -50,7 +50,7 @@ namespace Repository.Repo
                 var securityTokenHandler = new JwtSecurityTokenHandler();
                 var securityToken = securityTokenHandler.CreateToken(tokenDescriptor);
                 var token = securityTokenHandler.WriteToken(securityToken);
-                var cacheKey = notesModel.NotesId1 + " Add";
+                var cacheKey = "Add";
                 ConnectionMultiplexer connectionMultiplexer = ConnectionMultiplexer.Connect("127.0.0.1:6379");
                 IDatabase database = connectionMultiplexer.GetDatabase();
                 database.StringSet(cacheKey, token.ToString());

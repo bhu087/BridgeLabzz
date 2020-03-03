@@ -57,7 +57,7 @@ namespace FundooAPIController.Controllers
             {
                 return Ok("Delete Successful");
             }
-            return Ok("Something Wrong");
+            return this.BadRequest("Something Wrong");
         }
         [HttpPost]
         [Route("update")]
@@ -66,7 +66,11 @@ namespace FundooAPIController.Controllers
             try
             {
                 var result = manager.Update(register);
-                return Ok("Udated successfully");
+                if (result != null)
+                {
+                    return Ok("Udated successfully");
+                }
+                return this.BadRequest("Not updated");
             }
             catch (Exception e)
             {

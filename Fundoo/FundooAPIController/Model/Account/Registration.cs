@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Model.Account
 {
-    public class Registration
+    public class Registration 
     {
         private int id;
         private string name;

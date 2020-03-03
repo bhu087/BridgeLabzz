@@ -67,8 +67,9 @@ namespace Repository.Repo
                 updateUser.Name = register.Name;
                 updateUser.Email = register.Email;
                 updateUser.Password = register.Password;
-                var result = this.context.SaveChangesAsync();
-                return result;
+                return Task.Run(() => context.SaveChangesAsync());
+                //var result = this.context.SaveChangesAsync();
+                //return result;
             } 
             catch (Exception e) 
             { 

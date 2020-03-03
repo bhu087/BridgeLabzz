@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29709.97
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FundooAPIController", "FundooAPIController\FundooAPIController.csproj", "{1AE14069-0EDC-4F2B-9821-94979E597776}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FundooAPIController", "FundooAPIController\FundooAPIController.csproj", "{1AE14069-0EDC-4F2B-9821-94979E597776}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manager", "Manager\Manager.csproj", "{E4748880-3C1F-4A24-BC16-1B67C88BAE99}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Manager", "Manager\Manager.csproj", "{E4748880-3C1F-4A24-BC16-1B67C88BAE99}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository", "Repository\Repository.csproj", "{0C92D587-CE64-4EEB-B19A-7E20608F890D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repository", "Repository\Repository.csproj", "{0C92D587-CE64-4EEB-B19A-7E20608F890D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{C886F103-E189-483D-A86B-6524003E2B2D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Model", "Model\Model.csproj", "{C886F103-E189-483D-A86B-6524003E2B2D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTesting", "UnitTesting\UnitTesting.csproj", "{B51F9683-72EC-445C-852C-6664D7632C59}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{C886F103-E189-483D-A86B-6524003E2B2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C886F103-E189-483D-A86B-6524003E2B2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C886F103-E189-483D-A86B-6524003E2B2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B51F9683-72EC-445C-852C-6664D7632C59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B51F9683-72EC-445C-852C-6664D7632C59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B51F9683-72EC-445C-852C-6664D7632C59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B51F9683-72EC-445C-852C-6664D7632C59}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

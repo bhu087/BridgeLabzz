@@ -7,9 +7,11 @@ using System.Threading.Tasks;
 
 namespace Manager.Account
 {
+    
     public class AccountManager : IAccountManager
     {
         public readonly IAccountRepo accountRepository;
+
         public AccountManager(IAccountRepo accountRepository)
         {
             this.accountRepository = accountRepository;
