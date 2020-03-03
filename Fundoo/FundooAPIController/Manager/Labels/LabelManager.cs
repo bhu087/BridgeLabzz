@@ -1,6 +1,7 @@
 ﻿using Model.Account;
 using Repository.IRepo;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,6 +33,32 @@ namespace Manager.Labels
             try
             {
                 var result = this.labelRepo.DeleteLabel(id);
+                return result;
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
+        }
+
+        public Task<IEnumerable> GetAllLabels()
+        {
+            try
+            {
+                var result = this.labelRepo.GetAllLabels();
+                return result;
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
+        }
+
+        public Task<LabelModel> GetLabelById(int id)
+        {
+            try
+            {
+                var result = this.labelRepo.GetLabelById(id);
                 return result;
             }
             catch (Exception)

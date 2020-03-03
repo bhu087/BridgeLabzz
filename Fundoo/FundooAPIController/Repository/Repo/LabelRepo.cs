@@ -2,6 +2,7 @@
 using Repository.Context;
 using Repository.IRepo;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -71,6 +72,37 @@ namespace Repository.Repo
             catch (Exception)
             {
                 throw new Exception();
+            }
+        }
+
+        public async Task<IEnumerable> GetAllLabels()
+        {
+            try
+            {
+                var list = this.context.Lables.ToList();
+                return list;
+            }
+            catch (Exception)
+            {
+                List<string> list = new List<string>();
+                return list;
+            }
+        }
+
+        public async Task<LabelModel> GetLabelById(int id)
+        {
+            try
+            {
+                if (this.FindById(id))
+                {
+                    var label = this.context.Lables.Where(labelId => labelId.LabelId == id).SingleOrDefault();
+                    return label;
+                }
+                return new LabelModel();
+            }
+            catch (Exception)
+            {
+                return new LabelModel();
             }
         }
     }

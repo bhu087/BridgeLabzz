@@ -54,5 +54,41 @@ namespace FundooAPIController.Controllers
                 throw new Exception();
             }
         }
+        [HttpGet]
+        [Route("getAllLabels")]
+        public ActionResult GetAllLabels()
+        {
+            try
+            {
+                var result = this.labelManager.GetAllLabels();
+                if (result != null)
+                {
+                    return this.Ok(result.Result);
+                }
+                return this.BadRequest("Labels not Available");
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
+        }
+        [HttpGet]
+        [Route("getByLabelId")]
+        public ActionResult GetLabelById(int id)
+        {
+            try
+            {
+                var result = this.labelManager.GetLabelById(id);
+                if (result != null)
+                {
+                    return this.Ok(result.Result);
+                }
+                return this.BadRequest("Labels not Available");
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
+        }
     }
 }
