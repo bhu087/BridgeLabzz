@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Repository.IRepo
+namespace Manager.Labels
 {
-    public interface ILabelRepo
+   public interface ILabelManager
     {
         Task<string> AddLabel(LabelModel labelModel);
     }

@@ -20,6 +20,7 @@ using Repository.Repo;
 using Swashbuckle.AspNetCore.Swagger;
 using Repository.IRepo;
 using Manager.Notes;
+using Manager.Labels;
 
 namespace FundooAPIController
 {
@@ -42,6 +43,8 @@ namespace FundooAPIController
             services.AddTransient<IAccountManager, AccountManager>();
             services.AddTransient<INotesRepo, NotesRepo>();
             services.AddTransient<INotesManager, NotesManager>();
+            services.AddTransient<ILabelRepo, LabelRepo>();
+            services.AddTransient<ILabelManager, LabelManager>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Info

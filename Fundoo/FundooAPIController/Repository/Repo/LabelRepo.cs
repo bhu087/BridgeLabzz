@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Repository.Repo
 {
 
-    class LabelRepo : ILabelRepo
+    public class LabelRepo : ILabelRepo
     {
         public readonly UserDBContext context;
         public LabelRepo(UserDBContext context)
