@@ -26,5 +26,18 @@ namespace Manager.Labels
                 throw new Exception();
             }
         }
+
+        public Task<string> DeleteLabel(int id)
+        {
+            try
+            {
+                var result = this.labelRepo.DeleteLabel(id);
+                return result;
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
+        }
     }
 }

@@ -36,5 +36,23 @@ namespace FundooAPIController.Controllers
                 throw new Exception();
             }
         }
+        [HttpDelete]
+        [Route("deleteLabel")]
+        public ActionResult DeleteLabel(int id)
+        {
+            try
+            {
+                var result = this.labelManager.DeleteLabel(id);
+                if (result.Result.Equals("Deleted"))
+                {
+                    return this.Ok("Deleted");
+                }
+                return this.BadRequest("No Label Available");
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
+        }
     }
 }

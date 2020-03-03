@@ -3,6 +3,7 @@ using Repository.Context;
 using Repository.IRepo;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,6 +16,15 @@ namespace Repository.Repo
         public LabelRepo(UserDBContext context)
         {
             this.context = context;
+        }
+        public bool FindById(int id)
+        {
+            var result = this.context.Lables.Where(labelId => labelId.LabelId == id).SingleOrDefault();
+            if (result.LabelId == id)
+            {
+                return true;
+            }
+            return false;
         }
         public async Task<string> AddLabel(LabelModel labelModel)
         {
@@ -32,6 +42,25 @@ namespace Repository.Repo
             catch (Exception e)
             {
                 throw new Exception(e.Message);
+            }
+        }
+
+        public async Task<string> DeleteLabel(int id)
+        {
+            try
+            {
+                if (this.FindById(id))
+                {
+                    var removeLabel = this.context.Lables.Where(labelId => labelId.LabelId == id).SingleOrDefault();
+                    this.context.Lables.Remove(removeLabel);
+                    var result = this.context.SaveChanges();
+                    return "Deleted";
+                }
+                return "Not Deleted";
+            }
+            catch (Exception)
+            {
+                throw new Exception();
             }
         }
     }

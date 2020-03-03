@@ -9,5 +9,6 @@ namespace Repository.IRepo
     public interface ILabelRepo
     {
         Task<string> AddLabel(LabelModel labelModel);
+        Task<string> DeleteLabel(int id);
     }
 }

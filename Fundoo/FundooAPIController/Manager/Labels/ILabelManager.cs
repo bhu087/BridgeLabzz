@@ -9,5 +9,6 @@ namespace Manager.Labels
    public interface ILabelManager
     {
         Task<string> AddLabel(LabelModel labelModel);
+        Task<string> DeleteLabel(int id);
     }
 }
