@@ -6,6 +6,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20200303104108_Eigth.cs" />
+    <Compile Remove="Migrations\20200303104108_Eigth.Designer.cs" />
+    <Compile Remove="Migrations\20200303105143_nineth.cs" />
+    <Compile Remove="Migrations\20200303105143_nineth.Designer.cs" />
+    <Compile Remove="Migrations\20200303105407_tength.cs" />
+    <Compile Remove="Migrations\20200303105407_tength.Designer.cs" />
+    <Compile Remove="Migrations\20200303110326_Twelveth.cs" />
+    <Compile Remove="Migrations\20200303110326_Twelveth.Designer.cs" />
+    <Compile Remove="Migrations\20200303110442_thirteenth.cs" />
+    <Compile Remove="Migrations\20200303110442_thirteenth.Designer.cs" />
+    <Compile Remove="Migrations\20200303113415_seventh.cs" />
+    <Compile Remove="Migrations\20200303113415_seventh.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="CloudinaryDotNet" Version="1.10.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.1.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.1.0" />

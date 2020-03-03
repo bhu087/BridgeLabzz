@@ -24,5 +24,9 @@ namespace Repository.Context
         {
             get; set;
         }
+        public DbSet<LabelModel> Lables
+        {
+            get; set;
+        }
     }
 }

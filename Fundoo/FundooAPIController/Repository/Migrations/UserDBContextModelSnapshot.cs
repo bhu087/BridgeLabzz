@@ -19,6 +19,21 @@ namespace Repository.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("Model.Account.LabelModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("LabelId");
+
+                    b.Property<string>("LabelName");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Lables");
+                });
+
             modelBuilder.Entity("Model.Account.Login", b =>
                 {
                     b.Property<string>("Email")
