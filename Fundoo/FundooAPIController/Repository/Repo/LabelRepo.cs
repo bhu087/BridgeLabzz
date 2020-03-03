@@ -19,12 +19,19 @@ namespace Repository.Repo
         }
         public bool FindById(int id)
         {
-            var result = this.context.Lables.Where(labelId => labelId.LabelId == id).SingleOrDefault();
-            if (result.LabelId == id)
+            try
             {
-                return true;
+                var result = this.context.Lables.Where(labelId => labelId.LabelId == id).SingleOrDefault();
+                if (result.LabelId == id)
+                {
+                    return true;
+                }
+                return false;
             }
-            return false;
+            catch (Exception)
+            {
+                return false;
+            }
         }
         public async Task<string> AddLabel(LabelModel labelModel)
         {
@@ -36,7 +43,7 @@ namespace Repository.Repo
                     LabelName = labelModel.LabelName
                 };
                 this.context.Lables.Add(add);
-                var result = this.context.SaveChangesAsync();
+                var result = await this.context.SaveChangesAsync();
                 return "Saved";
             }
             catch (Exception e)
@@ -49,14 +56,17 @@ namespace Repository.Repo
         {
             try
             {
-                if (this.FindById(id))
+                if (!this.FindById(id))
+                {
+                    return "Not Deleted";
+                }
+                else
                 {
                     var removeLabel = this.context.Lables.Where(labelId => labelId.LabelId == id).SingleOrDefault();
                     this.context.Lables.Remove(removeLabel);
                     var result = this.context.SaveChanges();
                     return "Deleted";
                 }
-                return "Not Deleted";
             }
             catch (Exception)
             {
