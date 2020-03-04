@@ -559,13 +559,15 @@ namespace Repository.Repo
 
                 foreach (var values in searchParameter)
                 {
-                    results = results.Where(emailId => emailId.Email.Contains(values));
+                    results = results.Where(emailId => emailId.Email.Contains(values) || emailId.Description.Contains(values) || 
+                    emailId.Title.Contains(values));
                 }
                 foreach (var singleResult in results)
                 {
                     if (singleResult.Email.Equals(searchParameter))
                     {
-                        return results.Where(x => x.Email == searchParameter);
+                        return results.Where(x => x.Email == searchParameter || x.Description == searchParameter || 
+                        x.Title == searchParameter);
                     }
                 }
                 return results;
