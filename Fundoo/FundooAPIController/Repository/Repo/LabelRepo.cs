@@ -22,12 +22,38 @@ namespace Repository.Repo
         {
             try
             {
-                var result = this.context.Lables.Where(labelId => labelId.LabelId == id).SingleOrDefault();
-                if (result.LabelId == id)
+                var result = this.context.Lables.Where(labelId => labelId.LabelId == id).ToList();
+                //if (result.LabelId == id)
+                //{
+                //    return true;
+                //}
+                foreach (var availableId in result)
                 {
-                    return true;
+                    if (availableId.LabelId == id)
+                    {
+                        return true;
+                    }
                 }
                 return false;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+        public bool FindByIdAndName(LabelModel labelModel)
+        {
+            try
+            {
+                var result = this.context.Lables.Where(labelId => labelId.LabelId == labelModel.LabelId).ToList();
+                foreach (var availableId in result)
+                {
+                    if (availableId.LabelId == labelModel.LabelId && availableId.LabelName.Equals(labelModel.LabelName))
+                    {
+                        return false;
+                    }
+                }
+                return true;
             }
             catch (Exception)
             {
@@ -38,14 +64,18 @@ namespace Repository.Repo
         {
             try
             {
-                LabelModel add = new LabelModel()
+                if (this.FindByIdAndName(labelModel))
                 {
-                    LabelId = labelModel.LabelId,
-                    LabelName = labelModel.LabelName
-                };
-                this.context.Lables.Add(add);
-                var result = await this.context.SaveChangesAsync();
-                return "Saved";
+                    LabelModel add = new LabelModel()
+                    {
+                        LabelId = labelModel.LabelId,
+                        LabelName = labelModel.LabelName
+                    };
+                    this.context.Lables.Add(add);
+                    var result = await Task.Run(() => this.context.SaveChangesAsync());
+                    return "Saved";
+                }
+                return "Not saved"; 
             }
             catch (Exception e)
             {
@@ -65,7 +95,7 @@ namespace Repository.Repo
                 {
                     var removeLabel = this.context.Lables.Where(labelId => labelId.LabelId == id).SingleOrDefault();
                     this.context.Lables.Remove(removeLabel);
-                    var result = await this.context.SaveChangesAsync();
+                    var result = await Task.Run(() => this.context.SaveChangesAsync());
                     return "Deleted";
                 }
             }
@@ -79,7 +109,7 @@ namespace Repository.Repo
         {
             try
             {
-                var list = this.context.Lables.ToList();
+                var list = await Task.Run(() => this.context.Lables.ToList());
                 return list;
             }
             catch (Exception)
@@ -95,7 +125,7 @@ namespace Repository.Repo
             {
                 if (this.FindById(id))
                 {
-                    var label = this.context.Lables.Where(labelId => labelId.LabelId == id).SingleOrDefault();
+                    var label = await Task.Run(() => this.context.Lables.Where(labelId => labelId.LabelId == id).SingleOrDefault());
                     return label;
                 }
                 return new LabelModel();
@@ -106,17 +136,24 @@ namespace Repository.Repo
             }
         }
 
-        public async Task<string> UpdateLabel(int id, LabelModel labelModel)
+        public async Task<string> UpdateLabel(int id, string labelName, LabelModel labelModel)
         {
             try
             {
                 if (this.FindById(id))
                 {
-                    var label = this.context.Lables.Where(labelId => labelId.LabelId == id).SingleOrDefault();
-                    label.LabelId = labelModel.LabelId;
-                    label.LabelName = labelModel.LabelName;
-                    var result = this.context.SaveChangesAsync();
-                    return "Updated";
+                    var label = this.context.Lables.Where(labelId => labelId.LabelId == id).ToList();
+                    foreach (var labels in label)
+                    {
+                        if (labels.LabelName == labelName)
+                        {
+                            labels.LabelId = labelModel.LabelId;
+                            labels.LabelName = labelModel.LabelName;
+                            var result = this.context.SaveChangesAsync();
+                            return "Updated";
+                        }
+                    }
+                    return "";
                 }
                 return "";
             }

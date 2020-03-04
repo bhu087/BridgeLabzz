@@ -67,11 +67,11 @@ namespace Manager.Labels
             }
         }
 
-        public Task<string> UpdateLabel(int id,LabelModel labelModel)
+        public Task<string> UpdateLabel(int id, string labelName, LabelModel labelModel)
         {
             try
             {
-                var result = this.labelRepo.UpdateLabel(id, labelModel);
+                var result = this.labelRepo.UpdateLabel(id, labelName, labelModel);
                 return result;
             }
             catch (Exception)

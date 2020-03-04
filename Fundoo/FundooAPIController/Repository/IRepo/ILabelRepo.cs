@@ -13,6 +13,6 @@ namespace Repository.IRepo
         Task<string> DeleteLabel(int id);
         Task<IEnumerable> GetAllLabels();
         Task<LabelModel> GetLabelById(int id);
-        Task<string> UpdateLabel(int id, LabelModel labelModel);
+        Task<string> UpdateLabel(int id, string labelName, LabelModel labelModel);
     }
 }

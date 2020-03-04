@@ -29,7 +29,7 @@ namespace FundooAPIController.Controllers
                 {
                     return this.Ok("Saved");
                 }
-                return this.BadRequest("Not Saved");
+                return this.BadRequest("Not saved");
             }
             catch (Exception)
             {
@@ -38,11 +38,11 @@ namespace FundooAPIController.Controllers
         }
         [HttpPost]
         [Route("updateLabel")]
-        public ActionResult UpdateLabel(int id, LabelModel labelModel)
+        public ActionResult UpdateLabel(int id, string labelName, LabelModel labelModel)
         {
             try
             {
-                var result = this.labelManager.UpdateLabel(id, labelModel);
+                var result = this.labelManager.UpdateLabel(id, labelName, labelModel);
                 if (result.Result.Equals("Updated"))
                 {
                     return this.Ok("Updated");
