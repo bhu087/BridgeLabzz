@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Model.Account;
+using Model.Notes;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -25,6 +26,10 @@ namespace Repository.Context
             get; set;
         }
         public DbSet<LabelModel> Lables
+        {
+            get; set;
+        }
+        public DbSet<CollaboratorModel> Collaborator
         {
             get; set;
         }

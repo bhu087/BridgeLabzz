@@ -52,8 +52,6 @@ namespace Repository.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Collaboratator");
-
                     b.Property<string>("Color");
 
                     b.Property<DateTime?>("CreatedTime");
@@ -96,6 +94,23 @@ namespace Repository.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Registers");
+                });
+
+            modelBuilder.Entity("Model.Notes.CollaboratorModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("NoteId");
+
+                    b.Property<string>("ReceiverEmail1");
+
+                    b.Property<string>("SenderEmail");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Collaborator");
                 });
 #pragma warning restore 612, 618
         }

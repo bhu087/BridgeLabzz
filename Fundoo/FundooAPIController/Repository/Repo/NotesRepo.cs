@@ -2,6 +2,7 @@
 using CloudinaryDotNet.Actions;
 using Microsoft.IdentityModel.Tokens;
 using Model.Account;
+using Model.Notes;
 using Repository.Context;
 using Repository.IRepo;
 using StackExchange.Redis;
@@ -50,6 +51,19 @@ namespace Repository.Repo
                 }
             }
             return false;
+        }
+        public bool DuplicateEmailsWithNoteId(CollaboratorModel collaborator)
+        {
+            var emailsAndNoteId = this.context.Collaborator.Where(notesEmail => notesEmail.ReceiverEmail1 == collaborator.ReceiverEmail1).ToList();
+            foreach (var dataBaseEmail in emailsAndNoteId)
+            {
+                if (dataBaseEmail.ReceiverEmail1.Equals(collaborator.ReceiverEmail1) && dataBaseEmail.SenderEmail.Equals(collaborator.SenderEmail)
+                    && dataBaseEmail.NoteId == collaborator.NoteId)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
         public async Task<string> AddNotes(NotesModel notesModel)
         {
@@ -584,21 +598,31 @@ namespace Repository.Repo
                 if (this.FindById(noteId))
                 {
                     var note = this.context.Notes.Where(notesId => notesId.NotesId1 == noteId).SingleOrDefault();
-                    note.Collaboratator = collaboratorEmail;
-                    MailMessage mail = new MailMessage();
-                    mail.To.Add(collaboratorEmail);
-                    mail.From = new MailAddress("bhush087@gmail.com");
-                    mail.Subject = "Title :" + note.Title;
-                    string Body = "(" + note.Email+ ") shared a note with you. " + "Description :" + note.Description;
-                    mail.Body = Body;
-                    mail.IsBodyHtml = false;
-                    SmtpClient smtp = new SmtpClient();
-                    smtp.Host = "smtp.gmail.com";
-                    smtp.EnableSsl = true;
-                    smtp.Credentials = new NetworkCredential("bhush087@gmail.com", "Bhushan087***");
-                    smtp.Send(mail);
-                    var result = await this.context.SaveChangesAsync();
-                    return "Collabrator added and Note sent successfully";
+                    CollaboratorModel collaborator = new CollaboratorModel()
+                    {
+                        NoteId = noteId,
+                        SenderEmail = note.Email,
+                        ReceiverEmail1 = collaboratorEmail
+                    };
+                    if (this.DuplicateEmailsWithNoteId(collaborator))
+                    {
+                        this.context.Collaborator.Add(collaborator);
+                        MailMessage mail = new MailMessage();
+                        mail.To.Add(collaboratorEmail);
+                        mail.From = new MailAddress("bhush087@gmail.com");
+                        mail.Subject = "Title :" + note.Title;
+                        string Body = "(" + note.Email + ") shared a note with you. " + "Description :" + note.Description;
+                        mail.Body = Body;
+                        mail.IsBodyHtml = false;
+                        SmtpClient smtp = new SmtpClient();
+                        smtp.Host = "smtp.gmail.com";
+                        smtp.EnableSsl = true;
+                        smtp.Credentials = new NetworkCredential("bhush087@gmail.com", "Bhushan087***");
+                        smtp.Send(mail);
+                        var result = await this.context.SaveChangesAsync();
+                        return "Collabrator added and Note sent successfully";
+                    }
+                    return "Duplicate Receiver found";
                 }
                 return "Id Not available";
             }
@@ -607,27 +631,27 @@ namespace Repository.Repo
                 throw new Exception();
             }
         }
-        public async Task<string> DeleteCollaborator(int id)
-        {
-            try
-            {
-                if (this.FindById(id))
-                {
-                    var note = this.context.Notes.Where(notesId => notesId.NotesId1 == id).SingleOrDefault();
-                    if (note.Collaboratator.Equals(string.Empty) || note.Collaboratator == null)
-                    {
-                        return "No Collaborators available";
-                    }
-                    note.Collaboratator = string.Empty;
-                    await this.context.SaveChangesAsync();
-                    return "Deleted";
-                }
-                return "Id Is invalid";
-            }
-            catch (Exception)
-            {
-                throw new Exception();
-            }
-        }
+        //public async Task<string> DeleteCollaborator(int id)
+        //{
+        //    try
+        //    {
+        //        if (this.FindById(id))
+        //        {
+        //            var note = this.context.Notes.Where(notesId => notesId.NotesId1 == id).SingleOrDefault();
+        //            if (note.Collaboratator.Equals(string.Empty) || note.Collaboratator == null)
+        //            {
+        //                return "No Collaborators available";
+        //            }
+        //            note.Collaboratator = string.Empty;
+        //            await this.context.SaveChangesAsync();
+        //            return "Deleted";
+        //        }
+        //        return "Id Is invalid";
+        //    }
+        //    catch (Exception)
+        //    {
+        //        throw new Exception();
+        //    }
+        //}
     }
 }

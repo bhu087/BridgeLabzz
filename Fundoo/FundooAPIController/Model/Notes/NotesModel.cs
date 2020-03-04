@@ -19,7 +19,6 @@ namespace Model.Account
         private bool isTrash;
         private bool isPin;
         private string color;
-        private string collaboratator;
 
         [Key]
         public int NotesId1 { get => NotesId; set => NotesId = value; }
@@ -34,6 +33,5 @@ namespace Model.Account
         public bool IsTrash { get => isTrash; set => isTrash = value; }
         public bool IsPin { get => isPin; set => isPin = value; }
         public string Color { get => color; set => color = value; }
-        public string Collaboratator { get => collaboratator; set => collaboratator = value; }
     }
 }
