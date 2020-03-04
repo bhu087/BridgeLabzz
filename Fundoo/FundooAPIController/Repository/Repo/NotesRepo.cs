@@ -25,10 +25,38 @@ namespace Repository.Repo
         {
             this.context = userDBContext;
         }
+        public bool DuplicateEmails(string email)
+        {
+            var emails = this.context.Notes.Where(notesEmail => notesEmail.Email == email).ToList();
+            foreach (var dataBaseEmail in emails)
+            {
+                if (dataBaseEmail.Email.Equals(email))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        public bool DuplicateEmailsUpdate(NotesModel notesModel)
+        {
+            var emails = this.context.Notes.Where(notesEmail => notesEmail.Email == notesModel.Email).ToList();
+            foreach (var dataBaseEmail in emails)
+            {
+                if (dataBaseEmail.Email.Equals(notesModel.Email) && dataBaseEmail.NotesId1 != notesModel.NotesId1)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
         public async Task<string> AddNotes(NotesModel notesModel)
         {
             try
             {
+                if (this.DuplicateEmails(notesModel.Email))
+                {
+                    return "Email already Exist";
+                }
                 NotesModel add = new NotesModel()
                 {
                     Email = notesModel.Email,
@@ -66,6 +94,10 @@ namespace Repository.Repo
         {
             try
             {
+                if (this.DuplicateEmailsUpdate(notesModel))
+                {
+                    return "Email already Exist";
+                }
                 if (this.FindById(notesModel.NotesId1))
                 {
                     var notesCheck = this.context.Notes.Where(notesId => notesId.NotesId1 == notesModel.NotesId1).SingleOrDefault();
@@ -566,8 +598,8 @@ namespace Repository.Repo
                 {
                     if (singleResult.Email.Equals(searchParameter))
                     {
-                        return results.Where(x => x.Email == searchParameter || x.Description == searchParameter || 
-                        x.Title == searchParameter);
+                        return results.Where(singleSearch => singleSearch.Email == searchParameter || singleSearch.Description == searchParameter ||
+                        singleSearch.Title == searchParameter);
                     }
                 }
                 return results;
