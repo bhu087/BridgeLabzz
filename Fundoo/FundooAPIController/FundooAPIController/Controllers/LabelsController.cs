@@ -36,7 +36,7 @@ namespace FundooAPIController.Controllers
                 throw new Exception();
             }
         }
-        [HttpPost]
+        [HttpPut]
         [Route("updateLabel")]
         public ActionResult UpdateLabel(int id, string labelName, LabelModel labelModel)
         {
