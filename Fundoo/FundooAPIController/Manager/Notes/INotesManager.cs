@@ -25,5 +25,6 @@ namespace Manager.Notes
         Task<ImageUploadResult> UploadImage(int id, string imagePath);
         //Task<string> DownloadImage(int id);
         IQueryable<NotesModel> Search(string searchParameter);
+        Task<string> AddCollaborator(int noteId, string collaboratorEmail);
     }
 }

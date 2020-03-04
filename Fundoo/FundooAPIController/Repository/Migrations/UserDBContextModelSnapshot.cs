@@ -52,6 +52,8 @@ namespace Repository.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Collaboratator");
+
                     b.Property<string>("Color");
 
                     b.Property<DateTime?>("CreatedTime");

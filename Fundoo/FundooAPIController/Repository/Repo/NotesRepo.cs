@@ -9,6 +9,8 @@ using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
@@ -175,12 +177,15 @@ namespace Repository.Repo
                 var notesCheck = this.context.Notes.Where(notesId => notesId.NotesId1 == id).SingleOrDefault();
                 if (notesCheck.NotesId1 == id)
                 {
+                    this.context.Dispose();
                     return true;
                 }
+                this.context.Dispose();
                 return false;
             }
             catch (Exception)
             {
+                this.context.Dispose();
                 return false;
             }
             
@@ -504,41 +509,7 @@ namespace Repository.Repo
                 throw new Exception();
             }
         }
-        //public Task<int> SaveImage(int id, string image)
-        //{
-        //    try
-        //    {
-        //        if (this.FindById(id))
-        //        {
-        //            var note = this.context.Notes.Where(notesId => notesId.NotesId1 == id).SingleOrDefault();
-        //            note.Image = image;
-        //            var result = this.context.SaveChangesAsync();
-        //            return result;
-        //        }
-        //        return null;
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        throw new Exception(e.Message);
-        //    }
-        //}
-        //public async Task<string> DownloadImage(int id)
-        //{
-        //    try
-        //    {
-        //        if (this.FindById(id))
-        //        {
-        //            var note = this.context.Notes.Where(notesId => notesId.NotesId1 == id).SingleOrDefault();
-        //            string image = note.Image;
-        //            return image;
-        //        }
-        //        return null;
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        throw new Exception(e.Message);
-        //    }
-        //}
+        
         public async Task<ImageUploadResult> UploadImage(int id, string imagePath)
         {
             if (this.FindById(id))
@@ -609,35 +580,35 @@ namespace Repository.Repo
                 throw new Exception();
             }
         }
-        //public async Task<string> DownloadImage(int id)
-        //{
-        //    if (this.FindById(id))
-        //    {
-        //        var note = this.context.Notes.Where(notesId => notesId.NotesId1 == id).SingleOrDefault();
-        //        if (note.Image != string.Empty)
-        //        {
-        //            Account account = new Account(CloudName, APIKey, APISecret);
-        //            Cloudinary cloudinary = new Cloudinary(account);
-        //            try
-        //            {
-        //                var url = note.Image.ToString();
-        //                var image = cloudinary.Api.UrlImgUp.BuildImageTag(url);
-        //                string savePath = @"D:\Abc\DownloadedImages\"+note.Title+".png";
-        //                byte[] imageBytes = Convert.FromBase64String(image);
-        //                MemoryStream ms = new MemoryStream(imageBytes);
-        //                System.Drawing.Image image1 = System.Drawing.Image.FromStream(ms, true, true);
-        //                image1.Save(savePath);
-        //                return "Downloaded";
-        //            }
-        //            catch (Exception)
-        //            {
-        //                throw new Exception();
-        //            }
-        //        }
-        //        return null;
-                
-        //    }
-        //    return null;
-        //}
+        public async Task<string> AddCollaborator(int noteId, string collaboratorEmail)
+        {
+            try
+            {
+                if (this.FindById(noteId))
+                {
+                    var note = this.context.Notes.Where(notesId => notesId.NotesId1 == noteId).SingleOrDefault();
+                    note.Collaboratator = collaboratorEmail;
+                    MailMessage mail = new MailMessage();
+                    mail.To.Add(collaboratorEmail);
+                    mail.From = new MailAddress("bhush087@gmail.com");
+                    mail.Subject = "Title :" + note.Title;
+                    string Body = "(" + note.Email+ ") shared a note with you. " + "Description :" + note.Description;
+                    mail.Body = Body;
+                    mail.IsBodyHtml = false;
+                    SmtpClient smtp = new SmtpClient();
+                    smtp.Host = "smtp.gmail.com";
+                    smtp.EnableSsl = true;
+                    smtp.Credentials = new NetworkCredential("bhush087@gmail.com", "Bhushan087***");
+                    smtp.Send(mail);
+                    var result = await this.context.SaveChangesAsync();
+                    return "Collabrator added and Note sent successfully";
+                }
+                return "Id Not available";
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
+        }
     }
 }

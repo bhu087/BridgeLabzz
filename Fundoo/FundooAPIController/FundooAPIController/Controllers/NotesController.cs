@@ -341,7 +341,7 @@ namespace FundooAPIController.Controllers
             {
                 if (!result.Result.Equals("Id Not available"))
                 {
-                    return this.Ok(result);
+                    return this.Ok(result.Result);
                 }
                 return this.BadRequest("Id Not available");
             }

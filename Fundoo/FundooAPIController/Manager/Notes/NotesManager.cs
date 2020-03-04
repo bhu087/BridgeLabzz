@@ -171,6 +171,18 @@ namespace Manager.Notes
             }
         }
 
+        public Task<string> AddCollaborator(int noteId, string collaboratorEmail)
+        {
+            try
+            {
+                return this.notesRepo.AddCollaborator(noteId, collaboratorEmail);
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
+        }
+
         //public Task<string> DownloadImage(int id)
         //{
         //    try
