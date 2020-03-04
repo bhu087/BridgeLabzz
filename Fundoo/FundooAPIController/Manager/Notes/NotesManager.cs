@@ -183,6 +183,18 @@ namespace Manager.Notes
             }
         }
 
+        public Task<string> DeleteCollaborator(int id)
+        {
+            try
+            {
+                return this.notesRepo.DeleteCollaborator(id);
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
+        }
+
         //public Task<string> DownloadImage(int id)
         //{
         //    try

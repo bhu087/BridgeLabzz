@@ -177,15 +177,12 @@ namespace Repository.Repo
                 var notesCheck = this.context.Notes.Where(notesId => notesId.NotesId1 == id).SingleOrDefault();
                 if (notesCheck.NotesId1 == id)
                 {
-                    this.context.Dispose();
                     return true;
                 }
-                this.context.Dispose();
                 return false;
             }
             catch (Exception)
             {
-                this.context.Dispose();
                 return false;
             }
             
@@ -604,6 +601,28 @@ namespace Repository.Repo
                     return "Collabrator added and Note sent successfully";
                 }
                 return "Id Not available";
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
+        }
+        public async Task<string> DeleteCollaborator(int id)
+        {
+            try
+            {
+                if (this.FindById(id))
+                {
+                    var note = this.context.Notes.Where(notesId => notesId.NotesId1 == id).SingleOrDefault();
+                    if (note.Collaboratator.Equals(string.Empty) || note.Collaboratator == null)
+                    {
+                        return "No Collaborators available";
+                    }
+                    note.Collaboratator = string.Empty;
+                    await this.context.SaveChangesAsync();
+                    return "Deleted";
+                }
+                return "Id Is invalid";
             }
             catch (Exception)
             {
