@@ -2,6 +2,7 @@
 using Model.Account;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -23,5 +24,6 @@ namespace Manager.Notes
         Task<NotesModel> GetNotesById(int id);
         Task<ImageUploadResult> UploadImage(int id, string imagePath);
         //Task<string> DownloadImage(int id);
+        IQueryable<NotesModel> Search(string searchParameter);
     }
 }

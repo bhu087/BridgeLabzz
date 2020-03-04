@@ -314,5 +314,23 @@ namespace FundooAPIController.Controllers
                 throw new Exception();
             }
         }
+        [HttpGet]
+        [Route("search")]
+        public ActionResult Search(string searchParameter)
+        {
+            var result = this.notesManager.Search(searchParameter);
+            try
+            {
+                if (result.Count() > 0)
+                {
+                    return this.Ok(result);
+                }
+                return this.BadRequest("No search results are Available");
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
+        }
     }
 }

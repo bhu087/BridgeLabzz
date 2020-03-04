@@ -4,6 +4,7 @@ using Repository.IRepo;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -151,6 +152,18 @@ namespace Manager.Notes
             try
             {
                 return this.notesRepo.UploadImage(id, imagePath);
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
+        }
+
+        public IQueryable<NotesModel> Search(string searchParameter)
+        {
+            try
+            {
+                return this.notesRepo.Search(searchParameter);
             }
             catch (Exception)
             {

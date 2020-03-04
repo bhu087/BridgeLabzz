@@ -551,6 +551,30 @@ namespace Repository.Repo
             }
             return null;
         }
+        public IQueryable<NotesModel> Search(string searchParameter)
+        {
+            try
+            {
+                var results = this.context.Notes.AsQueryable();
+
+                foreach (var values in searchParameter)
+                {
+                    results = results.Where(emailId => emailId.Email.Contains(values));
+                }
+                foreach (var singleResult in results)
+                {
+                    if (singleResult.Email.Equals(searchParameter))
+                    {
+                        return results.Where(x => x.Email == searchParameter);
+                    }
+                }
+                return results;
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
+        }
         //public async Task<string> DownloadImage(int id)
         //{
         //    if (this.FindById(id))
