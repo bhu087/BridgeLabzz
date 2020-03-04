@@ -198,8 +198,26 @@ namespace Repository.Repo
             catch (Exception)
             {
                 return false;
+            } 
+        }
+        public bool FindCollaboratorById(int id)
+        {
+            try
+            {
+                var collaboratorCheck = this.context.Collaborator.Where(colaboratorNoteId => colaboratorNoteId.NoteId == id).ToList();
+                foreach (var collaborator in collaboratorCheck)
+                {
+                    if (collaborator.NoteId == id)
+                    {
+                        return true;
+                    }
+                }
+                return false;
             }
-            
+            catch (Exception)
+            {
+                return false;
+            }
         }
         public Task<int> DeleteNotes(int id)
         {
@@ -631,27 +649,30 @@ namespace Repository.Repo
                 throw new Exception();
             }
         }
-        //public async Task<string> DeleteCollaborator(int id)
-        //{
-        //    try
-        //    {
-        //        if (this.FindById(id))
-        //        {
-        //            var note = this.context.Notes.Where(notesId => notesId.NotesId1 == id).SingleOrDefault();
-        //            if (note.Collaboratator.Equals(string.Empty) || note.Collaboratator == null)
-        //            {
-        //                return "No Collaborators available";
-        //            }
-        //            note.Collaboratator = string.Empty;
-        //            await this.context.SaveChangesAsync();
-        //            return "Deleted";
-        //        }
-        //        return "Id Is invalid";
-        //    }
-        //    catch (Exception)
-        //    {
-        //        throw new Exception();
-        //    }
-        //}
+        public async Task<string> DeleteCollaborator(int id, string receiverEmail)
+        {
+            try
+            {
+                if (this.FindById(id) && this.FindCollaboratorById(id))
+                {
+                    var collaboratorList = this.context.Collaborator.Where(CollaboratorNoteId => CollaboratorNoteId.ReceiverEmail1 == receiverEmail).ToList();
+                    foreach (var collaboratorEmail in collaboratorList)
+                    {
+                        if (collaboratorEmail.ReceiverEmail1 == receiverEmail)
+                        {
+                            this.context.Collaborator.Remove(collaboratorEmail);
+                            await this.context.SaveChangesAsync();
+                            return "Deleted";
+                        }
+                    }
+                    return "This Collaborator not available";
+                }
+                return "Id Is invalid";
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
+        }
     }
 }

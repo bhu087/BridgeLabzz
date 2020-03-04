@@ -350,23 +350,23 @@ namespace FundooAPIController.Controllers
                 throw new Exception();
             }
         }
-        //[HttpDelete]
-        //[Route("deleteCollaborator")]
-        //public ActionResult DeleteCollaborator(int id)
-        //{
-        //    try
-        //    {
-        //        var result = this.notesManager.DeleteCollaborator(id);
-        //        if (result.Result.Equals("Deleted"))
-        //        {
-        //            return this.Ok("Collaborator Deleted");
-        //        }
-        //        return this.BadRequest("Collaborator Available in this id");
-        //    }
-        //    catch (Exception)
-        //    {
-        //        throw new Exception();
-        //    }
-        //}
+        [HttpDelete]
+        [Route("deleteCollaborator")]
+        public ActionResult DeleteCollaborator(int id, string receiverEmail)
+        {
+            try
+            {
+                var result = this.notesManager.DeleteCollaborator(id,receiverEmail);
+                if (result.Result.Equals("Deleted"))
+                {
+                    return this.Ok("Collaborator Deleted");
+                }
+                return this.BadRequest("Collaborator Not Available in this id");
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
+        }
     }
 }
