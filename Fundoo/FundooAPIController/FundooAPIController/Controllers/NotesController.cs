@@ -332,5 +332,23 @@ namespace FundooAPIController.Controllers
                 throw new Exception();
             }
         }
+        [HttpPost]
+        [Route("addCollaborator")]
+        public ActionResult AddCollaborator(int noteId, string collaboratorEmail)
+        {
+            var result = this.notesManager.AddCollaborator(noteId, collaboratorEmail);
+            try
+            {
+                if (!result.Result.Equals("Id Not available"))
+                {
+                    return this.Ok(result);
+                }
+                return this.BadRequest("Id Not available");
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
+        }
     }
 }
