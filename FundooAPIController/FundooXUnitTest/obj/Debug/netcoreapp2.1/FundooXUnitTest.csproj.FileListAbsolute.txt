@@ -1,0 +1,17 @@
+D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooXUnitTest\bin\Debug\netcoreapp2.1\FundooXUnitTest.deps.json
+D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooXUnitTest\bin\Debug\netcoreapp2.1\FundooXUnitTest.runtimeconfig.json
+D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooXUnitTest\bin\Debug\netcoreapp2.1\FundooXUnitTest.runtimeconfig.dev.json
+D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooXUnitTest\bin\Debug\netcoreapp2.1\FundooXUnitTest.dll
+D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooXUnitTest\bin\Debug\netcoreapp2.1\FundooXUnitTest.pdb
+D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooXUnitTest\bin\Debug\netcoreapp2.1\Manager.dll
+D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooXUnitTest\bin\Debug\netcoreapp2.1\Model.dll
+D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooXUnitTest\bin\Debug\netcoreapp2.1\Repository.dll
+D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooXUnitTest\bin\Debug\netcoreapp2.1\Manager.pdb
+D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooXUnitTest\bin\Debug\netcoreapp2.1\Repository.pdb
+D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooXUnitTest\bin\Debug\netcoreapp2.1\Model.pdb
+D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooXUnitTest\obj\Debug\netcoreapp2.1\FundooXUnitTest.csprojAssemblyReference.cache
+D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooXUnitTest\obj\Debug\netcoreapp2.1\FundooXUnitTest.AssemblyInfoInputs.cache
+D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooXUnitTest\obj\Debug\netcoreapp2.1\FundooXUnitTest.AssemblyInfo.cs
+D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooXUnitTest\obj\Debug\netcoreapp2.1\FundooXUnitTest.csproj.CopyComplete
+D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooXUnitTest\obj\Debug\netcoreapp2.1\FundooXUnitTest.dll
+D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooXUnitTest\obj\Debug\netcoreapp2.1\FundooXUnitTest.pdb
