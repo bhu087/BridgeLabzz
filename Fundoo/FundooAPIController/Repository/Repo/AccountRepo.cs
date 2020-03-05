@@ -243,7 +243,7 @@ namespace Repository.Repo
                     var securityTokenHandler = new JwtSecurityTokenHandler();
                     var securityToken = securityTokenHandler.CreateToken(tokenDescriptor);
                     var token = securityTokenHandler.WriteToken(securityToken);
-                    var cacheKey = loginModel.Email;
+                    var cacheKey = "GoogleLogin";////loginModel.Email;
                     ConnectionMultiplexer connectionMultiplexer = ConnectionMultiplexer.Connect("127.0.0.1:6379");
                     IDatabase database = connectionMultiplexer.GetDatabase();
                     database.StringSet(cacheKey, token.ToString());
@@ -281,5 +281,17 @@ namespace Repository.Repo
                 };
             }
         } 
+
+        public async Task<string> LogOutFromSocialAccount()
+        {
+            ConnectionMultiplexer connectionMultiplexer = ConnectionMultiplexer.Connect("127.0.0.1:6379");
+            IDatabase database = connectionMultiplexer.GetDatabase();
+            if (database.KeyExists("GoogleLogin"))
+            {
+                database.KeyDelete("GoogleLogin");
+                return "LoggedOut form Google Account";
+            }
+            return "You are not loged in through social Account";
+        }
     }
 }

@@ -77,7 +77,27 @@ namespace Manager.Account
 
         public Task<Registration> LoginByGoogle(Login loginModel)
         {
-            return this.accountRepository.LoginByGoogle(loginModel);
+            try
+            {
+                var result = this.accountRepository.LoginByGoogle(loginModel);
+                return result;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+
+        public Task<string> LogOutFromSocialAccount()
+        {
+            try
+            {
+                return this.accountRepository.LogOutFromSocialAccount();
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
         }
 
         public Task<int> Register(Registration register)

@@ -17,5 +17,6 @@ namespace Repository.Repo
         Task<string> ResetPassword(string email);
         Task<Registration> LoginByGoogle(Login loginModel);
         Task<string> ForgetPassword(string email);
+        Task<string> LogOutFromSocialAccount();
     }
 }

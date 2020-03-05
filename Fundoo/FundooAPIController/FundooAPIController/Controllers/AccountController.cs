@@ -267,5 +267,24 @@ namespace FundooAPIController.Controllers
                 throw new Exception();
             }  
         }
+        [HttpPost]
+        [Route("logoutFromSocialAccount")]
+        public ActionResult LogOutFromSocialAccount()
+        {
+            try
+            {
+                var result = this.manager.LogOutFromSocialAccount();
+                if (result != null)
+                {
+                    return this.Ok(result);
+                }
+
+                return this.BadRequest("Something Wrong");
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
+        }
     }
 }
