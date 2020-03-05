@@ -86,7 +86,10 @@ namespace Repository.Repo
                 {
                     Subject = new ClaimsIdentity(new Claim[]
                         {
-                            new Claim("Id", add.ToString())
+                            new Claim("Email", notesModel.Email),
+                            new Claim("Title", notesModel.Title),
+                            new Claim("Description", notesModel.Description),
+                            new Claim("CreatedTime", notesModel.CreatedTime.ToString())
                         }),
                     Expires = DateTime.UtcNow.AddDays(1),
                     SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes("Hello this is Radis Cache")), SecurityAlgorithms.HmacSha256Signature)
@@ -97,8 +100,7 @@ namespace Repository.Repo
                 var cacheKey = "Add";
                 ConnectionMultiplexer connectionMultiplexer = ConnectionMultiplexer.Connect("127.0.0.1:6379");
                 IDatabase database = connectionMultiplexer.GetDatabase();
-                database.StringSet(cacheKey, token.ToString());
-                database.StringGet(cacheKey);
+                database.StringSet(cacheKey, token);
                 return "Saved";
             }
             catch (Exception e)
@@ -134,7 +136,7 @@ namespace Repository.Repo
                     var securityTokenHandler = new JwtSecurityTokenHandler();
                     var securityToken = securityTokenHandler.CreateToken(tokenDescriptor);
                     var token = securityTokenHandler.WriteToken(securityToken);
-                    var cacheKey = notesModel.NotesId1 + " Update";
+                    var cacheKey ="Update";
                     ConnectionMultiplexer connectionMultiplexer = ConnectionMultiplexer.Connect("127.0.0.1:6379");
                     IDatabase database = connectionMultiplexer.GetDatabase();
                     database.StringSet(cacheKey, token.ToString());
@@ -170,7 +172,7 @@ namespace Repository.Repo
                     var securityTokenHandler = new JwtSecurityTokenHandler();
                     var securityToken = securityTokenHandler.CreateToken(tokenDescriptor);
                     var token = securityTokenHandler.WriteToken(securityToken);
-                    var cacheKey = notesModel.NotesId1 + " Edit";
+                    var cacheKey = "Edit";
                     ConnectionMultiplexer connectionMultiplexer = ConnectionMultiplexer.Connect("127.0.0.1:6379");
                     IDatabase database = connectionMultiplexer.GetDatabase();
                     database.StringSet(cacheKey, token.ToString());
@@ -240,7 +242,7 @@ namespace Repository.Repo
                     var securityTokenHandler = new JwtSecurityTokenHandler();
                     var securityToken = securityTokenHandler.CreateToken(tokenDescriptor);
                     var token = securityTokenHandler.WriteToken(securityToken);
-                    var cacheKey = id + " Delete";
+                    var cacheKey = "Delete";
                     ConnectionMultiplexer connectionMultiplexer = ConnectionMultiplexer.Connect("127.0.0.1:6379");
                     IDatabase database = connectionMultiplexer.GetDatabase();
                     database.StringSet(cacheKey, token.ToString());
@@ -277,7 +279,7 @@ namespace Repository.Repo
                         var securityTokenHandler = new JwtSecurityTokenHandler();
                         var securityToken = securityTokenHandler.CreateToken(tokenDescriptor);
                         var token = securityTokenHandler.WriteToken(securityToken);
-                        var cacheKey = id + " DeleteTrash";
+                        var cacheKey = "DeleteTrash";
                         ConnectionMultiplexer connectionMultiplexer = ConnectionMultiplexer.Connect("127.0.0.1:6379");
                         IDatabase database = connectionMultiplexer.GetDatabase();
                         database.StringSet(cacheKey, token.ToString());
@@ -314,7 +316,7 @@ namespace Repository.Repo
                     var securityTokenHandler = new JwtSecurityTokenHandler();
                     var securityToken = securityTokenHandler.CreateToken(tokenDescriptor);
                     var token = securityTokenHandler.WriteToken(securityToken);
-                    var cacheKey = id + " Archieve";
+                    var cacheKey = "Archieve";
                     ConnectionMultiplexer connectionMultiplexer = ConnectionMultiplexer.Connect("127.0.0.1:6379");
                     IDatabase database = connectionMultiplexer.GetDatabase();
                     database.StringSet(cacheKey, token.ToString());
@@ -351,7 +353,7 @@ namespace Repository.Repo
                         var securityTokenHandler = new JwtSecurityTokenHandler();
                         var securityToken = securityTokenHandler.CreateToken(tokenDescriptor);
                         var token = securityTokenHandler.WriteToken(securityToken);
-                        var cacheKey = id + " DeleteArchieve";
+                        var cacheKey = "DeleteArchieve";
                         ConnectionMultiplexer connectionMultiplexer = ConnectionMultiplexer.Connect("127.0.0.1:6379");
                         IDatabase database = connectionMultiplexer.GetDatabase();
                         database.StringSet(cacheKey, token.ToString());
@@ -388,7 +390,7 @@ namespace Repository.Repo
                     var securityTokenHandler = new JwtSecurityTokenHandler();
                     var securityToken = securityTokenHandler.CreateToken(tokenDescriptor);
                     var token = securityTokenHandler.WriteToken(securityToken);
-                    var cacheKey = id + " SetRemainder";
+                    var cacheKey = "SetRemainder";
                     ConnectionMultiplexer connectionMultiplexer = ConnectionMultiplexer.Connect("127.0.0.1:6379");
                     IDatabase database = connectionMultiplexer.GetDatabase();
                     database.StringSet(cacheKey, token.ToString());
@@ -425,7 +427,7 @@ namespace Repository.Repo
                         var securityTokenHandler = new JwtSecurityTokenHandler();
                         var securityToken = securityTokenHandler.CreateToken(tokenDescriptor);
                         var token = securityTokenHandler.WriteToken(securityToken);
-                        var cacheKey = id + " DeleteRemainder";
+                        var cacheKey = "DeleteRemainder";
                         ConnectionMultiplexer connectionMultiplexer = ConnectionMultiplexer.Connect("127.0.0.1:6379");
                         IDatabase database = connectionMultiplexer.GetDatabase();
                         database.StringSet(cacheKey, token.ToString());
@@ -462,7 +464,7 @@ namespace Repository.Repo
                     var securityTokenHandler = new JwtSecurityTokenHandler();
                     var securityToken = securityTokenHandler.CreateToken(tokenDescriptor);
                     var token = securityTokenHandler.WriteToken(securityToken);
-                    var cacheKey = id + " SetColor";
+                    var cacheKey = "SetColor";
                     ConnectionMultiplexer connectionMultiplexer = ConnectionMultiplexer.Connect("127.0.0.1:6379");
                     IDatabase database = connectionMultiplexer.GetDatabase();
                     database.StringSet(cacheKey, token.ToString());
@@ -524,7 +526,7 @@ namespace Repository.Repo
                     var securityTokenHandler = new JwtSecurityTokenHandler();
                     var securityToken = securityTokenHandler.CreateToken(tokenDescriptor);
                     var token = securityTokenHandler.WriteToken(securityToken);
-                    var cacheKey = id + " GetById";
+                    var cacheKey = "GetById";
                     ConnectionMultiplexer connectionMultiplexer = ConnectionMultiplexer.Connect("127.0.0.1:6379");
                     IDatabase database = connectionMultiplexer.GetDatabase();
                     database.StringSet(cacheKey, token.ToString());
