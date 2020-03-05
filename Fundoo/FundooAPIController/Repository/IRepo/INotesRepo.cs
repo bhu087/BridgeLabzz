@@ -28,5 +28,6 @@ namespace Repository.IRepo
         Task<string> AddCollaborator(int noteId, string collaboratorEmail);
         Task<string> DeleteCollaborator(int id, string receiverEmail);
         Task<string> SetPin(int id);
+        Task<string> RemovePin(int id);
     }
 }

@@ -696,5 +696,28 @@ namespace Repository.Repo
                 throw new Exception();
             }
         }
+        public async Task<string> RemovePin(int id)
+        {
+            try
+            {
+                if (this.FindById(id))
+                {
+                    var note = this.context.Notes.Where(noteId => noteId.NotesId1 == id).SingleOrDefault();
+                    if (note.IsPin == true)
+                    {
+                        note.IsPin = false;
+                        await Task.Run(() => this.context.SaveChangesAsync());
+                        return "UnPinned";
+                    }
+                    return "Not Pinned Yet";
+                    
+                }
+                return "Note not Available in this ID";
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
+        }
     }
 }
