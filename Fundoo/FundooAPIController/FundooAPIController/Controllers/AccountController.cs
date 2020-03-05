@@ -102,13 +102,13 @@ namespace FundooAPIController.Controllers
         /// <param name="register">The register.</param>
         /// <returns>Send Action result</returns>
         /// <exception cref="Exception"></exception>
-        [HttpPost]
+        [HttpPut]
         [Route("update")]
-        public ActionResult Update(Registration register)
+        public ActionResult Update(string email, int id, Registration register)
         {
             try
             {
-                var result = this.manager.Update(register);
+                var result = this.manager.Update(email, id, register);
                 if (result.Result != 0)
                 {
                     return this.Ok("Udated successfully");

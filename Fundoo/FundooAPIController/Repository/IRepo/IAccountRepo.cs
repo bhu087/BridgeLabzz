@@ -33,7 +33,7 @@ namespace Repository.Repo
         /// </summary>
         /// <param name="register">The register.</param>
         /// <returns>status of update</returns>
-        Task<int> Update(Registration register);
+        Task<int> Update(string email, int id, Registration register);
 
         /// <summary>
         /// Gets all.

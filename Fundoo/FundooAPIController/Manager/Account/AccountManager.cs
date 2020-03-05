@@ -206,11 +206,11 @@ namespace Manager.Account
         /// <param name="register">The register.</param>
         /// <returns></returns>
         /// <exception cref="Exception">throw the exception</exception>
-        public Task<int> Update(Registration register)
+        public Task<int> Update(string email, int id, Registration register)
         {
             try
             {
-                var result = this.accountRepository.Update(register);
+                var result = this.accountRepository.Update(email, id, register);
                 return result;
             }
             catch (Exception)

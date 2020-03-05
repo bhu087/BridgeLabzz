@@ -33,7 +33,7 @@ namespace Manager.Account
         /// </summary>
         /// <param name="register">The register.</param>
         /// <returns>it sends the status of the update</returns>
-        Task<int> Update(Registration register);
+        Task<int> Update(string email, int id, Registration register);
 
         /// <summary>
         /// Gets all.

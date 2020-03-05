@@ -91,6 +91,14 @@ namespace Repository.Repo
             }
         }
 
+        /// <summary>
+        /// Registers the specified register.
+        /// </summary>
+        /// <param name="register">The register.</param>
+        /// <returns>
+        /// returns status of register which is registered
+        /// </returns>
+        /// <exception cref="Exception">throw exceptions</exception>
         public async Task<int> Register(Registration register)
         {
             try
@@ -116,17 +124,28 @@ namespace Repository.Repo
             }
         }
 
-        public Task<int> Update(Registration register)
+        /// <summary>
+        /// Updates the specified register.
+        /// </summary>
+        /// <param name="register">The register.</param>
+        /// <returns>
+        /// status of update if email id and register id available
+        /// </returns>
+        /// <exception cref="Exception">throw the exception</exception>
+        public async Task<int> Update(string email, int id, Registration register)
         {
             try 
             {
-                var updateUser = this.context.Registers.Where(userId => userId.Id == register.Id).SingleOrDefault();
-                updateUser.Name = register.Name;
-                updateUser.Email = register.Email;
-                updateUser.Password = register.Password;
-                return Task.Run(() => context.SaveChangesAsync());
-                //var result = this.context.SaveChangesAsync();
-                //return result;
+                if (this.CheckUserByEmailForUpdate(email, id))
+                {
+                    var updateUser = context.Registers.Find(id);
+                    updateUser.Name = register.Name;
+                    updateUser.Email = register.Email;
+                    updateUser.Password = register.Password;
+                    var result = this.context.SaveChangesAsync();
+                    return await result;
+                }
+                return 0;
             } 
             catch (Exception e) 
             { 
@@ -270,6 +289,22 @@ namespace Repository.Repo
             {
                 var userCheck = this.context.Registers.Where(userId => userId.Email == email).SingleOrDefault();
                 if (userCheck.Email.Equals(email))
+                {
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+        public bool CheckUserByEmailForUpdate(string email, int id)
+        {
+            try
+            {
+                var userCheck = this.context.Registers.Where(user => user.Email == email).SingleOrDefault();
+                if (userCheck.Email.Equals(email) && userCheck.Id == id)
                 {
                     return true;
                 }
