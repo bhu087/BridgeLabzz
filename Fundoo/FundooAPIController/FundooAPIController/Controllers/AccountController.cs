@@ -109,7 +109,7 @@ namespace FundooAPIController.Controllers
             try
             {
                 var result = this.manager.Update(register);
-                if (result != null)
+                if (result.Result != 0)
                 {
                     return this.Ok("Udated successfully");
                 }
