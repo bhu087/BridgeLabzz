@@ -95,16 +95,20 @@ namespace Repository.Repo
         {
             try
             {
-                Registration add = new Registration()
+                if (!this.CheckUserByEmail(register.Email))
                 {
-                    //Id = register.Id,
-                    Name = register.Name,
-                    Email = register.Email,
-                    Password = register.Password
-                };
-                this.context.Registers.Add(add);
-                var result = await Task.Run(() => this.context.SaveChangesAsync());
-                return result;
+                    Registration add = new Registration()
+                    {
+                        //Id = register.Id,
+                        Name = register.Name,
+                        Email = register.Email,
+                        Password = register.Password
+                    };
+                    this.context.Registers.Add(add);
+                    var result = await Task.Run(() => this.context.SaveChangesAsync());
+                    return result;
+                }
+                return 0;
             }
             catch (Exception e)
             {
@@ -262,12 +266,19 @@ namespace Repository.Repo
         }
         public bool CheckUserByEmail(string email)
         {
-            var userCheck = this.context.Registers.Where(userId => userId.Email == email).SingleOrDefault();
-            if (userCheck.Email.Equals(email))
+            try
             {
-                return true;
+                var userCheck = this.context.Registers.Where(userId => userId.Email == email).SingleOrDefault();
+                if (userCheck.Email.Equals(email))
+                {
+                    return true;
+                }
+                return false;
             }
-            return false;
+            catch (Exception)
+            {
+                return false;
+            }
         }
         public bool CheckUser(string email,string password)
         {

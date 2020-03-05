@@ -58,12 +58,12 @@ namespace FundooAPIController.Controllers
             try
             {
                 var result = this.manager.Register(register);
-                if (result != null)
+                if (result.Result != 0)
                 {
                     return this.Ok(register);
                 }
 
-                return this.BadRequest("Not added");
+                return this.BadRequest("Account already exists for this email ID");
             }
             catch (Exception e)
             {
