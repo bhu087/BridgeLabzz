@@ -288,7 +288,7 @@ namespace Repository.Repo
             IDatabase database = connectionMultiplexer.GetDatabase();
             if (database.KeyExists("GoogleLogin"))
             {
-                database.KeyDelete("GoogleLogin");
+                await Task.Run(() => database.KeyDelete("GoogleLogin"));
                 return "LoggedOut form Google Account";
             }
             return "You are not loged in through social Account";

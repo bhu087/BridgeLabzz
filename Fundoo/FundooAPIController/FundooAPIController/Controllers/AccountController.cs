@@ -3,28 +3,26 @@
 ////author="Bhushan"
 ////</copyright>
 ////-------------------------------------------------------------------------
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Net.Security;
-using System.Net.Sockets;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web;
-using Manager.Account;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Model.Account;
-using Newtonsoft.Json;
 
-/// <summary>
-/// Fundoo Account controller
-/// </summary>
 namespace FundooAPIController.Controllers
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Diagnostics;
+    using System.IO;
+    using System.Linq;
+    using System.Net;
+    using System.Net.Security;
+    using System.Net.Sockets;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Web;
+    using Manager.Account;
+    using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.Mvc;
+    using Model.Account;
+    using Newtonsoft.Json;
+
     /// <summary>
     /// Account controller class
     /// </summary>
@@ -62,7 +60,7 @@ namespace FundooAPIController.Controllers
                 var result = this.manager.Register(register);
                 if (result != null)
                 {
-                    return Ok(register);
+                    return this.Ok(register);
                 }
 
                 return this.BadRequest();
@@ -85,7 +83,7 @@ namespace FundooAPIController.Controllers
             var result = this.manager.Delete(id);
             if (result != null)
             {
-                return Ok("Delete Successful");
+                return this.Ok("Delete Successful");
             }
 
             return this.BadRequest("Something Wrong");
@@ -103,10 +101,10 @@ namespace FundooAPIController.Controllers
         {
             try
             {
-                var result = manager.Update(register);
+                var result = this.manager.Update(register);
                 if (result != null)
                 {
-                    return Ok("Udated successfully");
+                    return this.Ok("Udated successfully");
                 }
 
                 return this.BadRequest("Not updated");
@@ -128,10 +126,10 @@ namespace FundooAPIController.Controllers
         {
             try
             {
-                var result = manager.GetAll();
+                var result = this.manager.GetAll();
                 if (result != null)
                 {
-                    return Ok(result);
+                    return this.Ok(result);
                 }
 
                 return this.BadRequest("No Accounts available");
@@ -157,7 +155,7 @@ namespace FundooAPIController.Controllers
                 var result = this.manager.GetById(id);
                 if (result != null)
                 {
-                    return Ok(result);
+                    return this.Ok(result);
                 }
 
                 return this.BadRequest("User Not Registered");
@@ -254,7 +252,7 @@ namespace FundooAPIController.Controllers
         {
             try
             {
-                var result = (this.manager.LoginByGoogle(loginModel));
+                var result = this.manager.LoginByGoogle(loginModel);
                 if (result != null)
                 {  
                     return this.Ok(result);
@@ -267,6 +265,12 @@ namespace FundooAPIController.Controllers
                 throw new Exception();
             }  
         }
+
+        /// <summary>
+        /// Logs the out from social account.
+        /// </summary>
+        /// <returns>Send Action result</returns>
+        /// <exception cref="Exception"></exception>
         [HttpPost]
         [Route("logoutFromSocialAccount")]
         public ActionResult LogOutFromSocialAccount()
@@ -274,16 +278,16 @@ namespace FundooAPIController.Controllers
             try
             {
                 var result = this.manager.LogOutFromSocialAccount();
-                if (result != null)
+                if (result.Result.Equals("LoggedOut form Google Account"))
                 {
                     return this.Ok(result);
                 }
 
-                return this.BadRequest("Something Wrong");
+                return this.BadRequest(result.Result);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                throw new Exception();
+                throw new Exception(e.Message);
             }
         }
     }
