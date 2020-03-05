@@ -674,5 +674,27 @@ namespace Repository.Repo
                 throw new Exception();
             }
         }
+        public async Task<string> SetPin(int id)
+        {
+            try
+            {
+                if (this.FindById(id))
+                {
+                    var note = this.context.Notes.Where(noteId => noteId.NotesId1 == id).SingleOrDefault();
+                    if (note.IsPin == true)
+                    {
+                        return "Already Pinned";
+                    }
+                    note.IsPin = true;
+                    await Task.Run(() => this.context.SaveChangesAsync());
+                    return "Pinned";
+                }
+                return "Note not Available in this ID";
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
+        }
     }
 }

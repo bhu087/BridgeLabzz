@@ -195,6 +195,18 @@ namespace Manager.Notes
             }
         }
 
+        public Task<string> SetPin(int id)
+        {
+            try
+            {
+                return this.notesRepo.SetPin(id);
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
+        }
+
         //public Task<string> DownloadImage(int id)
         //{
         //    try

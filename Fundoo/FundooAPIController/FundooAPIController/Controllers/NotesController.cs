@@ -223,6 +223,24 @@ namespace FundooAPIController.Controllers
                 throw new Exception();
             }
         }
+        [HttpPost]
+        [Route("setPin")]
+        public ActionResult SetPin(int id)
+        {
+            try
+            {
+                var result = this.notesManager.SetPin(id);
+                if (result.Result.Equals("Pinned"))
+                {
+                    return this.Ok(result.Result);
+                }
+                return this.BadRequest(result.Result);
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
+        }
         //public static string GetBase64StringForImage(string imgPath)
         //{
         //    byte[] imageBytes = System.IO.File.ReadAllBytes(imgPath);
