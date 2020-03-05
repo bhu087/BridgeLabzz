@@ -26,7 +26,7 @@ namespace Repository.Repo
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <returns>status of delete</returns>
-        Task<int> Delete(int id);
+        Task<string> Delete(int id);
 
         /// <summary>
         /// Updates the specified register.

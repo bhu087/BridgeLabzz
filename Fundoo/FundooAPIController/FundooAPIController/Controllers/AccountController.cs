@@ -63,11 +63,11 @@ namespace FundooAPIController.Controllers
                     return this.Ok(register);
                 }
 
-                return this.BadRequest();
+                return this.BadRequest("Not added");
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                return this.BadRequest();
+                return this.BadRequest(e.Message);
             }
         }
 
@@ -80,13 +80,20 @@ namespace FundooAPIController.Controllers
         [Route("delete")]
         public ActionResult Delete(int id)
         {
-            var result = this.manager.Delete(id);
-            if (result != null)
+            try
             {
-                return this.Ok("Delete Successful");
-            }
+                var result = this.manager.Delete(id);
+                if (!result.Result.Equals(""))
+                {
+                    return this.Ok("Delete Successful");
+                }
 
-            return this.BadRequest("Something Wrong");
+                return this.BadRequest("Something Wrong");
+            }
+            catch (Exception e)
+            {
+                return this.BadRequest(e.Message);
+            }
         }
 
         /// <summary>

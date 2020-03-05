@@ -26,7 +26,7 @@ namespace Manager.Account
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <returns>it sends the status of Delete</returns>
-        Task<int> Delete(int id);
+        Task<string> Delete(int id);
 
         /// <summary>
         /// Updates the specified register.

@@ -38,7 +38,7 @@ namespace Manager.Account
         /// <param name="id">The identifier.</param>
         /// <returns>string value</returns>
         /// <exception cref="Exception">throw the exception</exception>
-        public Task<int> Delete(int id)
+        public Task<string> Delete(int id)
         {
             try 
             {

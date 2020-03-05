@@ -39,6 +39,12 @@ namespace Repository.Repo
         {
             this.context = userDBContext;
         }
+
+        /// <summary>
+        /// Finds the account by identifier.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns>returns presense of ID</returns>
         public bool FindAccountById(int id)
         {
             try
@@ -48,6 +54,7 @@ namespace Repository.Repo
                 {
                     return true;
                 }
+
                 return false;
             }
             catch (Exception)
@@ -64,14 +71,19 @@ namespace Repository.Repo
         /// status of delete
         /// </returns>
         /// <exception cref="Exception">throw an exception</exception>
-        public async Task<int> Delete(int id)
+        public async Task<string> Delete(int id)
         {
             try 
             {
                 var removeUser = this.context.Registers.Where(userId => userId.Id == id).SingleOrDefault();
-                this.context.Registers.Remove(removeUser);
-                var result = await Task.Run(() => this.context.SaveChangesAsync());
-                return result;
+                if (this.FindAccountById(id))
+                {
+                    this.context.Registers.Remove(removeUser);
+                    var result = await Task.Run(() => this.context.SaveChangesAsync());
+                    return result.ToString();
+                }
+
+                return "";
             }
             catch (Exception)
             {
