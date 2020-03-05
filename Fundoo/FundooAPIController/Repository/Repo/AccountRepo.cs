@@ -5,9 +5,6 @@
 ////-------------------------------------------------------------------------
 namespace Repository.Repo
 {
-    using Microsoft.IdentityModel.Tokens;
-    using Model.Account;
-    using Repository.Context;
     using System;
     using System.Collections.Generic;
     using System.IdentityModel.Tokens.Jwt;
@@ -17,7 +14,9 @@ namespace Repository.Repo
     using System.Security.Claims;
     using System.Text;
     using System.Threading.Tasks;
-    using System.Configuration;
+    using Microsoft.IdentityModel.Tokens;
+    using Model.Account;
+    using Repository.Context;
     using StackExchange.Redis;
 
     /// <summary>
@@ -44,7 +43,7 @@ namespace Repository.Repo
         /// Finds the account by identifier.
         /// </summary>
         /// <param name="id">The identifier.</param>
-        /// <returns>returns presense of ID</returns>
+        /// <returns>returns status of ID</returns>
         public bool FindAccountById(int id)
         {
             try
@@ -62,6 +61,7 @@ namespace Repository.Repo
                 return false;
             }
         }
+
         /// <summary>
         /// Deletes the specified identifier.
         /// </summary>
@@ -83,7 +83,7 @@ namespace Repository.Repo
                     return result.ToString();
                 }
 
-                return "";
+                return string.Empty;
             }
             catch (Exception)
             {
@@ -107,7 +107,6 @@ namespace Repository.Repo
                 {
                     Registration add = new Registration()
                     {
-                        //Id = register.Id,
                         Name = register.Name,
                         Email = register.Email,
                         Password = register.Password
@@ -116,6 +115,7 @@ namespace Repository.Repo
                     var result = await Task.Run(() => this.context.SaveChangesAsync());
                     return result;
                 }
+
                 return 0;
             }
             catch (Exception e)
@@ -127,24 +127,27 @@ namespace Repository.Repo
         /// <summary>
         /// Updates the specified register.
         /// </summary>
+        /// <param name="email">the Email</param>
+        /// <param name="id">the ID</param>
         /// <param name="register">The register.</param>
         /// <returns>
-        /// status of update if email id and register id available
+        /// status of update
         /// </returns>
-        /// <exception cref="Exception">throw the exception</exception>
+        /// <exception cref="Exception">throw exception</exception>
         public async Task<int> Update(string email, int id, Registration register)
         {
             try 
             {
                 if (this.CheckUserByEmailForUpdate(email, id))
                 {
-                    var updateUser = context.Registers.Find(id);
+                    var updateUser = this.context.Registers.Find(id);
                     updateUser.Name = register.Name;
                     updateUser.Email = register.Email;
                     updateUser.Password = register.Password;
                     var result = this.context.SaveChangesAsync();
                     return await result;
                 }
+
                 return 0;
             } 
             catch (Exception e) 
@@ -152,12 +155,19 @@ namespace Repository.Repo
                 throw new Exception(e.Message); 
             }
         }
+
+        /// <summary>
+        /// Gets all.
+        /// </summary>
+        /// <returns>
+        /// all registrations
+        /// </returns>
+        /// <exception cref="Exception">throw exception</exception>
         public IEnumerable<Registration> GetAll()
         {
             try
             {
-                //List<Registration> registrations = new List<Registration>();
-                var allUser = this.context.Registers.ToList() ;
+                var allUser = this.context.Registers.ToList();
                 return allUser;
             }
             catch (Exception e)
@@ -166,6 +176,14 @@ namespace Repository.Repo
             }
         }
 
+        /// <summary>
+        /// Gets the by identifier.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns>
+        /// Get register by id
+        /// </returns>
+        /// <exception cref="Exception">throw exception</exception>
         public Registration GetById(int id)
         {
             try
@@ -173,14 +191,23 @@ namespace Repository.Repo
                 var singleUser = this.context.Registers.Where(userId => userId.Id == id).SingleOrDefault();
                 return singleUser;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 throw new Exception(e.Message);
             }
         }
+
+        /// <summary>
+        /// Logins the specified login model.
+        /// </summary>
+        /// <param name="loginModel">The login model.</param>
+        /// <returns>
+        /// returns status of login
+        /// </returns>
+        /// <exception cref="Exception">Throw exception</exception>
         public async Task<string> Login(Login loginModel)
         {
-            var userCheck =  this.context.Registers.Where(userId => userId.Email == loginModel.Email).SingleOrDefault();
+            var userCheck = this.context.Registers.Where(userId => userId.Email == loginModel.Email).SingleOrDefault();
             if (userCheck != null && await Task.Run(() => this.CheckUser(loginModel.Email, loginModel.Password)))
             {
                 try
@@ -189,8 +216,8 @@ namespace Repository.Repo
                     {
                         Subject = new ClaimsIdentity(new Claim[]
                         {
-                            new Claim("Id",userCheck.Id.ToString()),
-                            new Claim("Name",userCheck.Name.ToString())
+                            new Claim("Id", userCheck.Id.ToString()),
+                            new Claim("Name", userCheck.Name.ToString())
                         }),
                         Expires = DateTime.UtcNow.AddDays(1),
                         SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes("Hello this is Radis Cache")), SecurityAlgorithms.HmacSha256Signature)
@@ -198,7 +225,6 @@ namespace Repository.Repo
                     var securityTokenHandler = new JwtSecurityTokenHandler();
                     var securityToken = securityTokenHandler.CreateToken(tokenDescriptor);
                     var token = securityTokenHandler.WriteToken(securityToken);
-                    //var cacheKey = loginModel.Id;
                     return token;
                 }
                 catch (Exception e)
@@ -206,29 +232,30 @@ namespace Repository.Repo
                     throw new Exception(e.Message);
                 }
             }
+
             return "Email Not Present";
         }
-        public static void AppSettings(out string UserID, out string Password, out string SMTPPort, out string Host)
-        {
-            UserID = ConfigurationManager.AppSettings.Get("UserID");
-            Password = ConfigurationManager.AppSettings.Get("Password");
-            SMTPPort = ConfigurationManager.AppSettings.Get("SMTPPort");
-            Host = ConfigurationManager.AppSettings.Get("Host");
-        }
+
+        /// <summary>
+        /// Resets the password.
+        /// </summary>
+        /// <param name="email">The email.</param>
+        /// <returns>
+        /// status of reset password
+        /// </returns>
         public async Task<string> ResetPassword(string email)
         {
             var userCheck = this.context.Registers.Where(userId => userId.Email == email).SingleOrDefault();
-            if (userCheck != null && CheckUserByEmail(email))
+            if (userCheck != null && this.CheckUserByEmail(email))
             {
                 try
                 {
                     MailMessage mail = new MailMessage();
                     mail.To.Add(email);
-                    //mail.CC.Add("ccid@hotmail.com");
                     mail.From = new MailAddress("bhush087@gmail.com");
                     mail.Subject = "Reset Account";
-                    string Body = "https://www.w3schools.com/js/js_htmldom_animate.asp";
-                    mail.Body = Body;
+                    string body = "https://www.w3schools.com/js/js_htmldom_animate.asp";
+                    mail.Body = body;
                     mail.IsBodyHtml = false;
                     SmtpClient smtp = new SmtpClient
                     {
@@ -243,23 +270,29 @@ namespace Repository.Repo
                 {
                     return "ex";
                 }
-                //return "OK";
             }
             else
             {
                 return "This email address does not match our records.";
             }
         }
+
+        /// <summary>
+        /// Forgets the password.
+        /// </summary>
+        /// <param name="email">The email.</param>
+        /// <returns>
+        /// status of forget password
+        /// </returns>
         public async Task<string> ForgetPassword(string email)
         {
             var userCheck = this.context.Registers.Where(userId => userId.Email == email).SingleOrDefault();
-            if (userCheck != null && CheckUserByEmail(email))
+            if (userCheck != null && this.CheckUserByEmail(email))
             {
                 try
                 {
                     MailMessage mail = new MailMessage();
                     mail.To.Add(email);
-                    //mail.CC.Add("ccid@hotmail.com");
                     mail.From = new MailAddress("bhush087@gmail.com");
                     mail.Subject = "Reset Account : our Password is";
                     mail.Body = userCheck.Password;
@@ -283,6 +316,12 @@ namespace Repository.Repo
                 return "This email address does not match our records.";
             }
         }
+
+        /// <summary>
+        /// Checks the user by email.
+        /// </summary>
+        /// <param name="email">The email.</param>
+        /// <returns>status of email present or not</returns>
         public bool CheckUserByEmail(string email)
         {
             try
@@ -292,6 +331,7 @@ namespace Repository.Repo
                 {
                     return true;
                 }
+
                 return false;
             }
             catch (Exception)
@@ -299,6 +339,13 @@ namespace Repository.Repo
                 return false;
             }
         }
+
+        /// <summary>
+        /// Checks the user by email for update.
+        /// </summary>
+        /// <param name="email">The email.</param>
+        /// <param name="id">The identifier.</param>
+        /// <returns>status of email and id</returns>
         public bool CheckUserByEmailForUpdate(string email, int id)
         {
             try
@@ -308,6 +355,7 @@ namespace Repository.Repo
                 {
                     return true;
                 }
+
                 return false;
             }
             catch (Exception)
@@ -315,19 +363,35 @@ namespace Repository.Repo
                 return false;
             }
         }
-        public bool CheckUser(string email,string password)
+
+        /// <summary>
+        /// Checks the user.
+        /// </summary>
+        /// <param name="email">The email.</param>
+        /// <param name="password">The password.</param>
+        /// <returns>returns the status of user for login</returns>
+        public bool CheckUser(string email, string password)
         {
             var userCheck = this.context.Registers.Where(userId => userId.Email == email).SingleOrDefault();
-            if(userCheck.Email.Equals(email) && userCheck.Password == password)
+            if (userCheck.Email.Equals(email) && userCheck.Password == password)
             {
                 return true;
             }
+
             return false;
         }
+
+        /// <summary>
+        /// Logins the by google.
+        /// </summary>
+        /// <param name="loginModel">The login model.</param>
+        /// <returns>
+        /// registration model of google login
+        /// </returns>
+        /// <exception cref="Exception">throw exception</exception>
         public async Task<Registration> LoginByGoogle(Login loginModel)
         {
             var userCheck = this.context.Registers.Where(userId => userId.Email == loginModel.Email).SingleOrDefault();
-            //var userCheck = this.context.Registers.Where(userId => userId.Email == loginModel.Email).SingleOrDefault();
             if (userCheck != null && this.CheckUserByEmail(loginModel.Email))
             {
                 try
@@ -345,12 +409,12 @@ namespace Repository.Repo
                     var securityTokenHandler = new JwtSecurityTokenHandler();
                     var securityToken = securityTokenHandler.CreateToken(tokenDescriptor);
                     var token = securityTokenHandler.WriteToken(securityToken);
-                    var cacheKey = "GoogleLogin";////loginModel.Email;
+                    var cacheKey = "GoogleLogin";
                     ConnectionMultiplexer connectionMultiplexer = ConnectionMultiplexer.Connect("127.0.0.1:6379");
                     IDatabase database = connectionMultiplexer.GetDatabase();
                     database.StringSet(cacheKey, token.ToString());
                     database.StringGet(cacheKey);
-                    // return new JwtSecurityTokenHandler().WriteToken(token) + "    expiration:" + token.ValidTo;
+                    //// return new JwtSecurityTokenHandler().WriteToken(token) + "    expiration:" + token.ValidTo;
                     return await Task.Run(() => userCheck);
                 }
                 catch (Exception e)
@@ -382,18 +446,32 @@ namespace Repository.Repo
                     Email = loginModel.Email
                 };
             }
-        } 
+        }
 
+        /// <summary>
+        /// Logs the out from social account.
+        /// </summary>
+        /// <returns>
+        /// return status of logout
+        /// </returns>
         public async Task<string> LogOutFromSocialAccount()
         {
-            ConnectionMultiplexer connectionMultiplexer = ConnectionMultiplexer.Connect("127.0.0.1:6379");
-            IDatabase database = connectionMultiplexer.GetDatabase();
-            if (database.KeyExists("GoogleLogin"))
+            try
             {
-                await Task.Run(() => database.KeyDelete("GoogleLogin"));
-                return "LoggedOut form Google Account";
+                ConnectionMultiplexer connectionMultiplexer = ConnectionMultiplexer.Connect("127.0.0.1:6379");
+                IDatabase database = connectionMultiplexer.GetDatabase();
+                if (database.KeyExists("GoogleLogin"))
+                {
+                    await Task.Run(() => database.KeyDelete("GoogleLogin"));
+                    return "LoggedOut form Google Account";
+                }
+
+                return "You are not loged in through social Account";
             }
-            return "You are not loged in through social Account";
+            catch (Exception)
+            {
+                throw new Exception();
+            }
         }
     }
 }

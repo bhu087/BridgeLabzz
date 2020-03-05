@@ -150,7 +150,7 @@ namespace Repository.Repo
                             labels.LabelId = labelModel.LabelId;
                             labels.LabelName = labelModel.LabelName;
                             var result = this.context.SaveChangesAsync();
-                            return "Updated";
+                            return await Task.Run(() => "Updated");
                         }
                     }
                     return "";

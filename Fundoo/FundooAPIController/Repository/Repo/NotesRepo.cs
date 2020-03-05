@@ -101,7 +101,7 @@ namespace Repository.Repo
                 ConnectionMultiplexer connectionMultiplexer = ConnectionMultiplexer.Connect("127.0.0.1:6379");
                 IDatabase database = connectionMultiplexer.GetDatabase();
                 database.StringSet(cacheKey, token);
-                return "Saved";
+                return await Task.Run(() => "Saved");
             }
             catch (Exception e)
             {
@@ -558,7 +558,6 @@ namespace Repository.Repo
                     note.Image = string.Empty;
                     note.Image = uploadResult.Uri.ToString();
                     note.ModifiedTime = DateTime.Now;
-                    var result = this.context.SaveChangesAsync();
                     var tokenDescriptor = new SecurityTokenDescriptor
                     {
                         Subject = new ClaimsIdentity(new Claim[]
@@ -576,6 +575,7 @@ namespace Repository.Repo
                     IDatabase database = connectionMultiplexer.GetDatabase();
                     database.StringSet(cacheKey, token.ToString());
                     database.StringGet(cacheKey);
+                    var result = await Task.Run(() => this.context.SaveChangesAsync());
                     return uploadResult;
                 }
                 catch (Exception)
