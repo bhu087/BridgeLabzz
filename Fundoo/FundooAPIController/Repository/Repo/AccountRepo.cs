@@ -155,10 +155,12 @@ namespace Repository.Repo
                     string Body = "https://www.w3schools.com/js/js_htmldom_animate.asp";
                     mail.Body = Body;
                     mail.IsBodyHtml = false;
-                    SmtpClient smtp = new SmtpClient();
-                    smtp.Host = "smtp.gmail.com";
-                    smtp.EnableSsl = true;
-                    smtp.Credentials = new NetworkCredential("bhush087@gmail.com", "Bhushan087***");
+                    SmtpClient smtp = new SmtpClient
+                    {
+                        Host = "smtp.gmail.com",
+                        EnableSsl = true,
+                        Credentials = new NetworkCredential("bhush087@gmail.com", "Bhushan087***")
+                    };
                     smtp.Send(mail);
                     return "Success";
                 }
@@ -187,10 +189,12 @@ namespace Repository.Repo
                     mail.Subject = "Reset Account : our Password is";
                     mail.Body = userCheck.Password;
                     mail.IsBodyHtml = false;
-                    SmtpClient smtp = new SmtpClient();
-                    smtp.Host = "smtp.gmail.com";
-                    smtp.EnableSsl = true;
-                    smtp.Credentials = new NetworkCredential("bhush087@gmail.com", "Bhushan087***");
+                    SmtpClient smtp = new SmtpClient
+                    {
+                        Host = "smtp.gmail.com",
+                        EnableSsl = true,
+                        Credentials = new NetworkCredential("bhush087@gmail.com", "Bhushan087***")
+                    };
                     smtp.Send(mail);
                     return "Success";
                 }

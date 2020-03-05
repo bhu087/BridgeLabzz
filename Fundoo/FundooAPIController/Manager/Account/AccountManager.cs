@@ -1,22 +1,43 @@
-﻿using Model.Account;
-using Repository.Repo;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿/////------------------------------------------------------------------------
+////<copyright file="AccountManager.cs" company="BridgeLabz">
+////author="Bhushan"
+////</copyright>
+////-------------------------------------------------------------------------
 namespace Manager.Account
 {
-    
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+    using System.Threading.Tasks;
+    using Model.Account;
+    using Repository.Repo;
+
+    /// <summary>
+    /// Account manager
+    /// </summary>
+    /// <seealso cref="Manager.Account.IAccountManager" />
     public class AccountManager : IAccountManager
     {
+        /// <summary>
+        /// The account repository interface
+        /// </summary>
         public readonly IAccountRepo accountRepository;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AccountManager"/> class.
+        /// </summary>
+        /// <param name="accountRepository">The account repository.</param>
         public AccountManager(IAccountRepo accountRepository)
         {
-            this.accountRepository = accountRepository;
+                this.accountRepository = accountRepository;
         }
 
+        /// <summary>
+        /// Deletes the specified identifier.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns>string value</returns>
+        /// <exception cref="Exception">throw the exception</exception>
         public Task<int> Delete(int id)
         {
             try 
@@ -30,12 +51,30 @@ namespace Manager.Account
             }
         }
 
+        /// <summary>
+        /// Forgets the password.
+        /// </summary>
+        /// <param name="email">The email.</param>
+        /// <returns>string value</returns>
+        /// <exception cref="Exception">throw the exception</exception>
         public Task<string> ForgetPassword(string email)
         {
-            var result = this.accountRepository.ForgetPassword(email);
-            return result;
+            try
+            {
+                var result = this.accountRepository.ForgetPassword(email);
+                return result;
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
         }
 
+        /// <summary>
+        /// Gets all.
+        /// </summary>
+        /// <returns>string value</returns>
+        /// <exception cref="Exception">throw the exception</exception>
         public IEnumerable<Registration> GetAll()
         {
             try
@@ -43,12 +82,18 @@ namespace Manager.Account
                 var list = this.accountRepository.GetAll();
                 return list;
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                throw new Exception(e.Message);
+                throw new Exception();
             }
         }
 
+        /// <summary>
+        /// Gets the by identifier.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns>return Registration model</returns>
+        /// <exception cref="Exception">throw the exception</exception>
         public Registration GetById(int id)
         {
             try 
@@ -56,25 +101,37 @@ namespace Manager.Account
                 var singleUser = this.accountRepository.GetById(id);
                 return singleUser;
             }
-            catch(Exception e)
+            catch (Exception)
             {
-                throw new Exception(e.Message);
+                throw new Exception();
             }
         }
 
+        /// <summary>
+        /// Logins the specified login model.
+        /// </summary>
+        /// <param name="loginModel">The login model.</param>
+        /// <returns>string value</returns>
+        /// <exception cref="Exception">throw the exception</exception>
         public Task<string> Login(Login loginModel)
         {
             try
             {
-                var result = accountRepository.Login(loginModel);
+                var result = this.accountRepository.Login(loginModel);
                 return result;
             }
-            catch(Exception e)
+            catch (Exception)
             {
-                throw new Exception(e.Message);
+                throw new Exception();
             }
         }
 
+        /// <summary>
+        /// Logins the by google.
+        /// </summary>
+        /// <param name="loginModel">The login model.</param>
+        /// <returns>return Register model</returns>
+        /// <exception cref="Exception">throw the exception</exception>
         public Task<Registration> LoginByGoogle(Login loginModel)
         {
             try
@@ -82,12 +139,17 @@ namespace Manager.Account
                 var result = this.accountRepository.LoginByGoogle(loginModel);
                 return result;
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                throw new Exception(e.Message);
+                throw new Exception();
             }
         }
 
+        /// <summary>
+        /// Logs the out from social account.
+        /// </summary>
+        /// <returns>string value</returns>
+        /// <exception cref="Exception">throw the exception</exception>
         public Task<string> LogOutFromSocialAccount()
         {
             try
@@ -100,42 +162,60 @@ namespace Manager.Account
             }
         }
 
+        /// <summary>
+        /// Registers the specified register.
+        /// </summary>
+        /// <param name="register">The register.</param>
+        /// <returns>integer value</returns>
+        /// <exception cref="Exception">throw the exception</exception>
         public Task<int> Register(Registration register)
         {
             try
             {
-                var result = accountRepository.Register(register);
+                var result = this.accountRepository.Register(register);
                 return result;
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                throw new Exception(e.Message);
+                throw new Exception();
             }
         }
 
+        /// <summary>
+        /// Resets the password.
+        /// </summary>
+        /// <param name="email">The email.</param>
+        /// <returns>return notification</returns>
+        /// <exception cref="Exception">throw the exception</exception>
         public Task<string> ResetPassword(string email)
         {
             try
             {
-                var result = accountRepository.ResetPassword(email);
+                var result = this.accountRepository.ResetPassword(email);
                 return result;
             }
-            catch(Exception e)
+            catch (Exception)
             {
-                throw new Exception(e.Message);
+                throw new Exception();
             }
         }
 
+        /// <summary>
+        /// Updates the specified register.
+        /// </summary>
+        /// <param name="register">The register.</param>
+        /// <returns></returns>
+        /// <exception cref="Exception">throw the exception</exception>
         public Task<int> Update(Registration register)
         {
             try
             {
-                var result = accountRepository.Update(register);
+                var result = this.accountRepository.Update(register);
                 return result;
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                throw new Exception(e.Message);
+                throw new Exception();
             }
         }
     }
