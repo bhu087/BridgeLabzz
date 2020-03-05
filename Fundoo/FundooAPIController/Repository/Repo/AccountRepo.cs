@@ -1,44 +1,85 @@
-﻿using Microsoft.IdentityModel.Tokens;
-using Model.Account;
-using Repository.Context;
-using System;
-using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
-using System.Net;
-using System.Net.Mail;
-using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
-using System.Configuration;
-using StackExchange.Redis;
-
+﻿/////------------------------------------------------------------------------
+////<copyright file="AccountRepo.cs" company="BridgeLabz">
+////author="Bhushan"
+////</copyright>
+////-------------------------------------------------------------------------
 namespace Repository.Repo
 {
+    using Microsoft.IdentityModel.Tokens;
+    using Model.Account;
+    using Repository.Context;
+    using System;
+    using System.Collections.Generic;
+    using System.IdentityModel.Tokens.Jwt;
+    using System.Linq;
+    using System.Net;
+    using System.Net.Mail;
+    using System.Security.Claims;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Configuration;
+    using StackExchange.Redis;
+
+    /// <summary>
+    /// This is the account repository
+    /// </summary>
+    /// <seealso cref="Repository.Repo.IAccountRepo" />
     public class AccountRepo : IAccountRepo
     {
+        /// <summary>
+        /// The context
+        /// </summary>
         public readonly UserDBContext context;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AccountRepo"/> class.
+        /// </summary>
+        /// <param name="userDBContext">The user database context.</param>
         public AccountRepo(UserDBContext userDBContext)
         {
             this.context = userDBContext;
         }
-
-        public Task<int> Delete(int id)
+        public bool FindAccountById(int id)
+        {
+            try
+            {
+                var account = this.context.Registers.Where(accountId => accountId.Id == id).SingleOrDefault();
+                if (account.Id == id)
+                {
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+        /// <summary>
+        /// Deletes the specified identifier.
+        /// </summary>
+        /// It delete the registered account if it is available.
+        /// <param name="id">The identifier.</param>
+        /// <returns>
+        /// status of delete
+        /// </returns>
+        /// <exception cref="Exception">throw an exception</exception>
+        public async Task<int> Delete(int id)
         {
             try 
             {
                 var removeUser = this.context.Registers.Where(userId => userId.Id == id).SingleOrDefault();
                 this.context.Registers.Remove(removeUser);
-                var result = this.context.SaveChangesAsync();
+                var result = await Task.Run(() => this.context.SaveChangesAsync());
                 return result;
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                throw new Exception(e.Message);
+                throw new Exception();
             }
         }
 
-        public Task<int> Register(Registration register)
+        public async Task<int> Register(Registration register)
         {
             try
             {
@@ -50,7 +91,7 @@ namespace Repository.Repo
                     Password = register.Password
                 };
                 this.context.Registers.Add(add);
-                var result = this.context.SaveChangesAsync();
+                var result = await Task.Run(() => this.context.SaveChangesAsync());
                 return result;
             }
             catch (Exception e)
@@ -104,9 +145,8 @@ namespace Repository.Repo
         }
         public async Task<string> Login(Login loginModel)
         {
-            var userCheck = this.context.Registers.Where(userId => userId.Email == loginModel.Email).SingleOrDefault();
-            //var userCheck = this.context.Registers.Where(userId => userId.Email == loginModel.Email).SingleOrDefault();
-            if (userCheck != null && this.CheckUser(loginModel.Email, loginModel.Password))
+            var userCheck =  this.context.Registers.Where(userId => userId.Email == loginModel.Email).SingleOrDefault();
+            if (userCheck != null && await Task.Run(() => this.CheckUser(loginModel.Email, loginModel.Password)))
             {
                 try
                 {
@@ -162,7 +202,7 @@ namespace Repository.Repo
                         Credentials = new NetworkCredential("bhush087@gmail.com", "Bhushan087***")
                     };
                     smtp.Send(mail);
-                    return "Success";
+                    return await Task.Run(() => "Success");
                 }
                 catch (Exception)
                 {
@@ -196,7 +236,7 @@ namespace Repository.Repo
                         Credentials = new NetworkCredential("bhush087@gmail.com", "Bhushan087***")
                     };
                     smtp.Send(mail);
-                    return "Success";
+                    return await Task.Run(() => "Success");
                 }
                 catch (Exception)
                 {
@@ -253,7 +293,7 @@ namespace Repository.Repo
                     database.StringSet(cacheKey, token.ToString());
                     database.StringGet(cacheKey);
                     // return new JwtSecurityTokenHandler().WriteToken(token) + "    expiration:" + token.ValidTo;
-                    return userCheck;
+                    return await Task.Run(() => userCheck);
                 }
                 catch (Exception e)
                 {
