@@ -1,34 +1,68 @@
-﻿using CloudinaryDotNet;
-using CloudinaryDotNet.Actions;
-using Microsoft.IdentityModel.Tokens;
-using Model.Account;
-using Model.Notes;
-using Repository.Context;
-using Repository.IRepo;
-using StackExchange.Redis;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
-using System.Net;
-using System.Net.Mail;
-using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿/////------------------------------------------------------------------------
+////<copyright file="NotesRepo.cs" company="BridgeLabz">
+////author="Bhushan"
+////</copyright>
+////-------------------------------------------------------------------------
 namespace Repository.Repo
 {
+    using System;
+    using System.Collections.Generic;
+    using System.IdentityModel.Tokens.Jwt;
+    using System.Linq;
+    using System.Net;
+    using System.Net.Mail;
+    using System.Security.Claims;
+    using System.Text;
+    using System.Threading.Tasks;
+    using CloudinaryDotNet;
+    using CloudinaryDotNet.Actions;
+    using Microsoft.IdentityModel.Tokens;
+    using Model.Account;
+    using Model.Notes;
+    using Repository.Context;
+    using Repository.IRepo;
+    using StackExchange.Redis;
+
+    /// <summary>
+    /// /This is the Notes repository
+    /// </summary>
+    /// <seealso cref="Repository.IRepo.INotesRepo" />
     public class NotesRepo : INotesRepo
     {
+        /// <summary>
+        /// The cloud name
+        /// </summary>
         public const string CloudName = "bhu087";
+
+        /// <summary>
+        /// The API key
+        /// </summary>
         public const string APIKey = "354171364155512";
+
+        /// <summary>
+        /// The API secret
+        /// </summary>
         public const string APISecret = "ZtRMv8zmp1hqFjyFAeOpNNj2p3A";
+
+        /// <summary>
+        /// The context
+        /// </summary>
         public readonly UserDBContext context;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="NotesRepo"/> class.
+        /// </summary>
+        /// <param name="userDBContext">The user database context.</param>
         public NotesRepo(UserDBContext userDBContext)
         {
             this.context = userDBContext;
         }
+
+        /// <summary>
+        /// Duplicates the emails.
+        /// </summary>
+        /// <param name="email">The email.</param>
+        /// <returns>return duplicate emails status</returns>
         public bool DuplicateEmails(string email)
         {
             var emails = this.context.Notes.Where(notesEmail => notesEmail.Email == email).ToList();
@@ -39,8 +73,15 @@ namespace Repository.Repo
                     return true;
                 }
             }
+
             return false;
         }
+
+        /// <summary>
+        /// Duplicates the emails update.
+        /// </summary>
+        /// <param name="notesModel">The notes model.</param>
+        /// <returns>returns status for duplicates while update</returns>
         public bool DuplicateEmailsUpdate(NotesModel notesModel)
         {
             var emails = this.context.Notes.Where(notesEmail => notesEmail.Email == notesModel.Email).ToList();
@@ -51,8 +92,15 @@ namespace Repository.Repo
                     return true;
                 }
             }
+
             return false;
         }
+
+        /// <summary>
+        /// Duplicates the emails with note identifier.
+        /// </summary>
+        /// <param name="collaborator">The collaborator.</param>
+        /// <returns>Returns duplicate status with email and id</returns>
         public bool DuplicateEmailsWithNoteId(CollaboratorModel collaborator)
         {
             var emailsAndNoteId = this.context.Collaborator.Where(notesEmail => notesEmail.ReceiverEmail1 == collaborator.ReceiverEmail1).ToList();
@@ -64,8 +112,18 @@ namespace Repository.Repo
                     return false;
                 }
             }
+
             return true;
         }
+
+        /// <summary>
+        /// Adds the notes.
+        /// </summary>
+        /// <param name="notesModel">The notes model.</param>
+        /// <returns>
+        /// returns status
+        /// </returns>
+        /// <exception cref="Exception">throw Exception</exception>
         public async Task<int> AddNotes(NotesModel notesModel)
         {
             try
@@ -95,6 +153,7 @@ namespace Repository.Repo
                     database.StringSet(cacheKey, token);
                     return await result;
                 }
+
                 return 0;
             }
             catch (Exception e)
@@ -102,6 +161,15 @@ namespace Repository.Repo
                 throw new Exception(e.Message);
             }
         }
+
+        /// <summary>
+        /// Updates the notes.
+        /// </summary>
+        /// <param name="notesModel">The notes model.</param>
+        /// <returns>
+        /// returns status
+        /// </returns>
+        /// <exception cref="Exception">Throw Exception</exception>
         public async Task<string> UpdateNotes(NotesModel notesModel)
         {
             try
@@ -110,6 +178,7 @@ namespace Repository.Repo
                 {
                     return "Email already Exist";
                 }
+
                 if (this.FindById(notesModel.NotesId1))
                 {
                     var notesCheck = this.context.Notes.Where(notesId => notesId.NotesId1 == notesModel.NotesId1).SingleOrDefault();
@@ -130,13 +199,14 @@ namespace Repository.Repo
                     var securityTokenHandler = new JwtSecurityTokenHandler();
                     var securityToken = securityTokenHandler.CreateToken(tokenDescriptor);
                     var token = securityTokenHandler.WriteToken(securityToken);
-                    var cacheKey ="Update";
+                    var cacheKey = "Update";
                     ConnectionMultiplexer connectionMultiplexer = ConnectionMultiplexer.Connect("127.0.0.1:6379");
                     IDatabase database = connectionMultiplexer.GetDatabase();
                     database.StringSet(cacheKey, token.ToString());
                     database.StringGet(cacheKey);
-                    return "Saved";
+                    return await Task.Run(() => "Saved");
                 }
+
                 return null;
             }
             catch (Exception e)
@@ -144,6 +214,15 @@ namespace Repository.Repo
                 throw new Exception(e.Message);
             }
         }
+
+        /// <summary>
+        /// Edits the title.
+        /// </summary>
+        /// <param name="notesModel">The notes model.</param>
+        /// <returns>
+        /// returns status
+        /// </returns>
+        /// <exception cref="Exception">Throw Exception</exception>
         public async Task<string> EditTitle(NotesModel notesModel)
         {
             try
@@ -171,8 +250,9 @@ namespace Repository.Repo
                     IDatabase database = connectionMultiplexer.GetDatabase();
                     database.StringSet(cacheKey, token.ToString());
                     database.StringGet(cacheKey);
-                    return "Title Updated";
+                    return await Task.Run(() => "Title Updated");
                 }
+
                 return null;
             }
             catch (Exception e)
@@ -180,6 +260,12 @@ namespace Repository.Repo
                 throw new Exception(e.Message);
             }
         }
+
+        /// <summary>
+        /// Finds the by identifier.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns>status of note by Id</returns>
         public bool FindById(int id)
         {
             try
@@ -189,6 +275,7 @@ namespace Repository.Repo
                 {
                     return true;
                 }
+
                 return false;
             }
             catch (Exception)
@@ -196,6 +283,12 @@ namespace Repository.Repo
                 return false;
             } 
         }
+
+        /// <summary>
+        /// Finds the collaborator by identifier.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns>Finds Collaborator by Id</returns>
         public bool FindCollaboratorById(int id)
         {
             try
@@ -208,6 +301,7 @@ namespace Repository.Repo
                         return true;
                     }
                 }
+
                 return false;
             }
             catch (Exception)
@@ -215,6 +309,15 @@ namespace Repository.Repo
                 return false;
             }
         }
+
+        /// <summary>
+        /// Deletes the notes.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns>
+        /// returns status
+        /// </returns>
+        /// <exception cref="Exception">Throw Exception</exception>
         public Task<int> DeleteNotes(int id)
         {
             try
@@ -243,6 +346,7 @@ namespace Repository.Repo
                     database.StringGet(cacheKey);
                     return result;
                 }
+
                 return null;
             }
             catch (Exception e)
@@ -250,6 +354,15 @@ namespace Repository.Repo
                 throw new Exception(e.Message);
             }
         }
+
+        /// <summary>
+        /// Deletes the trash.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns>
+        /// returns status
+        /// </returns>
+        /// <exception cref="Exception">Throw Exception</exception>
         public async Task<string> DeleteTrash(int id)
         {
             try
@@ -280,8 +393,10 @@ namespace Repository.Repo
                         database.StringGet(cacheKey);
                         return await Task.Run(() => "Deleted from Trash");
                     }
+
                     return "This Note is Not Trash";
                 }
+
                 return null;
             }
             catch (Exception e)
@@ -289,7 +404,16 @@ namespace Repository.Repo
                 throw new Exception(e.Message);
             }
         }
-        public async Task<int> ArchieveNotes(int id)
+
+        /// <summary>
+        /// Archive the notes.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns>
+        /// returns status
+        /// </returns>
+        /// <exception cref="Exception">Throw Exception</exception>
+        public async Task<int> ArchiveNotes(int id)
         {
             try
             {
@@ -317,6 +441,7 @@ namespace Repository.Repo
                     database.StringGet(cacheKey);
                     return await Task.Run(() => result);
                 }
+
                 return 0; 
             }
             catch (Exception e)
@@ -324,7 +449,16 @@ namespace Repository.Repo
                 throw new Exception(e.Message);
             }
         }
-        public async Task<string> DeleteArchievedNote(int id)
+
+        /// <summary>
+        /// Deletes the archive note.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns>
+        /// returns status
+        /// </returns>
+        /// <exception cref="Exception">Throw Exception</exception>
+        public async Task<string> DeleteArchivedNote(int id)
         {
             try
             {
@@ -354,8 +488,10 @@ namespace Repository.Repo
                         database.StringGet(cacheKey);
                         return await Task.Run(() => "Deleted");
                     }
+
                     return "No";
                 }
+
                 return null;
             }
             catch (Exception e)
@@ -363,6 +499,16 @@ namespace Repository.Repo
                 throw new Exception(e.Message);
             }
         }
+
+        /// <summary>
+        /// Sets the remainder.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <param name="time">The time.</param>
+        /// <returns>
+        /// returns status
+        /// </returns>
+        /// <exception cref="Exception">Throw Exception</exception>
         public async Task<int> SetRemainder(int id, string time)
         {
             try
@@ -391,6 +537,7 @@ namespace Repository.Repo
                     database.StringGet(cacheKey);
                     return await Task.Run(() => result);
                 }
+
                 return 0;
             }
             catch (Exception e)
@@ -398,6 +545,15 @@ namespace Repository.Repo
                 throw new Exception(e.Message);
             }
         }
+
+        /// <summary>
+        /// Deletes the remainder.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns>
+        /// returns status
+        /// </returns>
+        /// <exception cref="Exception">Throw Exception</exception>
         public async Task<int> DeleteRemainder(int id)
         {
             try
@@ -406,14 +562,6 @@ namespace Repository.Repo
                 {
                     var note = this.context.Notes.Where(notesId => notesId.NotesId1 == id).SingleOrDefault();
                     var res = await Task.Run(() => note.Remainder);
-                    //if (res == null)
-                    //{
-                    //    Debug.WriteLine(res);
-                    //}
-                    //else
-                    //{
-                    //    Debug.WriteLine("No");
-                    //}!note.Remainder.Equals(string.Empty)
                     if (res != null && !res.Equals(string.Empty))
                     {
                         note.Remainder = string.Empty;
@@ -437,8 +585,10 @@ namespace Repository.Repo
                         database.StringGet(cacheKey);
                         return await Task.Run(() => result);
                     }
+
                     return 0;
                 }
+
                 return 0;
             }
             catch (Exception e)
@@ -446,6 +596,16 @@ namespace Repository.Repo
                 throw new Exception(e.Message);
             }
         }
+
+        /// <summary>
+        /// Sets the color.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <param name="color">The color.</param>
+        /// <returns>
+        /// returns status
+        /// </returns>
+        /// <exception cref="Exception">Throw Exception</exception>
         public async Task<string> SetColor(int id, string color)
         {
             try
@@ -474,6 +634,7 @@ namespace Repository.Repo
                     database.StringGet(cacheKey);
                     return await Task.Run(() => "Color Changed");
                 }
+
                 return null;
             }
             catch (Exception e)
@@ -481,6 +642,14 @@ namespace Repository.Repo
                 throw new Exception(e.Message);
             }
         }
+
+        /// <summary>
+        /// Gets all notes.
+        /// </summary>
+        /// <returns>
+        /// returns status
+        /// </returns>
+        /// <exception cref="Exception">Throw Exception</exception>
         public IEnumerable<NotesModel> GetAllNotes()
         {
             try
@@ -510,6 +679,15 @@ namespace Repository.Repo
                 throw new Exception();
             }
         }
+
+        /// <summary>
+        /// Gets the notes by identifier.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns>
+        /// returns status
+        /// </returns>
+        /// <exception cref="Exception">Throw Exception</exception>
         public async Task<NotesModel> GetNotesById(int id)
         {
             try
@@ -536,6 +714,7 @@ namespace Repository.Repo
                     database.StringGet(cacheKey);
                     return await Task.Run(() => note);
                 }
+
                 return null;
             }
             catch (Exception)
@@ -543,7 +722,16 @@ namespace Repository.Repo
                 throw new Exception();
             }
         }
-        
+
+        /// <summary>
+        /// Uploads the image.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <param name="imagePath">The image path.</param>
+        /// <returns>
+        /// returns status
+        /// </returns>
+        /// <exception cref="Exception">Throw Exception</exception>
         public async Task<ImageUploadResult> UploadImage(int id, string imagePath)
         {
             if (this.FindById(id))
@@ -578,16 +766,26 @@ namespace Repository.Repo
                     IDatabase database = connectionMultiplexer.GetDatabase();
                     database.StringSet(cacheKey, token.ToString());
                     database.StringGet(cacheKey);
-                    var result = await Task.Run(() => this.context.SaveChangesAsync());
-                    return uploadResult;
+                    var result = this.context.SaveChangesAsync();
+                    return  uploadResult;
                 }
                 catch (Exception)
                 {
                     throw new Exception();
                 }
             }
+
             return null;
         }
+
+        /// <summary>
+        /// Search result
+        /// </summary>
+        /// <param name="searchParameter">List of search results</param>
+        /// <returns>
+        /// returns status
+        /// </returns>
+        /// <exception cref="Exception">Throw Exception</exception>
         public IQueryable<NotesModel> Search(string searchParameter)
         {
             try
@@ -599,6 +797,7 @@ namespace Repository.Repo
                     results = results.Where(emailId => emailId.Email.Contains(values) || emailId.Description.Contains(values) || 
                     emailId.Title.Contains(values));
                 }
+
                 foreach (var singleResult in results)
                 {
                     if (singleResult.Email.Equals(searchParameter))
@@ -607,6 +806,7 @@ namespace Repository.Repo
                         singleSearch.Title == searchParameter);
                     }
                 }
+
                 return results;
             }
             catch (Exception)
@@ -614,6 +814,16 @@ namespace Repository.Repo
                 throw new Exception();
             }
         }
+
+        /// <summary>
+        /// Adds the collaborator.
+        /// </summary>
+        /// <param name="noteId">The note identifier.</param>
+        /// <param name="collaboratorEmail">The collaborator email.</param>
+        /// <returns>
+        /// returns status
+        /// </returns>
+        /// <exception cref="Exception">Throw Exception</exception>
         public async Task<string> AddCollaborator(int noteId, string collaboratorEmail)
         {
             try
@@ -634,19 +844,23 @@ namespace Repository.Repo
                         mail.To.Add(collaboratorEmail);
                         mail.From = new MailAddress("bhush087@gmail.com");
                         mail.Subject = "Title :" + note.Title;
-                        string Body = "(" + note.Email + ") shared a note with you. " + "Description :" + note.Description;
-                        mail.Body = Body;
+                        string body = "(" + note.Email + ") shared a note with you. " + "Description :" + note.Description;
+                        mail.Body = body;
                         mail.IsBodyHtml = false;
-                        SmtpClient smtp = new SmtpClient();
-                        smtp.Host = "smtp.gmail.com";
-                        smtp.EnableSsl = true;
-                        smtp.Credentials = new NetworkCredential("bhush087@gmail.com", "Bhushan087***");
+                        SmtpClient smtp = new SmtpClient
+                        {
+                            Host = "smtp.gmail.com",
+                            EnableSsl = true,
+                            Credentials = new NetworkCredential("bhush087@gmail.com", "Bhushan087***")
+                        };
                         smtp.Send(mail);
                         var result = await this.context.SaveChangesAsync();
                         return "Collabrator added and Note sent successfully";
                     }
+
                     return "Duplicate Receiver found";
                 }
+
                 return "Id Not available";
             }
             catch (Exception)
@@ -654,6 +868,16 @@ namespace Repository.Repo
                 throw new Exception();
             }
         }
+
+        /// <summary>
+        /// Deletes the collaborator.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <param name="receiverEmail">The receiver email.</param>
+        /// <returns>
+        /// returns status
+        /// </returns>
+        /// <exception cref="Exception">Throw Exception</exception>
         public async Task<string> DeleteCollaborator(int id, string receiverEmail)
         {
             try
@@ -670,8 +894,10 @@ namespace Repository.Repo
                             return "Deleted";
                         }
                     }
+
                     return "This Collaborator not available";
                 }
+
                 return "Id Is invalid";
             }
             catch (Exception)
@@ -679,6 +905,15 @@ namespace Repository.Repo
                 throw new Exception();
             }
         }
+
+        /// <summary>
+        /// Sets the pin.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns>
+        /// returns status
+        /// </returns>
+        /// <exception cref="Exception">Throw Exception</exception>
         public async Task<string> SetPin(int id)
         {
             try
@@ -690,10 +925,12 @@ namespace Repository.Repo
                     {
                         return "Already Pinned";
                     }
+
                     note.IsPin = true;
                     await Task.Run(() => this.context.SaveChangesAsync());
                     return "Pinned";
                 }
+
                 return "Note not Available in this ID";
             }
             catch (Exception)
@@ -701,6 +938,15 @@ namespace Repository.Repo
                 throw new Exception();
             }
         }
+
+        /// <summary>
+        /// Removes the pin.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns>
+        /// returns status
+        /// </returns>
+        /// <exception cref="Exception">Throw Exception</exception>
         public async Task<string> RemovePin(int id)
         {
             try
@@ -714,9 +960,10 @@ namespace Repository.Repo
                         await Task.Run(() => this.context.SaveChangesAsync());
                         return "UnPinned";
                     }
+
                     return "Not Pinned Yet";
-                    
                 }
+
                 return "Note not Available in this ID";
             }
             catch (Exception)

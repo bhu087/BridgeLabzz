@@ -1,32 +1,86 @@
-﻿using CloudinaryDotNet.Actions;
-using Model.Account;
-using Repository.IRepo;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿/////------------------------------------------------------------------------
+////<copyright file="NotesManager.cs" company="BridgeLabz">
+////author="Bhushan"
+////</copyright>
+////-------------------------------------------------------------------------
 namespace Manager.Notes
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using CloudinaryDotNet.Actions;
+    using Model.Account;
+    using Repository.IRepo;
+
+    /// <summary>
+    /// This is the Notes Manager
+    /// </summary>
+    /// <seealso cref="Manager.Notes.INotesManager" />
     public class NotesManager : INotesManager
     {
+        /// <summary>
+        /// The notes repo
+        /// </summary>
         public readonly INotesRepo notesRepo;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="NotesManager"/> class.
+        /// </summary>
+        /// <param name="notesRepo">The notes repo.</param>
         public NotesManager(INotesRepo notesRepo)
         {
             this.notesRepo = notesRepo;
         }
+
+        /// <summary>
+        /// Adds the notes.
+        /// </summary>
+        /// <param name="notesModel">The notes model.</param>
+        /// <returns>
+        /// returns status
+        /// </returns>
+        /// <exception cref="Exception">Throw exception</exception>
         public Task<int> AddNotes(NotesModel notesModel)
         {
-            return this.notesRepo.AddNotes(notesModel);
+            try
+            {
+                return this.notesRepo.AddNotes(notesModel);
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            } 
         }
 
+        /// <summary>
+        /// Deletes the trash.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns>
+        /// returns status
+        /// </returns>
+        /// <exception cref="Exception">Throw exception</exception>
         public Task<string> DeleteTrash(int id)
         {
-            return this.notesRepo.DeleteTrash(id);
+            try
+            {
+                return this.notesRepo.DeleteTrash(id);
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
         }
 
+        /// <summary>
+        /// Deletes the notes.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns>
+        /// returns status
+        /// </returns>
+        /// <exception cref="Exception">Throw exception</exception>
         public Task<int> DeleteNotes(int id)
         {
             try
@@ -39,11 +93,19 @@ namespace Manager.Notes
             }
         }
 
-        public Task<int> ArchieveNotes(int id)
+        /// <summary>
+        /// Archives the notes.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns>
+        /// returns status
+        /// </returns>
+        /// <exception cref="Exception">Throw exception</exception>
+        public Task<int> ArchiveNotes(int id)
         {
             try
             {
-                return this.notesRepo.ArchieveNotes(id);
+                return this.notesRepo.ArchiveNotes(id);
             }
             catch (Exception)
             {
@@ -51,11 +113,19 @@ namespace Manager.Notes
             }
         }
 
-        public Task<string> DeleteArchievedNote(int id)
+        /// <summary>
+        /// Deletes the archived note.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns>
+        /// returns status
+        /// </returns>
+        /// <exception cref="Exception">Throw exception</exception>
+        public Task<string> DeleteArchivedNote(int id)
         {
             try
             {
-                return this.notesRepo.DeleteArchievedNote(id);
+                return this.notesRepo.DeleteArchivedNote(id);
             }
             catch (Exception)
             {
@@ -63,6 +133,15 @@ namespace Manager.Notes
             }
         }
 
+        /// <summary>
+        /// Sets the remainder.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <param name="time">The time.</param>
+        /// <returns>
+        /// returns status
+        /// </returns>
+        /// <exception cref="Exception">Throw exception</exception>
         public Task<int> SetRemainder(int id, string time)
         {
             try
@@ -75,6 +154,14 @@ namespace Manager.Notes
             }
         }
 
+        /// <summary>
+        /// Updates the notes.
+        /// </summary>
+        /// <param name="notesModel">The notes model.</param>
+        /// <returns>
+        /// returns status
+        /// </returns>
+        /// <exception cref="Exception">Throw exception</exception>
         public Task<string> UpdateNotes(NotesModel notesModel)
         {
             try
@@ -87,6 +174,14 @@ namespace Manager.Notes
             }
         }
 
+        /// <summary>
+        /// Deletes the remainder.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns>
+        /// returns status
+        /// </returns>
+        /// <exception cref="Exception">Throw exception</exception>
         public Task<int> DeleteRemainder(int id)
         {
             try
@@ -99,6 +194,14 @@ namespace Manager.Notes
             }
         }
 
+        /// <summary>
+        /// Edits the title.
+        /// </summary>
+        /// <param name="notesModel">The notes model.</param>
+        /// <returns>
+        /// returns status
+        /// </returns>
+        /// <exception cref="Exception">Throw exception</exception>
         public Task<string> EditTitle(NotesModel notesModel)
         {
             try
@@ -111,6 +214,15 @@ namespace Manager.Notes
             }
         }
 
+        /// <summary>
+        /// Sets the color.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <param name="color">The color.</param>
+        /// <returns>
+        /// returns status
+        /// </returns>
+        /// <exception cref="Exception">Throw exception</exception>
         public Task<string> SetColor(int id, string color)
         {
             try
@@ -123,6 +235,13 @@ namespace Manager.Notes
             }
         }
 
+        /// <summary>
+        /// Gets all notes.
+        /// </summary>
+        /// <returns>
+        /// returns status
+        /// </returns>
+        /// <exception cref="Exception">Throw exception</exception>
         public IEnumerable<NotesModel> GetAllNotes()
         {
             try
@@ -135,6 +254,14 @@ namespace Manager.Notes
             }
         }
 
+        /// <summary>
+        /// Gets the notes by identifier.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns>
+        /// returns status
+        /// </returns>
+        /// <exception cref="Exception">Throw exception</exception>
         public Task<NotesModel> GetNotesById(int id)
         {
             try
@@ -147,7 +274,16 @@ namespace Manager.Notes
             }
         }
 
-        public Task<ImageUploadResult> UploadImage(int id,string imagePath)
+        /// <summary>
+        /// Uploads the image.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <param name="imagePath">The image path.</param>
+        /// <returns>
+        /// returns status
+        /// </returns>
+        /// <exception cref="Exception">Throw exception</exception>
+        public Task<ImageUploadResult> UploadImage(int id, string imagePath)
         {
             try
             {
@@ -159,6 +295,14 @@ namespace Manager.Notes
             }
         }
 
+        /// <summary>
+        /// Gives the all search results
+        /// </summary>
+        /// <param name="searchParameter">List of search results</param>
+        /// <returns>
+        /// returns status
+        /// </returns>
+        /// <exception cref="Exception">Throw exception</exception>
         public IQueryable<NotesModel> Search(string searchParameter)
         {
             try
@@ -171,6 +315,15 @@ namespace Manager.Notes
             }
         }
 
+        /// <summary>
+        /// Adds the collaborator.
+        /// </summary>
+        /// <param name="noteId">The note identifier.</param>
+        /// <param name="collaboratorEmail">The collaborator email.</param>
+        /// <returns>
+        /// returns status
+        /// </returns>
+        /// <exception cref="Exception">Throw exception</exception>
         public Task<string> AddCollaborator(int noteId, string collaboratorEmail)
         {
             try
@@ -183,11 +336,20 @@ namespace Manager.Notes
             }
         }
 
+        /// <summary>
+        /// Deletes the collaborator.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <param name="receiverEmail">The receiver email.</param>
+        /// <returns>
+        /// returns status
+        /// </returns>
+        /// <exception cref="Exception">Throw exception</exception>
         public Task<string> DeleteCollaborator(int id, string receiverEmail)
         {
             try
             {
-                return this.notesRepo.DeleteCollaborator(id,receiverEmail);
+                return this.notesRepo.DeleteCollaborator(id, receiverEmail);
             }
             catch (Exception)
             {
@@ -195,6 +357,14 @@ namespace Manager.Notes
             }
         }
 
+        /// <summary>
+        /// Sets the pin.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns>
+        /// returns status
+        /// </returns>
+        /// <exception cref="Exception">Throw exception</exception>
         public Task<string> SetPin(int id)
         {
             try
@@ -207,6 +377,14 @@ namespace Manager.Notes
             }
         }
 
+        /// <summary>
+        /// Removes the pin.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns>
+        /// returns status
+        /// </returns>
+        /// <exception cref="Exception">Throw exception</exception>
         public Task<string> RemovePin(int id)
         {
             try
@@ -218,17 +396,5 @@ namespace Manager.Notes
                 throw new Exception();
             }
         }
-
-        //public Task<string> DownloadImage(int id)
-        //{
-        //    try
-        //    {
-        //        return this.notesRepo.DownloadImage(id);
-        //    }
-        //    catch (Exception)
-        //    {
-        //        throw new Exception();
-        //    }
-        //}
     }
 }

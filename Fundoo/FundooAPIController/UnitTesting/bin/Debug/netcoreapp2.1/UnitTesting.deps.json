@@ -10,7 +10,9 @@
         "dependencies": {
           "Manager": "1.0.0",
           "Microsoft.NET.Test.Sdk": "16.2.0",
+          "Model": "1.0.0",
           "Moq": "4.13.1",
+          "NotesCases": "1.0.0",
           "Repository": "1.0.0",
           "coverlet.collector": "1.0.1",
           "xunit": "2.4.0",
@@ -1511,6 +1513,11 @@
           "Model.dll": {}
         }
       },
+      "NotesCases/1.0.0": {
+        "runtime": {
+          "NotesCases.dll": {}
+        }
+      },
       "Repository/1.0.0": {
         "dependencies": {
           "CloudinaryDotNet": "1.10.0",
@@ -2395,6 +2402,11 @@
       "sha512": ""
     },
     "Model/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "NotesCases/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

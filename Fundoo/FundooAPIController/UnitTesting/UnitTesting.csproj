@@ -15,12 +15,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Manager\Manager.csproj" />
-    <ProjectReference Include="..\Repository\Repository.csproj" />
+    <Folder Include="Labels\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Labels\" />
+    <ProjectReference Include="..\Manager\Manager.csproj" />
+    <ProjectReference Include="..\Model\Model.csproj" />
+    <ProjectReference Include="..\NotesCases\NotesCases.csproj" />
+    <ProjectReference Include="..\Repository\Repository.csproj" />
   </ItemGroup>
 
 </Project>

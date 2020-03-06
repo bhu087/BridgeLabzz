@@ -1,3 +1,6 @@
+D:\BridgeLabzBhush\Fundoo\FundooAPIController\UnitTesting\obj\Debug\netcoreapp2.1\UnitTesting.csprojAssemblyReference.cache
+D:\BridgeLabzBhush\Fundoo\FundooAPIController\UnitTesting\obj\Debug\netcoreapp2.1\UnitTesting.AssemblyInfoInputs.cache
+D:\BridgeLabzBhush\Fundoo\FundooAPIController\UnitTesting\obj\Debug\netcoreapp2.1\UnitTesting.AssemblyInfo.cs
 D:\BridgeLabzBhush\Fundoo\FundooAPIController\UnitTesting\bin\Debug\netcoreapp2.1\xunit.runner.visualstudio.dotnetcore.testadapter.dll
 D:\BridgeLabzBhush\Fundoo\FundooAPIController\UnitTesting\bin\Debug\netcoreapp2.1\xunit.runner.reporters.netcoreapp10.dll
 D:\BridgeLabzBhush\Fundoo\FundooAPIController\UnitTesting\bin\Debug\netcoreapp2.1\xunit.runner.utility.netcoreapp10.dll
@@ -8,13 +11,12 @@ D:\BridgeLabzBhush\Fundoo\FundooAPIController\UnitTesting\bin\Debug\netcoreapp2.
 D:\BridgeLabzBhush\Fundoo\FundooAPIController\UnitTesting\bin\Debug\netcoreapp2.1\UnitTesting.pdb
 D:\BridgeLabzBhush\Fundoo\FundooAPIController\UnitTesting\bin\Debug\netcoreapp2.1\Manager.dll
 D:\BridgeLabzBhush\Fundoo\FundooAPIController\UnitTesting\bin\Debug\netcoreapp2.1\Model.dll
+D:\BridgeLabzBhush\Fundoo\FundooAPIController\UnitTesting\bin\Debug\netcoreapp2.1\NotesCases.dll
 D:\BridgeLabzBhush\Fundoo\FundooAPIController\UnitTesting\bin\Debug\netcoreapp2.1\Repository.dll
 D:\BridgeLabzBhush\Fundoo\FundooAPIController\UnitTesting\bin\Debug\netcoreapp2.1\Manager.pdb
-D:\BridgeLabzBhush\Fundoo\FundooAPIController\UnitTesting\bin\Debug\netcoreapp2.1\Repository.pdb
 D:\BridgeLabzBhush\Fundoo\FundooAPIController\UnitTesting\bin\Debug\netcoreapp2.1\Model.pdb
-D:\BridgeLabzBhush\Fundoo\FundooAPIController\UnitTesting\obj\Debug\netcoreapp2.1\UnitTesting.csprojAssemblyReference.cache
-D:\BridgeLabzBhush\Fundoo\FundooAPIController\UnitTesting\obj\Debug\netcoreapp2.1\UnitTesting.AssemblyInfoInputs.cache
-D:\BridgeLabzBhush\Fundoo\FundooAPIController\UnitTesting\obj\Debug\netcoreapp2.1\UnitTesting.AssemblyInfo.cs
+D:\BridgeLabzBhush\Fundoo\FundooAPIController\UnitTesting\bin\Debug\netcoreapp2.1\NotesCases.pdb
+D:\BridgeLabzBhush\Fundoo\FundooAPIController\UnitTesting\bin\Debug\netcoreapp2.1\Repository.pdb
 D:\BridgeLabzBhush\Fundoo\FundooAPIController\UnitTesting\obj\Debug\netcoreapp2.1\UnitTesting.csproj.CopyComplete
 D:\BridgeLabzBhush\Fundoo\FundooAPIController\UnitTesting\obj\Debug\netcoreapp2.1\UnitTesting.dll
 D:\BridgeLabzBhush\Fundoo\FundooAPIController\UnitTesting\obj\Debug\netcoreapp2.1\UnitTesting.pdb

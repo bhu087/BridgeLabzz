@@ -2217,6 +2217,16 @@
           "bin/placeholder/Model.dll": {}
         }
       },
+      "NotesCases/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.1",
+        "compile": {
+          "bin/placeholder/NotesCases.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/NotesCases.dll": {}
+        }
+      },
       "Repository/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.1",
@@ -7596,6 +7606,11 @@
       "path": "../Model/Model.csproj",
       "msbuildProject": "../Model/Model.csproj"
     },
+    "NotesCases/1.0.0": {
+      "type": "project",
+      "path": "../NotesCases/NotesCases.csproj",
+      "msbuildProject": "../NotesCases/NotesCases.csproj"
+    },
     "Repository/1.0.0": {
       "type": "project",
       "path": "../Repository/Repository.csproj",
@@ -7607,7 +7622,9 @@
       "Manager >= 1.0.0",
       "Microsoft.NET.Test.Sdk >= 16.2.0",
       "Microsoft.NETCore.App >= 2.1.0",
+      "Model >= 1.0.0",
       "Moq >= 4.13.1",
+      "NotesCases >= 1.0.0",
       "Repository >= 1.0.0",
       "coverlet.collector >= 1.0.1",
       "xunit >= 2.4.0",
@@ -7642,6 +7659,12 @@
           "projectReferences": {
             "D:\\BridgeLabzBhush\\Fundoo\\FundooAPIController\\Manager\\Manager.csproj": {
               "projectPath": "D:\\BridgeLabzBhush\\Fundoo\\FundooAPIController\\Manager\\Manager.csproj"
+            },
+            "D:\\BridgeLabzBhush\\Fundoo\\FundooAPIController\\Model\\Model.csproj": {
+              "projectPath": "D:\\BridgeLabzBhush\\Fundoo\\FundooAPIController\\Model\\Model.csproj"
+            },
+            "D:\\BridgeLabzBhush\\Fundoo\\FundooAPIController\\NotesCases\\NotesCases.csproj": {
+              "projectPath": "D:\\BridgeLabzBhush\\Fundoo\\FundooAPIController\\NotesCases\\NotesCases.csproj"
             },
             "D:\\BridgeLabzBhush\\Fundoo\\FundooAPIController\\Repository\\Repository.csproj": {
               "projectPath": "D:\\BridgeLabzBhush\\Fundoo\\FundooAPIController\\Repository\\Repository.csproj"

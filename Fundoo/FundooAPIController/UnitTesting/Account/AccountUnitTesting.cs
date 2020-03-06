@@ -50,5 +50,19 @@ namespace UnitTesting
             var data = manager.Login(login);
             Assert.NotNull(data);
         }
+        [Fact]
+        public void UpdateTest()
+        {
+            var service = new Mock<IAccountRepo>();
+            var manager = new AccountManager(service.Object);
+            var registration = new Registration()
+            {
+                Name = "abc",
+                Email = "M@gmail.com",
+                Password = "123333"
+            };
+            var data = manager.Update("abcd@gmail.com", 1005, registration);
+            Assert.NotNull(data);
+        }
     }
 }
