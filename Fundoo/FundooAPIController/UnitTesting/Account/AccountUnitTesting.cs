@@ -1,15 +1,24 @@
-using Manager.Account;
-using Model.Account;
-using Moq;
-using Repository.Context;
-using Repository.Repo;
-using System;
-using Xunit;
-
+/////------------------------------------------------------------------------
+////<copyright file="AccountUnitTesting.cs" company="BridgeLabz">
+////author="Bhushan"
+////</copyright>
+////-------------------------------------------------------------------------
 namespace UnitTesting
 {
+    using Manager.Account;
+    using Model.Account;
+    using Moq;
+    using Repository.Repo;
+    using Xunit;
+
+    /// <summary>
+    /// this is the Unit testing for Account
+    /// </summary>
     public class AccountUnitTesting
     {
+        /// <summary>
+        /// Registers the test1.
+        /// </summary>
         [Fact]
         public void RegisterTest1()
         {
@@ -24,6 +33,10 @@ namespace UnitTesting
             var data = manager.Register(registration);
             Assert.NotNull(data);
         }
+
+        /// <summary>
+        /// Logins the test1.
+        /// </summary>
         [Fact]
         public void LoginTest1()
         {
@@ -37,6 +50,10 @@ namespace UnitTesting
             var data = manager.Login(login);
             Assert.Null(data.Result);
         }
+
+        /// <summary>
+        /// Logins the test2.
+        /// </summary>
         [Fact]
         public void LoginTest2()
         {
@@ -50,6 +67,10 @@ namespace UnitTesting
             var data = manager.Login(login);
             Assert.NotNull(data);
         }
+
+        /// <summary>
+        /// Updates the test.
+        /// </summary>
         [Fact]
         public void UpdateTest()
         {
