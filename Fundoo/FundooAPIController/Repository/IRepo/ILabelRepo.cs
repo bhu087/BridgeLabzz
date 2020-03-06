@@ -53,7 +53,7 @@ namespace Repository.IRepo
         /// <summary>
         /// Renames the label.
         /// </summary>
-        /// <param name="id">The identifier.</param>
+        /// <param name="currentLabelName">Name of the current label.</param>
         /// <param name="newLabelName">New name of the label.</param>
         /// <returns>status of the rename label</returns>
         Task<int> RenameLabel(string currentLabelName, string newLabelName);

@@ -37,7 +37,7 @@ namespace FundooAPIController.Controllers
         /// it expect LabelId(NoteId), Label Name
         /// </summary>
         /// <param name="labelModel">The label model.</param>
-        /// <returns></returns>
+        /// <returns>result for Add Label</returns>
         /// <exception cref="System.Exception">Throw Exception</exception>
         [HttpPost]
         [Route("addLabel")]
@@ -63,12 +63,12 @@ namespace FundooAPIController.Controllers
         /// Updates the label.
         /// it expect Id of Label(NoteId), Label name, and New label Name in label Model.
         /// its working like a move from one label to other, even if label not available
-        /// it creatres a new label with respect to user new Labeel entry.
+        /// it creates a new label with respect to user new Label entry.
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <param name="labelName">Name of the label.</param>
         /// <param name="labelModel">The label model.</param>
-        /// <returns></returns>
+        /// <returns>result for update</returns>
         /// <exception cref="System.Exception">Throw Exception</exception>
         [HttpPut]
         [Route("updateLabel")]
@@ -95,7 +95,7 @@ namespace FundooAPIController.Controllers
         /// it expect label name to delete, and it delete all the entries in the name of label Name.
         /// </summary>
         /// <param name="labelName">Name of the label.</param>
-        /// <returns></returns>
+        /// <returns>result for Delete label</returns>
         /// <exception cref="System.Exception">Throw Exception</exception>
         [HttpDelete]
         [Route("deleteLabel")]
@@ -122,7 +122,7 @@ namespace FundooAPIController.Controllers
         /// it expect label Id.
         /// </summary>
         /// <param name="labelId">The label identifier.</param>
-        /// <returns></returns>
+        /// <returns>result for delete single note from label</returns>
         /// <exception cref="System.Exception">Throw Exception</exception>
         [HttpDelete]
         [Route("deleteNoteFromLabel")]
@@ -147,7 +147,7 @@ namespace FundooAPIController.Controllers
         /// <summary>
         /// Gets all labels.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>result for all labels</returns>
         /// <exception cref="System.Exception">Throw Exception</exception>
         [HttpGet]
         [Route("getAllLabels")]
@@ -174,7 +174,7 @@ namespace FundooAPIController.Controllers
         /// it expect label id.
         /// </summary>
         /// <param name="id">The identifier.</param>
-        /// <returns></returns>
+        /// <returns>result for single ID</returns>
         /// <exception cref="System.Exception">Throw Exception</exception>
         [HttpGet]
         [Route("getByLabelId")]
@@ -198,11 +198,10 @@ namespace FundooAPIController.Controllers
 
         /// <summary>
         /// Renames the label.
-        /// it expect id and new label name.
         /// </summary>
-        /// <param name="id">The identifier.</param>
+        /// <param name="currentLabelName">Name of the current label.</param>
         /// <param name="newLabelName">New name of the label.</param>
-        /// <returns></returns>
+        /// /// <returns>result rename Label</returns>
         /// <exception cref="System.Exception">Throw Exception</exception>
         [HttpPut]
         [Route("renameLabel")]

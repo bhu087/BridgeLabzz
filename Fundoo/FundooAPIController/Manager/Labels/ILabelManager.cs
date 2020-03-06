@@ -54,7 +54,7 @@ namespace Manager.Labels
         /// <summary>
         /// Renames the label.
         /// </summary>
-        /// <param name="id">The identifier.</param>
+        /// <param name="currentLabelName">Name of the current label.</param>
         /// <param name="newLabelName">New name of the label.</param>
         /// <returns>Rename label status</returns>
         Task<int> RenameLabel(string currentLabelName, string newLabelName);

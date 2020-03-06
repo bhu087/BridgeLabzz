@@ -109,14 +109,15 @@ namespace Repository.Repo
                 {
                     return "Label already in other Label";
                 }
-                    LabelModel add = new LabelModel()
-                    {
-                        LabelId = labelModel.LabelId,
-                        LabelName = labelModel.LabelName
-                    };
-                    this.context.Lables.Add(add);
-                    var result = await Task.Run(() => this.context.SaveChangesAsync());
-                    return "Saved";
+
+                LabelModel add = new LabelModel()
+                {
+                    LabelId = labelModel.LabelId,
+                    LabelName = labelModel.LabelName
+                };
+                this.context.Lables.Add(add);
+                var result = await Task.Run(() => this.context.SaveChangesAsync());
+                return "Saved";
             }
             catch (Exception e)
             {
@@ -271,7 +272,7 @@ namespace Repository.Repo
         /// <summary>
         /// Renames the label.
         /// </summary>
-        /// <param name="id">The identifier.</param>
+        /// <param name="currentLabelName">Current name of label</param>
         /// <param name="newLabelName">New name of the label.</param>
         /// <returns>
         /// status of the rename label
@@ -288,6 +289,7 @@ namespace Repository.Repo
                     {
                         label.LabelName = newLabelName;
                     }
+
                     var result = await Task.Run(() => this.context.SaveChangesAsync());
                     return result;
                 }

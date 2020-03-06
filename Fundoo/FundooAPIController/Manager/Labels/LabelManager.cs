@@ -138,7 +138,7 @@ namespace Manager.Labels
         /// <summary>
         /// Renames the label.
         /// </summary>
-        /// <param name="id">The identifier.</param>
+        /// <param name="currentLabelName">Current name of label</param>
         /// <param name="newLabelName">New name of the label.</param>
         /// <returns>
         /// Rename label status
