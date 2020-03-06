@@ -1,20 +1,44 @@
-﻿using Model.Account;
-using Repository.IRepo;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿/////------------------------------------------------------------------------
+////<copyright file="LabelManager.cs" company="BridgeLabz">
+////author="Bhushan"
+////</copyright>
+////-------------------------------------------------------------------------
 namespace Manager.Labels
 {
+    using System;
+    using System.Collections;
+    using System.Threading.Tasks;
+    using Model.Account;
+    using Repository.IRepo;
+
+    /// <summary>
+    /// this is the Label manager class
+    /// </summary>
+    /// <seealso cref="Manager.Labels.ILabelManager" />
     public class LabelManager : ILabelManager
     {
+        /// <summary>
+        /// The label repo
+        /// </summary>
         public readonly ILabelRepo labelRepo;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LabelManager"/> class.
+        /// </summary>
+        /// <param name="labelRepo">The label repo.</param>
         public LabelManager(ILabelRepo labelRepo)
         {
             this.labelRepo = labelRepo;
         }
+
+        /// <summary>
+        /// Adds the label.
+        /// </summary>
+        /// <param name="labelModel">The label model.</param>
+        /// <returns>
+        /// status of add label
+        /// </returns>
+        /// <exception cref="System.Exception">Throw Exception</exception>
         public Task<string> AddLabel(LabelModel labelModel)
         {
             try
@@ -28,6 +52,14 @@ namespace Manager.Labels
             }
         }
 
+        /// <summary>
+        /// Deletes the label.
+        /// </summary>
+        /// <param name="labelName">Name of the label.</param>
+        /// <returns>
+        /// status of Delete label
+        /// </returns>
+        /// <exception cref="System.Exception">Throw Exception</exception>
         public Task<string> DeleteLabel(string labelName)
         {
             try
@@ -41,6 +73,14 @@ namespace Manager.Labels
             }
         }
 
+        /// <summary>
+        /// Deletes the note from label.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns>
+        /// status of the delete only one note from label
+        /// </returns>
+        /// <exception cref="System.Exception">Throw Exception</exception>
         public Task<string> DeleteNoteFromLabel(int id)
         {
             try
@@ -54,6 +94,13 @@ namespace Manager.Labels
             }
         }
 
+        /// <summary>
+        /// Gets all labels.
+        /// </summary>
+        /// <returns>
+        /// return all the labels
+        /// </returns>
+        /// <exception cref="System.Exception">Throw Exception</exception>
         public Task<IEnumerable> GetAllLabels()
         {
             try
@@ -67,6 +114,14 @@ namespace Manager.Labels
             }
         }
 
+        /// <summary>
+        /// Gets the label by identifier.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns>
+        /// return label by id
+        /// </returns>
+        /// <exception cref="System.Exception">Throw Exception</exception>
         public Task<LabelModel> GetLabelById(int id)
         {
             try
@@ -80,11 +135,20 @@ namespace Manager.Labels
             }
         }
 
-        public Task<int> RenameLabel(int id, string newLabelName)
+        /// <summary>
+        /// Renames the label.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <param name="newLabelName">New name of the label.</param>
+        /// <returns>
+        /// Rename label status
+        /// </returns>
+        /// <exception cref="System.Exception">Throw Exception</exception>
+        public Task<int> RenameLabel(string currentLabelName, string newLabelName)
         {
             try
             {
-                var result = this.labelRepo.RenameLabel(id, newLabelName);
+                var result = this.labelRepo.RenameLabel(currentLabelName, newLabelName);
                 return result;
             }
             catch (Exception)
@@ -93,6 +157,17 @@ namespace Manager.Labels
             }
         }
 
+        /// <summary>
+        /// Updates the label.
+        /// its working like move from one label to other.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <param name="labelName">Name of the label.</param>
+        /// <param name="labelModel">The label model.</param>
+        /// <returns>
+        /// status of update
+        /// </returns>
+        /// <exception cref="System.Exception">Throw Exception</exception>
         public Task<string> UpdateLabel(int id, string labelName, LabelModel labelModel)
         {
             try

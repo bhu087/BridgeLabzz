@@ -1,32 +1,49 @@
-﻿using Model.Account;
-using Repository.Context;
-using Repository.IRepo;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿/////------------------------------------------------------------------------
+////<copyright file="LabelRepo.cs" company="BridgeLabz">
+////author="Bhushan"
+////</copyright>
+////-------------------------------------------------------------------------
 namespace Repository.Repo
 {
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using Model.Account;
+    using Repository.Context;
+    using Repository.IRepo;
 
+    /// <summary>
+    /// this is the Label repository
+    /// </summary>
+    /// <seealso cref="Repository.IRepo.ILabelRepo" />
     public class LabelRepo : ILabelRepo
     {
+        /// <summary>
+        /// The context
+        /// </summary>
         public readonly UserDBContext context;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LabelRepo"/> class.
+        /// </summary>
+        /// <param name="context">The context.</param>
         public LabelRepo(UserDBContext context)
         {
             this.context = context;
         }
+
+        /// <summary>
+        /// Finds the by identifier.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns>status of label in database</returns>
         public bool FindById(int id)
         {
             try
             {
                 var result = this.context.Lables.Where(labelId => labelId.LabelId == id).ToList();
-                //if (result.LabelId == id)
-                //{
-                //    return true;
-                //}
                 foreach (var availableId in result)
                 {
                     if (availableId.LabelId == id)
@@ -34,6 +51,7 @@ namespace Repository.Repo
                         return true;
                     }
                 }
+
                 return false;
             }
             catch (Exception)
@@ -41,6 +59,12 @@ namespace Repository.Repo
                 return false;
             }
         }
+
+        /// <summary>
+        /// Finds the name of the by identifier and.
+        /// </summary>
+        /// <param name="labelModel">The label model.</param>
+        /// <returns>status of the label by ID and Name</returns>
         public bool FindByIdAndName(LabelModel labelModel)
         {
             try
@@ -53,6 +77,7 @@ namespace Repository.Repo
                         return false;
                     }
                 }
+
                 return true;
             }
             catch (Exception)
@@ -60,6 +85,15 @@ namespace Repository.Repo
                 return false;
             }
         }
+
+        /// <summary>
+        /// Adds the label.
+        /// </summary>
+        /// <param name="labelModel">The label model.</param>
+        /// <returns>
+        /// status of the add label
+        /// </returns>
+        /// <exception cref="System.Exception">throw exception</exception>
         public async Task<string> AddLabel(LabelModel labelModel)
         {
             try
@@ -69,12 +103,12 @@ namespace Repository.Repo
                 {
                     return "Note not available";
                 }
-                //if (this.FindById(labelModel.LabelId))
-                //{
-                //    return "This note available in anethor label";
-                //}
-                if (this.FindByIdAndName(labelModel))
+
+                var labelId = this.context.Lables.Where(label => label.LabelId == labelModel.LabelId).SingleOrDefault();
+                if (labelId != null)
                 {
+                    return "Label already in other Label";
+                }
                     LabelModel add = new LabelModel()
                     {
                         LabelId = labelModel.LabelId,
@@ -83,8 +117,6 @@ namespace Repository.Repo
                     this.context.Lables.Add(add);
                     var result = await Task.Run(() => this.context.SaveChangesAsync());
                     return "Saved";
-                }
-                return "Not saved"; 
             }
             catch (Exception e)
             {
@@ -92,6 +124,14 @@ namespace Repository.Repo
             }
         }
 
+        /// <summary>
+        /// Deletes the label.
+        /// </summary>
+        /// <param name="labelName">Name of the label.</param>
+        /// <returns>
+        /// status of the delete label
+        /// </returns>
+        /// <exception cref="System.Exception">throw exception</exception>
         public async Task<string> DeleteLabel(string labelName)
         {
             try
@@ -103,9 +143,11 @@ namespace Repository.Repo
                     {
                         this.context.Lables.Remove(label);
                     }
+
                     var result = await Task.Run(() => this.context.SaveChangesAsync());
                     return "Deleted";
                 }
+
                 return "Label Not available"; 
             }
             catch (Exception)
@@ -113,6 +155,15 @@ namespace Repository.Repo
                 throw new Exception();
             }
         }
+
+        /// <summary>
+        /// Deletes the note from label.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns>
+        /// status of the Delete note from Label
+        /// </returns>
+        /// <exception cref="System.Exception">throw exception</exception>
         public async Task<string> DeleteNoteFromLabel(int id)
         {
             try
@@ -124,6 +175,7 @@ namespace Repository.Repo
                     var result = await Task.Run(() => this.context.SaveChangesAsync());
                     return "Deleted";
                 }
+
                 return "Id Not available in Labels";
             }
             catch (Exception)
@@ -132,6 +184,12 @@ namespace Repository.Repo
             }
         }
 
+        /// <summary>
+        /// Gets all labels.
+        /// </summary>
+        /// <returns>
+        /// All available labels
+        /// </returns>
         public async Task<IEnumerable> GetAllLabels()
         {
             try
@@ -146,6 +204,13 @@ namespace Repository.Repo
             }
         }
 
+        /// <summary>
+        /// Gets the label by identifier.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns>
+        /// label by id
+        /// </returns>
         public async Task<LabelModel> GetLabelById(int id)
         {
             try
@@ -155,6 +220,7 @@ namespace Repository.Repo
                     var label = await Task.Run(() => this.context.Lables.Where(labelId => labelId.LabelId == id).SingleOrDefault());
                     return label;
                 }
+
                 return new LabelModel();
             }
             catch (Exception)
@@ -163,6 +229,16 @@ namespace Repository.Repo
             }
         }
 
+        /// <summary>
+        /// Updates the label.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <param name="labelName">Name of the label.</param>
+        /// <param name="labelModel">The label model.</param>
+        /// <returns>
+        /// status of the update label
+        /// </returns>
+        /// <exception cref="System.Exception">throw exception</exception>
         public async Task<string> UpdateLabel(int id, string labelName, LabelModel labelModel)
         {
             try
@@ -180,9 +256,11 @@ namespace Repository.Repo
                             return await Task.Run(() => "Updated");
                         }
                     }
-                    return "";
+
+                    return string.Empty;
                 }
-                return "";
+
+                return string.Empty;
             }
             catch (Exception e)
             {
@@ -190,17 +268,30 @@ namespace Repository.Repo
             }
         }
 
-        public async Task<int> RenameLabel(int id, string newLabelName)
+        /// <summary>
+        /// Renames the label.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <param name="newLabelName">New name of the label.</param>
+        /// <returns>
+        /// status of the rename label
+        /// </returns>
+        /// <exception cref="System.Exception">throw exception</exception>
+        public async Task<int> RenameLabel(string currentLabelName, string newLabelName)
         {
             try
             {
-                var label = this.context.Lables.Where(labelId => labelId.LabelId == id).SingleOrDefault();
-                if (label != null)
+                var labelList = this.context.Lables.Where(labelName => labelName.LabelName == currentLabelName).ToList();
+                if (labelList.Count > 0)
                 {
-                    label.LabelName = newLabelName;
+                    foreach (var label in labelList)
+                    {
+                        label.LabelName = newLabelName;
+                    }
                     var result = await Task.Run(() => this.context.SaveChangesAsync());
                     return result;
                 }
+
                 return 0;
             }
             catch (Exception)
