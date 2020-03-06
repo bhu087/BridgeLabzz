@@ -56,11 +56,29 @@ namespace FundooAPIController.Controllers
         }
         [HttpDelete]
         [Route("deleteLabel")]
-        public ActionResult DeleteLabel(int id)
+        public ActionResult DeleteLabel(string labelName)
         {
             try
             {
-                var result = this.labelManager.DeleteLabel(id);
+                var result = this.labelManager.DeleteLabel(labelName);
+                if (result.Result.Equals("Deleted"))
+                {
+                    return this.Ok("Deleted");
+                }
+                return this.BadRequest("No Label Available");
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
+        }
+        [HttpDelete]
+        [Route("deleteNoteFromLabel")]
+        public ActionResult DeleteNoteFromLabel(int labelId)
+        {
+            try
+            {
+                var result = this.labelManager.DeleteNoteFromLabel(labelId);
                 if (result.Result.Equals("Deleted"))
                 {
                     return this.Ok("Deleted");
@@ -102,6 +120,24 @@ namespace FundooAPIController.Controllers
                     return this.Ok(result.Result);
                 }
                 return this.BadRequest("Labels not Available");
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
+        }
+        [HttpPut]
+        [Route("renameLabel")]
+        public ActionResult RenameLabel(int id, string newLabelName)
+        {
+            try
+            {
+                var result = this.labelManager.RenameLabel(id, newLabelName);
+                if (result.Result != 0)
+                {
+                    return this.Ok("Renamed");
+                }
+                return this.BadRequest("Not Renamed/Check user ID");
             }
             catch (Exception)
             {

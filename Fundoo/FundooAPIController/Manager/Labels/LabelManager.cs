@@ -28,11 +28,24 @@ namespace Manager.Labels
             }
         }
 
-        public Task<string> DeleteLabel(int id)
+        public Task<string> DeleteLabel(string labelName)
         {
             try
             {
-                var result = this.labelRepo.DeleteLabel(id);
+                var result = this.labelRepo.DeleteLabel(labelName);
+                return result;
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
+        }
+
+        public Task<string> DeleteNoteFromLabel(int id)
+        {
+            try
+            {
+                var result = this.labelRepo.DeleteNoteFromLabel(id);
                 return result;
             }
             catch (Exception)
@@ -59,6 +72,19 @@ namespace Manager.Labels
             try
             {
                 var result = this.labelRepo.GetLabelById(id);
+                return result;
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
+        }
+
+        public Task<int> RenameLabel(int id, string newLabelName)
+        {
+            try
+            {
+                var result = this.labelRepo.RenameLabel(id, newLabelName);
                 return result;
             }
             catch (Exception)

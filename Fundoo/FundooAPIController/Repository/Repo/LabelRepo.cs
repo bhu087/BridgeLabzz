@@ -64,6 +64,15 @@ namespace Repository.Repo
         {
             try
             {
+                var note = this.context.Notes.Where(noteId => noteId.NotesId1 == labelModel.LabelId).SingleOrDefault();
+                if (note == null)
+                {
+                    return "Note not available";
+                }
+                //if (this.FindById(labelModel.LabelId))
+                //{
+                //    return "This note available in anethor label";
+                //}
                 if (this.FindByIdAndName(labelModel))
                 {
                     LabelModel add = new LabelModel()
@@ -83,21 +92,39 @@ namespace Repository.Repo
             }
         }
 
-        public async Task<string> DeleteLabel(int id)
+        public async Task<string> DeleteLabel(string labelName)
         {
             try
             {
-                if (!this.FindById(id))
+                var removeLabel = this.context.Lables.Where(labelId => labelId.LabelName == labelName).ToList();
+                if (removeLabel.Count > 0)
                 {
-                    return "Not Deleted";
+                    foreach (var label in removeLabel)
+                    {
+                        this.context.Lables.Remove(label);
+                    }
+                    var result = await Task.Run(() => this.context.SaveChangesAsync());
+                    return "Deleted";
                 }
-                else
+                return "Label Not available"; 
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
+        }
+        public async Task<string> DeleteNoteFromLabel(int id)
+        {
+            try
+            {
+                var removeLabel = this.context.Lables.Where(labelId => labelId.LabelId == id).SingleOrDefault();
+                if (removeLabel != null)
                 {
-                    var removeLabel = this.context.Lables.Where(labelId => labelId.LabelId == id).SingleOrDefault();
                     this.context.Lables.Remove(removeLabel);
                     var result = await Task.Run(() => this.context.SaveChangesAsync());
                     return "Deleted";
                 }
+                return "Id Not available in Labels";
             }
             catch (Exception)
             {
@@ -160,6 +187,25 @@ namespace Repository.Repo
             catch (Exception e)
             {
                 throw new Exception(e.Message);
+            }
+        }
+
+        public async Task<int> RenameLabel(int id, string newLabelName)
+        {
+            try
+            {
+                var label = this.context.Lables.Where(labelId => labelId.LabelId == id).SingleOrDefault();
+                if (label != null)
+                {
+                    label.LabelName = newLabelName;
+                    var result = await Task.Run(() => this.context.SaveChangesAsync());
+                    return result;
+                }
+                return 0;
+            }
+            catch (Exception)
+            {
+                throw new Exception();
             }
         }
     }

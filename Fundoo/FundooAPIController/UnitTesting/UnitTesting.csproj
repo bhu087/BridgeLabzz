@@ -15,13 +15,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Labels\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Manager\Manager.csproj" />
     <ProjectReference Include="..\Model\Model.csproj" />
-    <ProjectReference Include="..\NotesCases\NotesCases.csproj" />
     <ProjectReference Include="..\Repository\Repository.csproj" />
   </ItemGroup>
 
