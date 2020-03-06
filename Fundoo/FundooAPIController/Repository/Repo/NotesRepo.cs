@@ -8,6 +8,7 @@ using Repository.IRepo;
 using StackExchange.Redis;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Net;
@@ -65,43 +66,36 @@ namespace Repository.Repo
             }
             return true;
         }
-        public async Task<string> AddNotes(NotesModel notesModel)
+        public async Task<int> AddNotes(NotesModel notesModel)
         {
             try
             {
-                if (this.DuplicateEmails(notesModel.Email))
+                if (!this.DuplicateEmails(notesModel.Email))
                 {
-                    return "Email already Exist";
-                }
-                NotesModel add = new NotesModel()
-                {
-                    Email = notesModel.Email,
-                    Title = notesModel.Title,
-                    Description = notesModel.Description,
-                    CreatedTime = notesModel.CreatedTime,
-                };
-                this.context.Notes.Add(add);
-                var result = this.context.SaveChangesAsync();
-                var tokenDescriptor = new SecurityTokenDescriptor
-                {
-                    Subject = new ClaimsIdentity(new Claim[]
-                        {
+                    this.context.Notes.Add(notesModel);
+                    var result = this.context.SaveChangesAsync();
+                    var tokenDescriptor = new SecurityTokenDescriptor
+                    {
+                        Subject = new ClaimsIdentity(new Claim[]
+                            {
                             new Claim("Email", notesModel.Email),
                             new Claim("Title", notesModel.Title),
                             new Claim("Description", notesModel.Description),
                             new Claim("CreatedTime", notesModel.CreatedTime.ToString())
-                        }),
-                    Expires = DateTime.UtcNow.AddDays(1),
-                    SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes("Hello this is Radis Cache")), SecurityAlgorithms.HmacSha256Signature)
-                };
-                var securityTokenHandler = new JwtSecurityTokenHandler();
-                var securityToken = securityTokenHandler.CreateToken(tokenDescriptor);
-                var token = securityTokenHandler.WriteToken(securityToken);
-                var cacheKey = "Add";
-                ConnectionMultiplexer connectionMultiplexer = ConnectionMultiplexer.Connect("127.0.0.1:6379");
-                IDatabase database = connectionMultiplexer.GetDatabase();
-                database.StringSet(cacheKey, token);
-                return await Task.Run(() => "Saved");
+                            }),
+                        Expires = DateTime.UtcNow.AddDays(1),
+                        SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes("Hello this is Radis Cache")), SecurityAlgorithms.HmacSha256Signature)
+                    };
+                    var securityTokenHandler = new JwtSecurityTokenHandler();
+                    var securityToken = securityTokenHandler.CreateToken(tokenDescriptor);
+                    var token = securityTokenHandler.WriteToken(securityToken);
+                    var cacheKey = "Add";
+                    ConnectionMultiplexer connectionMultiplexer = ConnectionMultiplexer.Connect("127.0.0.1:6379");
+                    IDatabase database = connectionMultiplexer.GetDatabase();
+                    database.StringSet(cacheKey, token);
+                    return await result;
+                }
+                return 0;
             }
             catch (Exception e)
             {
@@ -284,7 +278,7 @@ namespace Repository.Repo
                         IDatabase database = connectionMultiplexer.GetDatabase();
                         database.StringSet(cacheKey, token.ToString());
                         database.StringGet(cacheKey);
-                        return "Deleted from Trash";
+                        return await Task.Run(() => "Deleted from Trash");
                     }
                     return "This Note is Not Trash";
                 }
@@ -295,7 +289,7 @@ namespace Repository.Repo
                 throw new Exception(e.Message);
             }
         }
-        public Task<int> ArchieveNotes(int id)
+        public async Task<int> ArchieveNotes(int id)
         {
             try
             {
@@ -321,9 +315,9 @@ namespace Repository.Repo
                     IDatabase database = connectionMultiplexer.GetDatabase();
                     database.StringSet(cacheKey, token.ToString());
                     database.StringGet(cacheKey);
-                    return result;
+                    return await Task.Run(() => result);
                 }
-                return null; 
+                return 0; 
             }
             catch (Exception e)
             {
@@ -339,7 +333,7 @@ namespace Repository.Repo
                     var note = this.context.Notes.Where(notesId => notesId.NotesId1 == id).SingleOrDefault();
                     if (note.IsArchive)
                     {
-                        note.IsTrash = true;
+                        note.IsArchive = false;
                         var result = this.context.SaveChangesAsync();
                         var tokenDescriptor = new SecurityTokenDescriptor
                         {
@@ -358,7 +352,7 @@ namespace Repository.Repo
                         IDatabase database = connectionMultiplexer.GetDatabase();
                         database.StringSet(cacheKey, token.ToString());
                         database.StringGet(cacheKey);
-                        return "Deleted";
+                        return await Task.Run(() => "Deleted");
                     }
                     return "No";
                 }
@@ -369,7 +363,7 @@ namespace Repository.Repo
                 throw new Exception(e.Message);
             }
         }
-        public Task<int> SetRemainder(int id, string time)
+        public async Task<int> SetRemainder(int id, string time)
         {
             try
             {
@@ -395,23 +389,32 @@ namespace Repository.Repo
                     IDatabase database = connectionMultiplexer.GetDatabase();
                     database.StringSet(cacheKey, token.ToString());
                     database.StringGet(cacheKey);
-                    return result;
+                    return await Task.Run(() => result);
                 }
-                return null;
+                return 0;
             }
             catch (Exception e)
             {
                 throw new Exception(e.Message);
             }
         }
-        public Task<int> DeleteRemainder(int id)
+        public async Task<int> DeleteRemainder(int id)
         {
             try
             {
                 if (this.FindById(id))
                 {
                     var note = this.context.Notes.Where(notesId => notesId.NotesId1 == id).SingleOrDefault();
-                    if (!note.Remainder.Equals(string.Empty))
+                    var res = await Task.Run(() => note.Remainder);
+                    //if (res == null)
+                    //{
+                    //    Debug.WriteLine(res);
+                    //}
+                    //else
+                    //{
+                    //    Debug.WriteLine("No");
+                    //}!note.Remainder.Equals(string.Empty)
+                    if (res != null && !res.Equals(string.Empty))
                     {
                         note.Remainder = string.Empty;
                         var result = this.context.SaveChangesAsync();
@@ -432,11 +435,11 @@ namespace Repository.Repo
                         IDatabase database = connectionMultiplexer.GetDatabase();
                         database.StringSet(cacheKey, token.ToString());
                         database.StringGet(cacheKey);
-                        return result;
+                        return await Task.Run(() => result);
                     }
-                    return null;
+                    return 0;
                 }
-                return null;
+                return 0;
             }
             catch (Exception e)
             {
@@ -469,7 +472,7 @@ namespace Repository.Repo
                     IDatabase database = connectionMultiplexer.GetDatabase();
                     database.StringSet(cacheKey, token.ToString());
                     database.StringGet(cacheKey);
-                    return "Color Changed";
+                    return await Task.Run(() => "Color Changed");
                 }
                 return null;
             }
@@ -531,7 +534,7 @@ namespace Repository.Repo
                     IDatabase database = connectionMultiplexer.GetDatabase();
                     database.StringSet(cacheKey, token.ToString());
                     database.StringGet(cacheKey);
-                    return note;
+                    return await Task.Run(() => note);
                 }
                 return null;
             }

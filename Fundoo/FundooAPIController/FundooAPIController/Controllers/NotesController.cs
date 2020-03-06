@@ -30,16 +30,16 @@ namespace FundooAPIController.Controllers
         }
         [HttpPost]
         [Route("addNote")]
-        public ActionResult AddNotes(NotesModel notesModel)
+        public async Task<ActionResult> AddNotes(NotesModel notesModel)
         {
             try
             {
                 var result = this.notesManager.AddNotes(notesModel);
-                if (result != null)
+                if (result.Result != 0)
                 {
                     return this.Ok(result);
                 }
-                return this.BadRequest("Something wrong");                
+                return this.BadRequest("Email already Exist");                
             }
             catch (Exception)
             {
@@ -91,7 +91,7 @@ namespace FundooAPIController.Controllers
                 var result = this.notesManager.DeleteNotes(id);
                 if (result != null)
                 {
-                    return this.Ok("Notes is Archieved");
+                    return this.Ok("Notes moved to trash");
                 }
                 return this.BadRequest("Notes Not found");
             }
@@ -126,7 +126,7 @@ namespace FundooAPIController.Controllers
             try
             {
                 var result = this.notesManager.ArchieveNotes(id);
-                if (result != null)
+                if (result.Result != 0)
                 {
                     return this.Ok("Notes is Archieved");
                 }
@@ -163,7 +163,7 @@ namespace FundooAPIController.Controllers
             try
             {
                 var result = this.notesManager.SetRemainder(id, time);
-                if (result != null)
+                if (result.Result != 0)
                 {
                     return this.Ok("Remainder SET");
                 }
@@ -194,7 +194,7 @@ namespace FundooAPIController.Controllers
             try
             {
                 var result = this.notesManager.DeleteRemainder(id);
-                if (result != null)
+                if (result.Result != 0)
                 {
                     return this.Ok("Remainder Deleted");
                 }
@@ -259,50 +259,7 @@ namespace FundooAPIController.Controllers
                 throw new Exception();
             }
         }
-        //public static string GetBase64StringForImage(string imgPath)
-        //{
-        //    byte[] imageBytes = System.IO.File.ReadAllBytes(imgPath);
-        //    string base64String = Convert.ToBase64String(imageBytes);
-        //    return base64String;
-        //}
-        //[HttpPost]
-        //[Route("uploadImage")]
-        //public ActionResult UploadImage(int id)
-        //{
-        //    string path = @"D:\Abc\Fundu.png";
-        //    string image = GetBase64StringForImage(path);
-        //    var result = this.notesManager.SaveImage(id, image);
-        //    try
-        //    {
-        //        if (result != null)
-        //        {
-        //            return this.Ok(result);
-        //        }
-        //        return this.BadRequest("Notes Not Available");
-        //    }
-        //    catch (Exception)
-        //    {
-        //        throw new Exception();
-        //    }
-        //}
-        //[HttpGet]
-        //[Route("DownloadImage")]
-        //public ActionResult DownlaodImage(int id)
-        //{
-        //    var result = this.notesManager.DownloadImage(id);
-        //    try
-        //    {
-        //        if (result != null)
-        //        {
-        //            return this.Ok(result.Result);
-        //        }
-        //        return this.BadRequest("Notes Not Available");
-        //    }
-        //    catch (Exception)
-        //    {
-        //        throw new Exception();
-        //    }
-        //}
+        
         [HttpPost]
         [Route("uploadImage")]
         public ActionResult UploadImage(int id, string imagePath)

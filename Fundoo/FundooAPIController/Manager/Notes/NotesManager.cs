@@ -17,7 +17,7 @@ namespace Manager.Notes
         {
             this.notesRepo = notesRepo;
         }
-        public Task<string> AddNotes(NotesModel notesModel)
+        public Task<int> AddNotes(NotesModel notesModel)
         {
             return this.notesRepo.AddNotes(notesModel);
         }

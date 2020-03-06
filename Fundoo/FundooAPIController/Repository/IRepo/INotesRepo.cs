@@ -10,7 +10,7 @@ namespace Repository.IRepo
 {
     public interface INotesRepo
     {
-        Task<string> AddNotes(NotesModel notesModel);
+        Task<int> AddNotes(NotesModel notesModel);
         Task<int> DeleteNotes(int id);
         Task<string> DeleteTrash(int id);
         Task<int> ArchieveNotes(int id);
