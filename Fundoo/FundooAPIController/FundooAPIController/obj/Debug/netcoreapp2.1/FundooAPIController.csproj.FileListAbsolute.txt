@@ -1,3 +1,4 @@
+D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController\bin\Debug\netcoreapp2.1\nlog.config
 D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController\bin\Debug\netcoreapp2.1\appsettings.Development.json
 D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController\bin\Debug\netcoreapp2.1\appsettings.json
 D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController\bin\Debug\netcoreapp2.1\Properties\launchSettings.json
@@ -7,10 +8,14 @@ D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController\bin\Debug\netc
 D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController\bin\Debug\netcoreapp2.1\FundooAPIController.runtimeconfig.dev.json
 D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController\bin\Debug\netcoreapp2.1\FundooAPIController.dll
 D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController\bin\Debug\netcoreapp2.1\FundooAPIController.pdb
+D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController\bin\Debug\netcoreapp2.1\Contract.dll
+D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController\bin\Debug\netcoreapp2.1\LoggerService.dll
 D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController\bin\Debug\netcoreapp2.1\Manager.dll
 D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController\bin\Debug\netcoreapp2.1\Model.dll
 D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController\bin\Debug\netcoreapp2.1\Repository.dll
+D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController\bin\Debug\netcoreapp2.1\LoggerService.pdb
 D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController\bin\Debug\netcoreapp2.1\Manager.pdb
+D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController\bin\Debug\netcoreapp2.1\Contract.pdb
 D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController\bin\Debug\netcoreapp2.1\Model.pdb
 D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController\bin\Debug\netcoreapp2.1\Repository.pdb
 D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController\obj\Debug\netcoreapp2.1\FundooAPIController.csprojAssemblyReference.cache

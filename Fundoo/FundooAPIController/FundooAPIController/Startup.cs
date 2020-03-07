@@ -21,6 +21,10 @@ using Swashbuckle.AspNetCore.Swagger;
 using Repository.IRepo;
 using Manager.Notes;
 using Manager.Labels;
+using System.IO;
+using NLog;
+using Contract;
+using LoggerService;
 
 namespace FundooAPIController
 {
@@ -28,6 +32,7 @@ namespace FundooAPIController
     {
         public Startup(IConfiguration configuration)
         {
+            LogManager.LoadConfiguration(String.Concat(Directory.GetCurrentDirectory(), "/nlog.config"));
             Configuration = configuration;
         }
 
@@ -39,6 +44,7 @@ namespace FundooAPIController
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddDbContextPool<UserDBContext>(
                options => options.UseSqlServer(Configuration.GetConnectionString("UserDbConnection")));
+            services.AddTransient<ILoggerManager, LoggerManager>();
             services.AddTransient<IAccountRepo, AccountRepo>();
             services.AddTransient<IAccountManager, AccountManager>();
             services.AddTransient<INotesRepo, NotesRepo>();
@@ -83,11 +89,6 @@ namespace FundooAPIController
             app.UseSwaggerUI(c => {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
             });
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
         }
     }
 }

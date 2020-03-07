@@ -1,0 +1,11 @@
+D:\BridgeLabzBhush\Fundoo\FundooAPIController\LoggerService\bin\Debug\netcoreapp2.1\LoggerService.deps.json
+D:\BridgeLabzBhush\Fundoo\FundooAPIController\LoggerService\bin\Debug\netcoreapp2.1\LoggerService.dll
+D:\BridgeLabzBhush\Fundoo\FundooAPIController\LoggerService\bin\Debug\netcoreapp2.1\LoggerService.pdb
+D:\BridgeLabzBhush\Fundoo\FundooAPIController\LoggerService\bin\Debug\netcoreapp2.1\Contract.dll
+D:\BridgeLabzBhush\Fundoo\FundooAPIController\LoggerService\bin\Debug\netcoreapp2.1\Contract.pdb
+D:\BridgeLabzBhush\Fundoo\FundooAPIController\LoggerService\obj\Debug\netcoreapp2.1\LoggerService.csprojAssemblyReference.cache
+D:\BridgeLabzBhush\Fundoo\FundooAPIController\LoggerService\obj\Debug\netcoreapp2.1\LoggerService.AssemblyInfoInputs.cache
+D:\BridgeLabzBhush\Fundoo\FundooAPIController\LoggerService\obj\Debug\netcoreapp2.1\LoggerService.AssemblyInfo.cs
+D:\BridgeLabzBhush\Fundoo\FundooAPIController\LoggerService\obj\Debug\netcoreapp2.1\LoggerService.csproj.CopyComplete
+D:\BridgeLabzBhush\Fundoo\FundooAPIController\LoggerService\obj\Debug\netcoreapp2.1\LoggerService.dll
+D:\BridgeLabzBhush\Fundoo\FundooAPIController\LoggerService\obj\Debug\netcoreapp2.1\LoggerService.pdb

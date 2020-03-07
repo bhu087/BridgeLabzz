@@ -3,7 +3,6 @@
 ////author="Bhushan"
 ////</copyright>
 ////-------------------------------------------------------------------------
-
 namespace FundooAPIController.Controllers
 {
     using System;
@@ -17,6 +16,8 @@ namespace FundooAPIController.Controllers
     using System.Text;
     using System.Threading.Tasks;
     using System.Web;
+    using Contract;
+    using LoggerService;
     using Manager.Account;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
@@ -47,6 +48,10 @@ namespace FundooAPIController.Controllers
         }
 
         /// <summary>
+        /// The logger
+        /// </summary>
+        ILoggerManager logger = new LoggerManager();
+        /// <summary>
         /// Registers the specified register.
         /// </summary>
         /// <param name="register">The register.</param>
@@ -60,13 +65,20 @@ namespace FundooAPIController.Controllers
                 var result = this.manager.Register(register);
                 if (result.Result != 0)
                 {
+
+                    logger.LogDebug("Debug Succeccfull : Register(Account)");
+                    logger.LogInfo(result.Status.ToString());
                     return this.Ok(register);
                 }
-
+                logger.LogDebug("Debug Succeccfull : Register(Account)");
+                logger.LogInfo(result.Status.ToString());
+                logger.LogWarn("Account already exists for this email ID " + register.Email);
                 return this.BadRequest("Account already exists for this email ID");
             }
             catch (Exception e)
             {
+                logger.LogDebug("Debug Succeccfull : Register(Account)");
+                logger.LogError("Error : " + e.Message);
                 return this.BadRequest(e.Message);
             }
         }
@@ -85,13 +97,19 @@ namespace FundooAPIController.Controllers
                 var result = this.manager.Delete(id);
                 if (!result.Result.Equals(""))
                 {
+                    logger.LogDebug("Debug Succeccfull : delete(Account)");
+                    logger.LogInfo(result.Status.ToString());
                     return this.Ok("Delete Successful");
                 }
-
+                logger.LogDebug("Debug Succeccfull : delete(Account)");
+                logger.LogInfo(result.Status.ToString());
+                logger.LogWarn("Account Not available " + id);
                 return this.BadRequest("Something Wrong");
             }
             catch (Exception e)
             {
+                logger.LogDebug("Debug Succeccfull : delete(Account)");
+                logger.LogError("Error : " + e.Message);
                 return this.BadRequest(e.Message);
             }
         }
@@ -111,13 +129,19 @@ namespace FundooAPIController.Controllers
                 var result = this.manager.Update(email, id, register);
                 if (result.Result != 0)
                 {
+                    logger.LogDebug("Debug Succeccfull : Update(Account)");
+                    logger.LogInfo(result.Status.ToString());
                     return this.Ok("Udated successfully");
                 }
-
+                logger.LogDebug("Debug Succeccfull : update(Account)");
+                logger.LogInfo(result.Status.ToString());
+                logger.LogWarn("Account Not available " + id);
                 return this.BadRequest("Not updated");
             }
             catch (Exception e)
             {
+                logger.LogDebug("Debug Succeccfull : update(Account)");
+                logger.LogError("Error : " + e.Message);
                 throw new Exception(e.Message);
             }
         }
@@ -136,13 +160,19 @@ namespace FundooAPIController.Controllers
                 var result = this.manager.GetAll();
                 if (result != null)
                 {
+                    logger.LogDebug("Debug Succeccfull : Get All(Account)");
+                    logger.LogInfo(result.ToString());
                     return this.Ok(result);
                 }
-
+                logger.LogDebug("Debug Succeccfull : getAll(Account)");
+                logger.LogInfo(result.ToString());
+                logger.LogWarn("List Not available ");
                 return this.BadRequest("No Accounts available");
             }
             catch (Exception e)
             {
+                logger.LogDebug("Debug Succeccfull : getAll(Account)");
+                logger.LogError("Error : " + e.Message);
                 throw new Exception(e.Message);
             }
         }
@@ -162,13 +192,19 @@ namespace FundooAPIController.Controllers
                 var result = this.manager.GetById(id);
                 if (result != null)
                 {
+                    logger.LogDebug("Debug Succeccfull : Get By Id(Account)");
+                    logger.LogInfo(result.ToString());
                     return this.Ok(result);
                 }
-
+                logger.LogDebug("Debug Succeccfull : getById(Account)");
+                logger.LogInfo(result.ToString());
+                logger.LogWarn("Account Not available " + id);
                 return this.BadRequest("User Not Registered");
             }
             catch (Exception e)
             {
+                logger.LogDebug("Debug Succeccfull : getById(Account)");
+                logger.LogError("Error : " + e.Message);
                 throw new Exception(e.Message);
             }
         }
@@ -182,14 +218,28 @@ namespace FundooAPIController.Controllers
         [Route("login")]
         public ActionResult Login(Login loginModel)
         {
-            var result = this.manager.Login(loginModel);
-            if (result == null)
+            try
             {
-                return this.BadRequest();
+                var result = this.manager.Login(loginModel);
+                if (result == null)
+                {
+                    logger.LogDebug("Debug Succeccfull : login(Account)");
+                    logger.LogInfo(result.Status.ToString());
+                    logger.LogWarn("Account Not available " + loginModel.Email);
+                    return this.BadRequest();
+                }
+                else
+                {
+                    logger.LogDebug("Debug Succeccfull : Login(Account)");
+                    logger.LogInfo(result.Status.ToString());
+                    return this.Ok(result.Result);
+                }
             }
-            else
+            catch (Exception e)
             {
-                return this.Ok(result.Result);
+                logger.LogDebug("Debug Succeccfull : login(Account)");
+                logger.LogError("Error : " + e.Message);
+                return this.BadRequest(e.ToString());
             }
         }
 
@@ -207,15 +257,22 @@ namespace FundooAPIController.Controllers
             {
                 if (result == null)
                 {
+                    logger.LogDebug("Debug Succeccfull : resetPassword(Account)");
+                    logger.LogInfo(result.Status.ToString());
+                    logger.LogWarn("Account Not available " + email);
                     return this.BadRequest("Account Not available");
                 }
                 else
                 {
+                    logger.LogDebug("Debug Succeccfull : reset password(Account)");
+                    logger.LogInfo(result.Status.ToString());
                     return this.Ok(result.Result);
                 }
             }
             catch (Exception e)
             {
+                logger.LogDebug("Debug Succeccfull : resetPassword(Account)");
+                logger.LogError("Error : " + e.Message);
                 return this.BadRequest(e.ToString());
             }
         }
@@ -234,15 +291,22 @@ namespace FundooAPIController.Controllers
             {
                 if (result == null)
                 {
+                    logger.LogDebug("Debug Succeccfull : forgetPassword(Account)");
+                    logger.LogInfo(result.Status.ToString());
+                    logger.LogWarn("Account Not available " + email);
                     return this.BadRequest("Account Not Available");
                 }
                 else
                 {
+                    logger.LogDebug("Debug Succeccfull : forget password(Account)");
+                    logger.LogInfo(result.Status.ToString());
                     return this.Ok(result.Result);
                 }
             }
             catch (Exception e)
             {
+                logger.LogDebug("Debug Succeccfull : forgetPassword(Account)");
+                logger.LogError("Error : " + e.Message);
                 return this.BadRequest(e.ToString());
             }
         }
@@ -261,15 +325,21 @@ namespace FundooAPIController.Controllers
             {
                 var result = this.manager.LoginByGoogle(loginModel);
                 if (result != null)
-                {  
+                {
+                    logger.LogDebug("Debug Succeccfull : login By Google(Account)");
+                    logger.LogInfo(result.Status.ToString());
                     return this.Ok(result);
                 }
-
+                logger.LogDebug("Debug Succeccfull : loginbygoogle(Account)");
+                logger.LogInfo(result.Status.ToString());
+                logger.LogWarn("Account Not available " + loginModel.Email);
                 return this.BadRequest("Something Wrong");
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                throw new Exception();
+                logger.LogDebug("Debug Succeccfull : loginbygoogle(Account)");
+                logger.LogError("Error : " + e.Message);
+                throw new Exception(e.Message);
             }  
         }
 
@@ -287,13 +357,19 @@ namespace FundooAPIController.Controllers
                 var result = this.manager.LogOutFromSocialAccount();
                 if (result.Result.Equals("LoggedOut form Google Account"))
                 {
+                    logger.LogDebug("Debug Succeccfull : logout form Social Account(Account)");
+                    logger.LogInfo(result.Status.ToString());
                     return this.Ok(result);
                 }
-
+                logger.LogDebug("Debug Succeccfull : logoutFromSocialAccount(Account)");
+                logger.LogInfo(result.Status.ToString());
+                logger.LogWarn("Not Logged In");
                 return this.BadRequest(result.Result);
             }
             catch (Exception e)
             {
+                logger.LogDebug("Debug Succeccfull : logoutFromSocialAccount(Account)");
+                logger.LogError("Error : " + e.Message);
                 throw new Exception(e.Message);
             }
         }

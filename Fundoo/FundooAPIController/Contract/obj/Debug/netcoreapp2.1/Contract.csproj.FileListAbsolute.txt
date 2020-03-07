@@ -1,0 +1,8 @@
+D:\BridgeLabzBhush\Fundoo\FundooAPIController\Contract\bin\Debug\netcoreapp2.1\Contract.deps.json
+D:\BridgeLabzBhush\Fundoo\FundooAPIController\Contract\bin\Debug\netcoreapp2.1\Contract.dll
+D:\BridgeLabzBhush\Fundoo\FundooAPIController\Contract\bin\Debug\netcoreapp2.1\Contract.pdb
+D:\BridgeLabzBhush\Fundoo\FundooAPIController\Contract\obj\Debug\netcoreapp2.1\Contract.csprojAssemblyReference.cache
+D:\BridgeLabzBhush\Fundoo\FundooAPIController\Contract\obj\Debug\netcoreapp2.1\Contract.AssemblyInfoInputs.cache
+D:\BridgeLabzBhush\Fundoo\FundooAPIController\Contract\obj\Debug\netcoreapp2.1\Contract.AssemblyInfo.cs
+D:\BridgeLabzBhush\Fundoo\FundooAPIController\Contract\obj\Debug\netcoreapp2.1\Contract.dll
+D:\BridgeLabzBhush\Fundoo\FundooAPIController\Contract\obj\Debug\netcoreapp2.1\Contract.pdb
