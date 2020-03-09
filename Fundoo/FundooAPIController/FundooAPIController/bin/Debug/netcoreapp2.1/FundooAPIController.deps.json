@@ -60,6 +60,17 @@
           "lib/netstandard1.3/CloudinaryDotNet.dll": {}
         }
       },
+      "Experimental.System.Messaging/1.1.0": {
+        "runtime": {
+          "lib/netstandard2.0/Experimental.System.Messaging.dll": {
+            "assemblyVersion": "1.1.0.0",
+            "fileVersion": "1.1.0.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/Experimental.System.Messaging.dll": {}
+        }
+      },
       "Microsoft.AspNetCore.Razor.Design/2.1.2": {},
       "Microsoft.CodeAnalysis.CSharp.Workspaces/2.8.0": {
         "dependencies": {
@@ -896,13 +907,25 @@
           "StackExchange.Redis": "2.0.601",
           "System.Configuration.ConfigurationManager": "4.7.0",
           "System.Drawing.Common": "4.7.0",
-          "System.IdentityModel.Tokens.Jwt": "5.6.0"
+          "System.IdentityModel.Tokens.Jwt": "5.6.0",
+          "UtilityProject": "1.0.0"
         },
         "runtime": {
           "Repository.dll": {}
         },
         "compile": {
           "Repository.dll": {}
+        }
+      },
+      "UtilityProject/1.0.0": {
+        "dependencies": {
+          "Experimental.System.Messaging": "1.1.0"
+        },
+        "runtime": {
+          "UtilityProject.dll": {}
+        },
+        "compile": {
+          "UtilityProject.dll": {}
         }
       },
       "Microsoft.AspNet.WebApi.Client/5.2.6": {
@@ -3857,6 +3880,13 @@
       "path": "cloudinarydotnet/1.10.0",
       "hashPath": "cloudinarydotnet.1.10.0.nupkg.sha512"
     },
+    "Experimental.System.Messaging/1.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-vub7Mtt2WFdFKTZKECVuZx6feP5kUpS9EfVy+Yu4GDfdlMwivRdX4TbdkDYS2lKqCjqzUbnxTbJei1IOqC+CnA==",
+      "path": "experimental.system.messaging/1.1.0",
+      "hashPath": "experimental.system.messaging.1.1.0.nupkg.sha512"
+    },
     "Microsoft.AspNetCore.Razor.Design/2.1.2": {
       "type": "package",
       "serviceable": true,
@@ -4221,6 +4251,11 @@
       "sha512": ""
     },
     "Repository/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "UtilityProject/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

@@ -1447,3 +1447,466 @@
 2020-03-07 13:27:34.4038 Trace FindReachableObject<System.Object>:
 2020-03-07 13:27:34.4181 Info Found 0 configuration items
 2020-03-07 13:28:02.2562 Debug Targets not configured for logger: LoggerService.LoggerManager
+2020-03-09 13:11:25.0105 Debug ScanAssembly('NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c')
+2020-03-09 13:11:25.2217 Debug Found assembly location directory: 'C:\Users\bridgelabz\.nuget\packages\nlog\4.6.8\lib\netstandard2.0' (NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c)
+2020-03-09 13:11:25.2217 Debug Search for auto loading files in location: C:\Users\bridgelabz\.nuget\packages\nlog\4.6.8\lib\netstandard2.0
+2020-03-09 13:11:25.2537 Debug Found assembly location directory: 'D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController\bin\Debug\netcoreapp2.1' (FundooAPIController, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null)
+2020-03-09 13:11:25.2537 Debug Search for auto loading files in location: D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController\bin\Debug\netcoreapp2.1
+2020-03-09 13:11:25.2537 Debug Auto loading based on AppDomain-BaseDirectory found location: D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController\bin\Debug\netcoreapp2.1
+2020-03-09 13:11:25.2537 Debug Search for auto loading files in location: D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController\bin\Debug\netcoreapp2.1
+2020-03-09 13:11:25.2537 Debug Start auto loading, location: C:\Users\bridgelabz\.nuget\packages\nlog\4.6.8\lib\netstandard2.0
+2020-03-09 13:11:25.2669 Trace Assembly 'Microsoft.Extensions.Logging, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60' will be hidden in callsite stacktrace
+2020-03-09 13:11:25.2669 Trace Assembly 'Microsoft.Extensions.Logging.Abstractions, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60' will be hidden in callsite stacktrace
+2020-03-09 13:11:25.2669 Debug Auto loading done
+2020-03-09 13:11:25.2669 Info Message Template Auto Format enabled
+2020-03-09 13:11:25.3162 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-03-09 13:11:25.3162 Trace Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2020-03-09 13:11:25.3368 Debug Setting 'UppercaseLayoutRendererWrapper.uppercase' to 'true'
+2020-03-09 13:11:25.4086 Trace Wrapping LevelLayoutRenderer with UppercaseLayoutRendererWrapper
+2020-03-09 13:11:25.4086 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-03-09 13:11:25.4086 Trace Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-03-09 13:11:25.4086 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-03-09 13:11:25.4086 Trace Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2020-03-09 13:11:25.4236 Trace  Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2020-03-09 13:11:25.4236 Trace  Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2020-03-09 13:11:25.4236 Trace   Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-03-09 13:11:25.4236 Trace   Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-03-09 13:11:25.4236 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-03-09 13:11:25.4236 Trace Scanning LoggerNameLayoutRenderer 'Layout Renderer: ${logger}'
+2020-03-09 13:11:25.4236 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-03-09 13:11:25.4236 Trace Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2020-03-09 13:11:25.4608 Debug Setting 'FileTarget.name' to 'logfile'
+2020-03-09 13:11:25.4608 Debug Setting 'FileTarget.fileName' to 'D:/Abc/logFile/${shortdate}_logFile.txt'
+2020-03-09 13:11:25.4608 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-03-09 13:11:25.4608 Trace Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2020-03-09 13:11:25.4686 Debug Setting 'FileTarget.layout' to '${longdate} ${level:uppercase=true} ${message}'
+2020-03-09 13:11:25.4686 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-03-09 13:11:25.4686 Trace Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2020-03-09 13:11:25.4686 Debug Setting 'UppercaseLayoutRendererWrapper.uppercase' to 'true'
+2020-03-09 13:11:25.4686 Trace Wrapping LevelLayoutRenderer with UppercaseLayoutRendererWrapper
+2020-03-09 13:11:25.4686 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-03-09 13:11:25.4686 Trace Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-03-09 13:11:25.4686 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-03-09 13:11:25.4686 Trace Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2020-03-09 13:11:25.4686 Trace  Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2020-03-09 13:11:25.4686 Trace  Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2020-03-09 13:11:25.4686 Trace   Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-03-09 13:11:25.4686 Trace   Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-03-09 13:11:25.4686 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-03-09 13:11:25.4686 Trace Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2020-03-09 13:11:25.4686 Debug Setting 'FileTarget.allowFileSharedWriting' to 'true'
+2020-03-09 13:11:25.6375 Warn Error when setting 'true' on attibute 'allowFileSharedWriting' Exception: System.NotSupportedException: Parameter allowFileSharedWriting not supported on FileTarget
+   at NLog.Internal.PropertyHelper.SetPropertyFromString(Object obj, String propertyName, String value, ConfigurationItemFactory configurationItemFactory)
+   at NLog.Config.LoggingConfigurationParser.ConfigureObjectFromAttributes(Object targetObject, ILoggingConfigurationElement element, Boolean ignoreType)
+2020-03-09 13:11:25.6453 Error Exception when parsing D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController/nlog.config.  Exception: System.NotSupportedException: Parameter allowFileSharedWriting not supported on FileTarget
+   at NLog.Internal.PropertyHelper.SetPropertyFromString(Object obj, String propertyName, String value, ConfigurationItemFactory configurationItemFactory)
+   at NLog.Config.LoggingConfigurationParser.ConfigureObjectFromAttributes(Object targetObject, ILoggingConfigurationElement element, Boolean ignoreType)
+   at NLog.Config.LoggingConfigurationParser.ParseTargetElement(Target target, ILoggingConfigurationElement targetElement, Dictionary`2 typeNameToDefaultTargetParameters)
+   at NLog.Config.LoggingConfigurationParser.ParseTargetsElement(ILoggingConfigurationElement targetsElement)
+   at NLog.Config.LoggingConfigurationParser.ParseNLogSection(ILoggingConfigurationElement configSection)
+   at NLog.Config.LoggingConfigurationParser.LoadConfig(ILoggingConfigurationElement nlogConfig, String basePath)
+   at NLog.Config.XmlLoggingConfiguration.ParseNLogElement(ILoggingConfigurationElement nlogElement, String filePath, Boolean autoReloadDefault)
+   at NLog.Config.XmlLoggingConfiguration.Initialize(XmlReader reader, String fileName, Boolean ignoreErrors)
+2020-03-09 13:11:25.6453 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Exception when parsing D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController/nlog.config.  ---> System.NotSupportedException: Parameter allowFileSharedWriting not supported on FileTarget
+   at NLog.Internal.PropertyHelper.SetPropertyFromString(Object obj, String propertyName, String value, ConfigurationItemFactory configurationItemFactory)
+   at NLog.Config.LoggingConfigurationParser.ConfigureObjectFromAttributes(Object targetObject, ILoggingConfigurationElement element, Boolean ignoreType)
+   at NLog.Config.LoggingConfigurationParser.ParseTargetElement(Target target, ILoggingConfigurationElement targetElement, Dictionary`2 typeNameToDefaultTargetParameters)
+   at NLog.Config.LoggingConfigurationParser.ParseTargetsElement(ILoggingConfigurationElement targetsElement)
+   at NLog.Config.LoggingConfigurationParser.ParseNLogSection(ILoggingConfigurationElement configSection)
+   at NLog.Config.LoggingConfigurationParser.LoadConfig(ILoggingConfigurationElement nlogConfig, String basePath)
+   at NLog.Config.XmlLoggingConfiguration.ParseNLogElement(ILoggingConfigurationElement nlogElement, String filePath, Boolean autoReloadDefault)
+   at NLog.Config.XmlLoggingConfiguration.Initialize(XmlReader reader, String fileName, Boolean ignoreErrors)
+   --- End of inner exception stack trace ---
+2020-03-09 13:11:25.6986 Debug Watching path 'D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController' filter 'nlog.config' for changes.
+2020-03-09 13:11:25.6986 Debug --- NLog configuration dump ---
+2020-03-09 13:11:25.7030 Debug Targets:
+2020-03-09 13:11:25.7030 Debug Rules:
+2020-03-09 13:11:25.7030 Debug --- End of NLog configuration dump ---
+2020-03-09 13:11:25.7030 Trace FindReachableObject<System.Object>:
+2020-03-09 13:11:25.7030 Info Found 0 configuration items
+2020-03-09 14:47:06.2097 Debug ScanAssembly('NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c')
+2020-03-09 14:47:06.8119 Debug Found assembly location directory: 'C:\Users\bridgelabz\.nuget\packages\nlog\4.6.8\lib\netstandard2.0' (NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c)
+2020-03-09 14:47:06.8119 Debug Search for auto loading files in location: C:\Users\bridgelabz\.nuget\packages\nlog\4.6.8\lib\netstandard2.0
+2020-03-09 14:47:06.8913 Debug Found assembly location directory: 'D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController\bin\Debug\netcoreapp2.1' (FundooAPIController, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null)
+2020-03-09 14:47:06.8913 Debug Search for auto loading files in location: D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController\bin\Debug\netcoreapp2.1
+2020-03-09 14:47:06.8913 Debug Auto loading based on AppDomain-BaseDirectory found location: D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController\bin\Debug\netcoreapp2.1
+2020-03-09 14:47:06.8913 Debug Search for auto loading files in location: D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController\bin\Debug\netcoreapp2.1
+2020-03-09 14:47:06.8913 Debug Start auto loading, location: C:\Users\bridgelabz\.nuget\packages\nlog\4.6.8\lib\netstandard2.0
+2020-03-09 14:47:06.9110 Trace Assembly 'Microsoft.Extensions.Logging, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60' will be hidden in callsite stacktrace
+2020-03-09 14:47:06.9110 Trace Assembly 'Microsoft.Extensions.Logging.Abstractions, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60' will be hidden in callsite stacktrace
+2020-03-09 14:47:06.9110 Debug Auto loading done
+2020-03-09 14:47:06.9110 Info Message Template Auto Format enabled
+2020-03-09 14:47:06.9927 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-03-09 14:47:07.0089 Trace Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2020-03-09 14:47:07.0397 Debug Setting 'UppercaseLayoutRendererWrapper.uppercase' to 'true'
+2020-03-09 14:47:07.1193 Trace Wrapping LevelLayoutRenderer with UppercaseLayoutRendererWrapper
+2020-03-09 14:47:07.1193 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-03-09 14:47:07.1193 Trace Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-03-09 14:47:07.1249 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-03-09 14:47:07.1249 Trace Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2020-03-09 14:47:07.1249 Trace  Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2020-03-09 14:47:07.1409 Trace  Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2020-03-09 14:47:07.1409 Trace   Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-03-09 14:47:07.1409 Trace   Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-03-09 14:47:07.1409 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-03-09 14:47:07.1409 Trace Scanning LoggerNameLayoutRenderer 'Layout Renderer: ${logger}'
+2020-03-09 14:47:07.1409 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-03-09 14:47:07.1558 Trace Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2020-03-09 14:47:07.2052 Debug Setting 'FileTarget.name' to 'logfile'
+2020-03-09 14:47:07.2052 Debug Setting 'FileTarget.fileName' to 'D:/Abc/logFile/${shortdate}_logFile.txt'
+2020-03-09 14:47:07.2052 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-03-09 14:47:07.2052 Trace Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2020-03-09 14:47:07.2052 Debug Setting 'FileTarget.layout' to '${longdate} ${level:uppercase=true} ${message}'
+2020-03-09 14:47:07.2052 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-03-09 14:47:07.2212 Trace Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2020-03-09 14:47:07.2212 Debug Setting 'UppercaseLayoutRendererWrapper.uppercase' to 'true'
+2020-03-09 14:47:07.2212 Trace Wrapping LevelLayoutRenderer with UppercaseLayoutRendererWrapper
+2020-03-09 14:47:07.2212 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-03-09 14:47:07.2212 Trace Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-03-09 14:47:07.2212 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-03-09 14:47:07.2212 Trace Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2020-03-09 14:47:07.2212 Trace  Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2020-03-09 14:47:07.2212 Trace  Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2020-03-09 14:47:07.2212 Trace   Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-03-09 14:47:07.2212 Trace   Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-03-09 14:47:07.2352 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-03-09 14:47:07.2352 Trace Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2020-03-09 14:47:07.2352 Debug Setting 'FileTarget.allowFileSharedWriting' to 'true'
+2020-03-09 14:47:07.7537 Warn Error when setting 'true' on attibute 'allowFileSharedWriting' Exception: System.NotSupportedException: Parameter allowFileSharedWriting not supported on FileTarget
+   at NLog.Internal.PropertyHelper.SetPropertyFromString(Object obj, String propertyName, String value, ConfigurationItemFactory configurationItemFactory)
+   at NLog.Config.LoggingConfigurationParser.ConfigureObjectFromAttributes(Object targetObject, ILoggingConfigurationElement element, Boolean ignoreType)
+2020-03-09 14:47:07.7537 Error Exception when parsing D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController/nlog.config.  Exception: System.NotSupportedException: Parameter allowFileSharedWriting not supported on FileTarget
+   at NLog.Internal.PropertyHelper.SetPropertyFromString(Object obj, String propertyName, String value, ConfigurationItemFactory configurationItemFactory)
+   at NLog.Config.LoggingConfigurationParser.ConfigureObjectFromAttributes(Object targetObject, ILoggingConfigurationElement element, Boolean ignoreType)
+   at NLog.Config.LoggingConfigurationParser.ParseTargetElement(Target target, ILoggingConfigurationElement targetElement, Dictionary`2 typeNameToDefaultTargetParameters)
+   at NLog.Config.LoggingConfigurationParser.ParseTargetsElement(ILoggingConfigurationElement targetsElement)
+   at NLog.Config.LoggingConfigurationParser.ParseNLogSection(ILoggingConfigurationElement configSection)
+   at NLog.Config.LoggingConfigurationParser.LoadConfig(ILoggingConfigurationElement nlogConfig, String basePath)
+   at NLog.Config.XmlLoggingConfiguration.ParseNLogElement(ILoggingConfigurationElement nlogElement, String filePath, Boolean autoReloadDefault)
+   at NLog.Config.XmlLoggingConfiguration.Initialize(XmlReader reader, String fileName, Boolean ignoreErrors)
+2020-03-09 14:47:07.7833 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Exception when parsing D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController/nlog.config.  ---> System.NotSupportedException: Parameter allowFileSharedWriting not supported on FileTarget
+   at NLog.Internal.PropertyHelper.SetPropertyFromString(Object obj, String propertyName, String value, ConfigurationItemFactory configurationItemFactory)
+   at NLog.Config.LoggingConfigurationParser.ConfigureObjectFromAttributes(Object targetObject, ILoggingConfigurationElement element, Boolean ignoreType)
+   at NLog.Config.LoggingConfigurationParser.ParseTargetElement(Target target, ILoggingConfigurationElement targetElement, Dictionary`2 typeNameToDefaultTargetParameters)
+   at NLog.Config.LoggingConfigurationParser.ParseTargetsElement(ILoggingConfigurationElement targetsElement)
+   at NLog.Config.LoggingConfigurationParser.ParseNLogSection(ILoggingConfigurationElement configSection)
+   at NLog.Config.LoggingConfigurationParser.LoadConfig(ILoggingConfigurationElement nlogConfig, String basePath)
+   at NLog.Config.XmlLoggingConfiguration.ParseNLogElement(ILoggingConfigurationElement nlogElement, String filePath, Boolean autoReloadDefault)
+   at NLog.Config.XmlLoggingConfiguration.Initialize(XmlReader reader, String fileName, Boolean ignoreErrors)
+   --- End of inner exception stack trace ---
+2020-03-09 14:47:07.8910 Debug Watching path 'D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController' filter 'nlog.config' for changes.
+2020-03-09 14:47:07.9156 Debug --- NLog configuration dump ---
+2020-03-09 14:47:07.9156 Debug Targets:
+2020-03-09 14:47:07.9228 Debug Rules:
+2020-03-09 14:47:08.0044 Debug --- End of NLog configuration dump ---
+2020-03-09 14:47:08.0351 Trace FindReachableObject<System.Object>:
+2020-03-09 14:47:08.0351 Info Found 0 configuration items
+2020-03-09 14:56:19.9605 Debug Targets not configured for logger: LoggerService.LoggerManager
+2020-03-09 15:30:22.9024 Debug ScanAssembly('NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c')
+2020-03-09 15:30:23.3772 Debug Found assembly location directory: 'C:\Users\bridgelabz\.nuget\packages\nlog\4.6.8\lib\netstandard2.0' (NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c)
+2020-03-09 15:30:23.3772 Debug Search for auto loading files in location: C:\Users\bridgelabz\.nuget\packages\nlog\4.6.8\lib\netstandard2.0
+2020-03-09 15:30:23.4249 Debug Found assembly location directory: 'D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController\bin\Debug\netcoreapp2.1' (FundooAPIController, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null)
+2020-03-09 15:30:23.4249 Debug Search for auto loading files in location: D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController\bin\Debug\netcoreapp2.1
+2020-03-09 15:30:23.4249 Debug Auto loading based on AppDomain-BaseDirectory found location: D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController\bin\Debug\netcoreapp2.1
+2020-03-09 15:30:23.4249 Debug Search for auto loading files in location: D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController\bin\Debug\netcoreapp2.1
+2020-03-09 15:30:23.4249 Debug Start auto loading, location: C:\Users\bridgelabz\.nuget\packages\nlog\4.6.8\lib\netstandard2.0
+2020-03-09 15:30:23.4433 Trace Assembly 'Microsoft.Extensions.Logging, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60' will be hidden in callsite stacktrace
+2020-03-09 15:30:23.4433 Trace Assembly 'Microsoft.Extensions.Logging.Abstractions, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60' will be hidden in callsite stacktrace
+2020-03-09 15:30:23.4433 Debug Auto loading done
+2020-03-09 15:30:23.4433 Info Message Template Auto Format enabled
+2020-03-09 15:30:23.5175 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-03-09 15:30:23.5379 Trace Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2020-03-09 15:30:23.5851 Debug Setting 'UppercaseLayoutRendererWrapper.uppercase' to 'true'
+2020-03-09 15:30:23.6578 Trace Wrapping LevelLayoutRenderer with UppercaseLayoutRendererWrapper
+2020-03-09 15:30:23.6578 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-03-09 15:30:23.6578 Trace Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-03-09 15:30:23.6578 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-03-09 15:30:23.6578 Trace Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2020-03-09 15:30:23.6783 Trace  Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2020-03-09 15:30:23.6783 Trace  Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2020-03-09 15:30:23.6783 Trace   Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-03-09 15:30:23.6783 Trace   Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-03-09 15:30:23.6783 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-03-09 15:30:23.6879 Trace Scanning LoggerNameLayoutRenderer 'Layout Renderer: ${logger}'
+2020-03-09 15:30:23.6879 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-03-09 15:30:23.6879 Trace Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2020-03-09 15:30:23.7342 Debug Setting 'FileTarget.name' to 'logfile'
+2020-03-09 15:30:23.7342 Debug Setting 'FileTarget.fileName' to 'D:/Abc/logFile/${shortdate}_logFile.txt'
+2020-03-09 15:30:23.7342 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-03-09 15:30:23.7342 Trace Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2020-03-09 15:30:23.7342 Debug Setting 'FileTarget.layout' to '${longdate} ${level:uppercase=true} ${message}'
+2020-03-09 15:30:23.7499 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-03-09 15:30:23.7499 Trace Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2020-03-09 15:30:23.7499 Debug Setting 'UppercaseLayoutRendererWrapper.uppercase' to 'true'
+2020-03-09 15:30:23.7499 Trace Wrapping LevelLayoutRenderer with UppercaseLayoutRendererWrapper
+2020-03-09 15:30:23.7657 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-03-09 15:30:23.7657 Trace Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-03-09 15:30:23.7657 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-03-09 15:30:23.7657 Trace Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2020-03-09 15:30:23.7657 Trace  Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2020-03-09 15:30:23.7657 Trace  Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2020-03-09 15:30:23.7820 Trace   Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-03-09 15:30:23.7820 Trace   Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-03-09 15:30:23.7820 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-03-09 15:30:23.7820 Trace Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2020-03-09 15:30:23.7820 Debug Setting 'FileTarget.allowFileSharedWriting' to 'true'
+2020-03-09 15:30:24.0013 Warn Error when setting 'true' on attibute 'allowFileSharedWriting' Exception: System.NotSupportedException: Parameter allowFileSharedWriting not supported on FileTarget
+   at NLog.Internal.PropertyHelper.SetPropertyFromString(Object obj, String propertyName, String value, ConfigurationItemFactory configurationItemFactory)
+   at NLog.Config.LoggingConfigurationParser.ConfigureObjectFromAttributes(Object targetObject, ILoggingConfigurationElement element, Boolean ignoreType)
+2020-03-09 15:30:24.0013 Error Exception when parsing D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController/nlog.config.  Exception: System.NotSupportedException: Parameter allowFileSharedWriting not supported on FileTarget
+   at NLog.Internal.PropertyHelper.SetPropertyFromString(Object obj, String propertyName, String value, ConfigurationItemFactory configurationItemFactory)
+   at NLog.Config.LoggingConfigurationParser.ConfigureObjectFromAttributes(Object targetObject, ILoggingConfigurationElement element, Boolean ignoreType)
+   at NLog.Config.LoggingConfigurationParser.ParseTargetElement(Target target, ILoggingConfigurationElement targetElement, Dictionary`2 typeNameToDefaultTargetParameters)
+   at NLog.Config.LoggingConfigurationParser.ParseTargetsElement(ILoggingConfigurationElement targetsElement)
+   at NLog.Config.LoggingConfigurationParser.ParseNLogSection(ILoggingConfigurationElement configSection)
+   at NLog.Config.LoggingConfigurationParser.LoadConfig(ILoggingConfigurationElement nlogConfig, String basePath)
+   at NLog.Config.XmlLoggingConfiguration.ParseNLogElement(ILoggingConfigurationElement nlogElement, String filePath, Boolean autoReloadDefault)
+   at NLog.Config.XmlLoggingConfiguration.Initialize(XmlReader reader, String fileName, Boolean ignoreErrors)
+2020-03-09 15:30:24.0164 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Exception when parsing D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController/nlog.config.  ---> System.NotSupportedException: Parameter allowFileSharedWriting not supported on FileTarget
+   at NLog.Internal.PropertyHelper.SetPropertyFromString(Object obj, String propertyName, String value, ConfigurationItemFactory configurationItemFactory)
+   at NLog.Config.LoggingConfigurationParser.ConfigureObjectFromAttributes(Object targetObject, ILoggingConfigurationElement element, Boolean ignoreType)
+   at NLog.Config.LoggingConfigurationParser.ParseTargetElement(Target target, ILoggingConfigurationElement targetElement, Dictionary`2 typeNameToDefaultTargetParameters)
+   at NLog.Config.LoggingConfigurationParser.ParseTargetsElement(ILoggingConfigurationElement targetsElement)
+   at NLog.Config.LoggingConfigurationParser.ParseNLogSection(ILoggingConfigurationElement configSection)
+   at NLog.Config.LoggingConfigurationParser.LoadConfig(ILoggingConfigurationElement nlogConfig, String basePath)
+   at NLog.Config.XmlLoggingConfiguration.ParseNLogElement(ILoggingConfigurationElement nlogElement, String filePath, Boolean autoReloadDefault)
+   at NLog.Config.XmlLoggingConfiguration.Initialize(XmlReader reader, String fileName, Boolean ignoreErrors)
+   --- End of inner exception stack trace ---
+2020-03-09 15:30:24.0777 Debug Watching path 'D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController' filter 'nlog.config' for changes.
+2020-03-09 15:30:24.0777 Debug --- NLog configuration dump ---
+2020-03-09 15:30:24.0777 Debug Targets:
+2020-03-09 15:30:24.0777 Debug Rules:
+2020-03-09 15:30:24.0777 Debug --- End of NLog configuration dump ---
+2020-03-09 15:30:24.1011 Trace FindReachableObject<System.Object>:
+2020-03-09 15:30:24.1011 Info Found 0 configuration items
+2020-03-09 15:31:20.5180 Debug ScanAssembly('NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c')
+2020-03-09 15:31:21.4081 Debug Found assembly location directory: 'C:\Users\bridgelabz\.nuget\packages\nlog\4.6.8\lib\netstandard2.0' (NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c)
+2020-03-09 15:31:21.4081 Debug Search for auto loading files in location: C:\Users\bridgelabz\.nuget\packages\nlog\4.6.8\lib\netstandard2.0
+2020-03-09 15:31:21.4817 Debug Found assembly location directory: 'D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController\bin\Debug\netcoreapp2.1' (FundooAPIController, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null)
+2020-03-09 15:31:21.4817 Debug Search for auto loading files in location: D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController\bin\Debug\netcoreapp2.1
+2020-03-09 15:31:21.4849 Debug Auto loading based on AppDomain-BaseDirectory found location: D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController\bin\Debug\netcoreapp2.1
+2020-03-09 15:31:21.4849 Debug Search for auto loading files in location: D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController\bin\Debug\netcoreapp2.1
+2020-03-09 15:31:21.4849 Debug Start auto loading, location: C:\Users\bridgelabz\.nuget\packages\nlog\4.6.8\lib\netstandard2.0
+2020-03-09 15:31:21.4994 Trace Assembly 'Microsoft.Extensions.Logging, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60' will be hidden in callsite stacktrace
+2020-03-09 15:31:21.4994 Trace Assembly 'Microsoft.Extensions.Logging.Abstractions, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60' will be hidden in callsite stacktrace
+2020-03-09 15:31:21.4994 Debug Auto loading done
+2020-03-09 15:31:21.4994 Info Message Template Auto Format enabled
+2020-03-09 15:31:21.5798 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-03-09 15:31:21.5798 Trace Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2020-03-09 15:31:21.6099 Debug Setting 'UppercaseLayoutRendererWrapper.uppercase' to 'true'
+2020-03-09 15:31:21.7218 Trace Wrapping LevelLayoutRenderer with UppercaseLayoutRendererWrapper
+2020-03-09 15:31:21.7218 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-03-09 15:31:21.7218 Trace Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-03-09 15:31:21.7218 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-03-09 15:31:21.7218 Trace Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2020-03-09 15:31:21.7519 Trace  Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2020-03-09 15:31:21.7519 Trace  Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2020-03-09 15:31:21.7519 Trace   Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-03-09 15:31:21.7519 Trace   Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-03-09 15:31:21.7519 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-03-09 15:31:21.7519 Trace Scanning LoggerNameLayoutRenderer 'Layout Renderer: ${logger}'
+2020-03-09 15:31:21.7665 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-03-09 15:31:21.7665 Trace Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2020-03-09 15:31:21.8379 Debug Setting 'FileTarget.name' to 'logfile'
+2020-03-09 15:31:21.8379 Debug Setting 'FileTarget.fileName' to 'D:/Abc/logFile/${shortdate}_logFile.txt'
+2020-03-09 15:31:21.8430 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-03-09 15:31:21.8430 Trace Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2020-03-09 15:31:21.8430 Debug Setting 'FileTarget.layout' to '${longdate} ${level:uppercase=true} ${message}'
+2020-03-09 15:31:21.8430 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-03-09 15:31:21.8430 Trace Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2020-03-09 15:31:21.8430 Debug Setting 'UppercaseLayoutRendererWrapper.uppercase' to 'true'
+2020-03-09 15:31:21.8430 Trace Wrapping LevelLayoutRenderer with UppercaseLayoutRendererWrapper
+2020-03-09 15:31:21.8430 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-03-09 15:31:21.8430 Trace Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-03-09 15:31:21.8430 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-03-09 15:31:21.8430 Trace Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2020-03-09 15:31:21.8596 Trace  Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2020-03-09 15:31:21.8596 Trace  Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2020-03-09 15:31:21.8596 Trace   Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-03-09 15:31:21.8596 Trace   Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-03-09 15:31:21.8596 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-03-09 15:31:21.8596 Trace Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2020-03-09 15:31:21.8596 Debug Setting 'FileTarget.allowFileSharedWriting' to 'true'
+2020-03-09 15:31:22.0207 Warn Error when setting 'true' on attibute 'allowFileSharedWriting' Exception: System.NotSupportedException: Parameter allowFileSharedWriting not supported on FileTarget
+   at NLog.Internal.PropertyHelper.SetPropertyFromString(Object obj, String propertyName, String value, ConfigurationItemFactory configurationItemFactory)
+   at NLog.Config.LoggingConfigurationParser.ConfigureObjectFromAttributes(Object targetObject, ILoggingConfigurationElement element, Boolean ignoreType)
+2020-03-09 15:31:22.0207 Error Exception when parsing D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController/nlog.config.  Exception: System.NotSupportedException: Parameter allowFileSharedWriting not supported on FileTarget
+   at NLog.Internal.PropertyHelper.SetPropertyFromString(Object obj, String propertyName, String value, ConfigurationItemFactory configurationItemFactory)
+   at NLog.Config.LoggingConfigurationParser.ConfigureObjectFromAttributes(Object targetObject, ILoggingConfigurationElement element, Boolean ignoreType)
+   at NLog.Config.LoggingConfigurationParser.ParseTargetElement(Target target, ILoggingConfigurationElement targetElement, Dictionary`2 typeNameToDefaultTargetParameters)
+   at NLog.Config.LoggingConfigurationParser.ParseTargetsElement(ILoggingConfigurationElement targetsElement)
+   at NLog.Config.LoggingConfigurationParser.ParseNLogSection(ILoggingConfigurationElement configSection)
+   at NLog.Config.LoggingConfigurationParser.LoadConfig(ILoggingConfigurationElement nlogConfig, String basePath)
+   at NLog.Config.XmlLoggingConfiguration.ParseNLogElement(ILoggingConfigurationElement nlogElement, String filePath, Boolean autoReloadDefault)
+   at NLog.Config.XmlLoggingConfiguration.Initialize(XmlReader reader, String fileName, Boolean ignoreErrors)
+2020-03-09 15:31:22.0332 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Exception when parsing D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController/nlog.config.  ---> System.NotSupportedException: Parameter allowFileSharedWriting not supported on FileTarget
+   at NLog.Internal.PropertyHelper.SetPropertyFromString(Object obj, String propertyName, String value, ConfigurationItemFactory configurationItemFactory)
+   at NLog.Config.LoggingConfigurationParser.ConfigureObjectFromAttributes(Object targetObject, ILoggingConfigurationElement element, Boolean ignoreType)
+   at NLog.Config.LoggingConfigurationParser.ParseTargetElement(Target target, ILoggingConfigurationElement targetElement, Dictionary`2 typeNameToDefaultTargetParameters)
+   at NLog.Config.LoggingConfigurationParser.ParseTargetsElement(ILoggingConfigurationElement targetsElement)
+   at NLog.Config.LoggingConfigurationParser.ParseNLogSection(ILoggingConfigurationElement configSection)
+   at NLog.Config.LoggingConfigurationParser.LoadConfig(ILoggingConfigurationElement nlogConfig, String basePath)
+   at NLog.Config.XmlLoggingConfiguration.ParseNLogElement(ILoggingConfigurationElement nlogElement, String filePath, Boolean autoReloadDefault)
+   at NLog.Config.XmlLoggingConfiguration.Initialize(XmlReader reader, String fileName, Boolean ignoreErrors)
+   --- End of inner exception stack trace ---
+2020-03-09 15:31:22.0956 Debug Watching path 'D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController' filter 'nlog.config' for changes.
+2020-03-09 15:31:22.0956 Debug --- NLog configuration dump ---
+2020-03-09 15:31:22.0956 Debug Targets:
+2020-03-09 15:31:22.0956 Debug Rules:
+2020-03-09 15:31:22.1097 Debug --- End of NLog configuration dump ---
+2020-03-09 15:31:22.1287 Trace FindReachableObject<System.Object>:
+2020-03-09 15:31:22.1287 Info Found 0 configuration items
+2020-03-09 15:39:04.0545 Debug ScanAssembly('NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c')
+2020-03-09 15:39:04.3381 Debug Found assembly location directory: 'C:\Users\bridgelabz\.nuget\packages\nlog\4.6.8\lib\netstandard2.0' (NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c)
+2020-03-09 15:39:04.3478 Debug Search for auto loading files in location: C:\Users\bridgelabz\.nuget\packages\nlog\4.6.8\lib\netstandard2.0
+2020-03-09 15:39:04.3972 Debug Found assembly location directory: 'D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController\bin\Debug\netcoreapp2.1' (FundooAPIController, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null)
+2020-03-09 15:39:04.3972 Debug Search for auto loading files in location: D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController\bin\Debug\netcoreapp2.1
+2020-03-09 15:39:04.3972 Debug Auto loading based on AppDomain-BaseDirectory found location: D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController\bin\Debug\netcoreapp2.1
+2020-03-09 15:39:04.3972 Debug Search for auto loading files in location: D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController\bin\Debug\netcoreapp2.1
+2020-03-09 15:39:04.3972 Debug Start auto loading, location: C:\Users\bridgelabz\.nuget\packages\nlog\4.6.8\lib\netstandard2.0
+2020-03-09 15:39:04.4186 Trace Assembly 'Microsoft.Extensions.Logging, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60' will be hidden in callsite stacktrace
+2020-03-09 15:39:04.4186 Trace Assembly 'Microsoft.Extensions.Logging.Abstractions, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60' will be hidden in callsite stacktrace
+2020-03-09 15:39:04.4230 Debug Auto loading done
+2020-03-09 15:39:04.4230 Info Message Template Auto Format enabled
+2020-03-09 15:39:04.5008 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-03-09 15:39:04.5008 Trace Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2020-03-09 15:39:04.5524 Debug Setting 'UppercaseLayoutRendererWrapper.uppercase' to 'true'
+2020-03-09 15:39:04.6205 Trace Wrapping LevelLayoutRenderer with UppercaseLayoutRendererWrapper
+2020-03-09 15:39:04.6205 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-03-09 15:39:04.6205 Trace Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-03-09 15:39:04.6259 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-03-09 15:39:04.6259 Trace Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2020-03-09 15:39:04.6445 Trace  Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2020-03-09 15:39:04.6445 Trace  Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2020-03-09 15:39:04.6445 Trace   Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-03-09 15:39:04.6445 Trace   Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-03-09 15:39:04.6445 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-03-09 15:39:04.6445 Trace Scanning LoggerNameLayoutRenderer 'Layout Renderer: ${logger}'
+2020-03-09 15:39:04.6560 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-03-09 15:39:04.6560 Trace Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2020-03-09 15:39:04.7018 Debug Setting 'FileTarget.name' to 'logfile'
+2020-03-09 15:39:04.7051 Debug Setting 'FileTarget.fileName' to 'D:/Abc/logFile/${shortdate}_logFile.txt'
+2020-03-09 15:39:04.7051 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-03-09 15:39:04.7051 Trace Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2020-03-09 15:39:04.7051 Debug Setting 'FileTarget.layout' to '${longdate} ${level:uppercase=true} ${message}'
+2020-03-09 15:39:04.7051 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-03-09 15:39:04.7051 Trace Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2020-03-09 15:39:04.7202 Debug Setting 'UppercaseLayoutRendererWrapper.uppercase' to 'true'
+2020-03-09 15:39:04.7202 Trace Wrapping LevelLayoutRenderer with UppercaseLayoutRendererWrapper
+2020-03-09 15:39:04.7202 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-03-09 15:39:04.7202 Trace Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-03-09 15:39:04.7202 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-03-09 15:39:04.7202 Trace Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2020-03-09 15:39:04.7202 Trace  Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2020-03-09 15:39:04.7202 Trace  Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2020-03-09 15:39:04.7343 Trace   Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-03-09 15:39:04.7343 Trace   Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-03-09 15:39:04.7343 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-03-09 15:39:04.7343 Trace Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2020-03-09 15:39:04.7343 Debug Setting 'FileTarget.allowFileSharedWriting' to 'true'
+2020-03-09 15:39:04.8796 Warn Error when setting 'true' on attibute 'allowFileSharedWriting' Exception: System.NotSupportedException: Parameter allowFileSharedWriting not supported on FileTarget
+   at NLog.Internal.PropertyHelper.SetPropertyFromString(Object obj, String propertyName, String value, ConfigurationItemFactory configurationItemFactory)
+   at NLog.Config.LoggingConfigurationParser.ConfigureObjectFromAttributes(Object targetObject, ILoggingConfigurationElement element, Boolean ignoreType)
+2020-03-09 15:39:04.8796 Error Exception when parsing D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController/nlog.config.  Exception: System.NotSupportedException: Parameter allowFileSharedWriting not supported on FileTarget
+   at NLog.Internal.PropertyHelper.SetPropertyFromString(Object obj, String propertyName, String value, ConfigurationItemFactory configurationItemFactory)
+   at NLog.Config.LoggingConfigurationParser.ConfigureObjectFromAttributes(Object targetObject, ILoggingConfigurationElement element, Boolean ignoreType)
+   at NLog.Config.LoggingConfigurationParser.ParseTargetElement(Target target, ILoggingConfigurationElement targetElement, Dictionary`2 typeNameToDefaultTargetParameters)
+   at NLog.Config.LoggingConfigurationParser.ParseTargetsElement(ILoggingConfigurationElement targetsElement)
+   at NLog.Config.LoggingConfigurationParser.ParseNLogSection(ILoggingConfigurationElement configSection)
+   at NLog.Config.LoggingConfigurationParser.LoadConfig(ILoggingConfigurationElement nlogConfig, String basePath)
+   at NLog.Config.XmlLoggingConfiguration.ParseNLogElement(ILoggingConfigurationElement nlogElement, String filePath, Boolean autoReloadDefault)
+   at NLog.Config.XmlLoggingConfiguration.Initialize(XmlReader reader, String fileName, Boolean ignoreErrors)
+2020-03-09 15:39:04.8916 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Exception when parsing D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController/nlog.config.  ---> System.NotSupportedException: Parameter allowFileSharedWriting not supported on FileTarget
+   at NLog.Internal.PropertyHelper.SetPropertyFromString(Object obj, String propertyName, String value, ConfigurationItemFactory configurationItemFactory)
+   at NLog.Config.LoggingConfigurationParser.ConfigureObjectFromAttributes(Object targetObject, ILoggingConfigurationElement element, Boolean ignoreType)
+   at NLog.Config.LoggingConfigurationParser.ParseTargetElement(Target target, ILoggingConfigurationElement targetElement, Dictionary`2 typeNameToDefaultTargetParameters)
+   at NLog.Config.LoggingConfigurationParser.ParseTargetsElement(ILoggingConfigurationElement targetsElement)
+   at NLog.Config.LoggingConfigurationParser.ParseNLogSection(ILoggingConfigurationElement configSection)
+   at NLog.Config.LoggingConfigurationParser.LoadConfig(ILoggingConfigurationElement nlogConfig, String basePath)
+   at NLog.Config.XmlLoggingConfiguration.ParseNLogElement(ILoggingConfigurationElement nlogElement, String filePath, Boolean autoReloadDefault)
+   at NLog.Config.XmlLoggingConfiguration.Initialize(XmlReader reader, String fileName, Boolean ignoreErrors)
+   --- End of inner exception stack trace ---
+2020-03-09 15:39:04.9534 Debug Watching path 'D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController' filter 'nlog.config' for changes.
+2020-03-09 15:39:04.9534 Debug --- NLog configuration dump ---
+2020-03-09 15:39:04.9701 Debug Targets:
+2020-03-09 15:39:04.9701 Debug Rules:
+2020-03-09 15:39:04.9701 Debug --- End of NLog configuration dump ---
+2020-03-09 15:39:05.0078 Trace FindReachableObject<System.Object>:
+2020-03-09 15:39:05.0078 Info Found 0 configuration items
+2020-03-09 15:41:10.8419 Debug ScanAssembly('NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c')
+2020-03-09 15:41:11.5351 Debug Found assembly location directory: 'C:\Users\bridgelabz\.nuget\packages\nlog\4.6.8\lib\netstandard2.0' (NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c)
+2020-03-09 15:41:11.5351 Debug Search for auto loading files in location: C:\Users\bridgelabz\.nuget\packages\nlog\4.6.8\lib\netstandard2.0
+2020-03-09 15:41:11.5606 Debug Found assembly location directory: 'D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController\bin\Debug\netcoreapp2.1' (FundooAPIController, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null)
+2020-03-09 15:41:11.5606 Debug Search for auto loading files in location: D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController\bin\Debug\netcoreapp2.1
+2020-03-09 15:41:11.5649 Debug Auto loading based on AppDomain-BaseDirectory found location: D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController\bin\Debug\netcoreapp2.1
+2020-03-09 15:41:11.5649 Debug Search for auto loading files in location: D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController\bin\Debug\netcoreapp2.1
+2020-03-09 15:41:11.5649 Debug Start auto loading, location: C:\Users\bridgelabz\.nuget\packages\nlog\4.6.8\lib\netstandard2.0
+2020-03-09 15:41:11.5799 Trace Assembly 'Microsoft.Extensions.Logging, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60' will be hidden in callsite stacktrace
+2020-03-09 15:41:11.5799 Trace Assembly 'Microsoft.Extensions.Logging.Abstractions, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60' will be hidden in callsite stacktrace
+2020-03-09 15:41:11.5799 Debug Auto loading done
+2020-03-09 15:41:11.5799 Info Message Template Auto Format enabled
+2020-03-09 15:41:11.6721 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-03-09 15:41:11.6884 Trace Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2020-03-09 15:41:11.7338 Debug Setting 'UppercaseLayoutRendererWrapper.uppercase' to 'true'
+2020-03-09 15:41:11.7797 Trace Wrapping LevelLayoutRenderer with UppercaseLayoutRendererWrapper
+2020-03-09 15:41:11.7810 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-03-09 15:41:11.7810 Trace Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-03-09 15:41:11.7810 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-03-09 15:41:11.7810 Trace Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2020-03-09 15:41:11.7994 Trace  Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2020-03-09 15:41:11.7994 Trace  Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2020-03-09 15:41:11.7994 Trace   Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-03-09 15:41:11.7994 Trace   Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-03-09 15:41:11.7994 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-03-09 15:41:11.7994 Trace Scanning LoggerNameLayoutRenderer 'Layout Renderer: ${logger}'
+2020-03-09 15:41:11.7994 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-03-09 15:41:11.8131 Trace Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2020-03-09 15:41:11.8392 Debug Setting 'FileTarget.name' to 'logfile'
+2020-03-09 15:41:11.8453 Debug Setting 'FileTarget.fileName' to 'D:/Abc/logFile/${shortdate}_logFile.txt'
+2020-03-09 15:41:11.8453 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-03-09 15:41:11.8453 Trace Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2020-03-09 15:41:11.8750 Debug Setting 'FileTarget.layout' to '${longdate} ${level:uppercase=true} ${message}'
+2020-03-09 15:41:11.8750 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-03-09 15:41:11.8750 Trace Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2020-03-09 15:41:11.9062 Debug Setting 'UppercaseLayoutRendererWrapper.uppercase' to 'true'
+2020-03-09 15:41:11.9278 Trace Wrapping LevelLayoutRenderer with UppercaseLayoutRendererWrapper
+2020-03-09 15:41:12.2636 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-03-09 15:41:12.3248 Trace Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-03-09 15:41:12.4143 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-03-09 15:41:12.4143 Trace Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2020-03-09 15:41:12.4365 Trace  Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2020-03-09 15:41:12.4397 Trace  Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2020-03-09 15:41:12.4397 Trace   Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-03-09 15:41:12.4554 Trace   Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-03-09 15:41:12.4554 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-03-09 15:41:12.4554 Trace Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2020-03-09 15:41:12.4554 Debug Setting 'FileTarget.allowFileSharedWriting' to 'true'
+2020-03-09 15:41:12.7328 Warn Error when setting 'true' on attibute 'allowFileSharedWriting' Exception: System.NotSupportedException: Parameter allowFileSharedWriting not supported on FileTarget
+   at NLog.Internal.PropertyHelper.SetPropertyFromString(Object obj, String propertyName, String value, ConfigurationItemFactory configurationItemFactory)
+   at NLog.Config.LoggingConfigurationParser.ConfigureObjectFromAttributes(Object targetObject, ILoggingConfigurationElement element, Boolean ignoreType)
+2020-03-09 15:41:12.7449 Error Exception when parsing D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController/nlog.config.  Exception: System.NotSupportedException: Parameter allowFileSharedWriting not supported on FileTarget
+   at NLog.Internal.PropertyHelper.SetPropertyFromString(Object obj, String propertyName, String value, ConfigurationItemFactory configurationItemFactory)
+   at NLog.Config.LoggingConfigurationParser.ConfigureObjectFromAttributes(Object targetObject, ILoggingConfigurationElement element, Boolean ignoreType)
+   at NLog.Config.LoggingConfigurationParser.ParseTargetElement(Target target, ILoggingConfigurationElement targetElement, Dictionary`2 typeNameToDefaultTargetParameters)
+   at NLog.Config.LoggingConfigurationParser.ParseTargetsElement(ILoggingConfigurationElement targetsElement)
+   at NLog.Config.LoggingConfigurationParser.ParseNLogSection(ILoggingConfigurationElement configSection)
+   at NLog.Config.LoggingConfigurationParser.LoadConfig(ILoggingConfigurationElement nlogConfig, String basePath)
+   at NLog.Config.XmlLoggingConfiguration.ParseNLogElement(ILoggingConfigurationElement nlogElement, String filePath, Boolean autoReloadDefault)
+   at NLog.Config.XmlLoggingConfiguration.Initialize(XmlReader reader, String fileName, Boolean ignoreErrors)
+2020-03-09 15:41:12.7758 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Exception when parsing D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController/nlog.config.  ---> System.NotSupportedException: Parameter allowFileSharedWriting not supported on FileTarget
+   at NLog.Internal.PropertyHelper.SetPropertyFromString(Object obj, String propertyName, String value, ConfigurationItemFactory configurationItemFactory)
+   at NLog.Config.LoggingConfigurationParser.ConfigureObjectFromAttributes(Object targetObject, ILoggingConfigurationElement element, Boolean ignoreType)
+   at NLog.Config.LoggingConfigurationParser.ParseTargetElement(Target target, ILoggingConfigurationElement targetElement, Dictionary`2 typeNameToDefaultTargetParameters)
+   at NLog.Config.LoggingConfigurationParser.ParseTargetsElement(ILoggingConfigurationElement targetsElement)
+   at NLog.Config.LoggingConfigurationParser.ParseNLogSection(ILoggingConfigurationElement configSection)
+   at NLog.Config.LoggingConfigurationParser.LoadConfig(ILoggingConfigurationElement nlogConfig, String basePath)
+   at NLog.Config.XmlLoggingConfiguration.ParseNLogElement(ILoggingConfigurationElement nlogElement, String filePath, Boolean autoReloadDefault)
+   at NLog.Config.XmlLoggingConfiguration.Initialize(XmlReader reader, String fileName, Boolean ignoreErrors)
+   --- End of inner exception stack trace ---
+2020-03-09 15:41:12.9720 Debug Watching path 'D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController' filter 'nlog.config' for changes.
+2020-03-09 15:41:13.0094 Debug --- NLog configuration dump ---
+2020-03-09 15:41:13.0094 Debug Targets:
+2020-03-09 15:41:13.0166 Debug Rules:
+2020-03-09 15:41:13.0166 Debug --- End of NLog configuration dump ---
+2020-03-09 15:41:13.0552 Trace FindReachableObject<System.Object>:
+2020-03-09 15:41:13.0552 Info Found 0 configuration items

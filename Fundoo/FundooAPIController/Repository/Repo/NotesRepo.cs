@@ -22,6 +22,7 @@ namespace Repository.Repo
     using Repository.Context;
     using Repository.IRepo;
     using StackExchange.Redis;
+    using UtilityProject;
 
     /// <summary>
     /// /This is the Notes repository
@@ -840,22 +841,32 @@ namespace Repository.Repo
                     if (this.DuplicateEmailsWithNoteId(collaborator))
                     {
                         this.context.Collaborator.Add(collaborator);
-                        MailMessage mail = new MailMessage();
-                        mail.To.Add(collaboratorEmail);
-                        mail.From = new MailAddress("bhush087@gmail.com");
-                        mail.Subject = "Title :" + note.Title;
+                        bool connectivity = System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable();
                         string body = "(" + note.Email + ") shared a note with you. " + "Description :" + note.Description;
-                        mail.Body = body;
-                        mail.IsBodyHtml = false;
-                        SmtpClient smtp = new SmtpClient
+                        if (connectivity)
                         {
-                            Host = "smtp.gmail.com",
-                            EnableSsl = true,
-                            Credentials = new NetworkCredential("bhush087@gmail.com", "Bhushan087***")
-                        };
-                        smtp.Send(mail);
-                        var result = await this.context.SaveChangesAsync();
-                        return "Collabrator added and Note sent successfully";
+                            MailMessage mail = new MailMessage();
+                            mail.To.Add(collaboratorEmail);
+                            mail.From = new MailAddress("bhush087@gmail.com");
+                            mail.Subject = "Title :" + note.Title;
+                            mail.Body = body;
+                            mail.IsBodyHtml = false;
+                            SmtpClient smtp = new SmtpClient
+                            {
+                                Host = "smtp.gmail.com",
+                                EnableSsl = true,
+                                Credentials = new NetworkCredential("bhush087@gmail.com", "Bhushan087***")
+                            };
+                            smtp.Send(mail);
+                            var result = await this.context.SaveChangesAsync();
+                            return "Collabrator added and Note sent successfully";
+                        }
+                        else
+                        {
+                            ToSendMSMQ utilityProject = new ToSendMSMQ();
+                            utilityProject.StoreToMSMQ(collaboratorEmail, "Title :" + note.Title, body);
+                            return "Check Internet Messages are in QUEUE";
+                        }
                     }
 
                     return "Duplicate Receiver found";

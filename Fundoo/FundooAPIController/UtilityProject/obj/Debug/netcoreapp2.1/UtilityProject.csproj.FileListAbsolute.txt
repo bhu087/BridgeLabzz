@@ -1,0 +1,10 @@
+D:\BridgeLabzBhush\Fundoo\FundooAPIController\UtilityProject\bin\Debug\netcoreapp2.1\UtilityProject.deps.json
+D:\BridgeLabzBhush\Fundoo\FundooAPIController\UtilityProject\bin\Debug\netcoreapp2.1\UtilityProject.runtimeconfig.json
+D:\BridgeLabzBhush\Fundoo\FundooAPIController\UtilityProject\bin\Debug\netcoreapp2.1\UtilityProject.runtimeconfig.dev.json
+D:\BridgeLabzBhush\Fundoo\FundooAPIController\UtilityProject\bin\Debug\netcoreapp2.1\UtilityProject.dll
+D:\BridgeLabzBhush\Fundoo\FundooAPIController\UtilityProject\obj\Debug\netcoreapp2.1\UtilityProject.AssemblyInfoInputs.cache
+D:\BridgeLabzBhush\Fundoo\FundooAPIController\UtilityProject\obj\Debug\netcoreapp2.1\UtilityProject.AssemblyInfo.cs
+D:\BridgeLabzBhush\Fundoo\FundooAPIController\UtilityProject\obj\Debug\netcoreapp2.1\UtilityProject.csprojAssemblyReference.cache
+D:\BridgeLabzBhush\Fundoo\FundooAPIController\UtilityProject\bin\Debug\netcoreapp2.1\UtilityProject.pdb
+D:\BridgeLabzBhush\Fundoo\FundooAPIController\UtilityProject\obj\Debug\netcoreapp2.1\UtilityProject.dll
+D:\BridgeLabzBhush\Fundoo\FundooAPIController\UtilityProject\obj\Debug\netcoreapp2.1\UtilityProject.pdb

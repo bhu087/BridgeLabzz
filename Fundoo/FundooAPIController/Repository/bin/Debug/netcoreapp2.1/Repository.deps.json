@@ -16,7 +16,8 @@
           "StackExchange.Redis": "2.0.601",
           "System.Configuration.ConfigurationManager": "4.7.0",
           "System.Drawing.Common": "4.7.0",
-          "System.IdentityModel.Tokens.Jwt": "5.6.0"
+          "System.IdentityModel.Tokens.Jwt": "5.6.0",
+          "UtilityProject": "1.0.0"
         },
         "runtime": {
           "Repository.dll": {}
@@ -30,6 +31,14 @@
           "lib/netstandard1.3/CloudinaryDotNet.dll": {
             "assemblyVersion": "1.10.0.0",
             "fileVersion": "1.10.0.0"
+          }
+        }
+      },
+      "Experimental.System.Messaging/1.1.0": {
+        "runtime": {
+          "lib/netstandard2.0/Experimental.System.Messaging.dll": {
+            "assemblyVersion": "1.1.0.0",
+            "fileVersion": "1.1.0.0"
           }
         }
       },
@@ -756,6 +765,14 @@
         "runtime": {
           "Model.dll": {}
         }
+      },
+      "UtilityProject/1.0.0": {
+        "dependencies": {
+          "Experimental.System.Messaging": "1.1.0"
+        },
+        "runtime": {
+          "UtilityProject.dll": {}
+        }
       }
     }
   },
@@ -771,6 +788,13 @@
       "sha512": "sha512-y4C2BkacylKVAzXFFUBpLOTkevGJgxAYMxGbAghj4wJmlf8F7BG2m9Dg9+SOR6xKcMOXbu2kRw2/UdqP9GSbvA==",
       "path": "cloudinarydotnet/1.10.0",
       "hashPath": "cloudinarydotnet.1.10.0.nupkg.sha512"
+    },
+    "Experimental.System.Messaging/1.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-vub7Mtt2WFdFKTZKECVuZx6feP5kUpS9EfVy+Yu4GDfdlMwivRdX4TbdkDYS2lKqCjqzUbnxTbJei1IOqC+CnA==",
+      "path": "experimental.system.messaging/1.1.0",
+      "hashPath": "experimental.system.messaging.1.1.0.nupkg.sha512"
     },
     "Microsoft.EntityFrameworkCore/2.1.0": {
       "type": "package",
@@ -1270,6 +1294,11 @@
       "hashPath": "system.threading.tasks.4.0.11.nupkg.sha512"
     },
     "Model/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "UtilityProject/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

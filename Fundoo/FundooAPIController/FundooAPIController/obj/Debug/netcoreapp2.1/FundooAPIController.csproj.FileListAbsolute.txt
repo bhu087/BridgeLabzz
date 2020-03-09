@@ -1,3 +1,8 @@
+D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController\obj\Debug\netcoreapp2.1\FundooAPIController.csprojAssemblyReference.cache
+D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController\obj\Debug\netcoreapp2.1\FundooAPIController.RazorAssemblyInfo.cache
+D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController\obj\Debug\netcoreapp2.1\FundooAPIController.RazorAssemblyInfo.cs
+D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController\obj\Debug\netcoreapp2.1\FundooAPIController.AssemblyInfoInputs.cache
+D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController\obj\Debug\netcoreapp2.1\FundooAPIController.AssemblyInfo.cs
 D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController\bin\Debug\netcoreapp2.1\nlog.config
 D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController\bin\Debug\netcoreapp2.1\appsettings.Development.json
 D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController\bin\Debug\netcoreapp2.1\appsettings.json
@@ -13,16 +18,13 @@ D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController\bin\Debug\netc
 D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController\bin\Debug\netcoreapp2.1\Manager.dll
 D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController\bin\Debug\netcoreapp2.1\Model.dll
 D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController\bin\Debug\netcoreapp2.1\Repository.dll
+D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController\bin\Debug\netcoreapp2.1\UtilityProject.dll
 D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController\bin\Debug\netcoreapp2.1\LoggerService.pdb
 D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController\bin\Debug\netcoreapp2.1\Manager.pdb
 D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController\bin\Debug\netcoreapp2.1\Contract.pdb
 D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController\bin\Debug\netcoreapp2.1\Model.pdb
 D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController\bin\Debug\netcoreapp2.1\Repository.pdb
-D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController\obj\Debug\netcoreapp2.1\FundooAPIController.csprojAssemblyReference.cache
-D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController\obj\Debug\netcoreapp2.1\FundooAPIController.RazorAssemblyInfo.cache
-D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController\obj\Debug\netcoreapp2.1\FundooAPIController.RazorAssemblyInfo.cs
-D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController\obj\Debug\netcoreapp2.1\FundooAPIController.AssemblyInfoInputs.cache
-D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController\obj\Debug\netcoreapp2.1\FundooAPIController.AssemblyInfo.cs
+D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController\bin\Debug\netcoreapp2.1\UtilityProject.pdb
 D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController\obj\Debug\netcoreapp2.1\FundooAPIController.RazorTargetAssemblyInfo.cache
 D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController\obj\Debug\netcoreapp2.1\FundooAPIController.csproj.CopyComplete
 D:\BridgeLabzBhush\Fundoo\FundooAPIController\FundooAPIController\obj\Debug\netcoreapp2.1\FundooAPIController.dll

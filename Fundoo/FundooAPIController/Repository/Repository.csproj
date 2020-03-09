@@ -33,6 +33,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Model\Model.csproj" />
+    <ProjectReference Include="..\UtilityProject\UtilityProject.csproj" />
   </ItemGroup>
 
 </Project>
