@@ -1,0 +1,55 @@
+<!--<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav mode="side" #drawer class="sidenav"
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item href="#">Link 1</a>
+      <a mat-list-item href="#">Link 2</a>
+      <a mat-list-item href="#">Link 3</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>FundooFrontEnd</span>
+    </mat-toolbar>
+     Add Content Here
+  </mat-sidenav-content>
+  side Bar -- (click)="sidenav.open()"
+</mat-sidenav-container>-->
+
+
+<!-- <mat-toolbar color="primary" class="navbar">
+  <div>
+    
+    <mat-card-title><mat-icon>pan_tool</mat-icon>Fundoo</mat-card-title>
+  </div>
+  <div>
+    <span><button mat-button (click)="loadRegister()">Register</button></span>
+    <span><button mat-button (click)="loadLogin()">Login</button></span>
+    <span><button mat-button (click)="loadAbout()">About</button></span>
+  </div>
+</mat-toolbar>
+
+<app-about *ngIf="loadAboutOnClick"></app-about>
+<app-login-component *ngIf="loadLoginOnClick"></app-login-component>
+<app-register *ngIf="loadRegisterOnClick"></app-register> -->
+
+<app-dash-board></app-dash-board>
+<!--<mat-sidenav-container>
+  <mat-sidenav #sidenav>
+    SideNav
+  </mat-sidenav>
+    <mat-sidenav-content>  
+    </mat-sidenav-content>
+</mat-sidenav-container>-->
+

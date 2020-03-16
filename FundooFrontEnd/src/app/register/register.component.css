@@ -1,0 +1,29 @@
+mat-form-field{
+    display: flex;
+    position: relative;
+    height: 100%;
+}
+.registerSubmit{
+    display: flex;
+  justify-content: center;
+  height: 100%;
+}
+
+.registrationFormField{
+    display: flex;
+  justify-content: center;
+}
+
+.registerFormMainDiv{
+    display: flex;
+  justify-content: center;
+}
+.mat-card-title{
+    display: flex;
+    color: green;
+    float: center;
+}
+.fields{
+    display: flex;
+    position: relative;
+}

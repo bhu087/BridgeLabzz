@@ -1,0 +1,29 @@
+mat-form-field{
+    display: flex;
+    position: relative;
+    height: 100%;
+}
+.loginSubmit{
+    display: flex;
+  justify-content: center;
+  height: 100%;
+}
+
+.loginFormField{
+    display: flex;
+  justify-content: center;
+}
+
+.loginFormMainDiv{
+    display: flex;
+  justify-content: center;
+}
+.mat-card-title{
+    display: flex;
+    color: green;
+    float: center;
+}
+.fields{
+    display: flex;
+    position: relative;
+}
