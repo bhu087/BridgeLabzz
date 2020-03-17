@@ -1,3 +1,0 @@
-D:\BridgeLabzBhush\Fundoo\FundooAPIController\UnitTesting\obj\Debug\netcoreapp2.1\UnitTesting.csprojAssemblyReference.cache
-D:\BridgeLabzBhush\Fundoo\FundooAPIController\UnitTesting\obj\Debug\netcoreapp2.1\UnitTesting.AssemblyInfoInputs.cache
-D:\BridgeLabzBhush\Fundoo\FundooAPIController\UnitTesting\obj\Debug\netcoreapp2.1\UnitTesting.AssemblyInfo.cs

@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class DashBoardComponent implements OnInit {
  loadDashBoard: boolean = false;
  panelOpenState: boolean = false;
+ collapsed : boolean = false;
   constructor() { }
 
   ngOnInit(): void {

@@ -1,66 +1,70 @@
 <mat-toolbar color="primary" class="navbar">
-      <div>
-      <button mat-icon-button (click)="snav.toggle()"><mat-icon>pan_tool</mat-icon></button>Fundoo
-    </div>
-    <div>
-      <span><button mat-button matTooltip="settings"><mat-icon>settings</mat-icon></button></span>
-      <span><button mat-button matTooltip="Fundoo Account"><mat-icon>account_circle</mat-icon></button></span>
-    </div>
+  <div>
+    <button mat-icon-button (click)="snav.toggle()"><mat-icon>dehaze</mat-icon></button>Fundoo
+  </div>
+  <div>
+    <span><button mat-button matTooltip="refresh"><mat-icon>refresh</mat-icon></button></span>
+    <span><button mat-button matTooltip="List View"><mat-icon>list</mat-icon></button></span>
+    <span><button mat-button matTooltip="settings"><mat-icon>settings</mat-icon></button></span>
+    <span><button mat-button matTooltip="Fundoo Account"><mat-icon>account_circle</mat-icon></button></span>
+  </div>
+      
+</mat-toolbar>
     
-    </mat-toolbar>
-  
-    <mat-sidenav-container>
-      <mat-sidenav #snav mode="side" opened>
-        <mat-nav-list class="sideNavList">
-          <a mat-list-item routerLink="." class="sideNavList"><mat-icon>emoji_objects</mat-icon>&nbsp;Notes</a>
-          <mat-divider></mat-divider>
-          <a mat-list-item routerLink="." class="sideNavList"><mat-icon>add_alert</mat-icon>&nbsp;Remainders</a>
-          <mat-divider></mat-divider>
-          <mat-label>LABELS</mat-label>
-          <a mat-list-item routerLink="." class="sideNavList"><mat-icon>brush</mat-icon>&nbsp;Edit labels</a>
-          <mat-divider></mat-divider>
-          <a mat-list-item routerLink="." class="sideNavList"><mat-icon>archive</mat-icon>&nbsp;Arcieves</a>
-          <mat-divider></mat-divider>
-          <a mat-list-item routerLink="." class="sideNavList"><mat-icon>delete_outline</mat-icon>&nbsp;Trash</a>
-        </mat-nav-list>
-      </mat-sidenav>
-      <mat-sidenav-content>
-        
-      <div class="takeNote">
-      <mat-accordion>
-        <mat-expansion-panel>
-          <mat-expansion-panel-header>
-            Add note...
-          </mat-expansion-panel-header>
-          <div>
-          <mat-form-field>
-            <div><mat-label>Title</mat-label>
-              <button mat-button matTooltip="pin note" class="pinButton"><mat-icon>add_alert</mat-icon></button>
-            </div>
-            <input matInput type="title">
-          </mat-form-field>
-        </div>
-        <diV>
-          <mat-form-field>
-            <mat-label>Take a Note...</mat-label>
-            <input matInput type="note">
-          </mat-form-field>
-        </diV>
-        <div>
-          <span>
-          <button mat-button matTooltip="Remind Me"><mat-icon>add_alert</mat-icon></button>
-          <button mat-button matTooltip="Add Collaborator"><mat-icon>person_add</mat-icon></button>
-          <button mat-button matTooltip="Change Color"><mat-icon>color_lens</mat-icon></button>
-          <button mat-button matTooltip="Add image"><mat-icon>image</mat-icon></button>
-          <button mat-button matTooltip="Archive"><mat-icon>archive</mat-icon></button>
-          <button mat-button matTooltip="more"><mat-icon>more_vert</mat-icon></button>
-          <button mat-button matTooltip="Undo"><mat-icon>undo</mat-icon></button>
-          <button mat-button matTooltip="Redo"><mat-icon>redo</mat-icon></button>
-          <span><button mat-button matTooltip="close" class="closeNote">close</button></span>
-        </span>
-        </div>
-        </mat-expansion-panel>
-      </mat-accordion>
+<mat-sidenav-container>
+  <mat-sidenav #snav mode="side" opened>
+    <mat-nav-list class="sideNavDevider">
+      <a mat-list-item routerLink="." class="sideNavList"><mat-icon>emoji_objects</mat-icon>&nbsp;&nbsp;Notes</a>
+      <a mat-list-item routerLink="." class="sideNavList"><mat-icon>add_alert</mat-icon>&nbsp;&nbsp;Remainders</a>
+      <mat-divider class="sideNavDevider"></mat-divider>
+      <mat-label>LABELS</mat-label>
+        <a mat-list-item routerLink="." class="sideNavList"><mat-icon>brush</mat-icon>&nbsp;&nbsp;Edit labels</a>
+        <mat-divider class="sideNavDevider"></mat-divider>
+        <a mat-list-item routerLink="." class="sideNavList"><mat-icon>archive</mat-icon>&nbsp;&nbsp;Arcieves</a>
+        <a mat-list-item routerLink="." class="sideNavList"><mat-icon>delete_outline</mat-icon>&nbsp;&nbsp;Trash</a>
+      </mat-nav-list>
+    </mat-sidenav>
+  <mat-sidenav-content>
+  <div> 
     </div>
-      </mat-sidenav-content>
-    </mat-sidenav-container>
+      <div class="takeNote">
+          <mat-card>
+            <div>
+              <span>
+                <mat-form-field *ngIf="collapsed">
+                  <input matInput placeholder="Title" type="title">
+                </mat-form-field>
+                <span *ngIf="collapsed">
+                  <button mat-button matTooltip="pin note" class="pinButton"><mat-icon>add_alert</mat-icon></button>
+                </span>
+              </span>
+            </div>
+            <div class="takeNoteHidden">
+              <span>
+                <mat-form-field>
+                  <input (click)="collapsed=true" placeholder="Take a note" matInput>
+                </mat-form-field>
+                <span  *ngIf="!collapsed" class="takeNoteHidden">
+                  <button mat-button matTooltip="New list"><mat-icon>check_box</mat-icon></button>
+                  <button mat-button matTooltip="New note with drawing"><mat-icon>brush</mat-icon></button>
+                  <button mat-button matTooltip="Note with image"><mat-icon>image</mat-icon></button>
+                </span>
+              </span>
+            </div>
+          <div *ngIf="collapsed">
+            <span>
+            <button mat-button matTooltip="Remind Me"><mat-icon>add_alert</mat-icon></button>
+            <button mat-button matTooltip="Add Collaborator"><mat-icon>person_add</mat-icon></button>
+            <button mat-button matTooltip="Change Color"><mat-icon>color_lens</mat-icon></button>
+            <button mat-button matTooltip="Add image"><mat-icon>image</mat-icon></button>
+            <button mat-button matTooltip="Archive"><mat-icon>archive</mat-icon></button>
+            <button mat-button matTooltip="more"><mat-icon>more_vert</mat-icon></button>
+            <button mat-button matTooltip="Undo"><mat-icon>undo</mat-icon></button>
+            <button mat-button matTooltip="Redo"><mat-icon>redo</mat-icon></button>
+            <span><button mat-button matTooltip="close" class="closeNote" (click)="collapsed=!collapsed">close</button></span>
+          </span>
+        </div>
+      </mat-card>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

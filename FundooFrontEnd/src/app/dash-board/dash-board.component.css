@@ -4,7 +4,7 @@ mat-sidenav-container {
   min-height: 100%;
   width: 100%;
   min-width: 100%;
-  background-color: black;
+  background-color: white;
 }
 mat-icon{
   color: darkorange;
@@ -71,18 +71,24 @@ mat-icon{
   }
   .takeNote{
     display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
   }
   mat-form-field {
     width: 480px;
+    color : black;
+    
   }
 .pinButton, .closeNote
 {
    float: right;
    bottom: 0;
 }
+.closeNote{
+  color:black ;
+}
+
 mat-sidenav-container{
   color: azure;
 }
@@ -90,5 +96,10 @@ mat-sidenav-container{
   color: white;
 }
 mat-divider{
-  border-top-color: white;
+  border-top-color: gray;
+}
+mat-card{
+  background-color: white;
+  color : white;
+  border: 0.5px solid wheat;
 }
