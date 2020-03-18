@@ -17,24 +17,26 @@ export class RegisterComponent implements OnInit {
     ngOnInit() {
       this.formBuilder = new FormBuilder;
         this.registerForm = this.formBuilder.group({
-          FirstName: ['', [Validators.required]],
-          LastName: ['', [Validators.required]],
+          firstName: ['', [Validators.required, Validators.minLength(6)]],
+          lastName: ['', [Validators.required, Validators.minLength(6)]],
           email: ['', [Validators.required, Validators.email,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
           password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(20),Validators.pattern('^(?=\\D*\\d)(?=[^a-z]*[a-z])(?=[^A-Z]*[A-Z]).{6,20}$')]],
           confirmPassword : ['',[Validators.required]]  
         });
     }
-    checkPassSame(){
-      let pass = this.formBuilder.value.password;
-      let passConf = this.formBuilder.value.confPass;
-      if(pass == passConf) {
-        this.i = true;
-      }else {
-        this.i = false;
-      }
-    }
     // convenience getter for easy access to form fields
     get form() { return this.registerForm.controls; }
+
+    checkPassSame(){
+      const pass = this.formBuilder.value.password;
+      const passConf = this.formBuilder.value.confirmPassword;
+      if(pass == passConf) {
+        this.i = false;
+      }else {
+        this.i = true;
+      }
+    }
+    
 
     onRegisterSubmit(value : any) {
         this.submitted = true;

@@ -1,83 +1,77 @@
-<mat-card style="margin:2em;">
-    <div>     
-        <div class="registrationFormField">
-            <mat-card-title color="accent">    
-                Registration    
-            </mat-card-title>    
+<mat-card>     
+    <div class="registerFormField">
+    <mat-card-title color="accent">    
+        Login    
+    </mat-card-title>    
+</div>
+    <mat-card-content> 
+        <div>   
+        <form [formGroup]="registerForm" (ngSubmit)="onRegisterSubmit(registerForm.value)">
+            <div>
+                <span>
+                <div class="registerFormField">
+                    <mat-form-field appearance="outline">
+                        <mat-label>First Name</mat-label>
+                        <input matInput name="registerFirstName" placeholder="Placeholder" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.firstName.errors }" ngModel />
+                        <mat-hint *ngIf="submitted && form.firstName.errors" class="invalid-feedback">
+                            <mat-hint *ngIf="form.firstName.errors.required">First Name is required</mat-hint>
+                        </mat-hint>
+                    </mat-form-field>
+                </div>
+                <div class="registerFormField">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Last Name</mat-label>
+                        <input matInput name="registerLastName" placeholder="Placeholder" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.lastName.errors }" ngModel />
+                        <mat-hint *ngIf="submitted && form.lastName.errors" class="invalid-feedback">
+                            <mat-hint *ngIf="form.lastName.errors.required">Last Name is required</mat-hint>
+                        </mat-hint>
+                    </mat-form-field>
+                </div>
+            </span>
+            </div>
+            <div class="registerFormField">
+            <mat-form-field appearance="outline">
+                <mat-label>Email</mat-label>
+                <input matInput name="registerEmail" placeholder="Placeholder" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.email.errors }" ngModel />
+                <mat-hint *ngIf="submitted && form.email.errors" class="invalid-feedback">
+                    <mat-hint *ngIf="form.email.errors.required">Email is required</mat-hint>
+                    <mat-hint *ngIf="form.email.errors.email">Email must be a valid email address</mat-hint>
+                </mat-hint>
+            </mat-form-field>
         </div>
-        <div>
-            <mat-card-content>    
-                <form [formGroup]="registerForm" (ngSubmit)="onRegisterSubmit(registerForm.value)">
-                    <div>
-                        <div>
-                            <div class="registrationFormField">
-                                <mat-form-field appearance="outline">
-                                    <mat-label>First Name</mat-label>
-                                    <input matInput name="registerName" placeholder="First Name" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.name.errors }" ngModel />
-                                    <mat-hint *ngIf="submitted && form.name.errors" class="invalid-feedback">
-                                        <mat-hint *ngIf="form.name.errors.required">First Name required</mat-hint>
-                                    </mat-hint>
-                                </mat-form-field>
-                                <mat-form-field appearance="outline">
-                                    <mat-label>Last Name</mat-label>
-                                    <input matInput name="registerName" placeholder="Last Name" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.name.errors }" ngModel />
-                                    <mat-hint *ngIf="submitted && form.name.errors" class="invalid-feedback">
-                                        <mat-hint *ngIf="form.name.errors.required">Last Name required</mat-hint>
-                                    </mat-hint>
-                                </mat-form-field>
-                            </div>
-                            <div class="registrationFormField">
-                                <mat-form-field appearance="outline">
-                                    <mat-label>Email</mat-label>
-                                    <input matInput name="registerEmail" placeholder="email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.email.errors }" ngModel />
-                                    <mat-icon matSuffix>mail</mat-icon>
-                                    <mat-hint *ngIf="submitted && form.email.errors" class="invalid-feedback">
-                                        <mat-hint *ngIf="form.email.errors.required">Email is required</mat-hint>
-                                        <mat-hint *ngIf="form.email.errors.email">Email must be a valid email address</mat-hint>
-                                    </mat-hint>
-                                </mat-form-field>
-                            </div>
-                            <div class="registrationFormField">
-                                <div>
-                                    <mat-form-field appearance="outline">
-                                        <mat-label>Password</mat-label>
-                                        <input matInput name="registerPassword" placeholder="password" type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.password.errors }" ngModel/>
-                                        
-                                        
-                                        <mat-hint *ngIf="submitted && form.password.errors" class="invalid-feedback">
-                                            <mat-hint *ngIf="form.password.errors.required">Password is required</mat-hint>
-                                            <mat-hint *ngIf="form.password.errors.minlength">Password must be at least 6 characters</mat-hint>
-                                            <mat-hint *ngIf="form.password.errors.maxlength">Password must be lessthen 20 charecters</mat-hint>
-                                            <mat-hint *ngIf="form.password.errors">Atlease One UpperCase, LowerCase, Number, special characters Needed</mat-hint>
-                                        </mat-hint>
-                                    </mat-form-field>
-                                </div>
-                                <div>
-                                    <mat-form-field appearance="outline">
-                                        <mat-label>Confirm Password</mat-label>
-                                        <input matInput name="registerPassword" placeholder="confirm password" type="password" formControlName="confirmPassword" (keyup)="checkPassSame()"/>
-                                        
-                                        <mat-hint *ngIf="i">Password does not match</mat-hint>
-                                    </mat-form-field>
-                                </div>
-                                <div><mat-icon></mat-icon></div>
-                            </div>
-                            <br>
-                            <div class="registerSubmit">
-                                <div>
-                                    <a >SignIn insted</a>
-                                </div>
-                                <div>
-                                    <button type="submitt" mat-raised-button color="primary">Register</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-
-                        </div>
-                    </div>
-                </form>  
-            </mat-card-content>  
-        </div>  
+        <div class="registerFormField">
+                <mat-form-field appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input matInput name="registerPassword" type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.password.errors }" ngModel/>
+                        <mat-hint *ngIf="submitted && form.password.errors" class="invalid-feedback">
+                            <mat-hint *ngIf="form.password.errors.required">Password is required</mat-hint>
+                            <mat-hint *ngIf="form.password.errors.minlength">Password must be at least 6 characters</mat-hint>
+                            <mat-hint *ngIf="form.password.errors.maxlength">Password must be lessthen 20 charecters</mat-hint>
+                            <mat-hint *ngIf="form.password.errors">Atlease One UpperCase, LowerCase, Number, special characters Needed</mat-hint>
+                        </mat-hint>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Confirm Password</mat-label>
+                    <input matInput name="registerPassword" type="password" formControlName="confirmPassword" class="form-control" (keyup)="checkPassSame()" [ngClass]="{ 'is-invalid': submitted && form.confirmPassword.errors }" ngModel/>
+                        <mat-hint *ngIf="submitted && form.confirmPassword.errors" class="invalid-feedback">
+                            <mat-hint *ngIf="form.password.errors.required">Password is required</mat-hint>
+                        </mat-hint>
+                        <mat-hint *ngIf="i">Password Not Matched</mat-hint>
+                </mat-form-field>
+            </div>
+            <br>
+            <div class="registerFormField">
+                <span>
+                <div>
+                    <a href="/">Login insted</a>
+                </div>
+                <div>
+                    <button type="submitt" mat-raised-button color="primary">Next</button>
+                </div>
+            </span>
+            </div>
+        </form>  
     </div>
+    </mat-card-content>    
+
 </mat-card> 
