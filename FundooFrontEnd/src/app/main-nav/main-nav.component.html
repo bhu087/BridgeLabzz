@@ -1,18 +1,13 @@
 <mat-toolbar color="primary" class="navbar">
   <div>
     
-    <mat-card-title><mat-icon>pan_tool</mat-icon>Fundoo</mat-card-title>
+    <mat-card-title><mat-icon>emoji_objects</mat-icon>Fundoo</mat-card-title>
   </div>
   <div>
     <span><button mat-button (click)="loadRegister()">Register</button></span>
     <span><button mat-button (click)="loadLogin()">Login</button></span>
-    <span><button mat-button (click)="loadAbout()">About</button></span>
   </div>
 </mat-toolbar>
-
-<app-about *ngIf="loadAboutOnClick"></app-about>
 <app-login-component *ngIf="loadLoginOnClick"></app-login-component>
 <app-register *ngIf="loadRegisterOnClick"></app-register>
-
-<!-- <app-dash-board></app-dash-board> -->
 

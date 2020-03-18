@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -23,6 +24,8 @@ import { DashBoardComponent } from './dash-board/dash-board.component';
 import { RegisterComponent } from './register/register.component'
 import { MatExpansionModule } from '@angular/material/expansion';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import { Routes, RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -51,12 +54,12 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     MatCardModule,
     MatInputModule,
     MatExpansionModule,
-    MatTooltipModule
+    MatTooltipModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { 
   opened = false;
-  
 }

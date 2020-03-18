@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { BackEndServiceService } from '../back-end-service.service';
+import { Routes, RouterModule, Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-component',
@@ -8,10 +10,12 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class LoginComponentComponent implements OnInit {
 
-  constructor() { }
+  constructor(private service : BackEndServiceService,
+    private router: Router) { }
   formBuilder: any;
   LoginForm: FormGroup;
   submitted = false;
+  public dashBoardUrl = "https://stackoverflow.com/questions/40020703/angular2-redirect-to-calling-url-after-successful-login";
     ngOnInit() {
       this.formBuilder = new FormBuilder;
         this.LoginForm = this.formBuilder.group({
@@ -19,17 +23,20 @@ export class LoginComponentComponent implements OnInit {
             password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(20),Validators.pattern('^(?=\\D*\\d)(?=[^a-z]*[a-z])(?=[^A-Z]*[A-Z]).{6,20}$')]]
         });
     }
-
     // convenience getter for easy access to form fields
     get form() { return this.LoginForm.controls; }
 
-    onSubmit() {
+    onSubmit(value : any) {
         this.submitted = true;
-        // stop here if form is invalid
+       
         if (this.LoginForm.invalid) {
           return;
         }
-        
+         this.service.getLogin(value.email, value.password).subscribe((serve) =>{
+           console.log(serve);
+           this.router.navigate(['dashboard']);
+           alert("Loged in");
+         });
       }
 
 }
