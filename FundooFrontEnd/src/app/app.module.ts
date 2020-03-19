@@ -26,6 +26,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { Routes, RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { CreateNoteComponent } from './create-note/create-note.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { HttpClientModule } from '@angular/common/http';
     AboutComponent,
     LoginComponentComponent,
     DashBoardComponent,
-    RegisterComponent
+    RegisterComponent,
+    CreateNoteComponent
   ],
   imports: [
     BrowserModule,

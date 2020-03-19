@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { BackEndServiceService } from '../back-end-service.service';
 
@@ -9,7 +9,7 @@ import { BackEndServiceService } from '../back-end-service.service';
 })
 export class RegisterComponent implements OnInit {
   router: any;
-
+  result:any;
   constructor(private service : BackEndServiceService) { }
   formBuilder: FormBuilder;
   registerForm: FormGroup;
@@ -56,6 +56,8 @@ export class RegisterComponent implements OnInit {
         }
         this.service.register(log).subscribe((serve) =>{
           console.log(serve);
+          this.result = serve;
+          // console.log('JSON Response = ', JSON.stringify(result));
           //this.router.navigate(['dashboard']);
           alert("Registered");
         });

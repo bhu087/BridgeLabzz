@@ -18,4 +18,8 @@ export class BackEndServiceService {
   register(log : any){
     return this.http.post(this.uri+'/api/Account/register', log);
   }
+
+  createNote(note : any){
+    return this.http.post(this.uri+'/api/Notes/addNote', note);
+  }
 }

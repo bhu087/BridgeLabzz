@@ -1,0 +1,36 @@
+<form  (ngSubmit)="onKey($event)">
+<div class="takeNote">
+    <mat-card>
+      <div>
+        <span>
+          <mat-form-field *ngIf="collapsed">
+            <input matInput placeholder="Title" type="title">
+          </mat-form-field>
+          <span *ngIf="collapsed">
+            <button mat-button matTooltip="pin note" class="pinButton"><mat-icon>add_alert</mat-icon></button>
+          </span>
+        </span>
+      </div>
+      <div class="takeNoteHidden">
+        <span>
+          <mat-form-field>
+            <input matInput name="create-note" (keyup.enter)="onKey($event)" (click)="collapsed=true">
+          </mat-form-field>
+        </span>
+      </div>
+    <div *ngIf="collapsed">
+      <span>
+      <button mat-button matTooltip="Remind Me"><mat-icon>add_alert</mat-icon></button>
+      <button mat-button matTooltip="Add Collaborator"><mat-icon>person_add</mat-icon></button>
+      <button mat-button matTooltip="Change Color"><mat-icon>color_lens</mat-icon></button>
+      <button mat-button matTooltip="Add image"><mat-icon>image</mat-icon></button>
+      <button mat-button matTooltip="Archive"><mat-icon>archive</mat-icon></button>
+      <button mat-button matTooltip="more"><mat-icon>more_vert</mat-icon></button>
+      <button mat-button matTooltip="Undo"><mat-icon>undo</mat-icon></button>
+      <button mat-button matTooltip="Redo"><mat-icon>redo</mat-icon></button>
+      <span><button mat-button matTooltip="close" class="closeNote" (click)="collapsed=!collapsed">close</button></span>
+    </span>
+  </div>
+</mat-card>
+</div>
+</form>
