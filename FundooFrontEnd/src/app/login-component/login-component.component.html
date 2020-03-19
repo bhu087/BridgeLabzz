@@ -12,7 +12,7 @@
                 <mat-label>Email</mat-label>
                 <input matInput name="loginEmail" type="email" placeholder="Placeholder" formControlName="logEmail" 
                 class="form-control" [ngClass]="{ 'is-invalid': submitted && form.logEmail.errors }" ngModel />
-                <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                
                 <mat-hint *ngIf="submitted && form.logEmail.errors" class="invalid-feedback">
                     <mat-hint *ngIf="form.logEmail.errors.required">Email is required</mat-hint>
                     <mat-hint *ngIf="form.logEmail.errors.email">Email must be a valid email address</mat-hint>
@@ -24,7 +24,7 @@
                     <mat-label>Password</mat-label>
                     <input matInput name="loginPassword" type="password" formControlName="loginPassword" 
                     class="form-control" [ngClass]="{ 'is-invalid': submitted && form.loginPassword.errors }" ngModel/>
-                    <mat-icon matSuffix>more_horiz</mat-icon>
+                    
                     
                         <mat-hint *ngIf="submitted && form.loginPassword.errors" class="invalid-feedback">
                             <mat-hint *ngIf="form.loginPassword.errors.required">Password is required</mat-hint>
@@ -36,8 +36,12 @@
             </div>
             <br>
             <div class="loginFormField">
-                    <button type="submitt" mat-raised-button color="primary">Login</button>
-                </div>
+                <span>
+                    <span><button type="submitt" mat-raised-button color="primary">Login</button></span>
+                    <span>OR</span>
+                    <span><a href="/" mat-raised-button color="primary">Register Here</a></span>
+                </span>
+            </div>
         </form>  
     </mat-card-content>    
 

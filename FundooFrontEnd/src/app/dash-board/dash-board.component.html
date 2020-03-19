@@ -31,7 +31,16 @@
     </div>
       <div class="takeNote">
           <mat-card>
-            <div>
+            <mat-card-content>
+              <app-create-note>
+                
+              </app-create-note>
+            </mat-card-content>
+      </mat-card>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+<!-- <div>
               <span>
                 <mat-form-field *ngIf="collapsed">
                   <input matInput placeholder="Title" type="title">
@@ -65,8 +74,4 @@
             <button mat-button matTooltip="Redo"><mat-icon>redo</mat-icon></button>
             <span><button mat-button matTooltip="close" class="closeNote" (click)="collapsed=!collapsed">close</button></span>
           </span>
-        </div>
-      </mat-card>
-    </div>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+        </div> -->

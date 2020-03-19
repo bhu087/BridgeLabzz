@@ -9,13 +9,13 @@ import { CreateNoteComponent } from './create-note/create-note.component';
 const routes: Routes = [
     {path:'home', component : MainNavComponent},
     {path: 'register', component : RegisterComponent},
-    {path:'', redirectTo:'https://keep.google.com/', pathMatch:'full'},
     { path:'dashboard',component : DashBoardComponent },
-    {path: 'createNote', component: CreateNoteComponent}
+    {path:'', component : DashBoardComponent}//redirectTo:'https://keep.google.com/', pathMatch:'full'}
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CreateNoteComponent } from 'src/app/create-note/create-note.component';
 
 @Component({
   selector: 'app-dash-board',
