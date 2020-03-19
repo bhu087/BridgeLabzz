@@ -14,4 +14,8 @@ export class BackEndServiceService {
     }
     return this.http.post(this.uri+'/api/Account/login', log);
   }
+
+  register(log : any){
+    return this.http.post(this.uri+'/api/Account/register', log);
+  }
 }

@@ -11,10 +11,8 @@ import { BackEndServiceService } from '../back-end-service.service';
   providers:[BackEndServiceService]
 })
 export class MainNavComponent {
-   loadAboutOnClick : boolean = true;
-   loadLoginOnClick : boolean = false;
+   loadLoginOnClick : boolean = true;
    loadRegisterOnClick : boolean = false;
-   loadDashBoard : boolean = false;
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches),
@@ -22,17 +20,14 @@ export class MainNavComponent {
     );
      loadLogin(){
        this.loadLoginOnClick = true;
-       this.loadAboutOnClick = false;
        this.loadRegisterOnClick = false;
      }
      loadAbout(){
-       this.loadAboutOnClick = true;
        this.loadLoginOnClick = false;
        this.loadRegisterOnClick = false;
      }
      loadRegister(){
        this.loadRegisterOnClick = true;
-       this.loadAboutOnClick = false;
        this.loadLoginOnClick = false;
      }
   constructor(private breakpointObserver: BreakpointObserver) {}

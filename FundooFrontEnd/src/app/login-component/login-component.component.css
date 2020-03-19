@@ -27,3 +27,8 @@ mat-form-field{
     display: flex;
     position: relative;
 }
+.mat-card-border {
+  max-width: 300px;
+  justify-content: center;
+  margin: 4px
+}

@@ -26,8 +26,6 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { Routes, RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { ForgetPasswordComponent } from './forget-password/forget-password.component';
-import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
@@ -36,9 +34,7 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
     AboutComponent,
     LoginComponentComponent,
     DashBoardComponent,
-    RegisterComponent,
-    ForgetPasswordComponent,
-    ResetPasswordComponent
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

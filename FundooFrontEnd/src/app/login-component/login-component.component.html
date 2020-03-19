@@ -1,4 +1,4 @@
-<mat-card>     
+<mat-card class="mat-card-border">     
     <div class="loginFormField">
     <mat-card-title color="accent">    
         Login    
@@ -9,25 +9,27 @@
             <div class="loginFormField">
             <mat-form-field appearance="outline">
                 <mat-label>Email</mat-label>
-                <input matInput name="loginEmail" placeholder="Placeholder" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.email.errors }" ngModel />
+                <input matInput name="loginEmail" type="email" placeholder="Placeholder" formControlName="logEmail" 
+                class="form-control" [ngClass]="{ 'is-invalid': submitted && form.logEmail.errors }" ngModel />
                 <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-                <mat-hint *ngIf="submitted && form.email.errors" class="invalid-feedback">
-                    <mat-hint *ngIf="form.email.errors.required">Email is required</mat-hint>
-                    <mat-hint *ngIf="form.email.errors.email">Email must be a valid email address</mat-hint>
+                <mat-hint *ngIf="submitted && form.logEmail.errors" class="invalid-feedback">
+                    <mat-hint *ngIf="form.logEmail.errors.required">Email is required</mat-hint>
+                    <mat-hint *ngIf="form.logEmail.errors.email">Email must be a valid email address</mat-hint>
                 </mat-hint>
             </mat-form-field>
         </div>
         <div class="loginFormField">
                 <mat-form-field appearance="outline">
                     <mat-label>Password</mat-label>
-                    <input matInput name="loginPassword" type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.password.errors }" ngModel/>
+                    <input matInput name="loginPassword" type="password" formControlName="loginPassword" 
+                    class="form-control" [ngClass]="{ 'is-invalid': submitted && form.loginPassword.errors }" ngModel/>
                     <mat-icon matSuffix>more_horiz</mat-icon>
                     
-                        <mat-hint *ngIf="submitted && form.password.errors" class="invalid-feedback">
-                            <mat-hint *ngIf="form.password.errors.required">Password is required</mat-hint>
-                            <mat-hint *ngIf="form.password.errors.minlength">Password must be at least 6 characters</mat-hint>
-                            <mat-hint *ngIf="form.password.errors.maxlength">Password must be lessthen 20 charecters</mat-hint>
-                            <mat-hint *ngIf="form.password.errors">Atlease One UpperCase, LowerCase, Number, special characters Needed</mat-hint>
+                        <mat-hint *ngIf="submitted && form.loginPassword.errors" class="invalid-feedback">
+                            <mat-hint *ngIf="form.loginPassword.errors.required">Password is required</mat-hint>
+                            <mat-hint *ngIf="form.loginPassword.errors.minlength">Password must be at least 6 characters</mat-hint>
+                            <mat-hint *ngIf="form.loginPassword.errors.maxlength">Password must be lessthen 20 charecters</mat-hint>
+                            <mat-hint *ngIf="form.loginPassword.errors">Atlease One UpperCase, LowerCase, Number, special characters Needed</mat-hint>
                         </mat-hint>
                 </mat-form-field>
             </div>
