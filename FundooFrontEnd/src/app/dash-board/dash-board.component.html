@@ -1,6 +1,8 @@
-<mat-toolbar color="primary" class="navbar">
+<mat-toolbar class="navbar" fxLayout="row" fxLayoutAlign="space-around center" >
   <div>
-    <button mat-icon-button (click)="snav.toggle()"><mat-icon>dehaze</mat-icon></button>Fundoo
+    <span><button mat-icon-button (click)="snav.toggle()"><mat-icon>dehaze</mat-icon></button></span>
+      <span><mat-icon class="fundoo-icon">emoji_objects</mat-icon></span>
+    Fundoo
   </div>
   <div>
     <span><button mat-button matTooltip="refresh"><mat-icon>refresh</mat-icon></button></span>
@@ -10,7 +12,7 @@
   </div>
       
 </mat-toolbar>
-    
+<mat-divider class="sideNavDevider"></mat-divider>
 <mat-sidenav-container>
   <mat-sidenav #snav mode="side" opened>
     <mat-nav-list class="sideNavDevider">

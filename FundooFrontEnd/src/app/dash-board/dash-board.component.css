@@ -37,6 +37,9 @@ mat-icon{
   
   .navbar {
   justify-content: space-between;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
   }
   
   span{
@@ -50,9 +53,7 @@ mat-icon{
     padding: 16px;
   }
   mat-sidenav{
-    background-color:black;
-    width:15%;
-    color:white;
+    width:20%;
   }
   .md-button.logo {
     height: 7rem;
@@ -63,11 +64,11 @@ mat-icon{
     width: 100%;
   }
   mat-icon{
-    color: darkorange;
+    color: black;
   }
   
   mat-toolbar{
-    color: yellowgreen;
+    color: black;
   }
   .takeNote{
     display: flex;
@@ -92,14 +93,16 @@ mat-icon{
 mat-sidenav-container{
   color: azure;
 }
-.sideNavList{
-  color: white;
+.fundoo-icon{
+  color: rgb(252, 182, 7);
+  font-size: 30px;
 }
-mat-divider{
-  border-top-color: gray;
-}
+
 mat-card{
   background-color: white;
   color : white;
   border: 0.5px solid wheat;
+}
+mat-list-option[aria-selected="true"] {
+  background: rgba(226, 241, 4, 0.7);
 }

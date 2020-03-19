@@ -27,8 +27,17 @@ mat-form-field{
     display: flex;
     position: relative;
 }
-.mat-card-border {
+/* .mat-card-border {
   max-width: 300px;
+} */
+.login-mat-card{
   justify-content: center;
-  margin: 4px
+}
+.login-card{
+  display: block;
+  margin-left: auto;
+}
+.login-box{
+  margin: auto;
+    margin-top: 15%;
 }
