@@ -34,10 +34,11 @@
 </mat-card>
 </div>
 </form> -->
+<form [formGroup]="createNoteForm" (keyup.enter)="onKey(createNoteForm.value)">
 <div>
   <span>
     <mat-form-field *ngIf="collapsed">
-      <input matInput placeholder="Title" type="title">
+      <input matInput name="titcreateTitlele" placeholder="Title" formControlName="createTitle" class="form-control" type="title">
     </mat-form-field>
     <span *ngIf="collapsed">
       <button mat-button matTooltip="pin note" class="pinButton"><mat-icon>add_alert</mat-icon></button>
@@ -47,7 +48,7 @@
 <div class="takeNoteHidden">
   <span>
     <mat-form-field>
-      <input (click)="collapsed=true" placeholder="Take a note" matInput>
+      <input (click)="collapsed=true" name="createDescription" formControlName="createDescription" class="form-control" placeholder="Take a note" matInput>
     </mat-form-field>
     <span  *ngIf="!collapsed" class="takeNoteHidden">
       <button mat-button matTooltip="New list"><mat-icon>check_box</mat-icon></button>
@@ -69,3 +70,4 @@
 <span><button mat-button matTooltip="close" class="closeNote" (click)="collapsed=!collapsed">close</button></span>
 </span>
 </div>
+</form>

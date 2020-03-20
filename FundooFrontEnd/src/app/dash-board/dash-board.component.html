@@ -16,8 +16,8 @@
 <mat-sidenav-container>
   <mat-sidenav #snav mode="side" opened>
     <mat-nav-list class="sideNavDevider">
-      <a mat-list-item routerLink="." class="sideNavList"><mat-icon>emoji_objects</mat-icon>&nbsp;&nbsp;Notes</a>
-      <a mat-list-item routerLink="." class="sideNavList"><mat-icon>add_alert</mat-icon>&nbsp;&nbsp;Remainders</a>
+      <a mat-list-item routerLink="." class="sideNavList" (click)="onClickNotes()"><mat-icon>emoji_objects</mat-icon>&nbsp;&nbsp;Notes</a>
+      <a mat-list-item routerLink="." (click)="onClickRemainder()" class="sideNavList"><mat-icon>add_alert</mat-icon>&nbsp;&nbsp;Remainders</a>
       <mat-divider class="sideNavDevider"></mat-divider>
       <mat-label>LABELS</mat-label>
         <a mat-list-item routerLink="." class="sideNavList"><mat-icon>brush</mat-icon>&nbsp;&nbsp;Edit labels</a>
@@ -32,11 +32,24 @@
       <div class="takeNote">
           <mat-card>
             <mat-card-content>
-              <app-create-note>
+              <div *ngIf="notesDiv">
+                <app-create-note>
                 
-              </app-create-note>
+                </app-create-note>
+              </div>
+              <div *ngIf="remainderDiv">
+                <app-create-note>
+                
+                </app-create-note>
+              </div>
             </mat-card-content>
       </mat-card>
+      <h1 *ngIf="notesDiv">
+        Notes
+      </h1>
+      <h1 *ngIf="remainderDiv">
+        Remainders
+      </h1>
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

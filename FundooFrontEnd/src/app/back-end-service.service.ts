@@ -22,4 +22,8 @@ export class BackEndServiceService {
   createNote(note : any){
     return this.http.post(this.uri+'/api/Notes/addNote', note);
   }
+
+  getAllNotes(value : any){
+    return this.http.post(this.uri+'/api/Notes/getAllNotes', value.email);
+  }
 }

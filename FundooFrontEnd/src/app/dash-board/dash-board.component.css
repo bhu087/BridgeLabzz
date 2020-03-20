@@ -91,7 +91,7 @@ mat-icon{
 }
 
 mat-sidenav-container{
-  color: azure;
+  color: black;
 }
 .fundoo-icon{
   color: rgb(252, 182, 7);
@@ -100,7 +100,7 @@ mat-sidenav-container{
 
 mat-card{
   background-color: white;
-  color : white;
+  color : black;
   border: 0.5px solid wheat;
 }
 mat-list-option[aria-selected="true"] {

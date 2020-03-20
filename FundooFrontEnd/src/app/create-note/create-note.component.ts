@@ -12,23 +12,33 @@ export class CreateNoteComponent implements OnInit {
   collapsed : boolean = false;
   formBuilder: any;
   createNoteForm: FormGroup;
+  tempData : any;
   noteData: string;
+  tempEmail : string = "bhuD@getMaxListeners.com";
   constructor(private service : BackEndServiceService,
     private router: Router) { }
 
   ngOnInit(): void {
     this.formBuilder = new FormBuilder;
         this.createNoteForm = this.formBuilder.group({
-          createNote: ['', [Validators.required,]]
+          createTitle: ['', [Validators.required,]],
+          createDescription : []
          });
   }
-  get form() { return this.createNoteForm.controls; }
-  onKey(event : any){
-    this.noteData = event.target.value;
+  //get form() { return this.createNoteForm.controls; }
+  onKey(value : any){
+    this.tempData = value.createDescription;
+    this.noteData = this.tempData.toString();
     if(this.noteData == null || this.noteData == ''){
         return;
     }
-    this.service.createNote(this.noteData).subscribe((serve) =>{
+    console.log("log creating");
+    const log = {
+      email : this.tempEmail,
+      title : value.createTitle,
+      description : value.createDescription
+    }
+    this.service.createNote(log).subscribe((serve) =>{
       console.log(serve);
       alert("Created");
     });
