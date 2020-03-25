@@ -27,6 +27,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import { Routes, RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { CreateNoteComponent } from './create-note/create-note.component';
+import { DisplayComponent } from './display/display.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { CreateNoteComponent } from './create-note/create-note.component';
     LoginComponentComponent,
     DashBoardComponent,
     RegisterComponent,
-    CreateNoteComponent
+    CreateNoteComponent,
+    DisplayComponent
   ],
   imports: [
     BrowserModule,

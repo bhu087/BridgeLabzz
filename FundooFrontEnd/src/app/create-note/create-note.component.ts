@@ -14,6 +14,7 @@ export class CreateNoteComponent implements OnInit {
   createNoteForm: FormGroup;
   tempData : any;
   noteData: string;
+  result : any;
   tempEmail : string = "bhuD@getMaxListeners.com";
   constructor(private service : BackEndServiceService,
     private router: Router) { }
@@ -39,6 +40,7 @@ export class CreateNoteComponent implements OnInit {
       description : value.createDescription
     }
     this.service.createNote(log).subscribe((serve) =>{
+      this.result = serve;
       console.log(serve);
       alert("Created");
     });

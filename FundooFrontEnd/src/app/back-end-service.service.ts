@@ -1,11 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { stringify } from 'querystring';
+import { DisplayComponent } from 'src/app/display/display.component';
+
+
 
 @Injectable()
 export class BackEndServiceService {
   uri = 'https://localhost:44371';
   constructor(private http:HttpClient){
-
+    ////,private display: DisplayComponent
   }
   getLogin(email : any, password : any){
     const log = {
@@ -26,4 +30,8 @@ export class BackEndServiceService {
   getAllNotes(value : any){
     return this.http.post(this.uri+'/api/Notes/getAllNotes', value.email);
   }
+  
+  // displayMessage(message : any){
+  //   return this.display.displayMessage(message);
+  // }
 }
