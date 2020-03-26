@@ -4,10 +4,17 @@ import { BackEndServiceService } from '../back-end-service.service';
 @Component({
   selector: 'app-display',
   templateUrl: './display.component.html',
-  styleUrls: ['./display.component.css']
+  styleUrls: ['./display.component.css'],
+  providers:[BackEndServiceService]
 })
 export class DisplayComponent implements OnInit {
- Message = "hello";
+  userNotes = 
+    {
+      title: ' ',
+      Description: ' ',
+    }
+  
+ Message = "";
   constructor(private service : BackEndServiceService) { }
 
   ngOnInit(): void {
@@ -15,11 +22,10 @@ export class DisplayComponent implements OnInit {
   }
 
   displayMessage(){
-    this.service.getAllNotes("bhuD@getMaxListeners.com").subscribe((serve) =>{
+    this.service.getAllNotes("bhu.com").subscribe((serve) =>{
       console.log(serve);
-      this.Message = serve.toString();
-      //this.router.navigate(['dashboard']);
-      alert("Loged in");
-    });
+      alert("Displayed");
+      });
+      console.log("I'm Here");
   }
 }

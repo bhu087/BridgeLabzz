@@ -6,7 +6,8 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-create-note',
   templateUrl: './create-note.component.html',
-  styleUrls: ['./create-note.component.css']
+  styleUrls: ['./create-note.component.css'],
+  providers:[BackEndServiceService]
 })
 export class CreateNoteComponent implements OnInit {
   collapsed : boolean = false;
@@ -22,8 +23,7 @@ export class CreateNoteComponent implements OnInit {
   ngOnInit(): void {
     this.formBuilder = new FormBuilder;
         this.createNoteForm = this.formBuilder.group({
-          createTitle: ['', [Validators.required,]],
-          createDescription : []
+          createDescription : ['', [Validators.required,]]
          });
   }
   //get form() { return this.createNoteForm.controls; }

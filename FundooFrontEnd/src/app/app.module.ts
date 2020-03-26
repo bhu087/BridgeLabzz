@@ -15,7 +15,6 @@ import { MatListModule } from '@angular/material/list';
 import { FormsModule, FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatGridListModule} from '@angular/material/grid-list';
-import { AboutComponent } from './about/about.component';
 import { LoginComponentComponent } from './login-component/login-component.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card'
@@ -29,11 +28,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { CreateNoteComponent } from './create-note/create-note.component';
 import { DisplayComponent } from './display/display.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
     MainNavComponent,
-    AboutComponent,
     LoginComponentComponent,
     DashBoardComponent,
     RegisterComponent,
@@ -59,7 +58,7 @@ import { DisplayComponent } from './display/display.component';
     MatInputModule,
     MatExpansionModule,
     MatTooltipModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

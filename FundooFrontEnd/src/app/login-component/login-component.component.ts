@@ -26,16 +26,19 @@ export class LoginComponentComponent implements OnInit {
     get form() { return this.LoginForm.controls; }
 
     onSubmit(value : any) {
-        this.submitted = true;
+      this.submitted = true;
        
-        if (this.LoginForm.invalid) {
-          return;
-        }
-         this.service.getLogin(value.logEmail, value.loginPassword).subscribe((serve) =>{
-           console.log(serve);
-           this.router.navigate(['dashboard']);
-           alert("Loged in");
-         });
+      if (this.LoginForm.invalid) {
+       return;
       }
+      this.service.getLogin(value.logEmail, value.loginPassword).subscribe((serve) =>{
+        console.log(serve);
+        this.router.navigate(['dashboard']);
+        alert("Loged in");
+      });
+    }
+    onRegister(){
+      this.router.navigate(['register']);
+    }
 
 }

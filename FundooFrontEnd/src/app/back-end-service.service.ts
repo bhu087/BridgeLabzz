@@ -28,7 +28,7 @@ export class BackEndServiceService {
   }
 
   getAllNotes(value : any){
-    return this.http.post(this.uri+'/api/Notes/getAllNotes', value.email);
+    return this.http.get(this.uri+'/api/Notes/getAllNotes', value.email);
   }
   
   // displayMessage(message : any){
