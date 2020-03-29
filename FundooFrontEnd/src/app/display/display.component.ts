@@ -1,6 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { BackEndServiceService } from '../back-end-service.service';
 
+interface DataResponse {
+  notesId1: number;
+  email: string;
+  title: string;
+  Description: string;
+  createdTime: string;
+  modifiedTime: string;
+  remainder: string;
+  image: string;
+  isArchive: boolean;
+  isTrash: boolean;
+  isPin: boolean;
+  color: string;
+}
+
 @Component({
   selector: 'app-display',
   templateUrl: './display.component.html',
@@ -8,13 +23,13 @@ import { BackEndServiceService } from '../back-end-service.service';
   providers:[BackEndServiceService]
 })
 export class DisplayComponent implements OnInit {
-  userNotes = 
-    {
-      title: ' ',
-      Description: ' ',
-    }
+  // userNotes = 
+  //   {
+  //     title: ' ',
+  //     Description: ' ',
+  //   }
   
- Message = "";
+ Message;
   constructor(private service : BackEndServiceService) { }
 
   ngOnInit(): void {
@@ -22,10 +37,14 @@ export class DisplayComponent implements OnInit {
   }
 
   displayMessage(){
-    this.service.getAllNotes("bhu.com").subscribe((serve) =>{
-      console.log(serve);
-      alert("Displayed");
-      });
-      console.log("I'm Here");
+    const Email = {
+      email : "Bhu@gmail.com"
+    }
+  var tempArray: DataResponse[] = [];
+    this.service.getAllNotes(Email).subscribe((serve) =>{
+    
+    console.log(tempArray[0]);
+    alert("Displayed");
+    });
   }
 }

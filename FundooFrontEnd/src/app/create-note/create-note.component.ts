@@ -17,13 +17,20 @@ export class CreateNoteComponent implements OnInit {
   noteData: string;
   result : any;
   tempEmail : string = "bhuD@getMaxListeners.com";
+  dataCurrentArray: Array<any> = [];
+  dataUndoArray: Array<any> = [];
+  dataRedoArray: Array<any> = [];
+  undoLimit: number = 5;
+  showUndo:boolean = false;
+  showRedo:boolean = false;
   constructor(private service : BackEndServiceService,
     private router: Router) { }
 
   ngOnInit(): void {
     this.formBuilder = new FormBuilder;
         this.createNoteForm = this.formBuilder.group({
-          createDescription : ['', [Validators.required,]]
+          createDescription : ['', [Validators.required,]],
+          createTitle:[]
          });
   }
   //get form() { return this.createNoteForm.controls; }
@@ -44,6 +51,25 @@ export class CreateNoteComponent implements OnInit {
       console.log(serve);
       alert("Created");
     });
+  }
+  undo(): void {
+    this.showRedo = true;
+    if (this.dataUndoArray.length != 0) {    
+      this.dataRedoArray.push(this.dataCurrentArray.pop());  
+      this.dataCurrentArray.push(this.dataUndoArray.pop());
+      if (this.dataUndoArray.length == 0) {
+        this.showUndo = false;
+      }
+    }    
+  }
+  redo(): void {
+    if (this.dataRedoArray.length != 0) {    
+     this.dataUndoArray.push(this.dataCurrentArray.pop());
+     this.dataCurrentArray.push(this.dataRedoArray.pop());
+     if (this.dataRedoArray.length == 0) {
+       this.showRedo = false;
+    }
+   }
   }
 
 }

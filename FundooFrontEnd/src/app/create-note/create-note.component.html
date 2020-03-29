@@ -65,8 +65,8 @@
 <button mat-button matTooltip="Add image"><mat-icon>image</mat-icon></button>
 <button mat-button matTooltip="Archive"><mat-icon>archive</mat-icon></button>
 <button mat-button matTooltip="more"><mat-icon>more_vert</mat-icon></button>
-<button mat-button matTooltip="Undo"><mat-icon>undo</mat-icon></button>
-<button mat-button matTooltip="Redo"><mat-icon>redo</mat-icon></button>
+<button mat-button matTooltip="Undo" (click)="undo()" [disabled]="showUndo"><mat-icon>undo</mat-icon></button>
+<button mat-button matTooltip="Redo" (click)="redo()" [disabled]="showRedo"><mat-icon>redo</mat-icon></button>
 <span><button mat-button matTooltip="close" class="closeNote" (click)="collapsed=!collapsed">close</button></span>
 </span>
 </div>

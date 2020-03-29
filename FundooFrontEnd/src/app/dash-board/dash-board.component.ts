@@ -16,6 +16,7 @@ export class DashBoardComponent implements OnInit {
  collapsed : boolean = false;
  remainderDiv : boolean = false;
  notesDiv : boolean = true;
+ 
   constructor(private service : BackEndServiceService) { }
 
   ngOnInit(): void {
@@ -38,4 +39,5 @@ export class DashBoardComponent implements OnInit {
         //   alert("Registered");
         // });
   }
+  
 }

@@ -1,0 +1,11 @@
+<form [formGroup]="searchNote" (keyup.enter)="searchKeyUp(searchNote.value)">
+    <div>
+        <mat-form-field style="width:600px" appearance="outline">
+        <span>
+            <mat-label><mat-icon>search</mat-icon></mat-label>
+            <input matInput name="titcreateTitlele" placeholder="Search" 
+            formControlName="search" class="form-control" type="title">
+        </span>
+        </mat-form-field>
+    </div>
+</form>

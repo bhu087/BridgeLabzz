@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { stringify } from 'querystring';
 import { DisplayComponent } from 'src/app/display/display.component';
+import { Observable } from 'rxjs';
 
 
 
@@ -27,8 +28,16 @@ export class BackEndServiceService {
     return this.http.post(this.uri+'/api/Notes/addNote', note);
   }
 
-  getAllNotes(value : any){
-    return this.http.get(this.uri+'/api/Notes/getAllNotes', value.email);
+  getAllNotes(search : any){
+    console.log(search);
+    return this.http.get(this.uri+'/api/Notes/getAllNotes', search);
+  };
+
+  searchNotes(value : any){
+    
+    console.log("Search Here");
+    console.log(value);
+    return this.http.get(this.uri+'/api/Notes/search', value);
   }
   
   // displayMessage(message : any){

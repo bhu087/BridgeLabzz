@@ -27,6 +27,10 @@ import { Routes, RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { CreateNoteComponent } from './create-note/create-note.component';
 import { DisplayComponent } from './display/display.component';
+import { ProfilePicComponent } from './profile-pic/profile-pic.component';
+import { SearchComponent } from './search/search.component';
+// import { CloudinaryModule } from '@cloudinary/angular-5.x';
+//   import * as  Cloudinary from 'cloudinary-core';
 
 
 @NgModule({
@@ -37,7 +41,9 @@ import { DisplayComponent } from './display/display.component';
     DashBoardComponent,
     RegisterComponent,
     CreateNoteComponent,
-    DisplayComponent
+    DisplayComponent,
+    SearchComponent,
+    //ProfilePicComponent
   ],
   imports: [
     BrowserModule,
@@ -59,6 +65,7 @@ import { DisplayComponent } from './display/display.component';
     MatExpansionModule,
     MatTooltipModule,
     HttpClientModule,
+    //CloudinaryModule
   ],
   providers: [],
   bootstrap: [AppComponent]
