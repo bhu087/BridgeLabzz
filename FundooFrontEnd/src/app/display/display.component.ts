@@ -33,7 +33,7 @@ export class DisplayComponent implements OnInit {
   constructor(private service : BackEndServiceService) { }
 
   ngOnInit(): void {
-    
+    this.displayMessage();
   }
 
   displayMessage(){
@@ -43,7 +43,7 @@ export class DisplayComponent implements OnInit {
   var tempArray: DataResponse[] = [];
     this.service.getAllNotes(Email).subscribe((serve) =>{
     
-    console.log(tempArray[0]);
+    console.log(serve);
     alert("Displayed");
     });
   }

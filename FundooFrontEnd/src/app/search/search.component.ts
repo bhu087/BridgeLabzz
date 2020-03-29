@@ -11,7 +11,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 export class SearchComponent implements OnInit {
   formBuilder: any;
   searchNote: FormGroup;
-  searchKey: string;
+  searchResult: string;
   constructor(private service: BackEndServiceService) { }
 
   ngOnInit(): void {
@@ -21,10 +21,9 @@ export class SearchComponent implements OnInit {
          });
   }
   searchKeyUp(value : any){
-    console.log("Search Here");
-    this.searchKey = value.search.toString();
-    this.service.searchNotes("Hello").subscribe((serve) =>{
+    this.service.searchNotes(value.search).subscribe((serve) =>{
       console.log(serve);
+      this.searchResult = serve.toString();
       alert("Searched");
     });
   }

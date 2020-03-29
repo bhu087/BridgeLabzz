@@ -30,14 +30,14 @@ export class BackEndServiceService {
 
   getAllNotes(search : any){
     console.log(search);
-    return this.http.get(this.uri+'/api/Notes/getAllNotes', search);
+    return this.http.get(this.uri+'/api/Notes/getAllNotes/?email='+search.email);
   };
 
   searchNotes(value : any){
     
     console.log("Search Here");
     console.log(value);
-    return this.http.get(this.uri+'/api/Notes/search', value);
+    return this.http.get(this.uri+'/api/Notes/search/?searchParameter='+value);
   }
   
   // displayMessage(message : any){

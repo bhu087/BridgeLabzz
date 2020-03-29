@@ -3,12 +3,13 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { BackEndServiceService } from '../back-end-service.service';
+import { SearchComponent } from 'src/app/search/search.component';
 
 @Component({
   selector: 'app-dash-board',
   templateUrl: './dash-board.component.html',
   styleUrls: ['./dash-board.component.css'],
-  providers:[BackEndServiceService]
+  providers:[BackEndServiceService,SearchComponent]
 })
 export class DashBoardComponent implements OnInit {
  loadDashBoard: boolean = false;
